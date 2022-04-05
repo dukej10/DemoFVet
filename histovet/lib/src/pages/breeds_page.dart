@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:histovet/src/pages/add_breed.dart';
@@ -32,6 +33,7 @@ class _BreedsPageState extends State<BreedsPage> {
         });
   }
 
+  TextStyle txtStyle = TextStyle(fontWeight: FontWeight.w600, fontSize: 20);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,6 +50,26 @@ class _BreedsPageState extends State<BreedsPage> {
             onPressed: () {
               showAddBreedModal();
             }),
+        body: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection("breed").snapshots(),
+          builder: (context,
+              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  DocumentSnapshot breedSnap = snapshot.data!.docs[index];
+                  return ListTile(
+                      leading: Icon(FontAwesomeIcons.paw),
+                      title: Text(breedSnap["name"], style: txtStyle),
+                      subtitle: Text(breedSnap["code"],
+                          style: txtStyle.copyWith(fontSize: 17)));
+                },
+              );
+            }
+            return SizedBox();
+          },
+        ),
       ),
     );
   }

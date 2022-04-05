@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/breeds_page.dart';
 import 'package:histovet/src/pages/species_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'HistoVet'),
-      initialRoute: SpeciesPage.id,
+      initialRoute: BreedsPage.id,
       routes: {
         BreedsPage.id: (context) => BreedsPage(),
         SpeciesPage.id: (context) => SpeciesPage(),
@@ -77,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return MaterialApp(
-              home: SpeciesPage(),
+              home: BreedsPage(),
             );
           }
           return SizedBox();

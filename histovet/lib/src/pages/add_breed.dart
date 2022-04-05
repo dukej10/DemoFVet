@@ -6,7 +6,9 @@ import '../models/breed_model.dart';
 
 class AddBreed extends StatefulWidget {
   static String id = "addbreed_page";
-  //AddBreed(this.breed);
+  final Function(Breed) insertBreed;
+
+  AddBreed(this.insertBreed);
 
   @override
   State<AddBreed> createState() => _AddBreedState();
@@ -30,13 +32,19 @@ class _AddBreedState extends State<AddBreed> {
         ));
   }
 
+  void addBreed() {
+    final Breed breed;
+    breed = Breed("", codeController.text, nameController.text);
+    widget.insertBreed(breed);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            Text("Agregar Especie", style: txtStyle),
+            Text("Agregar Raza", style: txtStyle),
             buildTextFormField(
                 "Code", Icons.code, codeController, TextInputType.text),
             buildTextFormField(
@@ -50,7 +58,9 @@ class _AddBreedState extends State<AddBreed> {
                   style: txtStyle.copyWith(
                       fontSize: 20, fontWeight: FontWeight.w500),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  addBreed();
+                },
               ),
             )
           ],

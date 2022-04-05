@@ -7,7 +7,4 @@ class Breed {
   final String name;
 
   Breed(this.id, this.code, this.name);
-
-//Mapeo de los objetos
-
 }

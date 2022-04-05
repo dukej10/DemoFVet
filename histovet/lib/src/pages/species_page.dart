@@ -12,13 +12,13 @@ class SpeciesPage extends StatefulWidget {
 }
 
 class _SpeciesPageState extends State<SpeciesPage> {
-  void showAddBreedModal() {
-    showModalBottomSheet(
+  void showAddSpecieModal() {
+    /*showModalBottomSheet(
         context: context,
         builder: (context) {
           return Padding(
-              padding: MediaQuery.of(context).viewInsets, child: AddBreed());
-        });
+              padding: MediaQuery.of(context).viewInsets, child: AddSpecie());
+        }); */
   }
 
   @override
@@ -32,7 +32,7 @@ class _SpeciesPageState extends State<SpeciesPage> {
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
             onPressed: () {
-              showAddBreedModal();
+              showAddSpecieModal();
             }),
       ),
     );

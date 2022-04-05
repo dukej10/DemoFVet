@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:histovet/src/models/specie_model.dart';
 import 'package:histovet/src/pages/add_breed.dart';
 import 'package:histovet/src/pages/add_species.dart';
@@ -33,6 +35,7 @@ class _SpeciesPageState extends State<SpeciesPage> {
         });
   }
 
+  TextStyle txtStyle = TextStyle(fontWeight: FontWeight.w600, fontSize: 20);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,6 +49,30 @@ class _SpeciesPageState extends State<SpeciesPage> {
             onPressed: () {
               showAddSpecieModal();
             }),
+        body: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection("specie").snapshots(),
+          builder: (context,
+              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  DocumentSnapshot breedSnap = snapshot.data!.docs[index];
+                  return Card(
+                    margin: EdgeInsets.all(6),
+                    elevation: 6,
+                    child: ListTile(
+                        leading: Icon(FontAwesomeIcons.paw),
+                        title: Text(breedSnap["name"], style: txtStyle),
+                        subtitle: Text(breedSnap["code"],
+                            style: txtStyle.copyWith(fontSize: 17))),
+                  );
+                },
+              );
+            }
+            return SizedBox();
+          },
+        ),
       ),
     );
   }

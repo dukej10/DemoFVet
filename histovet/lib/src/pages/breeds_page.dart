@@ -59,11 +59,15 @@ class _BreedsPageState extends State<BreedsPage> {
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
                   DocumentSnapshot breedSnap = snapshot.data!.docs[index];
-                  return ListTile(
-                      leading: Icon(FontAwesomeIcons.paw),
-                      title: Text(breedSnap["name"], style: txtStyle),
-                      subtitle: Text(breedSnap["code"],
-                          style: txtStyle.copyWith(fontSize: 17)));
+                  return Card(
+                    margin: EdgeInsets.all(8),
+                    elevation: 6,
+                    child: ListTile(
+                        leading: Icon(FontAwesomeIcons.paw),
+                        title: Text(breedSnap["name"], style: txtStyle),
+                        subtitle: Text(breedSnap["code"],
+                            style: txtStyle.copyWith(fontSize: 17))),
+                  );
                 },
               );
             }

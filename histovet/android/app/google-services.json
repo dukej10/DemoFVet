@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "357304534253",
+    "project_id": "demovet-8b8ed",
+    "storage_bucket": "demovet-8b8ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357304534253:android:905c99057a1c8f7cc9f8e4",
+        "android_client_info": {
+          "package_name": "com.example.histovet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357304534253-sfljiqdab3ft8b2mgji6q5vch7kmhtbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSAKOpM3AN85NUhjHeeFVjBe-NXoxO4QQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357304534253-sfljiqdab3ft8b2mgji6q5vch7kmhtbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

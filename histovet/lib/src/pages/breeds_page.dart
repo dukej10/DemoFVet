@@ -60,7 +60,7 @@ class _BreedsPageState extends State<BreedsPage> {
                 itemBuilder: (context, index) {
                   DocumentSnapshot breedSnap = snapshot.data!.docs[index];
                   return Card(
-                    margin: EdgeInsets.all(8),
+                    margin: EdgeInsets.all(6),
                     elevation: 6,
                     child: ListTile(
                         leading: Icon(FontAwesomeIcons.paw),

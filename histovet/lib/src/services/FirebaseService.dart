@@ -13,6 +13,10 @@ class FirebaseService {
         .set({"id": breedDoc.id, "code": breed.code, "name": breed.name});
   }
 
+  Future<void> deleteBreedFromFirebase(id) async {
+    await _firestore.collection("breed").doc(id).delete();
+  }
+
   Future<void> storeSpecieToFirebase(Specie specie) async {
     final DocumentReference specieDoc = _firestore.collection("specie").doc();
 

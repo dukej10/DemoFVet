@@ -33,6 +33,10 @@ class _BreedsPageState extends State<BreedsPage> {
         });
   }
 
+  void deleteBreed(breedId) {
+    _service.deleteBreedFromFirebase(breedId);
+  }
+
   TextStyle txtStyle = TextStyle(fontWeight: FontWeight.w600, fontSize: 20);
   @override
   Widget build(BuildContext context) {
@@ -63,10 +67,28 @@ class _BreedsPageState extends State<BreedsPage> {
                     margin: EdgeInsets.all(6),
                     elevation: 6,
                     child: ListTile(
-                        leading: Icon(FontAwesomeIcons.paw),
-                        title: Text(breedSnap["name"], style: txtStyle),
-                        subtitle: Text(breedSnap["code"],
-                            style: txtStyle.copyWith(fontSize: 17))),
+                      onLongPress: () {},
+                      leading: Icon(FontAwesomeIcons.paw),
+                      title: Text(breedSnap["name"], style: txtStyle),
+                      subtitle: Text(
+                        breedSnap["code"],
+                        style: txtStyle.copyWith(fontSize: 17),
+                      ),
+                      trailing: Column(
+                        children: [
+                          Expanded(
+                              child: PopupMenuButton(
+                            itemBuilder: (context) => [
+                              PopupMenuItem(
+                                  child: Text('Eliminar'),
+                                  onTap: () {
+                                    deleteBreed(breedSnap["id"]);
+                                  })
+                            ],
+                          ))
+                        ],
+                      ),
+                    ),
                   );
                 },
               );

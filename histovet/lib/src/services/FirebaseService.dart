@@ -23,4 +23,8 @@ class FirebaseService {
     await specieDoc
         .set({"id": specieDoc.id, "code": specie.code, "name": specie.name});
   }
+
+  Future<void> deleteSpecieFromFirebase(id) async {
+    await _firestore.collection("specie").doc(id).delete();
+  }
 }

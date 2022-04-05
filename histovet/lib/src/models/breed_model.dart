@@ -2,10 +2,11 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 
 class Breed {
-  Breed(this._id, this._code, this._name);
-  String _id = "";
-  String _code = "";
-  String _name = "";
+  final String? id;
+  final String code;
+  final String name;
+
+  Breed(this.id, this.code, this.name);
 
 //Mapeo de los objetos
 

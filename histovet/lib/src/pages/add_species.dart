@@ -43,28 +43,30 @@ class _AddSpecieState extends State<AddSpecie> {
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Text("Agregar Especie", style: txtStyle),
-            buildTextFormField(
-                "Code", Icons.code, codeController, TextInputType.text),
-            buildTextFormField(
-                "Name", Icons.text_fields, nameController, TextInputType.text),
-            Container(
-              margin: EdgeInsets.all(8),
-              width: double.infinity,
-              child: ElevatedButton(
-                child: Text(
-                  "Agregar Especie",
-                  style: txtStyle.copyWith(
-                      fontSize: 20, fontWeight: FontWeight.w500),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Text("Agregar Especie", style: txtStyle),
+              buildTextFormField(
+                  "Code", Icons.code, codeController, TextInputType.text),
+              buildTextFormField("Name", Icons.text_fields, nameController,
+                  TextInputType.text),
+              Container(
+                margin: EdgeInsets.all(8),
+                width: double.infinity,
+                child: ElevatedButton(
+                  child: Text(
+                    "Agregar Especie",
+                    style: txtStyle.copyWith(
+                        fontSize: 20, fontWeight: FontWeight.w500),
+                  ),
+                  onPressed: () {
+                    AddSpecie();
+                  },
                 ),
-                onPressed: () {
-                  AddSpecie();
-                },
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ));
   }
 }

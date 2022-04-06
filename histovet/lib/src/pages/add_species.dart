@@ -8,8 +8,9 @@ import '../models/breed_model.dart';
 class AddSpecie extends StatefulWidget {
   static String id = "AddSpecie_page";
   final Function(Specie) insertSpecie;
+  final Specie? specie;
 
-  AddSpecie(this.insertSpecie);
+  AddSpecie(this.insertSpecie, this.specie);
 
   @override
   State<AddSpecie> createState() => _AddSpecieState();
@@ -33,20 +34,46 @@ class _AddSpecieState extends State<AddSpecie> {
         ));
   }
 
+  void binData() {
+    if (widget.specie != null) {
+      setState(() {
+        codeController.text = widget.specie!.code;
+        nameController.text = widget.specie!.name;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    binData();
+    super.initState();
+  }
+
   void AddSpecie() {
-    final Specie breed;
-    breed = Specie("", codeController.text, nameController.text);
-    widget.insertSpecie(breed);
+    late Specie specie;
+    if (widget.specie == null) {
+      specie = Specie("", codeController.text, nameController.text);
+    } else {
+      specie =
+          Specie(widget.specie!.id, codeController.text, nameController.text);
+    }
+
+    widget.insertSpecie(specie);
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+        height: MediaQuery.of(context).size.height * 0.5,
         padding: EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text("Agregar Especie", style: txtStyle),
+              Text(
+                  widget.specie == null
+                      ? "Agregar Especie"
+                      : "Actualizar Especie",
+                  style: txtStyle),
               buildTextFormField(
                   "Code", Icons.code, codeController, TextInputType.text),
               buildTextFormField("Name", Icons.text_fields, nameController,
@@ -56,7 +83,9 @@ class _AddSpecieState extends State<AddSpecie> {
                 width: double.infinity,
                 child: ElevatedButton(
                   child: Text(
-                    "Agregar Especie",
+                    widget.specie == null
+                        ? "Agregar Especie"
+                        : "Actualizar Especie",
                     style: txtStyle.copyWith(
                         fontSize: 20, fontWeight: FontWeight.w500),
                   ),

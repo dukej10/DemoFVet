@@ -25,14 +25,28 @@ class _SpeciesPageState extends State<SpeciesPage> {
     });
   }
 
+  void updateSpecie(Specie specie) {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Padding(
+              padding: MediaQuery.of(context).viewInsets,
+              child: AddSpecie(addSpecieInDB, specie));
+        });
+  }
+
   void showAddSpecieModal() {
     showModalBottomSheet(
         context: context,
         builder: (context) {
           return Padding(
               padding: MediaQuery.of(context).viewInsets,
-              child: AddSpecie(addSpecieInDB));
+              child: AddSpecie(addSpecieInDB, null));
         });
+  }
+
+  void deleteSpecie(specieId) {
+    _service.deleteSpecieFromFirebase(specieId);
   }
 
   TextStyle txtStyle = TextStyle(fontWeight: FontWeight.w600, fontSize: 20);
@@ -57,15 +71,33 @@ class _SpeciesPageState extends State<SpeciesPage> {
               return ListView.builder(
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
-                  DocumentSnapshot breedSnap = snapshot.data!.docs[index];
+                  DocumentSnapshot specieSnap = snapshot.data!.docs[index];
                   return Card(
                     margin: EdgeInsets.all(6),
                     elevation: 6,
                     child: ListTile(
+                        onLongPress: () {
+                          updateSpecie(Specie(specieSnap["id"],
+                              specieSnap["code"], specieSnap["name"]));
+                        },
                         leading: Icon(FontAwesomeIcons.paw),
-                        title: Text(breedSnap["name"], style: txtStyle),
-                        subtitle: Text(breedSnap["code"],
-                            style: txtStyle.copyWith(fontSize: 17))),
+                        title: Text(specieSnap["name"], style: txtStyle),
+                        subtitle: Text(specieSnap["code"],
+                            style: txtStyle.copyWith(fontSize: 17)),
+                        trailing: Column(
+                          children: [
+                            Expanded(
+                                child: PopupMenuButton(
+                              itemBuilder: (context) => [
+                                PopupMenuItem(
+                                    child: Text('Eliminar'),
+                                    onTap: () {
+                                      deleteSpecie(specieSnap["id"]);
+                                    })
+                              ],
+                            ))
+                          ],
+                        )),
                   );
                 },
               );

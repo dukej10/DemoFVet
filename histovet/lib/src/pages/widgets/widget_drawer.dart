@@ -12,7 +12,7 @@ class MenuLateral extends StatelessWidget {
         children: [
           DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.amber,
+                color: Colors.blue,
               ),
               child: Column(
                 children: [

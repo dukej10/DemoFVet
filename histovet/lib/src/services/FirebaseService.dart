@@ -26,8 +26,14 @@ class FirebaseService {
   Future<void> storeSpecieToFirebase(Specie specie) async {
     final DocumentReference specieDoc = _firestore.collection("specie").doc();
 
-    await specieDoc
-        .set({"id": specieDoc.id, "code": specie.code, "name": specie.name});
+    if (specie.id!.isNotEmpty) {
+      await FirebaseFirestore.instance.collection("specie").doc(specie.id).set(
+          {"id": specieDoc.id, "code": specie.code, "name": specie.name},
+          SetOptions(merge: true));
+    } else {
+      await specieDoc
+          .set({"id": specieDoc.id, "code": specie.code, "name": specie.name});
+    }
   }
 
   Future<void> deleteSpecieFromFirebase(id) async {

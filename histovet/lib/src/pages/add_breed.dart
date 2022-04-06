@@ -33,9 +33,28 @@ class _AddBreedState extends State<AddBreed> {
         ));
   }
 
+  void binData() {
+    if (widget.breed != null) {
+      setState(() {
+        codeController.text = widget.breed!.code;
+        nameController.text = widget.breed!.name;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    binData();
+    super.initState();
+  }
+
   void addBreed() {
-    final Breed breed;
-    breed = Breed("", codeController.text, nameController.text);
+    late Breed breed;
+    if (widget.breed == null) {
+      breed = Breed("", codeController.text, nameController.text);
+    } else {
+      breed = Breed(widget.breed!.id, codeController.text, nameController.text);
+    }
     widget.insertBreed(breed);
   }
 
@@ -47,7 +66,8 @@ class _AddBreedState extends State<AddBreed> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text("Agregar Raza", style: txtStyle),
+              Text(widget.breed == null ? "Agregar Raza" : "Actualizar Raza",
+                  style: txtStyle),
               buildTextFormField(
                   "Code", Icons.code, codeController, TextInputType.text),
               buildTextFormField("Name", Icons.text_fields, nameController,
@@ -57,7 +77,7 @@ class _AddBreedState extends State<AddBreed> {
                 width: double.infinity,
                 child: ElevatedButton(
                   child: Text(
-                    "Agregar Raza",
+                    widget.breed == null ? "Agregar Raza" : "Actualizar Raza",
                     style: txtStyle.copyWith(
                         fontSize: 20, fontWeight: FontWeight.w500),
                   ),

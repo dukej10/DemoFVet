@@ -23,13 +23,23 @@ class _BreedsPageState extends State<BreedsPage> {
     });
   }
 
+  void updateBreed(Breed breed) {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Padding(
+              padding: MediaQuery.of(context).viewInsets,
+              child: AddBreed(addBreedInDB, breed));
+        });
+  }
+
   void showAddBreedModal() {
     showModalBottomSheet(
         context: context,
         builder: (context) {
           return Padding(
               padding: MediaQuery.of(context).viewInsets,
-              child: AddBreed(addBreedInDB));
+              child: AddBreed(addBreedInDB, null));
         });
   }
 
@@ -67,7 +77,10 @@ class _BreedsPageState extends State<BreedsPage> {
                     margin: EdgeInsets.all(6),
                     elevation: 6,
                     child: ListTile(
-                      onLongPress: () {},
+                      onLongPress: () {
+                        updateBreed(Breed(breedSnap["id"], breedSnap["code"],
+                            breedSnap["name"]));
+                      },
                       leading: Icon(FontAwesomeIcons.paw),
                       title: Text(breedSnap["name"], style: txtStyle),
                       subtitle: Text(

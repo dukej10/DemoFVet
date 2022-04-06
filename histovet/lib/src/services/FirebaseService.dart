@@ -9,8 +9,14 @@ class FirebaseService {
   Future<void> storeBreedToFirebase(Breed breed) async {
     final DocumentReference breedDoc = _firestore.collection("breed").doc();
 
-    await breedDoc
-        .set({"id": breedDoc.id, "code": breed.code, "name": breed.name});
+    if (breed.id!.isNotEmpty) {
+      await FirebaseFirestore.instance.collection("breed").doc(breed.id).set(
+          {"id": breedDoc.id, "code": breed.code, "name": breed.name},
+          SetOptions(merge: true));
+    } else {
+      await breedDoc
+          .set({"id": breedDoc.id, "code": breed.code, "name": breed.name});
+    }
   }
 
   Future<void> deleteBreedFromFirebase(id) async {

@@ -1,7 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:histovet/src/pages/breeds_page.dart';
-import 'package:histovet/src/pages/species_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,15 +19,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'HistoVet'),
-      initialRoute: BreedsPage.id,
-      routes: {
-        BreedsPage.id: (context) => BreedsPage(),
-        SpeciesPage.id: (context) => SpeciesPage(),
-        '/species': (context) => SpeciesPage(),
-        '/breeds': (context) => BreedsPage(),
-        // '/add-specie': (context) => SpecieAddEdit(),
-        // '/edit-specie': (context) => SpecieAddEdit(),
-      },
     );
   }
 }
@@ -78,9 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         future: Firebase.initializeApp(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return MaterialApp(
-              home: BreedsPage(),
-            );
+            return MaterialApp();
           }
           return SizedBox();
         });

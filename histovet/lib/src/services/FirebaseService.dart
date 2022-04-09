@@ -11,7 +11,7 @@ class FirebaseService {
 
     if (breed.id!.isNotEmpty) {
       await FirebaseFirestore.instance.collection("breed").doc(breed.id).set(
-          {"id": breedDoc.id, "code": breed.code, "name": breed.name},
+          {"id": breed.id, "code": breed.code, "name": breed.name},
           SetOptions(merge: true));
     } else {
       await breedDoc
@@ -28,7 +28,7 @@ class FirebaseService {
 
     if (specie.id!.isNotEmpty) {
       await FirebaseFirestore.instance.collection("specie").doc(specie.id).set(
-          {"id": specieDoc.id, "code": specie.code, "name": specie.name},
+          {"id": specie.id, "code": specie.code, "name": specie.name},
           SetOptions(merge: true));
     } else {
       await specieDoc

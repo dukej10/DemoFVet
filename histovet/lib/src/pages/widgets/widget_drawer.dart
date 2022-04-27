@@ -28,7 +28,8 @@ class MenuLateral extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, addPet.id);
             },
-          )
+          ),
+          
         ],
       ),
     );

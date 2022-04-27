@@ -49,7 +49,7 @@ class _updatePetState extends State<updatePet> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(codeController.text),
+        title: Text("Editar Información Mascota"),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.save),

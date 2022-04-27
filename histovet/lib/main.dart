@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/add_pets.dart';
+import 'package:histovet/src/pages/pet_update.dart';
 import 'package:histovet/src/pages/pets_page.dart';
 
 void main() async {
@@ -25,7 +26,9 @@ class MyApp extends StatelessWidget {
       routes: {
         PetsPage.id: (context) => PetsPage(),
         '/pets': (context) => PetsPage(),
-        addPet.id: (context) => addPet()
+        addPet.id: (context) => addPet(),
+        updatePet.id: (context) => updatePet(""),
+        '/updatepet': (context) => updatePet(""),
       },
     );
   }

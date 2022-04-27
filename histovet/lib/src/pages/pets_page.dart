@@ -5,6 +5,8 @@ import 'package:histovet/src/models/pet_model.dart';
 import 'package:histovet/src/pages/widgets/widget_drawer.dart';
 import 'package:histovet/src/services/pet_service.dart';
 import 'package:histovet/src/pages/add_pets.dart';
+import 'package:histovet/src/pages/pet_update.dart';
+
 class PetsPage extends StatefulWidget {
   static String id = "pets_page";
   PetsPage({Key? key}) : super(key: key);
@@ -20,6 +22,7 @@ class _PetsPageState extends State<PetsPage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
@@ -46,7 +49,7 @@ class _PetsPageState extends State<PetsPage> {
                       margin: EdgeInsets.all(6),
                       elevation: 6,
                       child: ListTile(
-                        onLongPress: () {},
+                        onLongPress: () {Navigator.push(context, MaterialPageRoute(builder: (context) => updatePet(specie.id.toString())));},
                         leading: Icon(FontAwesomeIcons.paw),
                         title: Text(specie.name, style: txtStyle),
                         subtitle: Text(

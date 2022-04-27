@@ -12,7 +12,6 @@ import 'package:histovet/src/pages/widgets/sex.dart';
 import 'package:histovet/src/pages/widgets/specie.dart';
 
 import 'package:histovet/src/pages/widgets/color.dart';
-import 'package:histovet/src/services/appstate.dart';
 import 'package:histovet/src/services/pet_service.dart';
 import 'package:provider/provider.dart';
 

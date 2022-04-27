@@ -15,11 +15,11 @@ class PetService {
 
     if (specie.id!.isNotEmpty) {
       await FirebaseFirestore.instance.collection("pet").doc(specie.id).set(
-          {"id": specie.id, "code": specie.code, "name": specie.name, "nameOwner": specie.nameOwner, "contactOwner": specie.contactOwner, "age": specie.age, "breed": specie.breed, "specie": specie.specie, "color":specie.color, "sex": specie.sex},
+          {"id": specie.id, "code": specie.code, "name": specie.name, "nameOwner": specie.nameOwner, "contactOwner": specie.contactOwner, "documentOwner": specie.documentOwner,"age": specie.age, "breed": specie.breed, "specie": specie.specie, "color":specie.color, "sex": specie.sex},
           SetOptions(merge: true));
     } else {
       await specieDoc
-          .set({"id": specieDoc.id, "code": specie.code, "name": specie.name, "nameOwner": specie.nameOwner, "contactOwner": specie.contactOwner, "age": specie.age, "breed": specie.breed, "specie": specie.specie, "color":specie.color, "sex": specie.sex});
+          .set({"id": specieDoc.id, "code": specie.code, "name": specie.name, "nameOwner": specie.nameOwner, "contactOwner": specie.contactOwner, "documentOwner": specie.documentOwner, "age": specie.age, "breed": specie.breed, "specie": specie.specie, "color":specie.color, "sex": specie.sex});
     }
   }
 
@@ -33,7 +33,8 @@ class PetService {
     collection.snapshots().listen((querySnapshot) {
       for (var doc in querySnapshot.docs) {
         Map<String, dynamic> data = doc.data();
-        Pet newPet = Pet(data["id"], data["code"], data["name"], data["nameOwner"], data["contactOwner"],data["age"], data["breed"], data["specie"], data["color"], data["sex"] );
+        print(data);
+        Pet newPet = Pet(data["id"], data["code"], data["name"], data["nameOwner"], data["contactOwner"],data["documentOwner"],data["age"], data["breed"], data["specie"], data["color"], data["sex"] );
         especies.add(newPet);
       }
     });

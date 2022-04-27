@@ -12,7 +12,9 @@ import 'package:histovet/src/pages/widgets/sex.dart';
 import 'package:histovet/src/pages/widgets/specie.dart';
 
 import 'package:histovet/src/pages/widgets/color.dart';
+import 'package:histovet/src/services/appstate.dart';
 import 'package:histovet/src/services/pet_service.dart';
+import 'package:provider/provider.dart';
 
 import '../models/pet_model.dart';
 import 'widgets/code.dart';
@@ -28,6 +30,7 @@ class addPet extends StatefulWidget {
 class _addPetState extends State<addPet> {
   final PetService _service = PetService();
   final _formState = GlobalKey<FormBuilderState>();
+  bool respuesta = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,10 +70,17 @@ class _addPetState extends State<addPet> {
       addPet(pet);
     }
   }
-
-  void addPet(Pet pet){
-    _service.storePetToFirebase(pet).whenComplete(() {
-      Navigator.pushNamed(context, PetsPage.id);
-    });
+  void addPet(Pet pet) async{
+    respuesta = await _service.storePetToFirebase(pet);
+    if (respuesta) {
+            Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Se guardóo la información"),
+            backgroundColor: Colors.green,));
+          }else{
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("No se guardó la información"),
+            backgroundColor: Colors.green,));
+          }
   }
+
+  
 }

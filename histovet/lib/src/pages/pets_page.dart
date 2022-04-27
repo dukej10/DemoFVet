@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:histovet/src/controller/pet_controller.dart';
 import 'package:histovet/src/models/pet_model.dart';
 import 'package:histovet/src/pages/widgets/widget_drawer.dart';
 import 'package:histovet/src/services/pet_service.dart';
-
+import 'package:histovet/src/pages/add_pets.dart';
 class PetsPage extends StatefulWidget {
   static String id = "pets_page";
   PetsPage({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class PetsPage extends StatefulWidget {
 class _PetsPageState extends State<PetsPage> {
   final PetService _service = PetService();
   TextStyle txtStyle = TextStyle(fontWeight: FontWeight.w600, fontSize: 20);
+  PetController petCont = new PetController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +25,16 @@ class _PetsPageState extends State<PetsPage> {
           appBar: AppBar(
             centerTitle: true,
             title: Text("Mascotas"),
+            actions: [IconButton(onPressed: () {setState(() {
+              });
+            }, icon: const Icon(Icons.refresh))],
           ),
           drawer: MenuLateral(),
           floatingActionButton: FloatingActionButton(
               child: Icon(FontAwesomeIcons.plus),
               elevation: 15.0,
               backgroundColor: Colors.blue,
-              onPressed: () {}),
+              onPressed: () {Navigator.pushNamed(context, addPet.id);}),
               body: FutureBuilder(
             future: PetService().getPets(),
             builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
@@ -48,20 +53,13 @@ class _PetsPageState extends State<PetsPage> {
                           specie.code,
                           style: txtStyle.copyWith(fontSize: 17),
                         ),
-                        trailing: Column(
-                          children: [
-                            Expanded(
-                                child: PopupMenuButton(
-                              itemBuilder: (context) => [
-                                PopupMenuItem(
-                                    child: Text('Eliminar'),
-                                    onTap: () {
-                                      print(specie.id);
-                                    })
-                              ],
-                            ))
-                          ],
-                        ),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: (){
+                            petCont.deletePet(specie.id);
+                                      Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+                          },
+                        )
                       ),
                     )
                 ],

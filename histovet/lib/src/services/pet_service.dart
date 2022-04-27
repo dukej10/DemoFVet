@@ -6,9 +6,18 @@ import 'package:firebase_database/firebase_database.dart';
 class PetService {
    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final databaseRef = FirebaseDatabase.instance.ref();
+  Pet pet = new Pet("", "", "", "", "", "", 0, "", "", "", "");
 
+
+  Future<Pet> getPet(String id) async {
+     final snapshot= await FirebaseFirestore.instance.collection('pet').doc(id).get();
+     Pet pet = new Pet(snapshot["id"], snapshot["code"], snapshot["name"], snapshot["nameOwner"], snapshot["contactOwner"], snapshot["documentOwner"], snapshot["age"], snapshot["breed"], snapshot["specie"], snapshot["color"], snapshot["sex"]);
+     print(pet.toString());
+     return pet;
+  }
   CollectionReference petAll =
       FirebaseFirestore.instance.collection("pet");
+
 
   Future<bool> storePetToFirebase(Pet specie) async {
     try {

@@ -252,7 +252,7 @@ class _updatePetState extends State<updatePet> {
       final specie = values['specie'];
       final color = values['color'];
       final sex = values['sex'];
-      late Pet pet = new Pet("",code, name, nameOwner, contactOwner, docOwner, age, breed, specie, color, sex);
+      late Pet pet = new Pet(widget.idPet,code, name, nameOwner, contactOwner, docOwner, age, breed, specie, color, sex);
       updatePet(pet);
     }
   }
@@ -260,10 +260,10 @@ class _updatePetState extends State<updatePet> {
     respuesta = await _service.storePetToFirebase(pet);
     if (respuesta) {
             Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Se guardóo la información"),
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Se actualizó la información"),
             backgroundColor: Colors.green,));
           }else{
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("No se guardó la información"),
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("No se actualizó la información"),
             backgroundColor: Colors.green,));
           }
   }

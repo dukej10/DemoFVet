@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:histovet/src/pages/widgets/age.dart';
+import 'package:histovet/src/pages/widgets/breed.dart';
 import 'package:histovet/src/pages/widgets/contact_owner.dart';
+import 'package:histovet/src/pages/widgets/document_owner.dart';
 import 'package:histovet/src/pages/widgets/name.dart';
 import 'package:histovet/src/pages/widgets/name_owner.dart';
 import 'package:histovet/src/pages/widgets/sex.dart';
+import 'package:histovet/src/pages/widgets/specie.dart';
+
+import 'package:histovet/src/pages/widgets/color.dart';
 
 import 'widgets/code.dart';
 
@@ -34,7 +40,7 @@ class _addPetState extends State<addPet> {
       body: FormBuilder(
           key: _formState,
           child: ListView(
-            children: [Code(),Name(), nameOwner(), docOwner(), Sex()],
+            children: [Code(),Name(), nameOwner(), contactOwner(), docOwner(),Age(), Breed(),Specie(), Color(), Sex()],
           )),
     );
   }
@@ -42,11 +48,17 @@ class _addPetState extends State<addPet> {
   getInfoPet() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
-      print("guardado");
       final values = _formState.currentState!.value;
+      final code = values['code'];
       final name = values['name'];
       final docOwner = values['docOwner'];
       final nameOwner = values['nameOwner'];
+      final contactOwner = values['contactOwner'];
+      final age = values['age'];
+      final breed = values['breed'];
+      final specie = values['specie'];
+      final color = values['color'];
+      final sex = values['sex'];
     }
   }
 }

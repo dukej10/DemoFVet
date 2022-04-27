@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       initialRoute: PetsPage.id,
       routes: {
         PetsPage.id: (context) => PetsPage(),
+        '/pets': (context) => PetsPage(),
         addPet.id: (context) => addPet()
       },
     );

@@ -33,6 +33,16 @@ class _updatePetState extends State<updatePet> {
   final PetService _service = PetService();
   final _formState = GlobalKey<FormBuilderState>();
   TextEditingController codeController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController nownerController = TextEditingController();
+  TextEditingController contactController = TextEditingController();
+  TextEditingController docController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
+  TextEditingController breedController = TextEditingController();
+  TextEditingController specieController = TextEditingController();
+  TextEditingController colorController = TextEditingController();
+  TextEditingController sexController = TextEditingController();
+
   bool respuesta = false;
   @override
   Widget build(BuildContext context) {
@@ -59,6 +69,157 @@ class _updatePetState extends State<updatePet> {
         decoration: InputDecoration(
             labelText: "Código",
             hintText: "Ingrese el código de la mascotas",
+            prefixIcon: Icon(Icons.pets),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        maxLength: 10,
+        validator: FormBuilderValidators.required(context,
+            errorText: "Valor requerido"),
+      ),
+    ),
+    Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        controller: nameController,
+        name: "name",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Nombre",
+            hintText: "Ingrese el nombre de la mascotas",
+            prefixIcon: Icon(Icons.pets),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        maxLength: 10,
+        validator: FormBuilderValidators.required(context,
+            errorText: "Valor requerido"),
+      ),
+    ),
+    Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        controller: nownerController,
+        name: "nameOwner",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Nombre Dueño",
+            hintText: "Ingrese el nombre del dueño",
+            prefixIcon: Icon(Icons.pets),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        maxLength: 10,
+        validator: FormBuilderValidators.required(context,
+            errorText: "Valor requerido"),
+      ),
+    ),
+    Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        controller: contactController,
+        name: "contactOwner",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "contacto Dueño",
+            hintText: "Ingrese el contacto del dueño",
+            prefixIcon: Icon(Icons.pets),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),  
+                keyboardType: TextInputType.number,
+        maxLength: 10,
+        validator: FormBuilderValidators.required(context,
+            errorText: "Valor requerido"),
+      ),
+    ),Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        controller: docController,
+        name: "docOwner",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Documento Dueño",
+            hintText: "Ingrese el documento del dueño",
+            prefixIcon: Icon(Icons.pets),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),  
+                keyboardType: TextInputType.number,
+        maxLength: 10,
+        validator: FormBuilderValidators.required(context,
+            errorText: "Valor requerido"),
+      ),
+    ),
+    Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        controller: ageController,
+        name: "age",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Edad",
+            hintText: "Ingresa la edad de la mascotas",
+            prefixIcon: Icon(Icons.pets),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+                keyboardType: TextInputType.number,
+        maxLength: 2,
+        validator: FormBuilderValidators.required(context,
+            errorText: "Valor requerido"),
+      ),
+    ),Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        controller: breedController,
+        name: "breed",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Raza",
+            hintText: "Ingrese la raza de la mascotas",
+            prefixIcon: Icon(Icons.pets),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        maxLength: 10,
+        validator: FormBuilderValidators.required(context,
+            errorText: "Valor requerido"),
+      ),
+    ), Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        controller: specieController,
+        name: "specie",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Especie",
+            hintText: "Ingrese la especie de la mascota",
+            prefixIcon: Icon(Icons.pets),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        maxLength: 10,
+        validator: FormBuilderValidators.required(context,
+            errorText: "Valor requerido"),
+      ),
+    ), Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        controller: colorController,
+        name: "color",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Color",
+            hintText: "Ingrese el color de la mascotas",
+            prefixIcon: Icon(Icons.pets),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        maxLength: 10,
+        validator: FormBuilderValidators.required(context,
+            errorText: "Valor requerido"),
+      ),
+    ), Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        controller: sexController,
+        name: "sex",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Sexo",
+            hintText: "Ingrese el sexo de la mascota",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
@@ -112,6 +273,15 @@ class _updatePetState extends State<updatePet> {
     Pet pet = await _service.getPet(widget.idPet);
     setState(() {
       codeController.text = pet.code.toString();
+      nameController.text = pet.name;
+      nownerController.text = pet.nameOwner;
+      contactController.text = pet.contactOwner;
+      docController.text = pet.documentOwner;
+      ageController.text = pet.age.toString();
+      breedController.text = pet.breed;
+      specieController.text = pet.specie;
+      colorController.text = pet.color;
+      sexController.text = pet.sex;
     });
   }
 

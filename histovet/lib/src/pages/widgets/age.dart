@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
+import 'packAge:flutter/material.dart';
+import 'packAge:flutter_form_builder/flutter_form_builder.dart';
+import 'packAge:form_builder_validators/form_builder_validators.dart';
 
-class contactOwner extends StatelessWidget {
-  const contactOwner({
+class Age extends StatelessWidget {
+  const Age({
     Key? key,
   }) : super(key: key);
 
@@ -12,16 +12,16 @@ class contactOwner extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       child: FormBuilderTextField(
-        name: "contactOwner",
+        name: "age",
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
-            labelText: "contacto Dueño",
-            hintText: "Ingrese el contacto del dueño",
+            labelText: "Edad",
+            hintText: "Ingresa la edad de la mascotas",
             prefixIcon: Icon(Icons.pets),
             border:
-                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),  
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
                 keyboardType: TextInputType.number,
-        maxLength: 10,
+        maxLength: 2,
         validator: FormBuilderValidators.required(context,
             errorText: "Valor requerido"),
       ),

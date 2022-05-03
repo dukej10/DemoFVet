@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "357304534253",
-    "project_id": "demovet-8b8ed",
-    "storage_bucket": "demovet-8b8ed.appspot.com"
+    "project_number": "208366061289",
+    "project_id": "histovet-97e11",
+    "storage_bucket": "histovet-97e11.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:357304534253:android:905c99057a1c8f7cc9f8e4",
+        "mobilesdk_app_id": "1:208366061289:android:fc50c37fd35767a36d5278",
         "android_client_info": {
           "package_name": "com.example.histovet"
         }
       },
       "oauth_client": [
         {
-          "client_id": "357304534253-sfljiqdab3ft8b2mgji6q5vch7kmhtbs.apps.googleusercontent.com",
+          "client_id": "208366061289-49d4np7j5le62eaa991pb80284j0bfi7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBSAKOpM3AN85NUhjHeeFVjBe-NXoxO4QQ"
+          "current_key": "AIzaSyA50NTHdT0m9S1v4AmD40zMcsmAYG2TtcA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "357304534253-sfljiqdab3ft8b2mgji6q5vch7kmhtbs.apps.googleusercontent.com",
+              "client_id": "208366061289-49d4np7j5le62eaa991pb80284j0bfi7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

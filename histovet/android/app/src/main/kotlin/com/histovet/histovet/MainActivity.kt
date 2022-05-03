@@ -1,4 +1,4 @@
-package com.example.histovet
+package com.histovet.histovet
 
 import io.flutter.embedding.android.FlutterActivity
 

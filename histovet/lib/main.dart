@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:histovet/src/pages/add_medicine.dart';
 import 'package:histovet/src/pages/add_pets.dart';
 import 'package:histovet/src/pages/consultar_medicamento.dart';
+import 'package:histovet/src/pages/medicine_page.dart';
 import 'package:histovet/src/pages/pet_update.dart';
 import 'package:histovet/src/pages/pets_page.dart';
 
@@ -31,6 +33,10 @@ class MyApp extends StatelessWidget {
         updatePet.id: (context) => updatePet(""),
         ConsultarMedicamento.id: (context) => ConsultarMedicamento(),
         '/updatepet': (context) => updatePet(""),
+
+        MedicinePage.id: (context) => MedicinePage(),
+        '/medicine': (context) => MedicinePage(),
+        addMedicine.id: (context) => addMedicine(),
       },
     );
   }

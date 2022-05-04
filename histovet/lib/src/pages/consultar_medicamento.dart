@@ -12,6 +12,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
   String _idMedic = "M001";
   String _nombre = "acetamin";
   int _cantidad = 2;
+  double _precio = 10.0;
   String _fechaVencimiento = "12/12/2020";
   String _descripcion = "para dolores leves";
   double _espacio = 12;
@@ -35,7 +36,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
             height: _espacio,
           ),
           TextFormField(
-            initialValue: 'Input text',
+            initialValue: '',
             decoration: InputDecoration(
               labelText: 'nombre medicamento',
               //errorText: 'Error message',
@@ -70,6 +71,15 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
             children: [
               Text("cantidad: "),
               Text(_cantidad.toString()),
+            ],
+          ),
+          SizedBox(
+            height: _espacio,
+          ),
+          Row(
+            children: [
+              Text("Precio: "),
+              Text(_precio.toString()),
             ],
           ),
           SizedBox(

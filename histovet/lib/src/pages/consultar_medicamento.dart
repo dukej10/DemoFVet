@@ -9,12 +9,17 @@ class ConsultarMedicamento extends StatefulWidget {
 }
 
 class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
-  String _valor = "";
+  String _idMedic = "M001";
+  String _nombre = "acetamin";
+  int _cantidad = 2;
+  String _fechaVencimiento = "12/12/2020";
+  String _descripcion = "para dolores leves";
+  double _espacio = 12;
+
   int _counter = 0;
   void listarMedicamentos() {
-    print("Listar medicamentos");
     setState(() {
-      _valor = "Listar medicamentos";
+      _idMedic = "Listar medicamentos";
     });
   }
 
@@ -24,33 +29,69 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
       appBar: AppBar(
         title: Text("Consultar medicamento"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      body: Column(
+        children: <Widget>[
+          SizedBox(
+            height: _espacio,
+          ),
+          TextFormField(
+            initialValue: 'Input text',
+            decoration: InputDecoration(
+              labelText: 'nombre medicamento',
+              //errorText: 'Error message',
+              border: OutlineInputBorder(),
+              suffixIcon: Icon(
+                Icons.search,
+              ),
             ),
-            Text(
-              '$_valor',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            RaisedButton(
-              child: Text("Listar medicamentos"),
-              onPressed: listarMedicamentos,
-            ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: _espacio,
+          ),
+          Row(
+            children: [
+              Text("id: "),
+              Text(_idMedic),
+            ],
+          ),
+          SizedBox(
+            height: _espacio,
+          ),
+          Row(
+            children: [
+              Text("nombre: "),
+              Text(_nombre),
+            ],
+          ),
+          SizedBox(
+            height: _espacio,
+          ),
+          Row(
+            children: [
+              Text("cantidad: "),
+              Text(_cantidad.toString()),
+            ],
+          ),
+          SizedBox(
+            height: _espacio,
+          ),
+          Row(
+            children: [
+              Text("fecha de vencimiento: "),
+              Text(_fechaVencimiento),
+            ],
+          ),
+          SizedBox(
+            height: _espacio,
+          ),
+          Row(
+            children: [
+              Text("descripcion: "),
+              Text(_descripcion),
+            ],
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _counter++;
-          });
-        },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

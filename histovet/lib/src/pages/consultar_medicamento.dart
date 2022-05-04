@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:histovet/src/models/medicine_model.dart';
 
 class ConsultarMedicamento extends StatefulWidget {
   static String id = "consultar_medicamento";
@@ -16,12 +18,28 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
   String _fechaVencimiento = "12/12/2020";
   String _descripcion = "para dolores leves";
   double _espacio = 12;
-
+  List<Medicine> _medicines = [];
+  List datos = [];
   int _counter = 0;
-  void listarMedicamentos() {
-    setState(() {
-      _idMedic = "Listar medicamentos";
-    });
+
+  void getListMedicamentos() async {
+    CollectionReference collectionReference =
+        FirebaseFirestore.instance.collection("medicine");
+    QuerySnapshot listMedicam = await collectionReference.get();
+    if (listMedicam.docs.isNotEmpty) {
+      for (var doc in listMedicam.docs) {
+        //print(doc.data());
+        datos.add(doc.data());
+      }
+    }
+    print(datos.toString());
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getListMedicamentos();
   }
 
   @override
@@ -45,6 +63,17 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                 Icons.search,
               ),
             ),
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text('Solicitar'),
+          ),
+          SizedBox(
+            height: _espacio,
+          ),
+          Image.network(
+            "https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161200051/67085065-icono-de-vitaminas-o-medicamentos-para-animales-ilustraci%C3%B3n-de-dibujos-animados-de-vitaminas-o-medic.jpg?fj=1",
+            height: 100,
           ),
           SizedBox(
             height: _espacio,

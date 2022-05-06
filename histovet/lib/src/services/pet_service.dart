@@ -42,8 +42,13 @@ class PetService {
     }
   }
 
-  Future<void> deletePetFromFirebase(id) async {
-    await _firestore.collection("pet").doc(id).delete();
+  Future<bool> deletePetFromFirebase(id) async {
+    try {
+      await _firestore.collection("pet").doc(id).delete();
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   Future<List<Pet>> getPets() async {

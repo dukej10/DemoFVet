@@ -20,9 +20,14 @@ class Code extends StatelessWidget {
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
-        maxLength: 10,
-        validator: FormBuilderValidators.required(context,
+               keyboardType: TextInputType.number,
+        maxLength: 4,
+        validator: FormBuilderValidators.compose([ FormBuilderValidators.required(context,
             errorText: "Valor requerido"),
+            FormBuilderValidators.integer(context, errorText: "No puede tener decimales"),
+            FormBuilderValidators.min(context, 1, errorText: "Debe ser un número mayor que 0"), 
+            FormBuilderValidators.minLength(context, 4,
+                errorText: "La longitud del documento es de 4")]),
       ),
     );
   }

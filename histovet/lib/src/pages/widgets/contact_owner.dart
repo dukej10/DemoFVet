@@ -22,8 +22,13 @@ class contactOwner extends StatelessWidget {
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),  
                 keyboardType: TextInputType.number,
         maxLength: 10,
-        validator: FormBuilderValidators.required(context,
+        validator: FormBuilderValidators.compose([ FormBuilderValidators.required(context,
             errorText: "Valor requerido"),
+            FormBuilderValidators.integer(context, errorText: "No puede tener decimales"),
+            FormBuilderValidators.min(context, 1, errorText: "Debe ser un número mayor que 0"),
+            FormBuilderValidators.minLength(context, 10,
+                errorText: "La longitud del número es de 10")
+            ]),
       ),
     );
   }

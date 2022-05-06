@@ -15,6 +15,7 @@ import 'package:histovet/src/pages/widgets/color.dart';
 import 'package:histovet/src/services/pet_service.dart';
 import 'package:provider/provider.dart';
 
+import '../controller/pet_controller.dart';
 import '../models/pet_model.dart';
 import 'widgets/code.dart';
 
@@ -30,6 +31,7 @@ class _addPetState extends State<addPet> {
   final PetService _service = PetService();
   final _formState = GlobalKey<FormBuilderState>();
   bool respuesta = false;
+  PetController petCont = new PetController();
   @override
 
   Widget build(BuildContext context) {
@@ -71,7 +73,7 @@ class _addPetState extends State<addPet> {
     }
   }
   void addPet(Pet pet) async{
-    respuesta = await _service.storePetToFirebase(pet);
+    respuesta = await petCont.addPet(pet);
     if (respuesta) {
             Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Se guardóo la información"),

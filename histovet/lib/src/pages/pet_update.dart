@@ -17,6 +17,7 @@ import 'package:histovet/src/pages/widgets/color.dart';
 import 'package:histovet/src/services/pet_service.dart';
 import 'package:provider/provider.dart';
 
+import '../controller/pet_controller.dart';
 import '../models/pet_model.dart';
 import 'widgets/code.dart';
 
@@ -32,6 +33,7 @@ class updatePet extends StatefulWidget {
 class _updatePetState extends State<updatePet> {
   final PetService _service = PetService();
   final _formState = GlobalKey<FormBuilderState>();
+  PetController petCont = new PetController();
   TextEditingController codeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController nownerController = TextEditingController();
@@ -257,7 +259,7 @@ class _updatePetState extends State<updatePet> {
     }
   }
   void updatePet(Pet pet) async{
-    respuesta = await _service.storePetToFirebase(pet);
+    respuesta = await petCont.updatePet(pet);
     if (respuesta) {
             Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Se actualizó la información"),

@@ -18,20 +18,25 @@ class PetService {
       FirebaseFirestore.instance.collection("pet");
 
 
-  Future<bool> storePetToFirebase(Pet specie) async {
+  Future<bool> addPet(Pet pet) async {
+     final DocumentReference petDoc = _firestore.collection("pet").doc();
+      
+    try {
+      await petDoc
+          .set({"id": petDoc.id, "code": pet.code, "name": pet.name, "nameOwner": pet.nameOwner, "contactOwner": pet.contactOwner, "documentOwner": pet.documentOwner, "age": pet.age, "breed": pet.breed, "specie": pet.specie, "color":pet.color, "sex": pet.sex});
+          return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> updatePet(Pet specie) async {
     try {
       final DocumentReference specieDoc = _firestore.collection("pet").doc();
-
-    if (specie.id!.isNotEmpty) {
       await FirebaseFirestore.instance.collection("pet").doc(specie.id).set(
           {"id": specie.id, "code": specie.code, "name": specie.name, "nameOwner": specie.nameOwner, "contactOwner": specie.contactOwner, "documentOwner": specie.documentOwner,"age": specie.age, "breed": specie.breed, "specie": specie.specie, "color":specie.color, "sex": specie.sex},
           SetOptions(merge: true));
        return true;
-    } else {
-      await specieDoc
-          .set({"id": specieDoc.id, "code": specie.code, "name": specie.name, "nameOwner": specie.nameOwner, "contactOwner": specie.contactOwner, "documentOwner": specie.documentOwner, "age": specie.age, "breed": specie.breed, "specie": specie.specie, "color":specie.color, "sex": specie.sex});
-          return true;
-    }
     } catch (e) {
       return false;
     }

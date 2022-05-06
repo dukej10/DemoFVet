@@ -34,4 +34,10 @@ class PetController{
     }
   }
 
+  Future<List<Pet>> allPets() async{
+    List<Pet> mascotas = [];
+    mascotas = await _service.getPets();
+    return mascotas;
+  }
+
 }

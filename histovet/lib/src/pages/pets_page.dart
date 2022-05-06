@@ -16,7 +16,6 @@ class PetsPage extends StatefulWidget {
 }
 
 class _PetsPageState extends State<PetsPage> {
-  final PetService _service = PetService();
   TextStyle txtStyle = TextStyle(fontWeight: FontWeight.w600, fontSize: 20);
   PetController petCont = new PetController();
   bool respuesta = false;
@@ -40,7 +39,7 @@ class _PetsPageState extends State<PetsPage> {
               backgroundColor: Colors.blue,
               onPressed: () {Navigator.pushNamed(context, addPet.id);}),
               body: FutureBuilder(
-            future: PetService().getPets(),
+            future: petCont.allPets(),
             builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
               List species = snapshot.data ?? [];
               return ListView(

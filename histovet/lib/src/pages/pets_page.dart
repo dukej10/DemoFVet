@@ -19,6 +19,7 @@ class _PetsPageState extends State<PetsPage> {
   final PetService _service = PetService();
   TextStyle txtStyle = TextStyle(fontWeight: FontWeight.w600, fontSize: 20);
   PetController petCont = new PetController();
+  bool respuesta = false;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class _PetsPageState extends State<PetsPage> {
                         trailing: IconButton(
                           icon: Icon(Icons.delete, color: Colors.red),
                           onPressed: (){
-                            petCont.deletePet(specie.id);
+                            messageDelete(specie.id.toString());
                                       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
                           },
                         )
@@ -69,5 +70,17 @@ class _PetsPageState extends State<PetsPage> {
               );
             })),
     );
+  }
+
+  void messageDelete(String  idPet) async{
+    respuesta = await petCont.deletePet(idPet);
+    if (respuesta) {
+            Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Se eliminó la mascota"),
+            backgroundColor: Colors.green,));
+          }else{
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("No se pudo eliminar"),
+            backgroundColor: Colors.green,));
+          }
   }
 }

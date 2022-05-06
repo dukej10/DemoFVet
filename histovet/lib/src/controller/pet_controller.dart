@@ -3,9 +3,6 @@ import '../services/pet_service.dart';
 
 class PetController{
   final PetService _service = PetService();
-   void deletePet(petId) {
-    _service.deletePetFromFirebase(petId);
-  }
 
   Future<bool> addPet(Pet pet) async {
     bool respuesta;
@@ -27,5 +24,14 @@ class PetController{
     }
   }
 
+  Future<bool> deletePet(String idPet) async {
+    bool respuesta;
+    respuesta = await _service.deletePetFromFirebase(idPet);
+    if (respuesta) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }

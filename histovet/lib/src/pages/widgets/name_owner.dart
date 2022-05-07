@@ -20,9 +20,11 @@ class nameOwner extends StatelessWidget {
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+                keyboardType: TextInputType.text,
         maxLength: 10,
-        validator: FormBuilderValidators.required(context,
-            errorText: "Valor requerido"),
+        validator: FormBuilderValidators.compose([FormBuilderValidators.required(context,
+            errorText: "Valor requerido")
+            ]),
       ),
     );
   }

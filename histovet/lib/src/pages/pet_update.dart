@@ -184,6 +184,22 @@ class _updatePetState extends State<updatePet> {
     ), Container(
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       child: FormBuilderTextField(
+        controller: sexController,
+        name: "sex",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Sexo",
+            hintText: "Ingrese el sexo de la mascota",
+            prefixIcon: Icon(Icons.pets),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        maxLength: 10,
+        validator: FormBuilderValidators.required(context,
+            errorText: "Valor requerido"),
+      ),
+    ),    Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
         controller: specieController,
         name: "specie",
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -206,22 +222,6 @@ class _updatePetState extends State<updatePet> {
         decoration: InputDecoration(
             labelText: "Color",
             hintText: "Ingrese el color de la mascotas",
-            prefixIcon: Icon(Icons.pets),
-            border:
-                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
-        maxLength: 10,
-        validator: FormBuilderValidators.required(context,
-            errorText: "Valor requerido"),
-      ),
-    ), Container(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-      child: FormBuilderTextField(
-        controller: sexController,
-        name: "sex",
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        decoration: InputDecoration(
-            labelText: "Sexo",
-            hintText: "Ingrese el sexo de la mascota",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),

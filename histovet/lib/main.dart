@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:histovet/src/pages/Home/home_page.dart';
 import 'package:histovet/src/pages/add_medicine.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/consultar_medicamento.dart';
@@ -26,8 +27,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'HistoVet'),
-      initialRoute: PetsPage.id,
+      initialRoute: Home.id,
       routes: {
+        Home.id:(context) => Home(),
+        '/home': (context) => Home(),
         PetsPage.id: (context) => PetsPage(),
         '/pets': (context) => PetsPage(),
         addPet.id: (context) => addPet(),

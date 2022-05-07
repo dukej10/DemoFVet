@@ -4,6 +4,8 @@ import 'package:histovet/src/pages/consultar_medicamento.dart';
 import 'package:histovet/src/pages/add_medicine.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 
+import '../Home/home_page.dart';
+
 // ignore: use_key_in_widget_constructors
 class MenuLateral extends StatelessWidget {
   @override
@@ -26,6 +28,13 @@ class MenuLateral extends StatelessWidget {
                 ],
               )),
           Column(children: [
+            ListTile(
+              leading: Icon(Icons.house),
+              title: Text("Inicio"),
+              onTap: () {
+                Navigator.pushNamed(context, Home.id);
+              },
+            ),
             ListTile(
               leading: Icon(Icons.pets),
               title: Text("Pet"),

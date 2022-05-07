@@ -17,7 +17,7 @@ class docOwner extends StatelessWidget {
           decoration: InputDecoration(
               labelText: "Documento Dueño",
               hintText: "Ingrese el documento del dueño",
-              prefixIcon: Icon(Icons.pets),
+              prefixIcon: Icon(Icons.badge_outlined),
               border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.teal))),
           keyboardType: TextInputType.number,

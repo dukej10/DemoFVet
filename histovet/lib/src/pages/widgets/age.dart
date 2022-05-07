@@ -17,7 +17,7 @@ class Age extends StatelessWidget {
         decoration: InputDecoration(
             labelText: "Edad",
             hintText: "Ingresa la edad de la mascotas",
-            prefixIcon: Icon(Icons.pets),
+            prefixIcon: Icon(Icons.numbers),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
                 keyboardType: TextInputType.number,

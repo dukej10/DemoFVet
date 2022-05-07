@@ -15,7 +15,7 @@ class Specie extends StatelessWidget {
             name: "subespecie",
             decoration: InputDecoration(
                 labelText: "Subespecie",
-                prefixIcon: Icon(Icons.pets),
+                prefixIcon: Icon(Icons.article_outlined),
                 border: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.teal))),
             hint: Text("Seleccionar subespecie"),

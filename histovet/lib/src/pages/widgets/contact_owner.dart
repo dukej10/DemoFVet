@@ -17,7 +17,7 @@ class contactOwner extends StatelessWidget {
         decoration: InputDecoration(
             labelText: "contacto Dueño",
             hintText: "Ingrese el contacto del dueño",
-            prefixIcon: Icon(Icons.pets),
+            prefixIcon: Icon(Icons.contact_phone_outlined),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),  
                 keyboardType: TextInputType.number,

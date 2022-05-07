@@ -17,7 +17,7 @@ class Color extends StatelessWidget {
         decoration: InputDecoration(
             labelText: "Color",
             hintText: "Ingrese el color de la mascotas",
-            prefixIcon: Icon(Icons.pets),
+            prefixIcon: Icon(Icons.color_lens_outlined),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
         maxLength: 10,

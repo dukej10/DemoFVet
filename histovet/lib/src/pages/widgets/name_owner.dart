@@ -17,7 +17,7 @@ class nameOwner extends StatelessWidget {
         decoration: InputDecoration(
             labelText: "Nombre Dueño",
             hintText: "Ingrese el nombre del dueño",
-            prefixIcon: Icon(Icons.pets),
+            prefixIcon: Icon(Icons.person_outline_outlined),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
                 keyboardType: TextInputType.text,

@@ -15,7 +15,7 @@ class Sex extends StatelessWidget {
             name: "sex",
             decoration: InputDecoration(
                 labelText: "Sexo",
-                prefixIcon: Icon(Icons.pets),
+                prefixIcon: Icon(Icons.article_outlined),
                 border: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.teal))),
             hint: Text("Seleccionar sexo"),

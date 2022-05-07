@@ -49,7 +49,7 @@ class _addPetState extends State<addPet> {
       body: FormBuilder(
           key: _formState,
           child: ListView(
-            children: [Code(),Name(), nameOwner(), contactOwner(), docOwner(),Age(), Breed(),Specie(), Color(), Sex()],
+            children: [Code(),Name(), nameOwner(), contactOwner(), docOwner(),Age(), Breed(),Sex(),Specie(), Color()],
           )),
     );
   }

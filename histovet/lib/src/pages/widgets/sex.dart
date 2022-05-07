@@ -10,20 +10,21 @@ class Sex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-      child: FormBuilderTextField(
-        name: "sex",
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        decoration: InputDecoration(
-            labelText: "Sexo",
-            hintText: "Ingrese el sexo de la mascota",
-            prefixIcon: Icon(Icons.pets),
-            border:
-                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
-        maxLength: 10,
-        validator: FormBuilderValidators.required(context,
-            errorText: "Valor requerido"),
-      ),
-    );
+        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderDropdown(
+            name: "sex",
+            decoration: InputDecoration(
+                labelText: "Sexo",
+                prefixIcon: Icon(Icons.pets),
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.teal))),
+            hint: Text("Seleccionar sexo"),
+            validator: FormBuilderValidators.required(context,
+                errorText: "Valor requerido"),
+            items: [
+              {'value': 'Macho', 'key': 'Macho'},
+              {'value': 'Hembra', 'key': 'Hembra'}
+            ].map((sex) => DropdownMenuItem(
+                value: sex["value"], child: Text("${sex["value"]}"))).toList()));
   }
 }

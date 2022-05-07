@@ -51,40 +51,25 @@ class GridDashboard extends StatelessWidget {
           crossAxisSpacing: 18,
           mainAxisSpacing: 18,
           children: [Container(
+            height: 100,
               decoration: BoxDecoration(
-                  color: Color(color), borderRadius: BorderRadius.circular(10)),
+                  color:Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  
                   Image.asset(
-                    "assets/img/vet.png",
-                    width: 42,
+                    "assets/img/pet.png",
+                    height: 120,
+                    
                   ),
-                  SizedBox(
-                    height: 14,
-                  ),
-                  Text(
-                    "se",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text("Mascotas",
-                      style: TextStyle(
-                          color: Colors.white38,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600)),
-                  SizedBox(
-                    height: 14,
-                  ),
+                  
+                
                   TextButton(
                     style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(33, 150, 255, 1)),
                       foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.blue),
+                          MaterialStateProperty.all<Color>(Colors.black),
                     ),
                     onPressed: () {Navigator.pushNamed(context, PetsPage.id);},
                     child: Text("Mascotas"),
@@ -94,39 +79,23 @@ class GridDashboard extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Color(color), borderRadius: BorderRadius.circular(10)),
+                  color: Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
                   Image.asset(
-                    "assets/img/vet.png",
-                    width: 42,
-                  ),
-                  SizedBox(
-                    height: 14,
-                  ),
-                  Text(
-                    "se",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text("Medicina",
-                      style: TextStyle(
-                          color: Colors.white38,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600)),
-                  SizedBox(
-                    height: 14,
+                    "assets/img/medicine.png",
+                    height: 110,
+                    scale: 5,
                   ),
                   TextButton(
                     style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(33, 150, 255, 1)),
                       foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.blue),
+                          MaterialStateProperty.all<Color>(Colors.black),
                     ),
                     onPressed: () {Navigator.pushNamed(context, MedicinePage.id);},
                     child: Text("Medicina"),

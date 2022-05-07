@@ -14,7 +14,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff392850),
+      backgroundColor: Color.fromRGBO(255, 255, 255, 1),
       body: Column(
         children: <Widget>[
           SizedBox(
@@ -31,32 +31,42 @@ class _HomeState extends State<Home> {
                     Text(
                       "HistoVet",
                       style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
+                              color: Colors.black,
+                              fontSize: 21,
                               fontWeight: FontWeight.bold)),
                     
                     SizedBox(
                       height: 4,
                     ),
                     Text(
+                      "La historia médica de tu mascota a la mano",
+                      style: TextStyle(
+                              color: Color(0xffa29aac),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600),
+                    ),
+                     SizedBox(
+                      height: 20,
+                    ),
+                    Text(
                       "Home",
                       style: TextStyle(
                               color: Color(0xffa29aac),
-                              fontSize: 14,
+                              fontSize: 16,
                               fontWeight: FontWeight.w600),
-                    ),
+                    )
                   ],
                 ),
                 IconButton(
-                  alignment: Alignment.topCenter,
-                  icon: Icon(Icons.house),
+                  alignment: Alignment.topRight,
+                  icon: Image.asset('assets/img/vet.png'),
                   onPressed: () {},
                 )
               ],
             ),
           ),
           SizedBox(
-            height: 40,
+            height: 18,
           ),
          GridDashboard()
         ],

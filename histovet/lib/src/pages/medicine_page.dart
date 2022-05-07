@@ -4,11 +4,11 @@ import 'package:histovet/src/controller/pet_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
 import 'package:histovet/src/models/pet_model.dart';
 import 'package:histovet/src/pages/add_medicine.dart';
-import 'package:histovet/src/pages/pets_page.dart';
+import 'package:histovet/src/pages/pet/pets_page.dart';
 import 'package:histovet/src/pages/widgets/widget_drawer.dart';
 import 'package:histovet/src/services/pet_service.dart';
-import 'package:histovet/src/pages/add_pets.dart';
-import 'package:histovet/src/pages/pet_update.dart';
+import 'package:histovet/src/pages/pet/add_pets.dart';
+import 'package:histovet/src/pages/pet/pet_update.dart';
 
 import '../controller/medicine_controller.dart';
 import '../services/medicine_service.dart';

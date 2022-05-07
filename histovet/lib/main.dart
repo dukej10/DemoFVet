@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/add_medicine.dart';
-import 'package:histovet/src/pages/add_pets.dart';
+import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/consultar_medicamento.dart';
 import 'package:histovet/src/pages/medicine_page.dart';
-import 'package:histovet/src/pages/pet_update.dart';
-import 'package:histovet/src/pages/pets_page.dart';
+import 'package:histovet/src/pages/pet/pet_update.dart';
+import 'package:histovet/src/pages/pet/pets_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

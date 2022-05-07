@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:histovet/src/pages/add_pets.dart';
+import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/consultar_medicamento.dart';
 import 'package:histovet/src/pages/add_medicine.dart';
 

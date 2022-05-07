@@ -204,8 +204,8 @@ class _updatePetState extends State<updatePet> {
         name: "specie",
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
-            labelText: "Especie",
-            hintText: "Ingrese la especie de la mascota",
+            labelText: "Subespecie",
+            hintText: "Ingrese la subespecie de la mascota",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),

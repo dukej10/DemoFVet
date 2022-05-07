@@ -65,7 +65,7 @@ class _addPetState extends State<addPet> {
       final contactOwner = values['contactOwner'];
       final age = int.parse(values['age']);
       final breed = values['breed'];
-      final specie = values['specie'];
+      final specie = values['subespecie'];
       final color = values['color'];
       final sex = values['sex'];
       late Pet pet = new Pet("",code, name, nameOwner, contactOwner, docOwner, age, breed, specie, color, sex);

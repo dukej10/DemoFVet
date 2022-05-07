@@ -11,19 +11,21 @@ class Specie extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-      child: FormBuilderTextField(
-        name: "specie",
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        decoration: InputDecoration(
-            labelText: "Especie",
-            hintText: "Ingrese la especie de la mascota",
-            prefixIcon: Icon(Icons.pets),
-            border:
-                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
-        maxLength: 10,
-        validator: FormBuilderValidators.required(context,
-            errorText: "Valor requerido"),
-      ),
+      child: FormBuilderDropdown(
+            name: "subespecie",
+            decoration: InputDecoration(
+                labelText: "Subespecie",
+                prefixIcon: Icon(Icons.pets),
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.teal))),
+            hint: Text("Seleccionar subespecie"),
+            validator: FormBuilderValidators.required(context,
+                errorText: "Valor requerido"),
+            items: [
+              {'value': 'Perro', 'key': 'Perro'},
+              {'value': 'Gato', 'key': 'Gato'}
+            ].map((subespecie) => DropdownMenuItem(
+                value: subespecie["value"], child: Text("${subespecie["value"]}"))).toList()),
     );
   }
 }

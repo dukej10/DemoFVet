@@ -1,25 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:histovet/src/pages/pets_page.dart';
-import 'package:histovet/src/pages/widgets/age.dart';
-import 'package:histovet/src/pages/widgets/breed.dart';
-import 'package:histovet/src/pages/widgets/contact_owner.dart';
-import 'package:histovet/src/pages/widgets/document_owner.dart';
-import 'package:histovet/src/pages/widgets/name.dart';
-import 'package:histovet/src/pages/widgets/name_owner.dart';
-import 'package:histovet/src/pages/widgets/sex.dart';
-import 'package:histovet/src/pages/widgets/specie.dart';
 
-import 'package:histovet/src/pages/widgets/color.dart';
 import 'package:histovet/src/services/pet_service.dart';
-import 'package:provider/provider.dart';
 
 import '../controller/pet_controller.dart';
 import '../models/pet_model.dart';
-import 'widgets/code.dart';
 
 class updatePet extends StatefulWidget {
   static String id = "edit_pet";

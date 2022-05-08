@@ -18,9 +18,9 @@ class updatePet extends StatefulWidget {
 }
 
 class _updatePetState extends State<updatePet> {
-  final PetService _service = PetService();
   final _formState = GlobalKey<FormBuilderState>();
   PetController petCont = new PetController();
+  
   TextEditingController codeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController nownerController = TextEditingController();
@@ -57,7 +57,6 @@ class _updatePetState extends State<updatePet> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: "Código",
-            hintText: "Ingrese el código de la mascotas",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
@@ -74,7 +73,6 @@ class _updatePetState extends State<updatePet> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: "Nombre",
-            hintText: "Ingrese el nombre de la mascotas",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
@@ -91,7 +89,6 @@ class _updatePetState extends State<updatePet> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: "Nombre Dueño",
-            hintText: "Ingrese el nombre del dueño",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
@@ -108,7 +105,6 @@ class _updatePetState extends State<updatePet> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: "contacto Dueño",
-            hintText: "Ingrese el contacto del dueño",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),  
@@ -125,7 +121,6 @@ class _updatePetState extends State<updatePet> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: "Documento Dueño",
-            hintText: "Ingrese el documento del dueño",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),  
@@ -143,7 +138,6 @@ class _updatePetState extends State<updatePet> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: "Edad",
-            hintText: "Ingresa la edad de la mascotas",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
@@ -160,7 +154,6 @@ class _updatePetState extends State<updatePet> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: "Raza",
-            hintText: "Ingrese la raza de la mascotas",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
@@ -176,7 +169,6 @@ class _updatePetState extends State<updatePet> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: "Sexo",
-            hintText: "Ingrese el sexo de la mascota",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
@@ -192,7 +184,6 @@ class _updatePetState extends State<updatePet> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: "Subespecie",
-            hintText: "Ingrese la subespecie de la mascota",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
@@ -208,7 +199,6 @@ class _updatePetState extends State<updatePet> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: "Color",
-            hintText: "Ingrese el color de la mascotas",
             prefixIcon: Icon(Icons.pets),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
@@ -259,7 +249,7 @@ class _updatePetState extends State<updatePet> {
 
   void getInfo() async{
     // await _service.getPet(widget.idPet);
-    Pet pet = await _service.getPet(widget.idPet);
+    Pet pet = await petCont.getPet(widget.idPet);
     setState(() {
       codeController.text = pet.code.toString();
       nameController.text = pet.name;

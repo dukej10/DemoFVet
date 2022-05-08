@@ -41,7 +41,7 @@ class _PetsPageState extends State<PetsPage> {
               elevation: 15.0,
               backgroundColor: Colors.blue,
               onPressed: () {
-                Navigator.pushNamed(context, addPet.id);
+                Navigator.pushNamed(context, AddPet.id);
               }),
           body: FutureBuilder(
               future: petCont.allPets(),

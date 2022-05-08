@@ -263,15 +263,8 @@ class _addPetState extends State<addPet> {
     }
   }
 
-  void addPet(Pet pet) async {
-    bool existe = await petCont.searchCode(pet.code);
 
-    if (existe) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("El código ya existe"),
-          backgroundColor: Colors.green,
-        ));
-    } else {
+  void addPet(Pet pet) async {
       respuesta = await petCont.addPet(pet);
       if (respuesta) {
         Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
@@ -286,5 +279,5 @@ class _addPetState extends State<addPet> {
         ));
       }
     }
-  }
+
 }

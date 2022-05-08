@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => Home(),
         PetsPage.id: (context) => PetsPage(),
         '/pets': (context) => PetsPage(),
-        addPet.id: (context) => addPet(),
+        AddPet.id: (context) => AddPet(),
         updatePet.id: (context) => updatePet(""),
         ConsultarMedicamento.id: (context) => ConsultarMedicamento(),
         '/updatepet': (context) => updatePet(""),

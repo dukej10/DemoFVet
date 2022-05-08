@@ -88,6 +88,7 @@ class _PetsPageState extends State<PetsPage> {
     );
   }
 
+
   void messageDelete(String idPet) async {
     respuesta = await petCont.deletePet(idPet);
     if (respuesta) {

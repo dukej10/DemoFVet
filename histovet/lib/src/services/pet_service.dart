@@ -11,7 +11,7 @@ class PetService {
   Future<Pet> getPet(String id) async {
      final snapshot= await FirebaseFirestore.instance.collection('pet').doc(id).get();
      Pet pet = new Pet(snapshot["id"], snapshot["code"], snapshot["name"], snapshot["nameOwner"], snapshot["contactOwner"], snapshot["documentOwner"], snapshot["age"], snapshot["breed"], snapshot["specie"], snapshot["color"], snapshot["sex"]);
-     print(pet.toString());
+     //print(pet.toString());
      return pet;
   }
   CollectionReference petAll =
@@ -58,7 +58,7 @@ class PetService {
     collection.snapshots().listen((querySnapshot) {
       for (var doc in querySnapshot.docs) {
         Map<String, dynamic> data = doc.data();
-        print(doc.data());
+        //print(doc.data());
         Pet newPet = Pet(data["id"], data["code"], data["name"], data["nameOwner"], data["contactOwner"],data["documentOwner"],data["age"], data["breed"], data["specie"], data["color"], data["sex"] );
         mascotas.add(newPet);
       }

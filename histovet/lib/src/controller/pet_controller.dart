@@ -3,6 +3,7 @@ import '../services/pet_service.dart';
 
 class PetController{
   final PetService _service = PetService();
+  List<Pet> mascotas = [];
 
   Future<bool> addPet(Pet pet) async {
     bool respuesta;
@@ -12,17 +13,6 @@ class PetController{
     } else {
       return false;
     }
-  }
-
-  Future<bool> searchCode(String code) async{
-    List<Pet> mascotas = [];
-    mascotas = await allPets();
-    for (Pet pet in mascotas) {
-      if (code == pet.code) {
-        return false;
-      }
-    }
-    return true;
   }
 
   Future<bool> updatePet(Pet pet) async {
@@ -46,7 +36,6 @@ class PetController{
   }
 
   Future<List<Pet>> allPets() async{
-    List<Pet> mascotas = [];
     mascotas = await _service.getPets();
     return mascotas;
   }

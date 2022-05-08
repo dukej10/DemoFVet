@@ -16,7 +16,8 @@ class PetsPage extends StatefulWidget {
 }
 
 class _PetsPageState extends State<PetsPage> {
-  TextStyle txtStyle = TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
+  TextStyle txtStyle =
+      TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
   PetController petCont = new PetController();
   bool respuesta = false;
 
@@ -46,7 +47,13 @@ class _PetsPageState extends State<PetsPage> {
           body: FutureBuilder(
               future: petCont.allPets(),
               builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-                List species = snapshot.data ?? [];
+                if (snapshot.connectionState == ConnectionState.waiting) {
+      return CircularProgressIndicator();
+    } else if (snapshot.connectionState == ConnectionState.done) {
+      if (snapshot.hasError) {
+        return const Text('Error');
+      } else if (snapshot.hasData) {
+        List species = snapshot.data ?? [];
                 return ListView(
                   children: [
                     for (Pet specie in species)
@@ -84,10 +91,14 @@ class _PetsPageState extends State<PetsPage> {
                       )
                   ],
                 );
-              })),
+      } else {
+        return const Text('Empty data');
+      }
+    } else {
+      return Text('State');
+    }})),
     );
   }
-
 
   void messageDelete(String idPet) async {
     respuesta = await petCont.deletePet(idPet);

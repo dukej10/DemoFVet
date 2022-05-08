@@ -7,16 +7,15 @@ import 'package:histovet/src/services/pet_service.dart';
 import '../../controller/pet_controller.dart';
 import '../../models/pet_model.dart';
 
-class addPet extends StatefulWidget {
+class AddPet extends StatefulWidget {
   static String id = "form_pet";
-  addPet({Key? key}) : super(key: key);
+  AddPet({Key? key}) : super(key: key);
 
   @override
-  State<addPet> createState() => _addPetState();
+  State<AddPet> createState() => _AddPetState();
 }
 
-class _addPetState extends State<addPet> {
-  final PetService _service = PetService();
+class _AddPetState extends State<AddPet> {
   final _formState = GlobalKey<FormBuilderState>();
   bool respuesta = false;
   PetController petCont = new PetController();
@@ -259,17 +258,17 @@ class _addPetState extends State<addPet> {
       final sex = values['sex'];
       late Pet pet = new Pet("", code, name, nameOwner, contactOwner, docOwner,
           age, breed, specie, color, sex);
-      addPet(pet);
+      AddPet(pet);
     }
   }
 
 
-  void addPet(Pet pet) async {
+  void AddPet(Pet pet) async {
       respuesta = await petCont.addPet(pet);
       if (respuesta) {
         Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("Se guardóo la información"),
+          content: Text("Se guardó la información de la mascota"),
           backgroundColor: Colors.green,
         ));
       } else {

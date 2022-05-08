@@ -159,8 +159,9 @@ class _AddPetState extends State<AddPet> {
                           borderSide: BorderSide(color: Colors.teal))),
                   keyboardType: TextInputType.number,
                   maxLength: 2,
-                  validator: FormBuilderValidators.required(context,
+                  validator: FormBuilderValidators.compose([FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
+                      FormBuilderValidators.min(context, 0, errorText: "La edad debe ser mayor o igual que 0")])
                 ),
               ),
               Container(

@@ -14,6 +14,17 @@ class PetController{
     }
   }
 
+  Future<bool> searchCode(String code) async{
+    List<Pet> mascotas = [];
+    mascotas = await allPets();
+    for (Pet pet in mascotas) {
+      if (code == pet.code) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   Future<bool> updatePet(Pet pet) async {
     bool respuesta;
     respuesta = await _service.updatePet(pet);
@@ -38,6 +49,11 @@ class PetController{
     List<Pet> mascotas = [];
     mascotas = await _service.getPets();
     return mascotas;
+  }
+
+  Future<Pet> getPet(String id) async {
+     Pet pet = await _service.getPet(id);
+     return pet;
   }
 
 }

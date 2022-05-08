@@ -7,7 +7,6 @@ import 'package:histovet/src/services/pet_service.dart';
 import '../../controller/pet_controller.dart';
 import '../../models/pet_model.dart';
 
-
 class addPet extends StatefulWidget {
   static String id = "form_pet";
   addPet({Key? key}) : super(key: key);
@@ -265,18 +264,27 @@ class _addPetState extends State<addPet> {
   }
 
   void addPet(Pet pet) async {
-    respuesta = await petCont.addPet(pet);
-    if (respuesta) {
-      Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+    bool existe = await petCont.searchCode(pet.code);
+
+    if (existe) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Se guardóo la información"),
-        backgroundColor: Colors.green,
-      ));
+          content: Text("El código ya existe"),
+          backgroundColor: Colors.green,
+        ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("No se guardó la información"),
-        backgroundColor: Colors.green,
-      ));
+      respuesta = await petCont.addPet(pet);
+      if (respuesta) {
+        Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Se guardóo la información"),
+          backgroundColor: Colors.green,
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("No se guardó la información"),
+          backgroundColor: Colors.green,
+        ));
+      }
     }
   }
 }

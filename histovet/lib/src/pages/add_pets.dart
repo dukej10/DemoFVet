@@ -31,7 +31,6 @@ class _addPetState extends State<addPet> {
   final _formState = GlobalKey<FormBuilderState>();
   bool respuesta = false;
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -47,7 +46,18 @@ class _addPetState extends State<addPet> {
       body: FormBuilder(
           key: _formState,
           child: ListView(
-            children: [Code(),Name(), nameOwner(), contactOwner(), docOwner(),Age(), Breed(),Specie(), Color(), Sex()],
+            children: [
+              Code(),
+              Name(),
+              nameOwner(),
+              contactOwner(),
+              docOwner(),
+              Age(),
+              Breed(),
+              Specie(),
+              Color(),
+              Sex()
+            ],
           )),
     );
   }
@@ -66,21 +76,25 @@ class _addPetState extends State<addPet> {
       final specie = values['specie'];
       final color = values['color'];
       final sex = values['sex'];
-      late Pet pet = new Pet("",code, name, nameOwner, contactOwner, docOwner, age, breed, specie, color, sex);
+      late Pet pet = new Pet("", code, name, nameOwner, contactOwner, docOwner,
+          age, breed, specie, color, sex);
       addPet(pet);
     }
   }
-  void addPet(Pet pet) async{
+
+  void addPet(Pet pet) async {
     respuesta = await _service.storePetToFirebase(pet);
     if (respuesta) {
-            Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Se guardóo la información"),
-            backgroundColor: Colors.green,));
-          }else{
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("No se guardó la información"),
-            backgroundColor: Colors.green,));
-          }
+      Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Se guardóo la información"),
+        backgroundColor: Colors.green,
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("No se guardó la información"),
+        backgroundColor: Colors.green,
+      ));
+    }
   }
-
-  
 }

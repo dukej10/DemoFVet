@@ -55,6 +55,14 @@ class _MedicinePageState extends State<MedicinePage> {
                     Card(
                       margin: EdgeInsets.all(6),
                       elevation: 6,
+
+                      child: Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage('assets/img/fondo2.jpg'),
+                                    fit: BoxFit.cover,
+                                    ),),
+                      
                       child: ListTile(
                         leading: Icon(FontAwesomeIcons.kitMedical),
                         title: Text(m.name, style: txtStyle),
@@ -70,7 +78,7 @@ class _MedicinePageState extends State<MedicinePage> {
                           },
                         )
                       ),
-                    )
+                    ))
                 ],
               );
             })),

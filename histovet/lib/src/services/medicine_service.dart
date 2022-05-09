@@ -9,11 +9,11 @@ import 'package:firebase_database/firebase_database.dart';
 class MedicineService {
    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final databaseRef = FirebaseDatabase.instance.ref();
-  Medicine medicine = new Medicine("", "", "","","");
+  Medicine medicine = new Medicine("", "", "","","",0.0, "");
 
   Future<Medicine> getMedicine(String id) async {
      final snapshot= await FirebaseFirestore.instance.collection('medicine').doc(id).get();
-     Medicine medicine = new Medicine(snapshot["id"], snapshot["code"], snapshot["name"], snapshot["description"], snapshot["group"]);
+     Medicine medicine = new Medicine(snapshot["id"], snapshot["code"], snapshot["name"], snapshot["description"], snapshot["group"],snapshot["precio"],snapshot["fechaVen"]);
      print(medicine.toString());
      return medicine;
   }
@@ -27,12 +27,12 @@ class MedicineService {
 
     if (medicine.id!.isNotEmpty) {
       await FirebaseFirestore.instance.collection("medicine").doc(medicine.id).set(
-          {"id": medicine.id, "code": medicine.code, "name": medicine.name, "description": medicine.descripcion, "group":medicine.grupo},
+          {"id": medicine.id, "code": medicine.code, "name": medicine.name, "description": medicine.descripcion, "group":medicine.grupo, "precio":medicine.precio,"fechaVen":medicine.fechaVen},
           SetOptions(merge: true));
        return true;
     } else {
       await medicineDoc
-          .set({"id": medicineDoc.id, "code": medicine.code, "name": medicine.name, "description": medicine.descripcion, "group":medicine.grupo});
+          .set({"id": medicineDoc.id, "code": medicine.code, "name": medicine.name, "description": medicine.descripcion, "group":medicine.grupo, "precio":medicine.precio, "fechaVen":medicine.fechaVen});
           return true;
     }
     } catch (e) {
@@ -52,7 +52,7 @@ class MedicineService {
       for (var doc in querySnapshot.docs) {
         Map<String, dynamic> data = doc.data();
         print(doc.data());
-        Medicine newMedicine = Medicine(data["id"], data["code"], data["name"], data["description"], data["group"]);
+        Medicine newMedicine = Medicine(data["id"], data["code"], data["name"], data["description"], data["group"], data["precio"], data["fechaVen"]);
         medicinas.add(newMedicine);
       }
     });

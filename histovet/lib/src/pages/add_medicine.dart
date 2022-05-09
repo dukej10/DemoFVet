@@ -4,8 +4,10 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 import 'package:histovet/src/pages/widgets/codeMedicine.dart';
 import 'package:histovet/src/pages/widgets/descriptionMedicine.dart';
+import 'package:histovet/src/pages/widgets/fechaMedicine.dart';
 import 'package:histovet/src/pages/widgets/groupMedicine.dart';
 import 'package:histovet/src/pages/widgets/nameMedicine.dart';
+import 'package:histovet/src/pages/widgets/precioMedicine.dart';
 
 import '../models/medicine_model.dart';
 import '../services/medicine_service.dart';
@@ -38,7 +40,7 @@ class _addMedicine extends State<addMedicine> {
       body: FormBuilder(
           key: _formState,
           child: ListView(
-            children: [CodeMedicine(),NameMedicine(), DescriptionMedicine(), GroupMedicine()],
+            children: [CodeMedicine(),NameMedicine(), DescriptionMedicine(), GroupMedicine(), PrecioMedicine(), FechaMedicine()],
           )),
     );
   }
@@ -51,7 +53,9 @@ class _addMedicine extends State<addMedicine> {
       final name = values['name'];
       final description = values['description'];
       final group = values['group'];
-      late Medicine medicine = new Medicine("",code, name, description,group);
+      final precio = double.parse(values['precio']);
+      final fechaVen = values['fechaVen'];
+      late Medicine medicine = new Medicine("",code, name, description,group, precio, fechaVen);
       addMedicine(medicine);
     }
   }

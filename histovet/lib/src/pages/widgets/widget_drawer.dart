@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:histovet/src/pages/medicine_page.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/consultar_medicamento.dart';
 import 'package:histovet/src/pages/add_medicine.dart';
@@ -44,9 +45,9 @@ class MenuLateral extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.medication),
-              title: Text("Añadir Medicamento"),
+              title: Text("Medicines"),
               onTap: () {
-                Navigator.pushNamed(context, addMedicine.id);
+                Navigator.pushNamed(context, MedicinePage.id);
               },
             ),
             ListTile(

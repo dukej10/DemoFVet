@@ -20,10 +20,16 @@ class PrecioMedicine extends StatelessWidget {
             prefixIcon: Icon(Icons.medication),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
-        maxLength: 10,
-        keyboardType: TextInputType.number,
-        validator: FormBuilderValidators.required(context,
-            errorText: "Valor requerido"),
+       keyboardType: TextInputType.number,
+                  maxLength: 10,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                    FormBuilderValidators.numeric(context,
+                        errorText: "Debe ser un numero"),
+                    FormBuilderValidators.min(context, 1,
+                        errorText: "Debe ser un número mayor que 0"),
+                  ]),
       ),
     );
   }

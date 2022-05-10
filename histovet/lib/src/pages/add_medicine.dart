@@ -11,6 +11,8 @@ import 'package:histovet/src/pages/widgets/precioMedicine.dart';
 
 import '../models/medicine_model.dart';
 import '../services/medicine_service.dart';
+
+
 class addMedicine extends StatefulWidget {
   static String id = "form_medicine";
   addMedicine({Key? key}) : super(key: key);
@@ -60,7 +62,7 @@ class _addMedicine extends State<addMedicine> {
     }
   }
   void addMedicine(Medicine medicine) async{
-    respuesta = await _service.storeMedicineToFirebase(medicine);
+    respuesta = await _service.addMedicine(medicine);
     if (respuesta) {
             Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Se guardó la información"),
@@ -70,6 +72,10 @@ class _addMedicine extends State<addMedicine> {
             backgroundColor: Colors.green,));
           }
   }
+
+
+
+
 
   
 }

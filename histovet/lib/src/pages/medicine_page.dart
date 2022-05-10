@@ -11,7 +11,7 @@ import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 
 import '../controller/medicine_controller.dart';
-import '../services/medicine_service.dart';
+import 'medicine_update.dart';
 
 class MedicinePage extends StatefulWidget {
   static String id = "medicine_page";
@@ -22,66 +22,106 @@ class MedicinePage extends StatefulWidget {
 }
 
 class _MedicinePageState extends State<MedicinePage> {
-  final MedicinePage _service = MedicinePage();
-
-  TextStyle txtStyle = TextStyle(fontWeight: FontWeight.w600, fontSize: 20);
-  MedicineController petCont = new MedicineController();
+  TextStyle txtStyle =
+      TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
+  MedicineController medicineCont = new MedicineController();
+  bool respuesta = false;
 
   @override
   Widget build(BuildContext context) {
-    
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text("Medicina"),
-            actions: [IconButton(onPressed: () {setState(() {
-              });
-            }, icon: const Icon(Icons.refresh))],
+            title: Text("Medicinas"),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    setState(() {});
+                  },
+                  icon: const Icon(Icons.refresh))
+            ],
           ),
           drawer: MenuLateral(),
           floatingActionButton: FloatingActionButton(
               child: Icon(FontAwesomeIcons.plus),
               elevation: 15.0,
               backgroundColor: Colors.blue,
-              onPressed: () {Navigator.pushNamed(context, addMedicine.id);}),
-              body: FutureBuilder(
-            future: MedicineService().getMedicines(),
-            builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-              List medicine = snapshot.data ?? [];
-              return ListView(
-                children: [
-                  for (Medicine m in medicine)
-                    Card(
-                      margin: EdgeInsets.all(6),
-                      elevation: 6,
-
-                      child: Container(
+              onPressed: () {
+                Navigator.pushNamed(context, addMedicine.id);
+              }),
+          body: FutureBuilder(
+              future: medicineCont.allMedicines(),
+              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+      return CircularProgressIndicator();
+    } else if (snapshot.connectionState == ConnectionState.done) {
+      if (snapshot.hasError) {
+        return const Text('Error');
+      } else if (snapshot.hasData) {
+        List medicines = snapshot.data ?? [];
+                return ListView(
+                  children: [
+                    for (Medicine medicine in medicines)
+                      Card(
+                        margin: EdgeInsets.all(6),
+                        elevation: 6,
+                        child: Container(
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage('assets/img/fondo2.jpg'),
                                     fit: BoxFit.cover,
                                     ),),
-                      
-                      child: ListTile(
-                        leading: Icon(FontAwesomeIcons.kitMedical),
-                        title: Text(m.name, style: txtStyle),
-                        subtitle: Text(
-                          m.code,
-                          style: txtStyle.copyWith(fontSize: 17),
-                        ),
-                        trailing: IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
-                          onPressed: (){
-                            petCont.deletePet(m.id);
-                                      Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));
-                          },
-                        )
-                      ),
-                    ))
-                ],
-              );
-            })),
+                            child: ListTile(
+                                onLongPress: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              updateMedicine(medicine.id.toString())));
+                                },
+                                leading: Icon(FontAwesomeIcons.kitMedical, color: Colors.black,),
+                                title: Text(medicine.name, style: txtStyle,),
+                                subtitle: Text(
+                                  medicine.code,
+                                  style: txtStyle.copyWith(fontSize: 17),
+                                ),
+                                trailing: IconButton(
+                                  icon: Icon(Icons.delete, color: Colors.black),
+                                  onPressed: () {
+                                    messageDelete(medicine.id.toString());
+                                    Navigator.pushNamed(context, '/medicine')
+                                        .then((_) => setState(() {}));
+                                  },
+                                ))),
+                      )
+                  ],
+                );
+      } else {
+        return const Text('Empty data');
+      }
+    } else {
+      return Text('State');
+    }})),
     );
   }
+
+  void messageDelete(String idMedicine) async {
+
+    respuesta = await medicineCont.deleteMedicine(idMedicine);
+    if (respuesta) {
+      Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Se eliminó la medicina"),
+        backgroundColor: Colors.green,
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("No se pudo eliminar"),
+        backgroundColor: Colors.green,
+      ));
+    }
+  }
+
+  
 }

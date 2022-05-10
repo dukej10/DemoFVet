@@ -20,9 +20,12 @@ class DescriptionMedicine extends StatelessWidget {
             prefixIcon: Icon(Icons.medication),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
-        maxLength: 30,
-        validator: FormBuilderValidators.required(context,
-            errorText: "Valor requerido"),
+        keyboardType: TextInputType.text,
+                      maxLength: 30,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ])
       ),
     );
   }

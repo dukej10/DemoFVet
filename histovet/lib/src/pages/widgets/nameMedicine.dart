@@ -20,9 +20,14 @@ class NameMedicine extends StatelessWidget {
             prefixIcon: Icon(Icons.medication),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
-        maxLength: 10,
-        validator: FormBuilderValidators.required(context,
-            errorText: "Valor requerido"),
+        keyboardType: TextInputType.text,
+                      maxLength: 10,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ])
+
+            
       ),
     );
   }

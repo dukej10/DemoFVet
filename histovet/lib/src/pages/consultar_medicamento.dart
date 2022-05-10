@@ -21,6 +21,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
   List<Medicine> _medicines = [];
   List datos = [];
   int _counter = 0;
+  String buscarMedicine = "";
 
   void getListMedicamentos() async {
     CollectionReference collectionReference =
@@ -31,8 +32,16 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
         //print(doc.data());
         datos.add(doc.data());
       }
+      //print(datos.toString());
     }
-    print(datos.toString());
+  }
+
+  void addListmedicine() {
+    for (var medic in datos) {
+      _medicines.add(Medicine(medic["id"], medic["code"], medic["name"],
+          medic["descripcion"], medic["grupo"]));
+    }
+    print(_medicines.toString());
   }
 
   @override
@@ -40,6 +49,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
     // TODO: implement initState
     super.initState();
     getListMedicamentos();
+    addListmedicine();
   }
 
   @override
@@ -63,9 +73,14 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                 Icons.search,
               ),
             ),
+            onSaved: (value) {
+              buscarMedicine = value != null ? value : 'nada';
+            },
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              print(buscarMedicine);
+            },
             child: Text('Solicitar'),
           ),
           SizedBox(

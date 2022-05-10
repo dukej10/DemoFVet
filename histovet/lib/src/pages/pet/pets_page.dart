@@ -47,9 +47,6 @@ class _PetsPageState extends State<PetsPage> {
           body: FutureBuilder(
               future: petCont.allPets(),
               builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-      return CircularProgressIndicator();
-    } else if (snapshot.connectionState == ConnectionState.done) {
       if (snapshot.hasError) {
         return const Text('Error');
       } else if (snapshot.hasData) {
@@ -94,9 +91,7 @@ class _PetsPageState extends State<PetsPage> {
       } else {
         return const Text('Empty data');
       }
-    } else {
-      return Text('State');
-    }})),
+    })),
     );
   }
 

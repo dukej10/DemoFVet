@@ -1,11 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:histovet/src/pages/Home/home_page.dart';
 import 'package:histovet/src/pages/add_medicine.dart';
-import 'package:histovet/src/pages/add_pets.dart';
+import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/consultar_medicamento.dart';
 import 'package:histovet/src/pages/medicine_page.dart';
-import 'package:histovet/src/pages/pet_update.dart';
-import 'package:histovet/src/pages/pets_page.dart';
+import 'package:histovet/src/pages/pet/pet_update.dart';
+import 'package:histovet/src/pages/pet/pets_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,16 +22,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'HistoVet',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'HistoVet'),
-      initialRoute: PetsPage.id,
+      initialRoute: Home.id,
       routes: {
+        Home.id:(context) => Home(),
+        '/home': (context) => Home(),
         PetsPage.id: (context) => PetsPage(),
         '/pets': (context) => PetsPage(),
-        addPet.id: (context) => addPet(),
+        AddPet.id: (context) => AddPet(),
         updatePet.id: (context) => updatePet(""),
         ConsultarMedicamento.id: (context) => ConsultarMedicamento(),
         '/updatepet': (context) => updatePet(""),

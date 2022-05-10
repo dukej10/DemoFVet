@@ -7,7 +7,8 @@ class Medicine {
   final String name;
   final String descripcion;
   final String grupo;
-  
+  final double precio;
+  final String fechaVen;
 
-  Medicine(this.id, this.code, this.name, this.descripcion, this.grupo);
+  Medicine(this.id, this.code, this.name, this.descripcion, this.grupo, this.precio, this.fechaVen);
 }

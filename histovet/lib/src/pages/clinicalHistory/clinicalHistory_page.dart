@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:histovet/src/controller/clinicalHistory_controller.dart';
 import 'package:histovet/src/pages/clinicalHistory/add_cinicalHistory.dart';
+import 'package:histovet/src/pages/clinicalHistory/update_clinicalHistory.dart';
 
 import '../../models/clinicalHistory_model.dart';
 import '../widgets/widget_drawer.dart';
@@ -65,11 +66,11 @@ class _clinicalHistoryState extends State<clinicalHistory> {
                               ),
                               child: ListTile(
                                   onLongPress: () {
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (context) => UpdatePet(
-                                    //             history.id.toString())));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => updateHistory(
+                                                history.id.toString())));
                                   },
                                   leading: Icon(
                                     FontAwesomeIcons.paw,

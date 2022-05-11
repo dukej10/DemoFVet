@@ -20,9 +20,12 @@ class FechaMedicine extends StatelessWidget {
             prefixIcon: Icon(Icons.medication),
             border:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
-        maxLength: 20,
-        validator: FormBuilderValidators.required(context,
-            errorText: "Valor requerido"),
+        keyboardType: TextInputType.text,
+                      maxLength: 20,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ])
       ),
     );
   }

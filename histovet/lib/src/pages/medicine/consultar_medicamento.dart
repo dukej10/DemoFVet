@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:histovet/src/models/medicine_model.dart';
+import 'package:histovet/src/services/medicine_service.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ConsultarMedicamento extends StatefulWidget {
   static String id = "consultar_medicamento";
@@ -11,6 +14,8 @@ class ConsultarMedicamento extends StatefulWidget {
 }
 
 class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
+  TextEditingController searchController = TextEditingController();
+  MedicineService medService = MedicineService();
   String _idMedic = "M001";
   String _nombre = "acetamin";
   int _cantidad = 2;
@@ -22,6 +27,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
   List datos = [];
   int _counter = 0;
 
+
   void getListMedicamentos() async {
     CollectionReference collectionReference =
         FirebaseFirestore.instance.collection("medicine");
@@ -32,7 +38,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
         datos.add(doc.data());
       }
     }
-    print(datos.toString());
+    //print(datos.toString());
   }
 
   @override
@@ -53,8 +59,8 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
           SizedBox(
             height: _espacio,
           ),
-          TextFormField(
-            initialValue: '',
+          TextField(
+            controller: searchController,
             decoration: InputDecoration(
               labelText: 'nombre medicamento',
               //errorText: 'Error message',
@@ -65,72 +71,68 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {getInfo(searchController.text);},
             child: Text('Solicitar'),
           ),
           SizedBox(
             height: _espacio,
           ),
-          Image.network(
-            "https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161200051/67085065-icono-de-vitaminas-o-medicamentos-para-animales-ilustraci%C3%B3n-de-dibujos-animados-de-vitaminas-o-medic.jpg?fj=1",
-            height: 100,
-          ),
-          SizedBox(
-            height: _espacio,
-          ),
-          Row(
-            children: [
-              Text("id: "),
-              Text(_idMedic),
-            ],
-          ),
-          SizedBox(
-            height: _espacio,
-          ),
-          Row(
-            children: [
-              Text("nombre: "),
-              Text(_nombre),
-            ],
-          ),
-          SizedBox(
-            height: _espacio,
-          ),
-          Row(
-            children: [
-              Text("cantidad: "),
-              Text(_cantidad.toString()),
-            ],
-          ),
-          SizedBox(
-            height: _espacio,
-          ),
-          Row(
-            children: [
-              Text("Precio: "),
-              Text(_precio.toString()),
-            ],
-          ),
-          SizedBox(
-            height: _espacio,
-          ),
-          Row(
-            children: [
-              Text("fecha de vencimiento: "),
-              Text(_fechaVencimiento),
-            ],
-          ),
-          SizedBox(
-            height: _espacio,
-          ),
-          Row(
-            children: [
-              Text("descripcion: "),
-              Text(_descripcion),
-            ],
-          ),
+          Container(
+            height: 500,child:FutureBuilder(
+              future: medService.searchMedicine("dsad"),
+              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                if (snapshot.hasError) {
+                  return const Text('Error');
+                } else if (snapshot.hasData) {
+                  print("Hay elementos");
+                  List species = snapshot.data ?? [];
+                  return ListView(
+                    children: [
+                      for (Medicine specie in species)
+                        Card(
+                          elevation: 6,
+                          child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('assets/img/fondo.jpg'),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              child: ListTile(
+
+                                  leading: Icon(
+                                    FontAwesomeIcons.paw,
+                                    color: Colors.black,
+                                  ),
+                                  title: Text(
+                                    specie.name,
+
+                                  ),
+                                  subtitle: Text(
+                                    specie.code
+                                  ),
+                                  trailing: IconButton(
+                                    onPressed: () {
+                                      
+                                    },
+                                    icon:
+                                        Icon(Icons.delete, color: Colors.black),
+                                  ))),
+                        )
+                    ],
+                  );
+                } else {
+                  return const Text('Empty data');
+                }
+              }))
+          
         ],
       ),
     );
+  }
+
+  void getInfo(String text) async{
+    print("Eescribió " + text);
+    List<Medicine> medicines = await medService.searchMedicine("dsad");
   }
 }

@@ -52,14 +52,14 @@ class MenuLateral extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.pets),
+              leading: Icon(Icons.content_paste_search_rounded),
               title: Text("Consultar Medicamento"),
               onTap: () {
                 Navigator.pushNamed(context, ConsultarMedicamento.id);
               },
             ),
             ListTile(
-              leading: Icon(Icons.pets),
+              leading: Icon(Icons.article_sharp ),
               title: Text("Historias Clínicas"),
               onTap: () {
                 Navigator.pushNamed(context, clinicalHistory.id);

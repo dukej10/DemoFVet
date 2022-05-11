@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
-import 'package:histovet/src/services/pet_service.dart';
-
 import '../../controller/pet_controller.dart';
 import '../../models/pet_model.dart';
 
@@ -261,10 +258,11 @@ class _AddPetState extends State<AddPet> {
       final sex = values['sex'];
       late Pet pet = new Pet("", code, name, nameOwner, contactOwner, docOwner,
           age, breed, specie, color, sex);
-      AddPet(pet);
+      messageAdd(pet);
     }
   }
 
+<<<<<<< HEAD
   void AddPet(Pet pet) async {
     respuesta = await petCont.addPet(pet);
     if (respuesta) {
@@ -278,6 +276,23 @@ class _AddPetState extends State<AddPet> {
         content: Text("No se guardó la información"),
         backgroundColor: Colors.green,
       ));
+=======
+
+  void messageAdd(Pet pet) async {
+      respuesta = await petCont.addPet(pet);
+      if (respuesta) {
+        Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Se guardó la información de la mascota"),
+          backgroundColor: Colors.green,
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("No se guardó la información"),
+          backgroundColor: Colors.green,
+        ));
+      }
+>>>>>>> 8f00993c739cbde37d8a4fc21dc13da6a4e29918
     }
   }
 }

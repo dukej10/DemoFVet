@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/Home/home_page.dart';
-import 'package:histovet/src/pages/add_medicine.dart';
+import 'package:histovet/src/pages/medicine/add_medicine.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
-import 'package:histovet/src/pages/consultar_medicamento.dart';
-import 'package:histovet/src/pages/medicine_page.dart';
+import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
+import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 
@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'HistoVet',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
         PetsPage.id: (context) => PetsPage(),
         '/pets': (context) => PetsPage(),
         AddPet.id: (context) => AddPet(),
-        updatePet.id: (context) => updatePet(""),
+        UpdatePet.id: (context) => UpdatePet(""),
         ConsultarMedicamento.id: (context) => ConsultarMedicamento(),
-        '/updatepet': (context) => updatePet(""),
+        '/updatepet': (context) => UpdatePet(""),
 
         MedicinePage.id: (context) => MedicinePage(),
         '/medicine': (context) => MedicinePage(),

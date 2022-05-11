@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:histovet/src/controller/medicine_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
-import 'package:histovet/src/services/medicine_service.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ConsultarMedicamento extends StatefulWidget {
@@ -15,7 +15,7 @@ class ConsultarMedicamento extends StatefulWidget {
 
 class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
   TextEditingController searchController = TextEditingController();
-  MedicineService medService = MedicineService();
+  MedicineController medCont = MedicineController();
 
   @override
   void initState() {
@@ -71,7 +71,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
     ) ,
               height: 500,
               child: FutureBuilder(
-                  future: medService.searchMedicine(searchController.text),
+                  future: medCont.searchMedicine(searchController.text),
                   builder:
                       (BuildContext context, AsyncSnapshot<List> snapshot) {
                     if (snapshot.hasError) {
@@ -161,7 +161,4 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
     );
   }
 
-  void getInfo(String text) async {
-    print("Eescribió " + text);
-  }
 }

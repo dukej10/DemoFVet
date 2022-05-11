@@ -42,7 +42,128 @@ class _addMedicine extends State<addMedicine> {
       body: FormBuilder(
           key: _formState,
           child: ListView(
-            children: [CodeMedicine(),NameMedicine(), DescriptionMedicine(), GroupMedicine(), PrecioMedicine(), FechaMedicine()],
+            children: [Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        name: "code",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Código",
+            hintText: "Ingrese el código del medicamento",
+            prefixIcon: Icon(Icons.medication),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+       keyboardType: TextInputType.number,
+                  maxLength: 4,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                    FormBuilderValidators.integer(context,
+                        errorText: "No puede tener decimales"),
+                    FormBuilderValidators.min(context, 1,
+                        errorText: "Debe ser un número mayor que 0"),
+                    FormBuilderValidators.minLength(context, 4,
+                        errorText: "La longitud del documento es de 4")
+                  ]),
+            
+      ),
+    ),Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        name: "name",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Nombre",
+            hintText: "Ingrese el nombre del medicamento",
+            prefixIcon: Icon(Icons.medication),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        keyboardType: TextInputType.text,
+                      maxLength: 10,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ])
+
+            
+      ),
+    ), Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        name: "description",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Descripción",
+            hintText: "Ingrese la descripción del medicamento",
+            prefixIcon: Icon(Icons.medication),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        keyboardType: TextInputType.text,
+                      maxLength: 30,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ])
+      ),
+    ), Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        name: "group",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Grupo",
+            hintText: "Ingrese el grupo del medicamento",
+            prefixIcon: Icon(Icons.medication),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        keyboardType: TextInputType.text,
+                      maxLength: 10,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ])
+      ),
+    ), Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        name: "precio",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Precio",
+            hintText: "Ingrese el precio del medicamento",
+            prefixIcon: Icon(Icons.medication),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+       keyboardType: TextInputType.number,
+                  maxLength: 10,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                    FormBuilderValidators.numeric(context,
+                        errorText: "Debe ser un numero"),
+                    FormBuilderValidators.min(context, 1,
+                        errorText: "Debe ser un número mayor que 0"),
+                  ]),
+      ),
+    ), Container(
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      child: FormBuilderTextField(
+        name: "fechaVen",
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        decoration: InputDecoration(
+            labelText: "Fecha vencimiento",
+            hintText: "Ingrese la fecha de vencimiento",
+            prefixIcon: Icon(Icons.medication),
+            border:
+                OutlineInputBorder(borderSide: BorderSide(color: Colors.teal))),
+        keyboardType: TextInputType.text,
+                      maxLength: 20,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ])
+      ),
+    )],
           )),
     );
   }

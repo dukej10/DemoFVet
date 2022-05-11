@@ -37,6 +37,12 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
         ],
       ),
       body: ListView(
+        padding: const EdgeInsets.only(
+          left: 15,
+          top: 10,
+          right: 15,
+          bottom: 15,
+        ),
         children: <Widget>[
           SizedBox(
             height: 5,
@@ -52,23 +58,29 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
               ),
             ),
           ),
-          ElevatedButton(
-            
-            child: Text('Solicitar'),
-            onPressed: () {
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            width: 20,
+            height: 30,
+            child: ElevatedButton(
+              child: Text('Buscar'),
+              onPressed: () {
                 setState(() {});
               },
+            ),
           ),
           SizedBox(
             height: 5,
           ),
           Container(
-            padding: const EdgeInsets.only(
-      left: 40,
-      top: 20,
-      right: 40,
-      bottom: 20,
-    ) ,
+              padding: const EdgeInsets.only(
+                left: 40,
+                top: 20,
+                right: 40,
+                bottom: 20,
+              ),
               height: 500,
               child: FutureBuilder(
                   future: medCont.searchMedicine(searchController.text),
@@ -81,75 +93,83 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                       List medicines = snapshot.data ?? [];
                       return ListView(
                         children: [
-                          if (medicines.length>0) 
-                          for (Medicine medicine in medicines)
-                              Column(
-                              children: <Widget>[
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Image.network(
-                                  "https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161200051/67085065-icono-de-vitaminas-o-medicamentos-para-animales-ilustraci%C3%B3n-de-dibujos-animados-de-vitaminas-o-medic.jpg?fj=1",
-                                  height: 100,
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  children: [
-                                    Text("id: "),
-                                    Text(medicine.code),
+                          if (medicines.length > 0)
+                            for (Medicine medicine in medicines)
+                              Container(
+                                decoration: BoxDecoration(
+    border: Border.all(color: Colors.blueAccent)
+  ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Image.network(
+                                      "https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161200051/67085065-icono-de-vitaminas-o-medicamentos-para-animales-ilustraci%C3%B3n-de-dibujos-animados-de-vitaminas-o-medic.jpg?fj=1",
+                                      height: 100,
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text("  Code: ", style: TextStyle(
+fontWeight: FontWeight.bold)),
+                                        Text(medicine.code),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text("  Nombre: ",style: TextStyle(
+fontWeight: FontWeight.bold) ),
+                                        Text(medicine.name),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text("  Precio: ", style: TextStyle(
+fontWeight: FontWeight.bold)),
+                                        Text(medicine.precio.toString()),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text("  Fecha de vencimiento: ", style: TextStyle(
+fontWeight: FontWeight.bold)),
+                                        Text(medicine.fechaVen),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text("  Descripcion: ", style: TextStyle(
+fontWeight: FontWeight.bold)),
+                                        Text(medicine.descripcion),
+                                      ],
+                                    ),
                                   ],
                                 ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  children: [
-                                    Text("nombre: "),
-                                    Text(medicine.name),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  children: [
-                                    Text("Precio: "),
-                                    Text(medicine.precio.toString()),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  children: [
-                                    Text("fecha de vencimiento: "),
-                                    Text(medicine.fechaVen),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  children: [
-                                    Text("descripcion: "),
-                                    Text(medicine.descripcion),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            if (medicines.length == 0) 
+                              ),
+                          if (medicines.length == 0)
                             Column(
                               children: [Text("No hay info")],
-                            )  
-                                                      
-                        ]
-                        
-                        ,
+                            )
+                        ],
                       );
                     } else {
                       // Agregar un Widget
@@ -160,5 +180,4 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
       ),
     );
   }
-
 }

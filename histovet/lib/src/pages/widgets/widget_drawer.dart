@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:histovet/src/pages/clinicalHistory/clinicalHistory_page.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
@@ -57,6 +58,13 @@ class MenuLateral extends StatelessWidget {
                 Navigator.pushNamed(context, ConsultarMedicamento.id);
               },
             ),
+            ListTile(
+              leading: Icon(Icons.pets),
+              title: Text("Consultar Historias Clínicas"),
+              onTap: () {
+                Navigator.pushNamed(context, clinicalHistory.id);
+              },
+            )
           ])
         ],
       ),

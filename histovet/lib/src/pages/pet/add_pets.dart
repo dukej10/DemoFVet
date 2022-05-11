@@ -262,8 +262,7 @@ class _AddPetState extends State<AddPet> {
     }
   }
 
-<<<<<<< HEAD
-  void AddPet(Pet pet) async {
+  void messageAdd(Pet pet) async {
     respuesta = await petCont.addPet(pet);
     if (respuesta) {
       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
@@ -276,23 +275,6 @@ class _AddPetState extends State<AddPet> {
         content: Text("No se guardó la información"),
         backgroundColor: Colors.green,
       ));
-=======
-
-  void messageAdd(Pet pet) async {
-      respuesta = await petCont.addPet(pet);
-      if (respuesta) {
-        Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("Se guardó la información de la mascota"),
-          backgroundColor: Colors.green,
-        ));
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("No se guardó la información"),
-          backgroundColor: Colors.green,
-        ));
-      }
->>>>>>> 8f00993c739cbde37d8a4fc21dc13da6a4e29918
     }
   }
 }

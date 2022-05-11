@@ -17,7 +17,17 @@ class ClinicalHistoryController {
 
   Future<bool> updateClinicalHistory(ClinicalHistory clinicalHistory) async {
     bool respuesta;
-    respuesta = await _service.updatePet(clinicalHistory);
+    respuesta = await _service.updateClinicalHistory(clinicalHistory);
+    if (respuesta) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> deleteHistory(String idHistory) async {
+    bool respuesta;
+    respuesta = await _service.deleteHistoryBD(idHistory);
     if (respuesta) {
       return true;
     } else {
@@ -31,7 +41,7 @@ class ClinicalHistoryController {
   }
 
   Future<ClinicalHistory> getClinicalHistory(String id) async {
-    ClinicalHistory clinicalHistory = await _service.clinicalHistory(id);
+    ClinicalHistory clinicalHistory = await _service.getClinicalHistory(id);
     return clinicalHistory;
   }
 }

@@ -194,6 +194,15 @@ class ClinicalHistoryService {
     }
   }
 
+  Future<bool> deleteHistoryBD(id) async {
+    try {
+      await _firestore.collection("clinicalHistory").doc(id).delete();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   Future<List<ClinicalHistory>> getClinicalHistories() async {
     List<ClinicalHistory> clinicalHistories = [];
     try {

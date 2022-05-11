@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:histovet/src/controller/pet_controller.dart';
-import 'package:histovet/src/models/pet_model.dart';
-import 'package:histovet/src/pages/widgets/widget_drawer.dart';
-import 'package:histovet/src/services/pet_service.dart';
-import 'package:histovet/src/pages/pet/add_pets.dart';
-import 'package:histovet/src/pages/pet/pet_update.dart';
+import 'package:histovet/src/controller/clinicalHistory_controller.dart';
+import 'package:histovet/src/pages/clinicalHistory/add_cinicalHistory.dart';
 
-class PetsPage extends StatefulWidget {
-  static String id = "pets_page";
-  PetsPage({Key? key}) : super(key: key);
+import '../../models/clinicalHistory_model.dart';
+import '../widgets/widget_drawer.dart';
+
+class clinicalHistory extends StatefulWidget {
+  static String id = "clinicalHistory";
+  clinicalHistory({Key? key}) : super(key: key);
 
   @override
-  State<PetsPage> createState() => _PetsPageState();
+  State<clinicalHistory> createState() => _clinicalHistoryState();
 }
 
-class _PetsPageState extends State<PetsPage> {
+class _clinicalHistoryState extends State<clinicalHistory> {
   TextStyle txtStyle =
       TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
-  PetController petCont = new PetController();
+  ClinicalHistoryController histCont = new ClinicalHistoryController();
   bool respuesta = false;
 
   @override
@@ -27,7 +26,7 @@ class _PetsPageState extends State<PetsPage> {
       child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text("Mascotas"),
+            title: Text("Historias Clínicas"),
             actions: [
               IconButton(
                   onPressed: () {
@@ -42,18 +41,18 @@ class _PetsPageState extends State<PetsPage> {
               elevation: 15.0,
               backgroundColor: Colors.blue,
               onPressed: () {
-                Navigator.pushNamed(context, AddPet.id);
+                Navigator.pushNamed(context, AddClinicalHistory.id);
               }),
           body: FutureBuilder(
-              future: petCont.allPets(),
+              future: histCont.allClinicalHistories(),
               builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
                 if (snapshot.hasError) {
                   return const Text('Error');
                 } else if (snapshot.hasData) {
-                  List species = snapshot.data ?? [];
+                  List histories = snapshot.data ?? [];
                   return ListView(
                     children: [
-                      for (Pet specie in species)
+                      for (ClinicalHistory history in histories)
                         Card(
                           margin: EdgeInsets.all(6),
                           elevation: 6,
@@ -66,30 +65,31 @@ class _PetsPageState extends State<PetsPage> {
                               ),
                               child: ListTile(
                                   onLongPress: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => UpdatePet(
-                                                specie.id.toString())));
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => UpdatePet(
+                                    //             history.id.toString())));
                                   },
                                   leading: Icon(
                                     FontAwesomeIcons.paw,
                                     color: Colors.black,
                                   ),
                                   title: Text(
-                                    specie.name,
+                                    history.name,
                                     style: txtStyle,
                                   ),
                                   subtitle: Text(
-                                    specie.code,
+                                    history.numberCH.toString(),
                                     style: txtStyle.copyWith(fontSize: 17),
                                   ),
                                   trailing: IconButton(
                                     icon:
                                         Icon(Icons.delete, color: Colors.black),
                                     onPressed: () {
-                                      messageDelete(specie.id.toString());
-                                      Navigator.pushNamed(context, '/pets')
+                                      messageDelete(history.id.toString());
+                                      Navigator.pushNamed(
+                                              context, '/clinicalHistories')
                                           .then((_) => setState(() {}));
                                     },
                                   ))),
@@ -104,12 +104,12 @@ class _PetsPageState extends State<PetsPage> {
   }
 
   // Le indica al usuario si se pudo o no eliminar el registro
-  void messageDelete(String idPet) async {
-    respuesta = await petCont.deletePet(idPet);
+  void messageDelete(String idHistory) async {
+    respuesta = await histCont.deleteHistory(idHistory);
     if (respuesta) {
       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Se eliminó la mascota"),
+        content: Text("Se eliminó la historia clínica"),
         backgroundColor: Colors.green,
       ));
     } else {

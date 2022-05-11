@@ -17,24 +17,10 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
   TextEditingController searchController = TextEditingController();
   MedicineService medService = MedicineService();
 
-  void getListMedicamentos() async {
-    CollectionReference collectionReference =
-        FirebaseFirestore.instance.collection("medicine");
-    QuerySnapshot listMedicam = await collectionReference.get();
-    if (listMedicam.docs.isNotEmpty) {
-      for (var doc in listMedicam.docs) {
-        //print(doc.data());
-        datos.add(doc.data());
-      }
-    }
-    //print(datos.toString());
-  }
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getListMedicamentos();
   }
 
   @override

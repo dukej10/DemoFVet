@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
         PetsPage.id: (context) => PetsPage(),
         '/pets': (context) => PetsPage(),
         AddPet.id: (context) => AddPet(),
-        updatePet.id: (context) => updatePet(""),
+        UpdatePet.id: (context) => UpdatePet(""),
         ConsultarMedicamento.id: (context) => ConsultarMedicamento(),
-        '/updatepet': (context) => updatePet(""),
+        '/updatepet': (context) => UpdatePet(""),
 
         MedicinePage.id: (context) => MedicinePage(),
         '/medicine': (context) => MedicinePage(),

@@ -57,9 +57,18 @@ class _updatemedicationtate extends State<updateMedicine> {
                       prefixIcon: Icon(Icons.medication),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
+                          keyboardType: TextInputType.number,
                   maxLength: 10,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                    FormBuilderValidators.integer(context,
+                        errorText: "No puede tener decimales"),
+                    FormBuilderValidators.min(context, 1,
+                        errorText: "Debe ser un número mayor que 0"),
+                    FormBuilderValidators.minLength(context, 4,
+                        errorText: "La longitud del documento es de 4")
+                  ]),
                 ),
               ),
               Container(
@@ -74,8 +83,10 @@ class _updatemedicationtate extends State<updateMedicine> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   maxLength: 10,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
+                  validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ]),
                 ),
               ),
               Container(
@@ -90,8 +101,10 @@ class _updatemedicationtate extends State<updateMedicine> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   maxLength: 30,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
+                  validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ]),
                 ),
               ),
               Container(
@@ -106,8 +119,10 @@ class _updatemedicationtate extends State<updateMedicine> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   maxLength: 30,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
+                  validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ]),
                 ),
               ),
               Container(
@@ -123,8 +138,14 @@ class _updatemedicationtate extends State<updateMedicine> {
                           borderSide: BorderSide(color: Colors.teal))),
                   maxLength: 10,
                   keyboardType: TextInputType.number,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                    FormBuilderValidators.numeric(context,
+                        errorText: "Debe ser un numero"),
+                    FormBuilderValidators.min(context, 1,
+                        errorText: "Debe ser un número mayor que 0"),
+                  ]),
                 ),
               ),
               Container(
@@ -139,8 +160,10 @@ class _updatemedicationtate extends State<updateMedicine> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   maxLength: 20,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
+                  validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ]),
                 ),
               )
             ],

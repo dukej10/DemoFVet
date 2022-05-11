@@ -1,4 +1,4 @@
-import 'package:histovet/src/pages/add_medicine.dart';
+import 'package:histovet/src/pages/medicine/add_medicine.dart';
 
 import '../models/medicine_model.dart';
 import '../services/medicine_service.dart';

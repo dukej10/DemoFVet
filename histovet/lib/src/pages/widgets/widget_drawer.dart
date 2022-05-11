@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:histovet/src/pages/medicine_page.dart';
+import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
-import 'package:histovet/src/pages/consultar_medicamento.dart';
-import 'package:histovet/src/pages/add_medicine.dart';
+import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
+import 'package:histovet/src/pages/medicine/add_medicine.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 
 import '../Home/home_page.dart';

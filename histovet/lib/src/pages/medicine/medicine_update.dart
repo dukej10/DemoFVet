@@ -5,8 +5,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'package:histovet/src/services/Medicine_service.dart';
 
-import '../controller/medicine_controller.dart';
-import '../models/medicine_model.dart';
+import '../../controller/medicine_controller.dart';
+import '../../models/medicine_model.dart';
 
 class updateMedicine extends StatefulWidget {
   static String id = "edit_medicine";

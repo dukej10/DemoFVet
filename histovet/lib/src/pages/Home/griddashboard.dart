@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:histovet/src/pages/medicine_page.dart';
+import 'package:histovet/src/pages/medicine/medicine_page.dart';
 
 import '../pet/pets_page.dart';
 

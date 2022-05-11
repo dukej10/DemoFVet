@@ -2,15 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
-import 'package:histovet/src/pages/widgets/codeMedicine.dart';
-import 'package:histovet/src/pages/widgets/descriptionMedicine.dart';
-import 'package:histovet/src/pages/widgets/fechaMedicine.dart';
-import 'package:histovet/src/pages/widgets/groupMedicine.dart';
-import 'package:histovet/src/pages/widgets/nameMedicine.dart';
-import 'package:histovet/src/pages/widgets/precioMedicine.dart';
 
-import '../models/medicine_model.dart';
-import '../services/medicine_service.dart';
+import '../../models/medicine_model.dart';
+import '../../services/medicine_service.dart';
 
 
 class addMedicine extends StatefulWidget {

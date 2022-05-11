@@ -289,7 +289,6 @@ class _UpdatePet extends State<UpdatePet> {
   /// cambiar su información
    
   void getInfoPet() async {
-    // await _service.getPet(widget.idPet);
     Pet pet = await petCont.getPet(widget.idPet);
     setState(() {
       codeController.text = pet.code.toString();

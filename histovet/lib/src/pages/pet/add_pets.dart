@@ -146,20 +146,22 @@ class _AddPetState extends State<AddPet> {
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
-                  name: "age",
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
-                      labelText: "Edad",
-                      hintText: "Ingresa la edad de la mascotas",
-                      prefixIcon: Icon(Icons.numbers),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal))),
-                  keyboardType: TextInputType.number,
-                  maxLength: 2,
-                  validator: FormBuilderValidators.compose([FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
-                      FormBuilderValidators.min(context, 0, errorText: "La edad debe ser mayor o igual que 0")])
-                ),
+                    name: "age",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Edad",
+                        hintText: "Ingresa la edad de la mascotas",
+                        prefixIcon: Icon(Icons.numbers),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 2,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido"),
+                      FormBuilderValidators.min(context, 0,
+                          errorText: "La edad debe ser mayor o igual que 0")
+                    ])),
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
@@ -260,6 +262,21 @@ class _AddPetState extends State<AddPet> {
     }
   }
 
+<<<<<<< HEAD
+  void AddPet(Pet pet) async {
+    respuesta = await petCont.addPet(pet);
+    if (respuesta) {
+      Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Se guardó la información de la mascota"),
+        backgroundColor: Colors.green,
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("No se guardó la información"),
+        backgroundColor: Colors.green,
+      ));
+=======
 
   void messageAdd(Pet pet) async {
       respuesta = await petCont.addPet(pet);
@@ -275,6 +292,7 @@ class _AddPetState extends State<AddPet> {
           backgroundColor: Colors.green,
         ));
       }
+>>>>>>> 8f00993c739cbde37d8a4fc21dc13da6a4e29918
     }
-
+  }
 }

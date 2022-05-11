@@ -1,7 +1,7 @@
 import '../models/pet_model.dart';
 import '../services/pet_service.dart';
 
-class PetController{
+class PetController {
   final PetService _service = PetService();
   List<Pet> mascotas = [];
 
@@ -35,14 +35,13 @@ class PetController{
     }
   }
 
-  Future<List<Pet>> allPets() async{
+  Future<List<Pet>> allPets() async {
     mascotas = await _service.getPets();
     return mascotas;
   }
 
   Future<Pet> getPet(String id) async {
-     Pet pet = await _service.getPet(id);
-     return pet;
+    Pet pet = await _service.getPet(id);
+    return pet;
   }
-
 }

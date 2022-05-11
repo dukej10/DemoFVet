@@ -97,8 +97,8 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                             for (Medicine medicine in medicines)
                               Container(
                                 decoration: BoxDecoration(
-    border: Border.all(color: Colors.blueAccent)
-  ),
+                                    border:
+                                        Border.all(color: Colors.blueAccent)),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
@@ -114,8 +114,9 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                     ),
                                     Row(
                                       children: [
-                                        Text("  Code: ", style: TextStyle(
-fontWeight: FontWeight.bold)),
+                                        Text("  Code: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
                                         Text(medicine.code),
                                       ],
                                     ),
@@ -124,21 +125,20 @@ fontWeight: FontWeight.bold)),
                                     ),
                                     Row(
                                       children: [
-                                        Text("  Nombre: ",style: TextStyle(
-fontWeight: FontWeight.bold) ),
+                                        Text("  Nombre: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
                                         Text(medicine.name),
                                       ],
                                     ),
                                     SizedBox(
                                       height: 5,
                                     ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
                                     Row(
                                       children: [
-                                        Text("  Precio: ", style: TextStyle(
-fontWeight: FontWeight.bold)),
+                                        Text("  Precio: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
                                         Text(medicine.precio.toString()),
                                       ],
                                     ),
@@ -147,8 +147,9 @@ fontWeight: FontWeight.bold)),
                                     ),
                                     Row(
                                       children: [
-                                        Text("  Fecha de vencimiento: ", style: TextStyle(
-fontWeight: FontWeight.bold)),
+                                        Text("  Fecha de vencimiento: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
                                         Text(medicine.fechaVen),
                                       ],
                                     ),
@@ -157,10 +158,14 @@ fontWeight: FontWeight.bold)),
                                     ),
                                     Row(
                                       children: [
-                                        Text("  Descripcion: ", style: TextStyle(
-fontWeight: FontWeight.bold)),
+                                        Text("  Descripcion: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
                                         Text(medicine.descripcion),
                                       ],
+                                    ),
+                                     SizedBox(
+                                      height: 16,
                                     ),
                                   ],
                                 ),

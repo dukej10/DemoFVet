@@ -44,9 +44,8 @@ class MyApp extends StatelessWidget {
         addMedicine.id: (context) => addMedicine(),
         clinicalHistory.id: (context) => clinicalHistory(),
         '/clinicalHistories': (context) => clinicalHistory(),
-        AddClinicalHistory.id:  (context) => AddClinicalHistory(),
+        AddClinicalHistory.id: (context) => AddClinicalHistory(),
         '/addHistory': (context) => AddClinicalHistory(),
-        
       },
     );
   }

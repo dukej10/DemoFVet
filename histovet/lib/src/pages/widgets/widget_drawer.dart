@@ -39,7 +39,7 @@ class MenuLateral extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.pets),
-              title: Text("Pet"),
+              title: Text("Mascotas"),
               onTap: () {
                 Navigator.pushNamed(context, PetsPage.id);
               },
@@ -60,7 +60,7 @@ class MenuLateral extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.pets),
-              title: Text("Consultar Historias Clínicas"),
+              title: Text("Historias Clínicas"),
               onTap: () {
                 Navigator.pushNamed(context, clinicalHistory.id);
               },

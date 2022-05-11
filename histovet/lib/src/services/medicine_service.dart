@@ -20,6 +20,7 @@ class MedicineService {
 
   Future<List<Medicine>> searchMedicine(String name) async {
     List<Medicine> medicines = [];
+    print("Llegó nombre " + name);
     try {
     final collection = FirebaseFirestore.instance.collection('medicine').where("name", isEqualTo: name);
     collection.snapshots().listen((querySnapshot) {

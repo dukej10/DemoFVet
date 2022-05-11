@@ -16,17 +16,6 @@ class ConsultarMedicamento extends StatefulWidget {
 class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
   TextEditingController searchController = TextEditingController();
   MedicineService medService = MedicineService();
-  String _idMedic = "M001";
-  String _nombre = "acetamin";
-  int _cantidad = 2;
-  double _precio = 10.0;
-  String _fechaVencimiento = "12/12/2020";
-  String _descripcion = "para dolores leves";
-  double _espacio = 12;
-  List<Medicine> _medicines = [];
-  List datos = [];
-  int _counter = 0;
-
 
   void getListMedicamentos() async {
     CollectionReference collectionReference =
@@ -53,11 +42,18 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Consultar medicamento"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {});
+              },
+              icon: const Icon(Icons.refresh))
+        ],
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           SizedBox(
-            height: _espacio,
+            height: 5,
           ),
           TextField(
             controller: searchController,
@@ -71,68 +67,115 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
             ),
           ),
           ElevatedButton(
-            onPressed: () {getInfo(searchController.text);},
+            
             child: Text('Solicitar'),
+            onPressed: () {
+                setState(() {});
+              },
           ),
           SizedBox(
-            height: _espacio,
+            height: 5,
           ),
           Container(
-            height: 500,child:FutureBuilder(
-              future: medService.searchMedicine("dsad"),
-              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
-                if (snapshot.hasError) {
-                  return const Text('Error');
-                } else if (snapshot.hasData) {
-                  print("Hay elementos");
-                  List species = snapshot.data ?? [];
-                  return ListView(
-                    children: [
-                      for (Medicine specie in species)
-                        Card(
-                          elevation: 6,
-                          child: Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/img/fondo.jpg'),
-                                  fit: BoxFit.cover,
+            padding: const EdgeInsets.only(
+      left: 40,
+      top: 20,
+      right: 40,
+      bottom: 20,
+    ) ,
+              height: 500,
+              child: FutureBuilder(
+                  future: medService.searchMedicine(searchController.text),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<List> snapshot) {
+                    if (snapshot.hasError) {
+                      return const Text('Error');
+                    } else if (snapshot.hasData) {
+                      print("Hay elementos");
+                      List medicines = snapshot.data ?? [];
+                      return ListView(
+                        children: [
+                          if (medicines.length>0) 
+                          for (Medicine medicine in medicines)
+                              Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 5,
                                 ),
-                              ),
-                              child: ListTile(
-
-                                  leading: Icon(
-                                    FontAwesomeIcons.paw,
-                                    color: Colors.black,
-                                  ),
-                                  title: Text(
-                                    specie.name,
-
-                                  ),
-                                  subtitle: Text(
-                                    specie.code
-                                  ),
-                                  trailing: IconButton(
-                                    onPressed: () {
-                                      
-                                    },
-                                    icon:
-                                        Icon(Icons.delete, color: Colors.black),
-                                  ))),
-                        )
-                    ],
-                  );
-                } else {
-                  return const Text('Empty data');
-                }
-              }))
-          
+                                Image.network(
+                                  "https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161200051/67085065-icono-de-vitaminas-o-medicamentos-para-animales-ilustraci%C3%B3n-de-dibujos-animados-de-vitaminas-o-medic.jpg?fj=1",
+                                  height: 100,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    Text("id: "),
+                                    Text(medicine.code),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    Text("nombre: "),
+                                    Text(medicine.name),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    Text("Precio: "),
+                                    Text(medicine.precio.toString()),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    Text("fecha de vencimiento: "),
+                                    Text(medicine.fechaVen),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    Text("descripcion: "),
+                                    Text(medicine.descripcion),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            if (medicines.length == 0) 
+                            Column(
+                              children: [Text("No hay info")],
+                            )  
+                                                      
+                        ]
+                        
+                        ,
+                      );
+                    } else {
+                      // Agregar un Widget
+                      return const Text('Empty data');
+                    }
+                  }))
         ],
       ),
     );
   }
 
-  void getInfo(String text) async{
+  void getInfo(String text) async {
     print("Eescribió " + text);
-    List<Medicine> medicines = await medService.searchMedicine("dsad");
   }
 }

@@ -11,14 +11,16 @@ class ConsultarMedicamento extends StatefulWidget {
 }
 
 class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
-  String _idMedic = "M001";
-  String _nombre = "acetamin";
+  String _code = "M001";
+  String _name = "acetamin";
   int _cantidad = 2;
   double _precio = 10.0;
-  String _fechaVencimiento = "12/12/2020";
-  String _descripcion = "para dolores leves";
-  double _espacio = 12;
+  String _fechaVen = "12/12/2020";
+  String _description = "para dolores leves";
+
   List<Medicine> _medicines = [];
+  double _espacio = 12;
+
   List datos = [];
   int _counter = 0;
   String buscarMedicine = "";
@@ -36,20 +38,20 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
     }
   }
 
-  void addListmedicine() {
+  /*void addListmedicine() {
     for (var medic in datos) {
       _medicines.add(Medicine(medic["id"], medic["code"], medic["name"],
           medic["descripcion"], medic["grupo"]));
     }
     print(_medicines.toString());
-  }
+  }*/
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getListMedicamentos();
-    addListmedicine();
+    //addListmedicine();
   }
 
   @override
@@ -58,7 +60,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
       appBar: AppBar(
         title: Text("Consultar medicamento"),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           SizedBox(
             height: _espacio,
@@ -74,7 +76,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
               ),
             ),
             onSaved: (value) {
-              buscarMedicine = value != null ? value : 'nada';
+              buscarMedicine = value!;
             },
           ),
           ElevatedButton(
@@ -96,7 +98,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
           Row(
             children: [
               Text("id: "),
-              Text(_idMedic),
+              Text(_code),
             ],
           ),
           SizedBox(
@@ -105,7 +107,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
           Row(
             children: [
               Text("nombre: "),
-              Text(_nombre),
+              Text(_name),
             ],
           ),
           SizedBox(
@@ -132,7 +134,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
           Row(
             children: [
               Text("fecha de vencimiento: "),
-              Text(_fechaVencimiento),
+              Text(_fechaVen),
             ],
           ),
           SizedBox(
@@ -141,7 +143,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
           Row(
             children: [
               Text("descripcion: "),
-              Text(_descripcion),
+              Text(_description),
             ],
           ),
         ],

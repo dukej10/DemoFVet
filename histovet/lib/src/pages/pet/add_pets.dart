@@ -259,12 +259,12 @@ class _AddPetState extends State<AddPet> {
       final sex = values['sex'];
       late Pet pet = new Pet("", code, name, nameOwner, contactOwner, docOwner,
           age, breed, specie, color, sex);
-      AddPet(pet);
+      messageAdd(pet);
     }
   }
 
 
-  void AddPet(Pet pet) async {
+  void messageAdd(Pet pet) async {
       respuesta = await petCont.addPet(pet);
       if (respuesta) {
         Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));

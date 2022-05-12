@@ -55,11 +55,592 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     FormBuilderValidators.min(context, 1,
                         errorText: "Debe ser un número mayor que 0"),
                     FormBuilderValidators.minLength(context, 4,
-                        errorText: "La longitud del documento es de 4")
+                        errorText:
+                            "La longitud del número de historia cinica es de 4")
                   ]),
                 ),
               ),
-              Container(),
+              Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                      name: "date",
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: InputDecoration(
+                          labelText: "Fecha",
+                          hintText: "Ingrese la fecha actual",
+                          prefixIcon: Icon(Icons.date_range),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.teal))),
+                      keyboardType: TextInputType.text,
+                      maxLength: 10,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ]))),
+              Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                      name: "time",
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: InputDecoration(
+                          labelText: "Hora",
+                          hintText: "Ingrese la hora actual",
+                          prefixIcon: Icon(Icons.timer),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.teal))),
+                      keyboardType: TextInputType.text,
+                      maxLength: 6,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido")
+                      ]))),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                    name: "docOwner",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Documento Dueño",
+                        hintText: "Ingrese el documento del dueño",
+                        prefixIcon: Icon(Icons.badge_outlined),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 10,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido"),
+                      FormBuilderValidators.minLength(context, 10,
+                          errorText: "La longitud del documento es de 10"),
+                      FormBuilderValidators.integer(context,
+                          errorText: "No puede tener decimales"),
+                      FormBuilderValidators.min(context, 1,
+                          errorText: "Debe ser un número mayor que 0"),
+                    ])),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "nameOwner",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Nombre Dueño",
+                      hintText: "Ingrese el nombre del dueño",
+                      prefixIcon: Icon(Icons.person_outline_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  keyboardType: TextInputType.text,
+                  maxLength: 10,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido")
+                  ]),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "contactOwner",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "contacto Dueño",
+                      hintText: "Ingrese el contacto del dueño",
+                      prefixIcon: Icon(Icons.contact_phone_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  keyboardType: TextInputType.number,
+                  maxLength: 10,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                    FormBuilderValidators.integer(context,
+                        errorText: "No puede tener decimales"),
+                    FormBuilderValidators.min(context, 1,
+                        errorText: "Debe ser un número mayor que 0"),
+                    FormBuilderValidators.minLength(context, 10,
+                        errorText: "La longitud del número es de 10")
+                  ]),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "addressOwner",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Dirección",
+                      hintText: "Ingrese la dirección de residencia",
+                      prefixIcon: Icon(Icons.person_outline_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  keyboardType: TextInputType.text,
+                  maxLength: 20,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido")
+                  ]),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "emailAddressOwner",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Correo electrónico",
+                      hintText: "Ingrese el nombre del dueño",
+                      prefixIcon: Icon(Icons.person_outline_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  keyboardType: TextInputType.text,
+                  maxLength: 20,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido")
+                  ]),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderDropdown(
+                    name: "subespecie",
+                    decoration: InputDecoration(
+                        labelText: "Subespecie",
+                        prefixIcon: Icon(Icons.article_outlined),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    hint: Text("Seleccionar subespecie para la mascota"),
+                    validator: FormBuilderValidators.required(context,
+                        errorText: "Seleccione una subespecie"),
+                    items: [
+                      {'value': 'Perro', 'key': 'Perro'},
+                      {'value': 'Gato', 'key': 'Gato'}
+                    ]
+                        .map((subespecie) => DropdownMenuItem(
+                            value: subespecie["value"],
+                            child: Text("${subespecie["value"]}")))
+                        .toList()),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                    name: "breed",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Raza",
+                        hintText: "Ingrese la raza de la mascotas",
+                        prefixIcon: Icon(Icons.pets),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    maxLength: 10,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido")
+                    ])),
+              ),
+              Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderDropdown(
+                      name: "sex",
+                      decoration: InputDecoration(
+                          labelText: "Sexo",
+                          prefixIcon: Icon(Icons.article_outlined),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.teal))),
+                      hint: Text("Seleccionar sexo"),
+                      validator: FormBuilderValidators.required(context,
+                          errorText: "Seleccione un sexo para la mascota"),
+                      items: [
+                        {'value': 'Macho', 'key': 'Macho'},
+                        {'value': 'Hembra', 'key': 'Hembra'}
+                      ]
+                          .map((sex) => DropdownMenuItem(
+                              value: sex["value"],
+                              child: Text("${sex["value"]}")))
+                          .toList())),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "color",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Color",
+                      hintText: "Ingrese el color de la mascotas",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 10,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "weight",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Pesp(Kg)",
+                      hintText: "Ingrese el peso de la mascota",
+                      prefixIcon: Icon(Icons.monitor_weight_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  keyboardType: TextInputType.number,
+                  maxLength: 3,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                    FormBuilderValidators.min(context, 1,
+                        errorText: "Debe ser un número mayor que 0"),
+                    FormBuilderValidators.minLength(context, 3,
+                        errorText: "La longitud del número es de 3")
+                  ]),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "origin",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Origen",
+                      hintText: "Origen mascota",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 10,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "diet",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Dieta",
+                      hintText: "Dieta de la mascota",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 40,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "previousIllnesses",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Enfermedades previas",
+                      hintText: "Enfermedades previas",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 200,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "previousSurgeries",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "cirugías previas",
+                      hintText: "Escriba enfermedades previas",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 200,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderDropdown(
+                      name: "sterilized",
+                      decoration: InputDecoration(
+                          labelText: "Esterilización",
+                          prefixIcon: Icon(Icons.article_outlined),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.teal))),
+                      hint: Text("Seleccione una opción"),
+                      validator: FormBuilderValidators.required(context,
+                          errorText:
+                              "Seleccione si está esterilizada la mascota"),
+                      items: [
+                        {'value': 'Si', 'key': 'Si'},
+                        {'value': 'No', 'key': 'No'}
+                      ]
+                          .map((sterilized) => DropdownMenuItem(
+                              value: sterilized["value"],
+                              child: Text("${sterilized["value"]}")))
+                          .toList())),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                    name: "nAnimalBirths",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Número de partos",
+                        hintText: "Cuantos partos ha tenido la mascota",
+                        prefixIcon: Icon(Icons.numbers),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 2,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido")
+                    ])),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "vaccinationSchedule",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Vacunas",
+                      hintText: "Escriba las vacunas que tiene la mascota",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 200,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "lastDeworming",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Última desparasitación",
+                      hintText: "Fecha última desparasitación",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 20,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "recentTreatments",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Tratamientos recientes",
+                      hintText: "Escriba los tratamientos más recientes",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 200,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "animalBehavior",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Comportamiento de la mascota",
+                      hintText: "Escriba el comportamiento",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 200,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "reasonForConsultation",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Razón de la consulta",
+                      hintText: "",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 200,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "physicalCondition",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Condición física",
+                      hintText: "Condición física de la mascota",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 200,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                    name: "temperature",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Temperatura",
+                        hintText: "Ingresa temperatura de la mascota",
+                        prefixIcon: Icon(Icons.numbers),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 3,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido"),
+                      FormBuilderValidators.min(context, 0,
+                          errorText: "La temperatura ser mayor o igual que 0")
+                    ])),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                    name: "heartFrequency",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Frecuencia cardíaca",
+                        hintText: "Ingresa frecuencia cardíaca de la mascota",
+                        prefixIcon: Icon(Icons.numbers),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 3,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido")
+                    ])),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                    name: "respiratoryFrequency",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Frecuencia respiratoria",
+                        hintText:
+                            "Ingresa frecuencia respiratoria de la mascota",
+                        prefixIcon: Icon(Icons.numbers),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 3,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido")
+                    ])),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                    name: "tllc",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Tiempo de llenado capilar(Seg)",
+                        hintText: "Ingresa el tiempo de llenado capilar",
+                        prefixIcon: Icon(Icons.numbers),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 5,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido")
+                    ])),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                    name: "pulse",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Pulso",
+                        hintText: "Ingresa el pulso de la mascota",
+                        prefixIcon: Icon(Icons.numbers),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 5,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido")
+                    ])),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                    name: "trcp",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Tiempo de recuperación del pliegue cutáneo",
+                        hintText: "Ingresa el tiempo en segundos",
+                        prefixIcon: Icon(Icons.numbers),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 5,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido")
+                    ])),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                    name: "percentageDehydration",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Porcentaje deshidratación",
+                        hintText: "Ingresa el porcentaje",
+                        prefixIcon: Icon(Icons.numbers),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 5,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido")
+                    ])),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "mucous",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Estado de la mucosa",
+                      hintText: "Mucosa de la mascota",
+                      prefixIcon: Icon(Icons.color_lens_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  maxLength: 50,
+                  validator: FormBuilderValidators.required(context,
+                      errorText: "Valor requerido"),
+                ),
+              )
             ])));
   }
 
@@ -78,7 +659,6 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
       final nameOwner = values['nameOwner'];
       final contactOwner = values['contactOwner'];
       final addressOwner = values['addressOwner'];
-      final phoneNumberOwner = values['phoneNumberOwner'];
       final emailAddressOwner = values['emailAddressOwner'];
 
       //Reseña
@@ -123,7 +703,6 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
           nameOwner,
           contactOwner,
           addressOwner,
-          phoneNumberOwner,
           emailAddressOwner,
           name,
           specie,

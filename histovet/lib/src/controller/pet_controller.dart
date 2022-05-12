@@ -37,7 +37,6 @@ class PetController {
   }
 
   Future<List<Pet>> allPets() async {
-    
     _pets = await _service.getPetsBD();
     return _pets;
   }

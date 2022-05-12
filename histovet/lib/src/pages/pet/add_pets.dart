@@ -14,7 +14,7 @@ class AddPet extends StatefulWidget {
 
 class _AddPetState extends State<AddPet> {
   final _formState = GlobalKey<FormBuilderState>();
-  bool respuesta = false;
+  bool answer = false;
   PetController petCont = new PetController();
   @override
   Widget build(BuildContext context) {
@@ -242,7 +242,7 @@ class _AddPetState extends State<AddPet> {
     );
   }
 
-  getInfoPet() async {
+  void getInfoPet() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
       final values = _formState.currentState!.value;
@@ -263,8 +263,8 @@ class _AddPetState extends State<AddPet> {
   }
 
   void messageAdd(Pet pet) async {
-    respuesta = await petCont.addPet(pet);
-    if (respuesta) {
+    answer = await petCont.addPet(pet);
+    if (answer) {
       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Se guardó la información de la mascota"),

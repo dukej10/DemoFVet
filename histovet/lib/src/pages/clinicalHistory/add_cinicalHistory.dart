@@ -170,7 +170,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                       labelText: "Dirección",
-                      hintText: "Ingrese el nombre de la mascota",
+                      hintText: "Ingrese la dirección de la mascota",
                       prefixIcon: Icon(Icons.person_outline_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
@@ -189,7 +189,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                       labelText: "Nombre de la mascota",
-                      hintText: "Ingrese el nombre del dueño",
+                      hintText: "Ingrese el nombre de la mascota",
                       prefixIcon: Icon(Icons.person_outline_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
@@ -208,7 +208,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                       labelText: "Correo electrónico",
-                      hintText: "Ingrese el nombre del dueño",
+                      hintText: "Ingrese el correo electrónico",
                       prefixIcon: Icon(Icons.person_outline_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),

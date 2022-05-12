@@ -50,7 +50,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
           TextField(
             controller: searchController,
             decoration: InputDecoration(
-              labelText: 'nombre medicamento',
+              labelText: 'Ingrese el nombre del medicamento',
               //errorText: 'Error message',
               border: OutlineInputBorder(),
               suffixIcon: Icon(
@@ -158,7 +158,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                     ),
                                     Row(
                                       children: [
-                                        Text("  Descripcion: ",
+                                        Text("  Descripción: ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                         Text(medicine.descripcion),
@@ -172,7 +172,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                               ),
                           if (medicines.length == 0)
                             Column(
-                              children: [Text("No hay info")],
+                              children: [Text("No hay información")],
                             )
                         ],
                       );

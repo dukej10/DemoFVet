@@ -60,7 +60,7 @@ class _clinicalHistoryState extends State<clinicalHistory> {
                           child: Container(
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage('assets/img/fondo.jpg'),
+                                  image: AssetImage('assets/img/fondo3.jpg'),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -73,7 +73,7 @@ class _clinicalHistoryState extends State<clinicalHistory> {
                                                 history.id.toString())));
                                   },
                                   leading: Icon(
-                                    FontAwesomeIcons.paw,
+                                    FontAwesomeIcons.paperclip,
                                     color: Colors.black,
                                   ),
                                   title: Text(

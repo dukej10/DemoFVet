@@ -45,7 +45,7 @@ class _addMedicine extends State<addMedicine> {
                   decoration: InputDecoration(
                       labelText: "Código",
                       hintText: "Ingrese el código del medicamento",
-                      prefixIcon: Icon(Icons.medication),
+                      prefixIcon: Icon(Icons.code),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   keyboardType: TextInputType.number,
@@ -70,7 +70,7 @@ class _addMedicine extends State<addMedicine> {
                     decoration: InputDecoration(
                         labelText: "Nombre",
                         hintText: "Ingrese el nombre del medicamento",
-                        prefixIcon: Icon(Icons.medication),
+                        prefixIcon: Icon(Icons.people),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
                     keyboardType: TextInputType.text,
@@ -88,7 +88,7 @@ class _addMedicine extends State<addMedicine> {
                     decoration: InputDecoration(
                         labelText: "Descripción",
                         hintText: "Ingrese la descripción del medicamento",
-                        prefixIcon: Icon(Icons.medication),
+                        prefixIcon: Icon(Icons.description),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
                     keyboardType: TextInputType.text,
@@ -106,7 +106,7 @@ class _addMedicine extends State<addMedicine> {
                     decoration: InputDecoration(
                         labelText: "Grupo",
                         hintText: "Ingrese el grupo del medicamento",
-                        prefixIcon: Icon(Icons.medication),
+                        prefixIcon: Icon(Icons.group),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
                     keyboardType: TextInputType.text,
@@ -124,7 +124,7 @@ class _addMedicine extends State<addMedicine> {
                   decoration: InputDecoration(
                       labelText: "Precio",
                       hintText: "Ingrese el precio del medicamento",
-                      prefixIcon: Icon(Icons.medication),
+                      prefixIcon: Icon(Icons.price_change),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   keyboardType: TextInputType.number,

@@ -25,35 +25,6 @@ class MedicineService {
     return medicine;
   }
 
-  Future<List<Medicine>> getMedicines(String name) async {
-    List<Medicine> _medicines = [];
-    try {
-      final collection = FirebaseFirestore.instance.collection('medicines');
-      collection.snapshots().listen((querySnapshot) {
-        for (var doc in querySnapshot.docs) {
-          Map<String, dynamic> data = doc.data();
-          //print(doc.data());
-          Pet newPet = Pet(
-              data["id"],
-              data["code"],
-              data["name"],
-              data["nameOwner"],
-              data["contactOwner"],
-              data["documentOwner"],
-              data["age"],
-              data["breed"],
-              data["specie"],
-              data["color"],
-              data["sex"]);
-          mascotas.add(newPet);
-        }
-      });
-      return mascotas;
-    } catch (e) {
-      return mascotas;
-    }
-  }
-
   CollectionReference medicineAll =
       FirebaseFirestore.instance.collection("medicine");
 
@@ -71,7 +42,7 @@ class MedicineService {
           "code": medicine.code,
           "name": medicine.name,
           "description": medicine.descripcion,
-          "group": medicine.grupo,
+          "group": medicine.group,
           "precio": medicine.precio,
           "fechaVen": medicine.fechaVen
         }, SetOptions(merge: true));
@@ -82,7 +53,7 @@ class MedicineService {
           "code": medicine.code,
           "name": medicine.name,
           "description": medicine.descripcion,
-          "group": medicine.grupo,
+          "group": medicine.group,
           "precio": medicine.precio,
           "fechaVen": medicine.fechaVen
         });

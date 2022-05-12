@@ -12,9 +12,4 @@ class MedicineController {
     Medicine _medicine = await _service.getMedicine(name);
     return _medicine;
   }
-
-  Future<Medicine> searchMedicine(String name) async {
-    Medicine _medicine = await _service.searchMedicineBD(name);
-    return _medicine;
-  }
 }

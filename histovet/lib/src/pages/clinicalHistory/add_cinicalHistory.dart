@@ -37,7 +37,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
-                  name: "numberClinicalHistory",
+                  name: "numberCH",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                       labelText: "Número de historia clinica",
@@ -169,12 +169,31 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                       labelText: "Dirección",
-                      hintText: "Ingrese la dirección de residencia",
+                      hintText: "Ingrese el nombre de la mascota",
                       prefixIcon: Icon(Icons.person_outline_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   keyboardType: TextInputType.text,
                   maxLength: 20,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido")
+                  ]),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  name: "name",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Nombre de la mascota",
+                      hintText: "Ingrese el nombre del dueño",
+                      prefixIcon: Icon(Icons.person_outline_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  keyboardType: TextInputType.text,
+                  maxLength: 12,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
                         errorText: "Valor requerido")
@@ -196,7 +215,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                   maxLength: 20,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
-                        errorText: "Valor requerido")
+                        errorText: "Valor requerido"),
+                        FormBuilderValidators.email(context, errorText: "Debe tener formato de correo")
                   ]),
                 ),
               ),
@@ -650,7 +670,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
       final values = _formState.currentState!.value;
 
       //Identificación historia clinica
-      final numberClinicalHistory = values['numberCH'];
+      final numberClinicalHistory = int.parse(values['numberCH']);
       final date = values['date'];
       final time = values['time'];
 
@@ -663,11 +683,12 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
 
       //Reseña
       final name = values['name'];
-      final specie = values['specie'];
+      print("tengo " + name);
+      final specie = values['subespecie'];
       final breed = values['breed'];
       final sex = values['sex'];
       final color = values['color'];
-      final weight = values['weight'];
+      final weight = double.parse(values['weight']);
       final origin = values['origin'];
 
       //Anamnesis
@@ -684,15 +705,15 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
 
       //Examen fisico generaliz
       final physicalCondition = values['physicalCondition'];
-      final temperature = values['temperature'];
-      final heartFrequency = values['heartFrequency'];
-      final respiratoryFrequency = values['respiratoryFrequency'];
+      final temperature = double.parse(values['temperature']);
+      final heartFrequency = double.parse(values['heartFrequency']);
+      final respiratoryFrequency = double.parse(values['respiratoryFrequency']);
       //tiempo de llena capilar: TLLC
-      final tllc = values['tllc'];
-      final pulse = values['pulse'];
+      final tllc = double.parse(values['tllc']);
+      final pulse = double.parse(values['pulse']);
       //tiempo de recuperación del pliegue cutáneo TRPC
-      final trcp = values['trcp'];
-      final percentageDehydration = values['percentageDehydration'];
+      final trcp = double.parse(values['trcp']);
+      final percentageDehydration = double.parse(values['percentageDehydration']);
       final mucous = values['mucous'];
       late ClinicalHistory clinicalHistory = new ClinicalHistory(
           "",

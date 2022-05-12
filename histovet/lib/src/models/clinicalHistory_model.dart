@@ -26,7 +26,7 @@ class ClinicalHistory {
   final String previousIllnesses;
   final String previousSurgeries;
   final String sterilized;
-  final int nAnimalBirths;
+  final String nAnimalBirths;
   final String vaccinationSchedule;
   final String lastDeworming;
   final String recentTreatments;
@@ -40,7 +40,7 @@ class ClinicalHistory {
   final double pulse;
   final double trcp;
   final double percentageDehydration;
-  final double mucous;
+  String mucous;
 
   ClinicalHistory(
       this.id,

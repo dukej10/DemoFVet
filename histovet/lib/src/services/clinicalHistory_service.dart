@@ -6,42 +6,6 @@ import 'package:firebase_database/firebase_database.dart';
 class ClinicalHistoryService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final databaseRef = FirebaseDatabase.instance.ref();
-  ClinicalHistory clinicalHistory = ClinicalHistory(
-      "",
-      0,
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      0,
-      "",
-      "",
-      "",
-      "",
-      "",
-      0,
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0);
 
   Future<ClinicalHistory> getClinicalHistory(String id) async {
     final snapshot = await FirebaseFirestore.instance
@@ -181,8 +145,8 @@ class ClinicalHistoryService {
         "tllc": ch.tllc,
         "pulse": ch.pulse,
         "trcp": ch.trcp,
-        "percentageDehydration": clinicalHistory.percentageDehydration,
-        "mucous": clinicalHistory.mucous
+        "percentageDehydration": ch.percentageDehydration,
+        "mucous": ch.mucous
       }, SetOptions(merge: true));
       return true;
     } catch (e) {

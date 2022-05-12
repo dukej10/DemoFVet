@@ -14,14 +14,13 @@ class ClinicalHistory {
   final String nameOwner;
   final String contactOwner;
   final String addressOwner;
-  final String phoneNumberOwner;
   final String emailAddressOwner;
   final String name;
   final String specie;
   final String breed;
   final String sex;
   final String color;
-  final int weight;
+  final double weight;
   final String origin;
   final String diet;
   final String previousIllnesses;
@@ -52,7 +51,6 @@ class ClinicalHistory {
       this.nameOwner,
       this.contactOwner,
       this.addressOwner,
-      this.phoneNumberOwner,
       this.emailAddressOwner,
       this.name,
       this.specie,

@@ -69,7 +69,7 @@ class _clinicalHistoryState extends State<clinicalHistory> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => updateHistory(
+                                            builder: (context) => UpdateHistory(
                                                 history.id.toString())));
                                   },
                                   leading: Icon(
@@ -108,7 +108,8 @@ class _clinicalHistoryState extends State<clinicalHistory> {
   void messageDelete(String idHistory) async {
     respuesta = await histCont.deleteHistory(idHistory);
     if (respuesta) {
-      Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+      Navigator.pushNamed(context, '/clinicalHistories')
+          .then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Se eliminó la historia clínica"),
         backgroundColor: Colors.green,

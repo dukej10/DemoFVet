@@ -9,7 +9,7 @@ import 'medicine_update.dart';
 
 class MedicinePage extends StatefulWidget {
   static String id = "medicine_page";
-  MedicinePage({Key? key}) : super(key: key);
+  const MedicinePage({Key? key}) : super(key: key);
 
   @override
   State<MedicinePage> createState() => _MedicinePageState();
@@ -18,7 +18,7 @@ class MedicinePage extends StatefulWidget {
 class _MedicinePageState extends State<MedicinePage> {
   TextStyle txtStyle =
       const TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
-  MedicineController medicineCont = new MedicineController();
+  MedicineController medicineCont = MedicineController();
   bool respuesta = false;
 
   @override

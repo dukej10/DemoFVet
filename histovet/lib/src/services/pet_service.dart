@@ -10,7 +10,7 @@ class PetService {
   Future<Pet> getPetBD(String id) async {
     final snapshot =
         await FirebaseFirestore.instance.collection('pet').doc(id).get();
-    Pet pet = new Pet(
+    Pet pet = Pet(
         snapshot["id"],
         snapshot["code"],
         snapshot["name"],

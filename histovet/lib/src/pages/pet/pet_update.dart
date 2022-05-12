@@ -7,7 +7,7 @@ import '../../models/pet_model.dart';
 class UpdatePet extends StatefulWidget {
   static String id = "edit_pet";
   final String idPet;
-  UpdatePet(this.idPet, {Key? key}) : super(key: key);
+  const UpdatePet(this.idPet, {Key? key}) : super(key: key);
 
   @override
   State<UpdatePet> createState() => _UpdatePet();
@@ -15,7 +15,7 @@ class UpdatePet extends StatefulWidget {
 
 class _UpdatePet extends State<UpdatePet> {
   final _formState = GlobalKey<FormBuilderState>();
-  PetController petCont = new PetController();
+  PetController petCont = PetController();
 
   TextEditingController codeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -261,7 +261,7 @@ class _UpdatePet extends State<UpdatePet> {
       final subspecies = values['subspecies'];
       final color = values['color'];
       final sex = values['sex'];
-      late Pet pet = new Pet(widget.idPet, code, name, nameOwner, contactOwner,
+      late Pet pet = Pet(widget.idPet, code, name, nameOwner, contactOwner,
           docOwner, age, breed, subspecies, color, sex);
       messageUpdate(pet);
     }

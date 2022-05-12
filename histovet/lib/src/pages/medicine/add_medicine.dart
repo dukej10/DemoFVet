@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 
 class AddMedicine extends StatefulWidget {
   static String id = "form_medicine";
-  AddMedicine({Key? key}) : super(key: key);
+  const AddMedicine({Key? key}) : super(key: key);
 
   @override
   State<AddMedicine> createState() => _AddMedicine();
@@ -179,10 +179,10 @@ class _AddMedicine extends State<AddMedicine> {
       final precio = double.parse(values['precio']);
       var fechaAux = values['fechaVen'].toString();
       List<String> fechas = fechaAux.split("00:00:00.000");
-      print("fecha " + fechas[0]);
+      //print("fecha " + fechas[0]);
       final fechaVen = fechas[0] + fechas[1];
       late Medicine medicine =
-          new Medicine("", code, name, description, group, precio, fechaVen);
+          Medicine("", code, name, description, group, precio, fechaVen);
       addMedicine(medicine);
     }
   }

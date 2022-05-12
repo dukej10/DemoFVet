@@ -8,7 +8,7 @@ import 'package:histovet/src/pages/pet/pet_update.dart';
 
 class PetsPage extends StatefulWidget {
   static String id = "pets_page";
-  PetsPage({Key? key}) : super(key: key);
+  const PetsPage({Key? key}) : super(key: key);
 
   @override
   State<PetsPage> createState() => _PetsPageState();
@@ -17,7 +17,7 @@ class PetsPage extends StatefulWidget {
 class _PetsPageState extends State<PetsPage> {
   TextStyle txtStyle =
       const TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
-  PetController petCont = new PetController();
+  PetController petCont = PetController();
   bool answer = false;
 
   @override

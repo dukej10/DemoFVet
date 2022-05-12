@@ -5,6 +5,8 @@ import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import '../pet/pets_page.dart';
 
 class GridDashboard extends StatelessWidget {
+  const GridDashboard({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {

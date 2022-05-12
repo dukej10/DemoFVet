@@ -6,7 +6,7 @@ import '../../models/pet_model.dart';
 
 class AddPet extends StatefulWidget {
   static String id = "form_pet";
-  AddPet({Key? key}) : super(key: key);
+  const AddPet({Key? key}) : super(key: key);
 
   @override
   State<AddPet> createState() => _AddPetState();
@@ -15,7 +15,7 @@ class AddPet extends StatefulWidget {
 class _AddPetState extends State<AddPet> {
   final _formState = GlobalKey<FormBuilderState>();
   bool answer = false;
-  PetController petCont = new PetController();
+  PetController petCont = PetController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -256,7 +256,7 @@ class _AddPetState extends State<AddPet> {
       final specie = values['subespecie'];
       final color = values['color'];
       final sex = values['sex'];
-      late Pet pet = new Pet("", code, name, nameOwner, contactOwner, docOwner,
+      late Pet pet = Pet("", code, name, nameOwner, contactOwner, docOwner,
           age, breed, specie, color, sex);
       messageAdd(pet);
     }

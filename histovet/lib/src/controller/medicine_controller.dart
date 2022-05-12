@@ -19,14 +19,14 @@ class MedicineController{
 
   Future<List<Medicine>> searchMedicine(String name) async {
     List<Medicine> medicines = [];
-    print("Llegó nombre " + name);
+    //print("Llegó nombre " + name);
     try {
     final collection = FirebaseFirestore.instance.collection('medicine').where("name", isEqualTo: name);
     collection.snapshots().listen((querySnapshot) {
       for (var doc in querySnapshot.docs) {
         Map<String, dynamic> data = doc.data();
-        print("encontró");
-        print(doc.data());
+        // print("encontró");
+        // print(doc.data());
         Medicine newMedicine = Medicine(data["id"], data["code"], data["name"], data["description"], data["group"],data["precio"],data["fechaVen"]);
         medicines.add(newMedicine);
       }

@@ -6,7 +6,7 @@ import '../../controller/clinicalhistory_controller.dart';
 
 class AddClinicalHistory extends StatefulWidget {
   static String id = "form_clinicalHistory";
-  AddClinicalHistory({Key? key}) : super(key: key);
+  const AddClinicalHistory({Key? key}) : super(key: key);
 
   @override
   State<AddClinicalHistory> createState() => _AddClinicalHistoryState();
@@ -16,7 +16,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
   final _formState = GlobalKey<FormBuilderState>();
   bool respuesta = false;
   ClinicalHistoryController clinicalHistorycont =
-      new ClinicalHistoryController();
+      ClinicalHistoryController();
 
   @override
   Widget build(BuildContext context) {
@@ -716,7 +716,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
       final trcp = double.parse(values['trcp']);
       final percentageDehydration = double.parse(values['percentageDehydration']);
       final mucous = values['mucous'];
-      late ClinicalHistory clinicalHistory = new ClinicalHistory(
+      late ClinicalHistory clinicalHistory = ClinicalHistory(
           "",
           numberClinicalHistory,
           date,
@@ -753,11 +753,11 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
           percentageDehydration,
           mucous);
 
-      AddCH(clinicalHistory);
+      messageAd(clinicalHistory);
     }
   }
 
-  void AddCH(ClinicalHistory clinicalHistory) async {
+  void messageAd(ClinicalHistory clinicalHistory) async {
     respuesta = await clinicalHistorycont.addClinicalHistory(clinicalHistory);
     if (respuesta) {
       Navigator.pushNamed(context, '/clinicalHistories')

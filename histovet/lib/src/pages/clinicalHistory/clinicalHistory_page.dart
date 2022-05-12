@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:histovet/src/controller/clinicalhistory_controller.dart';
-import 'package:histovet/src/pages/clinicalHistory/add_cinicalHistory.dart';
-import 'package:histovet/src/pages/clinicalHistory/update_clinicalHistory.dart';
+import 'package:histovet/src/pages/clinicalHistory/add_cinicalhistory.dart';
+import 'package:histovet/src/pages/clinicalHistory/update_clinicalhistory.dart';
 
 import '../../models/clinicalhistory_model.dart';
 import '../widgets/widget_drawer.dart';
 
 class HistoryPage extends StatefulWidget {
   static String id = "clinicalHistory";
-  HistoryPage({Key? key}) : super(key: key);
+  const HistoryPage({Key? key}) : super(key: key);
 
   @override
   State<HistoryPage> createState() => _HistoryPageState();
@@ -18,7 +18,7 @@ class HistoryPage extends StatefulWidget {
 class _HistoryPageState extends State<HistoryPage> {
   TextStyle txtStyle =
       const TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
-  ClinicalHistoryController histCont = new ClinicalHistoryController();
+  ClinicalHistoryController histCont = ClinicalHistoryController();
   bool respuesta = false;
 
   @override

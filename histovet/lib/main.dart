@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/Home/home_page.dart';
-import 'package:histovet/src/pages/clinicalHistory/add_cinicalHistory.dart';
+import 'package:histovet/src/pages/clinicalHistory/add_cinicalhistory.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/medicine/add_medicine.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
@@ -31,21 +31,21 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'HistoVet'),
       initialRoute: Home.id,
       routes: {
-        Home.id: (context) => Home(),
-        '/home': (context) => Home(),
-        PetsPage.id: (context) => PetsPage(),
-        '/pets': (context) => PetsPage(),
-        AddPet.id: (context) => AddPet(),
-        UpdatePet.id: (context) => UpdatePet(""),
-        ConsultarMedicamento.id: (context) => ConsultarMedicamento(),
-        '/updatepet': (context) => UpdatePet(""),
-        MedicinePage.id: (context) => MedicinePage(),
-        '/medicine': (context) => MedicinePage(),
-        AddMedicine.id: (context) => AddMedicine(),
-        HistoryPage.id: (context) => HistoryPage(),
-        '/clinicalHistories': (context) => HistoryPage(),
-        AddClinicalHistory.id: (context) => AddClinicalHistory(),
-        '/addHistory': (context) => AddClinicalHistory(),
+        Home.id: (context) => const Home(),
+        '/home': (context) => const Home(),
+        PetsPage.id: (context) => const PetsPage(),
+        '/pets': (context) => const PetsPage(),
+        AddPet.id: (context) => const AddPet(),
+        UpdatePet.id: (context) => const UpdatePet(""),
+        ConsultarMedicamento.id: (context) => const ConsultarMedicamento(),
+        '/updatepet': (context) => const UpdatePet(""),
+        MedicinePage.id: (context) => const MedicinePage(),
+        '/medicine': (context) => const MedicinePage(),
+        AddMedicine.id: (context) => const AddMedicine(),
+        HistoryPage.id: (context) => const HistoryPage(),
+        '/clinicalHistories': (context) => const HistoryPage(),
+        AddClinicalHistory.id: (context) => const AddClinicalHistory(),
+        '/addHistory': (context) => const AddClinicalHistory(),
       },
     );
   }
@@ -71,15 +71,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:histovet/src/models/medicine_model.dart';
 
 class ConsultarMedicamento extends StatefulWidget {
   static String id = "consultar_medicamento";
-  ConsultarMedicamento({Key? key}) : super(key: key);
+  const ConsultarMedicamento({Key? key}) : super(key: key);
 
   @override
   State<ConsultarMedicamento> createState() => _ConsultarMedicamentoState();
@@ -16,7 +16,6 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -58,7 +57,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
           const SizedBox(
             height: 5,
           ),
-          Container(
+          SizedBox(
             width: 20,
             height: 30,
             child: ElevatedButton(
@@ -86,11 +85,10 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                     if (snapshot.hasError) {
                       return const Text('Error');
                     } else if (snapshot.hasData) {
-                      print("Hay elementos");
                       List medicines = snapshot.data ?? [];
                       return ListView(
                         children: [
-                          if (medicines.length > 0)
+                          if (medicines.isNotEmpty)
                             for (Medicine medicine in medicines)
                               Container(
                                 decoration: BoxDecoration(
@@ -167,9 +165,9 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                   ],
                                 ),
                               ),
-                          if (medicines.length == 0)
+                          if (medicines.isEmpty)
                             Column(
-                              children: [const Text("No hay información")],
+                              children: const [Text("No hay información")],
                             )
                         ],
                       );

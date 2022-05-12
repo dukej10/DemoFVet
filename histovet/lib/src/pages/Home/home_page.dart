@@ -4,7 +4,7 @@ import 'griddashboard.dart';
 
 class Home extends StatefulWidget {
   static String id = "home";
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -27,28 +27,28 @@ class _HomeState extends State<Home> {
               children: <Widget>[
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    const Text(
+                  children: const <Widget>[
+                    Text(
                       "HistoVet",
                       style: TextStyle(
                               color: Colors.black,
                               fontSize: 21,
                               fontWeight: FontWeight.bold)),
                     
-                    const SizedBox(
+                    SizedBox(
                       height: 4,
                     ),
-                    const Text(
+                    Text(
                       "La historia médica de tu mascota a la mano",
                       style: TextStyle(
                               color: Color(0xffa29aac),
                               fontSize: 12,
                               fontWeight: FontWeight.w600),
                     ),
-                     const SizedBox(
+                     SizedBox(
                       height: 20,
                     ),
-                    const Text(
+                    Text(
                       "Home",
                       style: TextStyle(
                               color: Color(0xffa29aac),
@@ -68,7 +68,7 @@ class _HomeState extends State<Home> {
           const SizedBox(
             height: 18,
           ),
-         GridDashboard()
+         const GridDashboard()
         ],
       ),
     );

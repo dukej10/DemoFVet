@@ -44,7 +44,7 @@ class MenuLateral extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.medication),
-              title: const Text("Medicines"),
+              title: const Text("Medicinas"),
               onTap: () {
                 Navigator.pushNamed(context, MedicinePage.id);
               },

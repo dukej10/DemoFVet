@@ -9,7 +9,7 @@ import '../../models/medicine_model.dart';
 class UpdateMedicine extends StatefulWidget {
   static String id = "edit_medicine";
   final String idMedicine;
-  UpdateMedicine(this.idMedicine, {Key? key}) : super(key: key);
+  const UpdateMedicine(this.idMedicine, {Key? key}) : super(key: key);
 
   @override
   State<UpdateMedicine> createState() => _Updatemedicationtate();
@@ -17,7 +17,7 @@ class UpdateMedicine extends StatefulWidget {
 
 class _Updatemedicationtate extends State<UpdateMedicine> {
   final _formState = GlobalKey<FormBuilderState>();
-  MedicineController MedicineCont = new MedicineController();
+  MedicineController medicineCont = MedicineController();
 
   TextEditingController codeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -187,14 +187,14 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
       final precio = double.parse(values['precio']);
       final fechaVen = values['fechaVen'];
 
-      late Medicine medicine = new Medicine(
+      late Medicine medicine = Medicine(
           widget.idMedicine, code, name, description, group, precio, fechaVen);
-      updateMedicine(medicine);
+      messageUpdate(medicine);
     }
   }
 
-  void updateMedicine(Medicine medicine) async {
-    respuesta = await MedicineCont.updateMedicine(medicine);
+  void messageUpdate(Medicine medicine) async {
+    respuesta = await medicineCont.updateMedicine(medicine);
     if (respuesta) {
       Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -213,7 +213,7 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
 
   void getInfo() async {
     // await _service.getMedicine(widget.idMedicine);
-    Medicine medicine = await MedicineCont.getMedicine(widget.idMedicine);
+    Medicine medicine = await medicineCont.getMedicine(widget.idMedicine);
     setState(() {
       codeController.text = medicine.code.toString();
       nameController.text = medicine.name;

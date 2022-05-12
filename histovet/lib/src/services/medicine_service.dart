@@ -7,11 +7,11 @@ class MedicineService {
    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final databaseRef = FirebaseDatabase.instance.ref();
 
-  Medicine medicine = new Medicine("", "", "","","",0.0, "");
+  Medicine medicine = Medicine("", "", "","","",0.0, "");
 
   Future<Medicine> getMedicine(String id) async {
      final snapshot= await FirebaseFirestore.instance.collection('medicine').doc(id).get();
-     Medicine medicine = new Medicine(snapshot["id"], snapshot["code"], snapshot["name"], snapshot["description"], snapshot["group"],snapshot["precio"],snapshot["fechaVen"]);
+     Medicine medicine = Medicine(snapshot["id"], snapshot["code"], snapshot["name"], snapshot["description"], snapshot["group"],snapshot["precio"],snapshot["fechaVen"]);
      //print(medicine.toString());
      return medicine;
   }
@@ -19,14 +19,14 @@ class MedicineService {
 
   Future<List<Medicine>> searchMedicine(String name) async {
     List<Medicine> medicines = [];
-    print("Llegó nombre " + name);
+    //print("Llegó nombre " + name);
     try {
     final collection = FirebaseFirestore.instance.collection('medicine').where("name", isEqualTo: name);
     collection.snapshots().listen((querySnapshot) {
       for (var doc in querySnapshot.docs) {
         Map<String, dynamic> data = doc.data();
-        print("encontró");
-        print(doc.data());
+        // print("encontró");
+        // print(doc.data());
         Medicine newMedicine = Medicine(data["id"], data["code"], data["name"], data["description"], data["group"],data["precio"],data["fechaVen"]);
         medicines.add(newMedicine);
       }

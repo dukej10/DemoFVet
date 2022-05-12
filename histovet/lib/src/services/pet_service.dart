@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/pet_model.dart';
 
-import 'package:firebase_database/firebase_database.dart';
 
 class PetService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -51,7 +50,6 @@ class PetService {
 
   Future<bool> updatePetBD(Pet pet) async {
     try {
-      final DocumentReference petDoc = _firestore.collection("pet").doc();
       await FirebaseFirestore.instance.collection("pet").doc(pet.id).set({
         "id": pet.id,
         "code": pet.code,

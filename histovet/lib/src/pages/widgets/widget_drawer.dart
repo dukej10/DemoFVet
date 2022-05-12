@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:histovet/src/pages/clinicalHistory/clinicalHistory_page.dart';
+import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
-import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
-import 'package:histovet/src/pages/medicine/add_medicine.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 
 import '../Home/home_page.dart';
@@ -17,52 +15,52 @@ class MenuLateral extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.blue,
               ),
               child: Column(
                 children: [
                   Expanded(child: Image.asset('assets/img/vet.png')),
-                  Text("HistoVet"),
-                  SizedBox(
+                  const Text("HistoVet"),
+                  const SizedBox(
                     height: 10.0,
                   )
                 ],
               )),
           Column(children: [
             ListTile(
-              leading: Icon(Icons.house),
-              title: Text("Inicio"),
+              leading: const Icon(Icons.house),
+              title: const Text("Inicio"),
               onTap: () {
                 Navigator.pushNamed(context, Home.id);
               },
             ),
             ListTile(
-              leading: Icon(Icons.pets),
-              title: Text("Mascotas"),
+              leading: const Icon(Icons.pets),
+              title: const Text("Mascotas"),
               onTap: () {
                 Navigator.pushNamed(context, PetsPage.id);
               },
             ),
             ListTile(
-              leading: Icon(Icons.medication),
-              title: Text("Medicines"),
+              leading: const Icon(Icons.medication),
+              title: const Text("Medicines"),
               onTap: () {
                 Navigator.pushNamed(context, MedicinePage.id);
               },
             ),
             ListTile(
-              leading: Icon(Icons.content_paste_search_rounded),
-              title: Text("Consultar Medicamento"),
+              leading: const Icon(Icons.content_paste_search_rounded),
+              title: const Text("Consultar Medicamento"),
               onTap: () {
                 Navigator.pushNamed(context, ConsultarMedicamento.id);
               },
             ),
             ListTile(
-              leading: Icon(Icons.article_sharp ),
-              title: Text("Historias Clínicas"),
+              leading: const Icon(Icons.article_sharp ),
+              title: const Text("Historias Clínicas"),
               onTap: () {
-                Navigator.pushNamed(context, clinicalHistory.id);
+                Navigator.pushNamed(context, HistoryPage.id);
               },
             )
           ])

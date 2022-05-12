@@ -1,4 +1,4 @@
-import '../models/clinicalHistory_model.dart';
+import '../models/clinicalhistory_model.dart';
 import '../services/clinicalHistory_Service.dart';
 
 class ClinicalHistoryController {

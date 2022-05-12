@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:histovet/src/controller/pet_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
-import 'package:histovet/src/models/pet_model.dart';
 import 'package:histovet/src/pages/medicine/add_medicine.dart';
-import 'package:histovet/src/pages/pet/pets_page.dart';
 import 'package:histovet/src/pages/widgets/widget_drawer.dart';
-import 'package:histovet/src/services/pet_service.dart';
-import 'package:histovet/src/pages/pet/add_pets.dart';
-import 'package:histovet/src/pages/pet/pet_update.dart';
 
 import '../../controller/medicine_controller.dart';
 import 'medicine_update.dart';
@@ -23,7 +17,7 @@ class MedicinePage extends StatefulWidget {
 
 class _MedicinePageState extends State<MedicinePage> {
   TextStyle txtStyle =
-      TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
+      const TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
   MedicineController medicineCont = new MedicineController();
   bool respuesta = false;
 
@@ -33,7 +27,7 @@ class _MedicinePageState extends State<MedicinePage> {
       child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text("Medicinas"),
+            title: const Text("Medicinas"),
             actions: [
               IconButton(
                   onPressed: () {
@@ -44,17 +38,17 @@ class _MedicinePageState extends State<MedicinePage> {
           ),
           drawer: MenuLateral(),
           floatingActionButton: FloatingActionButton(
-              child: Icon(FontAwesomeIcons.plus),
+              child: const Icon(FontAwesomeIcons.plus),
               elevation: 15.0,
               backgroundColor: Colors.blue,
               onPressed: () {
-                Navigator.pushNamed(context, addMedicine.id);
+                Navigator.pushNamed(context, AddMedicine.id);
               }),
           body: FutureBuilder(
               future: medicineCont.allMedicines(),
               builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-      return CircularProgressIndicator();
+      return const CircularProgressIndicator();
     } else if (snapshot.connectionState == ConnectionState.done) {
       if (snapshot.hasError) {
         return const Text('Error');
@@ -64,10 +58,10 @@ class _MedicinePageState extends State<MedicinePage> {
                   children: [
                     for (Medicine medicine in medicines)
                       Card(
-                        margin: EdgeInsets.all(6),
+                        margin: const EdgeInsets.all(6),
                         elevation: 6,
                         child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage('assets/img/fondo2.jpg'),
                                     fit: BoxFit.cover,
@@ -78,16 +72,16 @@ class _MedicinePageState extends State<MedicinePage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              updateMedicine(medicine.id.toString())));
+                                              UpdateMedicine(medicine.id.toString())));
                                 },
-                                leading: Icon(FontAwesomeIcons.kitMedical, color: Colors.black,),
+                                leading: const Icon(FontAwesomeIcons.kitMedical, color: Colors.black,),
                                 title: Text(medicine.name, style: txtStyle,),
                                 subtitle: Text(
                                   medicine.code,
                                   style: txtStyle.copyWith(fontSize: 17),
                                 ),
                                 trailing: IconButton(
-                                  icon: Icon(Icons.delete, color: Colors.black),
+                                  icon: const Icon(Icons.delete, color: Colors.black),
                                   onPressed: () {
                                     messageDelete(medicine.id.toString());
                                     Navigator.pushNamed(context, '/medicine')
@@ -101,7 +95,7 @@ class _MedicinePageState extends State<MedicinePage> {
         return const Text('Empty data');
       }
     } else {
-      return Text('State');
+      return const Text('State');
     }})),
     );
   }
@@ -111,12 +105,12 @@ class _MedicinePageState extends State<MedicinePage> {
     respuesta = await medicineCont.deleteMedicine(idMedicine);
     if (respuesta) {
       Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Se eliminó la medicina"),
         backgroundColor: Colors.green,
       ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("No se pudo eliminar"),
         backgroundColor: Colors.green,
       ));

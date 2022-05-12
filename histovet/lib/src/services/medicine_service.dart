@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/medicine_model.dart';
-import '../models/pet_model.dart';
 
 import 'package:firebase_database/firebase_database.dart';
 class MedicineService {

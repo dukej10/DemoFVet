@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import '../../controller/clinicalHistory_controller.dart';
-import '../../models/clinicalHistory_model.dart';
+import '../../controller/clinicalhistory_controller.dart';
+import '../../models/clinicalhistory_model.dart';
 
 class UpdateHistory extends StatefulWidget {
   static String id = "edit_history";
@@ -64,10 +64,10 @@ class _UpdateHistoryState extends State<UpdateHistory> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Editar Información Mascota"),
+        title: const Text("Editar Información Mascota"),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.save),
+        child: const Icon(Icons.save),
         onPressed: () {
           getInfoHistory();
         },
@@ -77,12 +77,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
           child: ListView(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: numberCHController,
                   name: "numberCH",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Número de historia clinica",
                       prefixIcon: Icon(Icons.numbers),
                       border: OutlineInputBorder(
@@ -103,12 +103,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderTextField(
                       controller: dateController,
                       name: "date",
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           labelText: "Fecha",
                           prefixIcon: Icon(Icons.date_range),
                           border: OutlineInputBorder(
@@ -120,12 +120,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                             errorText: "Valor requerido")
                       ]))),
               Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderTextField(
                       controller: timeCHController,
                       name: "time",
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           labelText: "Hora",
                           hintText: "Ingrese la hora actual",
                           prefixIcon: Icon(Icons.timer),
@@ -138,12 +138,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                             errorText: "Valor requerido")
                       ]))),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: docOwnerCHController,
                     name: "docOwner",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Documento Dueño",
                         hintText: "Ingrese el documento del dueño",
                         prefixIcon: Icon(Icons.badge_outlined),
@@ -163,12 +163,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: nameOwnerController,
                   name: "nameOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Nombre Dueño",
                       hintText: "Ingrese el nombre del dueño",
                       prefixIcon: Icon(Icons.person_outline_outlined),
@@ -183,12 +183,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: contactOwnerController,
                   name: "contactOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "contacto Dueño",
                       hintText: "Ingrese el contacto del dueño",
                       prefixIcon: Icon(Icons.contact_phone_outlined),
@@ -209,12 +209,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: addressOwnerController,
                   name: "addressOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Dirección",
                       hintText: "Ingrese la dirección de residencia",
                       prefixIcon: Icon(Icons.person_outline_outlined),
@@ -229,12 +229,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: nameController,
                   name: "name",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Nombre de la mascota",
                       hintText: "Ingrese el nombre del dueño",
                       prefixIcon: Icon(Icons.person_outline_outlined),
@@ -249,12 +249,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: emailAddressOwnerController,
                   name: "emailAddressOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Correo electrónico",
                       hintText: "Ingrese el nombre del dueño",
                       prefixIcon: Icon(Icons.person_outline_outlined),
@@ -271,12 +271,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: specieController,
                   name: "specie",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Subespecie",
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
@@ -287,12 +287,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: breedController,
                     name: "breed",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Raza",
                         hintText: "Ingrese la raza de la mascotas",
                         prefixIcon: Icon(Icons.pets),
@@ -305,12 +305,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: sexController,
                   name: "sex",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Sexo",
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
@@ -321,12 +321,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: colorController,
                   name: "color",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Color",
                       hintText: "Ingrese el color de la mascotas",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -338,12 +338,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: weightController,
                   name: "weight",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Pesp(Kg)",
                       hintText: "Ingrese el peso de la mascota",
                       prefixIcon: Icon(Icons.monitor_weight_outlined),
@@ -362,12 +362,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: originController,
                   name: "origin",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Origen",
                       hintText: "Origen mascota",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -379,12 +379,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: dietCHController,
                   name: "diet",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Dieta",
                       hintText: "Dieta de la mascota",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -396,12 +396,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: previousIllnessesController,
                   name: "previousIllnesses",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Enfermedades previas",
                       hintText: "Enfermedades previas",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -413,12 +413,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: previousSurgeriesController,
                   name: "previousSurgeries",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "cirugías previas",
                       hintText: "Escriba enfermedades previas",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -430,12 +430,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: sterilizedController,
                   name: "sterilized",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Esterilizado",
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
@@ -446,12 +446,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: nAnimalBirthsController,
                     name: "nAnimalBirths",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Número de partos",
                         hintText: "Cuantos partos ha tenido la mascota",
                         prefixIcon: Icon(Icons.numbers),
@@ -465,12 +465,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: vaccinationScheduleController,
                   name: "vaccinationSchedule",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Vacunas",
                       hintText: "Escriba las vacunas que tiene la mascota",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -482,12 +482,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: lastDewormingController,
                   name: "lastDeworming",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Última desparasitación",
                       hintText: "Fecha última desparasitación",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -500,12 +500,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: recentTreatmentsController,
                   name: "recentTreatments",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Tratamientos recientes",
                       hintText: "Escriba los tratamientos más recientes",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -517,12 +517,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: animalBehaviorController,
                   name: "animalBehavior",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Comportamiento de la mascota",
                       hintText: "Escriba el comportamiento",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -534,12 +534,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: reasonForConsultationController,
                   name: "reasonForConsultation",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Razón de la consulta",
                       hintText: "",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -551,12 +551,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: physicalConditionController,
                   name: "physicalCondition",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Condición física",
                       hintText: "Condición física de la mascota",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -568,12 +568,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: temperatureController,
                     name: "temperature",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Temperatura",
                         hintText: "Ingresa temperatura de la mascota",
                         prefixIcon: Icon(Icons.numbers),
@@ -589,12 +589,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: heartFrequencyController,
                     name: "heartFrequency",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Frecuencia cardíaca",
                         hintText: "Ingresa frecuencia cardíaca de la mascota",
                         prefixIcon: Icon(Icons.numbers),
@@ -608,12 +608,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: respiratoryFrequencyController,
                     name: "respiratoryFrequency",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Frecuencia respiratoria",
                         hintText:
                             "Ingresa frecuencia respiratoria de la mascota",
@@ -628,12 +628,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: tllcController,
                     name: "tllc",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Tiempo de llenado capilar(Seg)",
                         hintText: "Ingresa el tiempo de llenado capilar",
                         prefixIcon: Icon(Icons.numbers),
@@ -647,12 +647,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: pulseController,
                     name: "pulse",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Pulso",
                         hintText: "Ingresa el pulso de la mascota",
                         prefixIcon: Icon(Icons.numbers),
@@ -666,12 +666,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: trcpController,
                     name: "trcp",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Tiempo de recuperación del pliegue cutáneo",
                         hintText: "Ingresa el tiempo en segundos",
                         prefixIcon: Icon(Icons.numbers),
@@ -685,12 +685,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: percentageDehydrationController,
                     name: "percentageDehydration",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Porcentaje deshidratación",
                         hintText: "Ingresa el porcentaje",
                         prefixIcon: Icon(Icons.numbers),
@@ -704,12 +704,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: mucousController,
                   name: "mucous",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Estado de la mucosa",
                       hintText: "Mucosa de la mascota",
                       prefixIcon: Icon(Icons.color_lens_outlined),
@@ -830,12 +830,12 @@ class _UpdateHistoryState extends State<UpdateHistory> {
     if (respuesta) {
       Navigator.pushNamed(context, '/clinicalHistories')
           .then((_) => setState(() {}));
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Se actualizó la información"),
         backgroundColor: Colors.green,
       ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("No se actualizó la información"),
         backgroundColor: Colors.green,
       ));

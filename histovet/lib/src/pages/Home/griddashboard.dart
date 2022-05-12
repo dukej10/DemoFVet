@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:histovet/src/pages/clinicalHistory/clinicalHistory_page.dart';
+import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 
 import '../pet/pets_page.dart';
@@ -8,19 +8,18 @@ class GridDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var color = 0xff453658;
     
     return Flexible(
       child: GridView.count(
           childAspectRatio: 1.0,
-          padding: EdgeInsets.only(left: 16, right: 16),
+          padding: const EdgeInsets.only(left: 16, right: 16),
           crossAxisCount: 2,
           crossAxisSpacing: 18,
           mainAxisSpacing: 18,
           children: [Container(
             height: 100,
               decoration: BoxDecoration(
-                  color:Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
+                  color:const Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -34,23 +33,23 @@ class GridDashboard extends StatelessWidget {
                 
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(33, 150, 255, 1)),
+                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(33, 150, 255, 1)),
                       foregroundColor:
                           MaterialStateProperty.all<Color>(Colors.black),
                     ),
                     onPressed: () {Navigator.pushNamed(context, PetsPage.id);},
-                    child: Text("Mascotas"),
+                    child: const Text("Mascotas"),
                   ),
                 ],
               ),
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
+                  color: const Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Image.asset(
@@ -60,23 +59,23 @@ class GridDashboard extends StatelessWidget {
                   ),
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(33, 150, 255, 1)),
+                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(33, 150, 255, 1)),
                       foregroundColor:
                           MaterialStateProperty.all<Color>(Colors.black),
                     ),
                     onPressed: () {Navigator.pushNamed(context, MedicinePage.id);},
-                    child: Text("Medicina"),
+                    child: const Text("Medicina"),
                   ),
                 ],
               ),
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
+                  color: const Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Image.asset(
@@ -86,12 +85,12 @@ class GridDashboard extends StatelessWidget {
                   ),
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(33, 150, 255, 1)),
+                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(33, 150, 255, 1)),
                       foregroundColor:
                           MaterialStateProperty.all<Color>(Colors.black),
                     ),
-                    onPressed: () {Navigator.pushNamed(context, clinicalHistory.id);},
-                    child: Text("Historias Clínicas"),
+                    onPressed: () {Navigator.pushNamed(context, HistoryPage.id);},
+                    child: const Text("Historias Clínicas"),
                   ),
                 ],
               ),

@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:histovet/src/controller/medicine_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ConsultarMedicamento extends StatefulWidget {
   static String id = "consultar_medicamento";
@@ -27,7 +24,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Consultar medicamento"),
+        title: const Text("Consultar medicamento"),
         actions: [
           IconButton(
               onPressed: () {
@@ -44,12 +41,12 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
           bottom: 15,
         ),
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           TextField(
             controller: searchController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Ingrese el nombre del medicamento',
               //errorText: 'Error message',
               border: OutlineInputBorder(),
@@ -58,20 +55,20 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Container(
             width: 20,
             height: 30,
             child: ElevatedButton(
-              child: Text('Buscar'),
+              child: const Text('Buscar'),
               onPressed: () {
                 setState(() {});
               },
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Container(
@@ -102,69 +99,69 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Image.network(
                                       "https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161200051/67085065-icono-de-vitaminas-o-medicamentos-para-animales-ilustraci%C3%B3n-de-dibujos-animados-de-vitaminas-o-medic.jpg?fj=1",
                                       height: 100,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
                                       children: [
-                                        Text("  Code: ",
+                                        const Text("  Code: ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                         Text(medicine.code),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
                                       children: [
-                                        Text("  Nombre: ",
+                                        const Text("  Nombre: ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                         Text(medicine.name),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
                                       children: [
-                                        Text("  Precio: ",
+                                        const Text("  Precio: ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                         Text(medicine.precio.toString()),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
                                       children: [
-                                        Text("  Fecha de vencimiento: ",
+                                        const Text("  Fecha de vencimiento: ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                         Text(medicine.fechaVen),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
                                       children: [
-                                        Text("  Descripción: ",
+                                        const Text("  Descripción: ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                         Text(medicine.descripcion),
                                       ],
                                     ),
-                                     SizedBox(
+                                     const SizedBox(
                                       height: 16,
                                     ),
                                   ],
@@ -172,7 +169,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                               ),
                           if (medicines.length == 0)
                             Column(
-                              children: [Text("No hay información")],
+                              children: [const Text("No hay información")],
                             )
                         ],
                       );

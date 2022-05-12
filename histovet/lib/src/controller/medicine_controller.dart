@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:histovet/src/pages/medicine/add_medicine.dart';
 
 import '../models/medicine_model.dart';
 import '../services/medicine_service.dart';

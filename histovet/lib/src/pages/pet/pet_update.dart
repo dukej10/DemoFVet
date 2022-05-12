@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -35,10 +34,10 @@ class _UpdatePet extends State<UpdatePet> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Editar Información Mascota"),
+        title: const Text("Editar Información Mascota"),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.save),
+        child: const Icon(Icons.save),
         onPressed: () {
           getInfoPetPet();
         },
@@ -48,12 +47,12 @@ class _UpdatePet extends State<UpdatePet> {
           child: ListView(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: codeController,
                     name: "code",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Código",
                         prefixIcon: Icon(Icons.pets),
                         border: OutlineInputBorder(
@@ -72,12 +71,12 @@ class _UpdatePet extends State<UpdatePet> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: nameController,
                   name: "name",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Nombre",
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
@@ -88,12 +87,12 @@ class _UpdatePet extends State<UpdatePet> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: nownerController,
                   name: "nameOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Nombre Dueño",
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
@@ -104,12 +103,12 @@ class _UpdatePet extends State<UpdatePet> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: contactController,
                   name: "contactOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "contacto Dueño",
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
@@ -129,12 +128,12 @@ class _UpdatePet extends State<UpdatePet> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: docController,
                     name: "docOwner",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Documento Dueño",
                         prefixIcon: Icon(Icons.pets),
                         border: OutlineInputBorder(
@@ -153,12 +152,12 @@ class _UpdatePet extends State<UpdatePet> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: ageController,
                     name: "age",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Edad",
                         prefixIcon: Icon(Icons.pets),
                         border: OutlineInputBorder(
@@ -173,12 +172,12 @@ class _UpdatePet extends State<UpdatePet> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: breedController,
                   name: "breed",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Raza",
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
@@ -189,12 +188,12 @@ class _UpdatePet extends State<UpdatePet> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: sexController,
                   name: "sex",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Sexo",
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
@@ -205,12 +204,12 @@ class _UpdatePet extends State<UpdatePet> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: subspeciesController,
                   name: "subspecies",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Subespecie",
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
@@ -221,12 +220,12 @@ class _UpdatePet extends State<UpdatePet> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: colorController,
                   name: "color",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Color",
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
@@ -273,12 +272,12 @@ class _UpdatePet extends State<UpdatePet> {
     respuesta = await petCont.updatePet(pet);
     if (respuesta) {
       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Se actualizó la información"),
         backgroundColor: Colors.green,
       ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("No se actualizó la información"),
         backgroundColor: Colors.green,
       ));

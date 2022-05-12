@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:histovet/src/controller/clinicalHistory_controller.dart';
+import 'package:histovet/src/controller/clinicalhistory_controller.dart';
 import 'package:histovet/src/pages/clinicalHistory/add_cinicalHistory.dart';
 import 'package:histovet/src/pages/clinicalHistory/update_clinicalHistory.dart';
 
-import '../../models/clinicalHistory_model.dart';
+import '../../models/clinicalhistory_model.dart';
 import '../widgets/widget_drawer.dart';
 
-class clinicalHistory extends StatefulWidget {
+class HistoryPage extends StatefulWidget {
   static String id = "clinicalHistory";
-  clinicalHistory({Key? key}) : super(key: key);
+  HistoryPage({Key? key}) : super(key: key);
 
   @override
-  State<clinicalHistory> createState() => _clinicalHistoryState();
+  State<HistoryPage> createState() => _HistoryPageState();
 }
 
-class _clinicalHistoryState extends State<clinicalHistory> {
+class _HistoryPageState extends State<HistoryPage> {
   TextStyle txtStyle =
-      TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
+      const TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
   ClinicalHistoryController histCont = new ClinicalHistoryController();
   bool respuesta = false;
 
@@ -27,7 +27,7 @@ class _clinicalHistoryState extends State<clinicalHistory> {
       child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text("Historias Clínicas"),
+            title: const Text("Historias Clínicas"),
             actions: [
               IconButton(
                   onPressed: () {
@@ -38,7 +38,7 @@ class _clinicalHistoryState extends State<clinicalHistory> {
           ),
           drawer: MenuLateral(),
           floatingActionButton: FloatingActionButton(
-              child: Icon(FontAwesomeIcons.plus),
+              child: const Icon(FontAwesomeIcons.plus),
               elevation: 15.0,
               backgroundColor: Colors.blue,
               onPressed: () {
@@ -55,10 +55,10 @@ class _clinicalHistoryState extends State<clinicalHistory> {
                     children: [
                       for (ClinicalHistory history in histories)
                         Card(
-                          margin: EdgeInsets.all(6),
+                          margin: const EdgeInsets.all(6),
                           elevation: 6,
                           child: Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage('assets/img/fondo3.jpg'),
                                   fit: BoxFit.cover,
@@ -72,7 +72,7 @@ class _clinicalHistoryState extends State<clinicalHistory> {
                                             builder: (context) => UpdateHistory(
                                                 history.id.toString())));
                                   },
-                                  leading: Icon(
+                                  leading: const Icon(
                                     FontAwesomeIcons.paperclip,
                                     color: Colors.black,
                                   ),
@@ -86,7 +86,7 @@ class _clinicalHistoryState extends State<clinicalHistory> {
                                   ),
                                   trailing: IconButton(
                                     icon:
-                                        Icon(Icons.delete, color: Colors.black),
+                                        const Icon(Icons.delete, color: Colors.black),
                                     onPressed: () {
                                       messageDelete(history.id.toString());
                                       Navigator.pushNamed(
@@ -110,12 +110,12 @@ class _clinicalHistoryState extends State<clinicalHistory> {
     if (respuesta) {
       Navigator.pushNamed(context, '/clinicalHistories')
           .then((_) => setState(() {}));
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Se eliminó la historia clínica"),
         backgroundColor: Colors.green,
       ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("No se pudo eliminar"),
         backgroundColor: Colors.green,
       ));

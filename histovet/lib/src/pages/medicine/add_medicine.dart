@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:histovet/src/controller/medicine_controller.dart';
-import 'package:histovet/src/pages/pet/pets_page.dart';
 
 import '../../models/medicine_model.dart';
 import '../../services/medicine_service.dart';
 import 'package:intl/intl.dart';
 
-class addMedicine extends StatefulWidget {
+class AddMedicine extends StatefulWidget {
   static String id = "form_medicine";
-  addMedicine({Key? key}) : super(key: key);
+  AddMedicine({Key? key}) : super(key: key);
 
   @override
-  State<addMedicine> createState() => _addMedicine();
+  State<AddMedicine> createState() => _AddMedicine();
 }
 
-class _addMedicine extends State<addMedicine> {
+class _AddMedicine extends State<AddMedicine> {
   final MedicineService _service = MedicineService();
   final _formState = GlobalKey<FormBuilderState>();
   bool respuesta = false;
@@ -26,10 +24,10 @@ class _addMedicine extends State<addMedicine> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Registrar medicamento"),
+        title: const Text("Registrar medicamento"),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.save),
+        child: const Icon(Icons.save),
         onPressed: () {
           getInfoMedicine();
         },
@@ -39,11 +37,11 @@ class _addMedicine extends State<addMedicine> {
           child: ListView(
             children: [
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "code",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Código",
                       hintText: "Ingrese el código del medicamento",
                       prefixIcon: Icon(Icons.code),
@@ -64,11 +62,11 @@ class _addMedicine extends State<addMedicine> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "name",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Nombre",
                         hintText: "Ingrese el nombre del medicamento",
                         prefixIcon: Icon(Icons.people),
@@ -82,11 +80,11 @@ class _addMedicine extends State<addMedicine> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "description",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Descripción",
                         hintText: "Ingrese la descripción del medicamento",
                         prefixIcon: Icon(Icons.description),
@@ -100,11 +98,11 @@ class _addMedicine extends State<addMedicine> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "group",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         labelText: "Grupo",
                         hintText: "Ingrese el grupo del medicamento",
                         prefixIcon: Icon(Icons.group),
@@ -118,11 +116,11 @@ class _addMedicine extends State<addMedicine> {
                     ])),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "precio",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Precio",
                       hintText: "Ingrese el precio del medicamento",
                       prefixIcon: Icon(Icons.price_change),
@@ -141,7 +139,7 @@ class _addMedicine extends State<addMedicine> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
 
                 child: FormBuilderDateRangePicker(
                   keyboardType: TextInputType.datetime,
@@ -151,7 +149,7 @@ class _addMedicine extends State<addMedicine> {
                   format: DateFormat('dd/MM/yyyy'),
                   initialEntryMode: DatePickerEntryMode.input,
                   enabled: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.calendar_month),
                     labelText: 'Seleccione rango de fechas',
                     helperText: 'Rango de fecha de la medicina',
@@ -193,12 +191,12 @@ class _addMedicine extends State<addMedicine> {
     respuesta = await _service.addMedicine(medicine);
     if (respuesta) {
       Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Se guardó la información"),
         backgroundColor: Colors.green,
       ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("No se guardó la información"),
         backgroundColor: Colors.green,
       ));

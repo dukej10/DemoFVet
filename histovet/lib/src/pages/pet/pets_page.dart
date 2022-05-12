@@ -19,7 +19,7 @@ class _PetsPageState extends State<PetsPage> {
   TextStyle txtStyle =
       TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
   PetController petCont = new PetController();
-  bool respuesta = false;
+  bool answer = false;
 
   @override
   Widget build(BuildContext context) {
@@ -105,8 +105,8 @@ class _PetsPageState extends State<PetsPage> {
 
   // Le indica al usuario si se pudo o no eliminar el registro
   void messageDelete(String idPet) async {
-    respuesta = await petCont.deletePet(idPet);
-    if (respuesta) {
+    answer = await petCont.deletePet(idPet);
+    if (answer) {
       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Se eliminó la mascota"),

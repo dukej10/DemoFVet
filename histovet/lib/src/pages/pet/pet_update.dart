@@ -25,7 +25,7 @@ class _UpdatePet extends State<UpdatePet> {
   TextEditingController docController = TextEditingController();
   TextEditingController ageController = TextEditingController();
   TextEditingController breedController = TextEditingController();
-  TextEditingController specieController = TextEditingController();
+  TextEditingController subspeciesController = TextEditingController();
   TextEditingController colorController = TextEditingController();
   TextEditingController sexController = TextEditingController();
 
@@ -207,8 +207,8 @@ class _UpdatePet extends State<UpdatePet> {
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
-                  controller: specieController,
-                  name: "specie",
+                  controller: subspeciesController,
+                  name: "subspecies",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                       labelText: "Subespecie",
@@ -259,11 +259,11 @@ class _UpdatePet extends State<UpdatePet> {
       final contactOwner = values['contactOwner'];
       final age = int.parse(values['age']);
       final breed = values['breed'];
-      final specie = values['specie'];
+      final subspecies = values['subspecies'];
       final color = values['color'];
       final sex = values['sex'];
       late Pet pet = new Pet(widget.idPet, code, name, nameOwner, contactOwner,
-          docOwner, age, breed, specie, color, sex);
+          docOwner, age, breed, subspecies, color, sex);
       messageUpdate(pet);
     }
   }
@@ -298,7 +298,7 @@ class _UpdatePet extends State<UpdatePet> {
       docController.text = pet.documentOwner;
       ageController.text = pet.age.toString();
       breedController.text = pet.breed;
-      specieController.text = pet.specie;
+      subspeciesController.text = pet.specie;
       colorController.text = pet.color;
       sexController.text = pet.sex;
     });

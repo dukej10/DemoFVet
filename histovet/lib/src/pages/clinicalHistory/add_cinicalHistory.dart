@@ -683,7 +683,6 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
 
       //Reseña
       final name = values['name'];
-      print("tengo " + name);
       final specie = values['subespecie'];
       final breed = values['breed'];
       final sex = values['sex'];

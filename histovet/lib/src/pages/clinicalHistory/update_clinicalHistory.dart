@@ -69,7 +69,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.save),
         onPressed: () {
-          getInfoPetPet();
+          getInfoHistory();
         },
       ),
       body: FormBuilder(
@@ -80,11 +80,10 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: numberCHController,
-                  name: "numberClinicalHistory",
+                  name: "numberCH",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                       labelText: "Número de historia clinica",
-                      hintText: "Ingrese el Número de historia clinica",
                       prefixIcon: Icon(Icons.numbers),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
@@ -111,7 +110,6 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: InputDecoration(
                           labelText: "Fecha",
-                          hintText: "Ingrese la fecha actual",
                           prefixIcon: Icon(Icons.date_range),
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.teal))),
@@ -230,6 +228,26 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                   ]),
                 ),
               ),
+               Container(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: FormBuilderTextField(
+                  controller: nameController,
+                  name: "name",
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(
+                      labelText: "Nombre de la mascota",
+                      hintText: "Ingrese el nombre del dueño",
+                      prefixIcon: Icon(Icons.person_outline_outlined),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))),
+                  keyboardType: TextInputType.text,
+                  maxLength: 12,
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido")
+                  ]),
+                ),
+              ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
@@ -246,7 +264,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                   maxLength: 20,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
-                        errorText: "Valor requerido")
+                        errorText: "Valor requerido"),
+                        FormBuilderValidators.email(context, errorText: "Debe tener formato de correo")
                   ]),
                 ),
               ),
@@ -710,13 +729,14 @@ class _UpdateHistoryState extends State<UpdateHistory> {
     super.initState();
   }
 
-  getInfoPetPet() async {
+  getInfoHistory() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
       final values = _formState.currentState!.value;
 
       //Identificación historia clinica
-      final numberClinicalHistory = values['numberCH'];
+      print("act "+ weightController.text);
+      final numberClinicalHistory = int.parse(values['numberCH']);
       final date = values['date'];
       final time = values['time'];
 
@@ -733,7 +753,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
       final breed = values['breed'];
       final sex = values['sex'];
       final color = values['color'];
-      final weight = values['weight'];
+      final weight = double.parse(weightController.text);
       final origin = values['origin'];
 
       //Anamnesis
@@ -750,15 +770,15 @@ class _UpdateHistoryState extends State<UpdateHistory> {
 
       //Examen fisico generaliz
       final physicalCondition = values['physicalCondition'];
-      final temperature = values['temperature'];
-      final heartFrequency = values['heartFrequency'];
-      final respiratoryFrequency = values['respiratoryFrequency'];
+      final temperature = double.parse(temperatureController.text);
+      final heartFrequency = double.parse(heartFrequencyController.text);
+      final respiratoryFrequency = double.parse(respiratoryFrequencyController.text);
       //tiempo de llena capilar: TLLC
-      final tllc = values['tllc'];
-      final pulse = values['pulse'];
+      final tllc = double.parse(tllcController.text);
+      final pulse = double.parse(pulseController.text);
       //tiempo de recuperación del pliegue cutáneo TRPC
-      final trcp = values['trcp'];
-      final percentageDehydration = values['percentageDehydration'];
+      final trcp = double.parse(trcpController.text);
+      final percentageDehydration = double.parse(percentageDehydrationController.text);
       final mucous = values['mucous'];
       late ClinicalHistory clinicalHistory = ClinicalHistory(
           widget.idHistory,
@@ -804,7 +824,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
   void messageUpdate(ClinicalHistory clinicalHistory) async {
     respuesta = await histCont.updateClinicalHistory(clinicalHistory);
     if (respuesta) {
-      Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+      Navigator.pushNamed(context, '/clinicalHistories').then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Se actualizó la información"),
         backgroundColor: Colors.green,
@@ -840,7 +860,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
       previousIllnessesController.text = clinicalHistory.previousIllnesses;
       previousSurgeriesController.text = clinicalHistory.previousSurgeries;
       sterilizedController.text = clinicalHistory.sterilized;
-      nAnimalBirthsController.text = clinicalHistory.nAnimalBirths.toString();
+      nAnimalBirthsController.text = clinicalHistory.nAnimalBirths;
       vaccinationScheduleController.text = clinicalHistory.vaccinationSchedule;
       lastDewormingController.text = clinicalHistory.lastDeworming;
       recentTreatmentsController.text = clinicalHistory.recentTreatments;
@@ -857,7 +877,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
       trcpController.text = clinicalHistory.trcp.toString();
       percentageDehydrationController.text =
           clinicalHistory.percentageDehydration.toString();
-      mucousController.text = clinicalHistory.mucous.toString();
+      mucousController.text = clinicalHistory.mucous;
     });
   }
 }

@@ -20,6 +20,7 @@ class _addMedicine extends State<addMedicine> {
   final MedicineService _service = MedicineService();
   final _formState = GlobalKey<FormBuilderState>();
   bool respuesta = false;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,41 +143,26 @@ class _addMedicine extends State<addMedicine> {
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
 
-                
-                child: FormBuilderTextField(
+                child: FormBuilderDateRangePicker(
+                  keyboardType: TextInputType.datetime,
                   name: "fechaVen",
-
-                  
-
-                  //editing controller of this TextField
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2026),
+                  format: DateFormat('dd/MM/yyyy'),
+                  initialEntryMode: DatePickerEntryMode.input,
+                  enabled: true,
                   decoration: InputDecoration(
-                      icon: Icon(Icons.calendar_today), //icon of text field
-                      labelText: "Enter Date" //label text of field
-                      ),
-                  
-                  onTap: () async {
-                    DateTime? pickedDate = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(
-                            2000), //DateTime.now() - not to allow to choose before today.
-                        lastDate: DateTime(2101));
-
-                    if (pickedDate != null) {
-                      String formattedDate =
-                          DateFormat('yyyy-MM-dd').format(pickedDate);
-                      print(
-                          formattedDate); //formatted date output using intl package =>  2021-03-16
-                      //you can implement different kind of Date Format here according to your requiremen
-
-                      setState(() {
-                        Text(formattedDate); //set output date to TextField value.
-                      });
-                    }
+                    prefixIcon: Icon(Icons.calendar_month),
+                    labelText: 'Seleccione rango de fechas',
+                    helperText: 'Rango de fecha de la medicina',
+                    border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.teal))
                     
-                  },
+                    
+                  )
 
-          
+
+                  
                 ),
               )
             ],
@@ -193,7 +179,10 @@ class _addMedicine extends State<addMedicine> {
       final description = values['description'];
       final group = values['group'];
       final precio = double.parse(values['precio']);
-      final fechaVen = values['fechaVen'];
+      var fechaAux = values['fechaVen'].toString();
+      List<String> fechas = fechaAux.split("00:00:00.000");
+      print("fecha " + fechas[0]);
+      final fechaVen = fechas[0] + fechas[1];
       late Medicine medicine =
           new Medicine("", code, name, description, group, precio, fechaVen);
       addMedicine(medicine);

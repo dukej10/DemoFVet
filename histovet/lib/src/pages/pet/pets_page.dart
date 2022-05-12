@@ -87,7 +87,7 @@ class _PetsPageState extends State<PetsPage> {
                                     icon:
                                         const Icon(Icons.delete, color: Colors.black),
                                     onPressed: () {
-                                      messageDelete(specie.id.toString());
+                                      _messageDelete(specie.id.toString());
                                       Navigator.pushNamed(context, '/pets')
                                           .then((_) => setState(() {}));
                                     },
@@ -103,7 +103,7 @@ class _PetsPageState extends State<PetsPage> {
   }
 
   // Le indica al usuario si se pudo o no eliminar el registro
-  void messageDelete(String idPet) async {
+   void _messageDelete(String idPet) async {
     answer = await petCont.deletePet(idPet);
     if (answer) {
       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));

@@ -189,11 +189,11 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
 
       late Medicine medicine = Medicine(
           widget.idMedicine, code, name, description, group, precio, fechaVen);
-      messageUpdate(medicine);
+      _messageUpdate(medicine);
     }
   }
 
-  void messageUpdate(Medicine medicine) async {
+  void _messageUpdate(Medicine medicine) async {
     respuesta = await medicineCont.updateMedicine(medicine);
     if (respuesta) {
       Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));

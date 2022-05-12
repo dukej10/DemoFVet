@@ -753,11 +753,11 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
           percentageDehydration,
           mucous);
 
-      messageAd(clinicalHistory);
+      _messageAd(clinicalHistory);
     }
   }
 
-  void messageAd(ClinicalHistory clinicalHistory) async {
+  void _messageAd(ClinicalHistory clinicalHistory) async {
     respuesta = await clinicalHistorycont.addClinicalHistory(clinicalHistory);
     if (respuesta) {
       Navigator.pushNamed(context, '/clinicalHistories')

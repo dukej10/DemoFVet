@@ -71,11 +71,12 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                           prefixIcon: Icon(Icons.date_range),
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.teal))),
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.datetime,
                       maxLength: 10,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(context,
-                            errorText: "Valor requerido")
+                            errorText: "Valor requerido"),
+                            
                       ]))),
               Container(
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
@@ -447,6 +448,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                       prefixIcon: Icon(Icons.color_lens_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
+                          keyboardType: TextInputType.datetime,
                   maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),

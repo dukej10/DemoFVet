@@ -113,7 +113,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                           prefixIcon: Icon(Icons.date_range),
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.teal))),
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.datetime,
                       maxLength: 10,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(context,
@@ -228,7 +228,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                   ]),
                 ),
               ),
-               Container(
+              Container(
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: nameController,
@@ -265,7 +265,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
                         errorText: "Valor requerido"),
-                        FormBuilderValidators.email(context, errorText: "Debe tener formato de correo")
+                    FormBuilderValidators.email(context,
+                        errorText: "Debe tener formato de correo")
                   ]),
                 ),
               ),
@@ -492,6 +493,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                       prefixIcon: Icon(Icons.color_lens_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
+                  keyboardType: TextInputType.datetime,
                   maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
@@ -735,7 +737,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
       final values = _formState.currentState!.value;
 
       //Identificación historia clinica
-      print("act "+ weightController.text);
+      print("act " + weightController.text);
       final numberClinicalHistory = int.parse(values['numberCH']);
       final date = values['date'];
       final time = values['time'];
@@ -772,13 +774,15 @@ class _UpdateHistoryState extends State<UpdateHistory> {
       final physicalCondition = values['physicalCondition'];
       final temperature = double.parse(temperatureController.text);
       final heartFrequency = double.parse(heartFrequencyController.text);
-      final respiratoryFrequency = double.parse(respiratoryFrequencyController.text);
+      final respiratoryFrequency =
+          double.parse(respiratoryFrequencyController.text);
       //tiempo de llena capilar: TLLC
       final tllc = double.parse(tllcController.text);
       final pulse = double.parse(pulseController.text);
       //tiempo de recuperación del pliegue cutáneo TRPC
       final trcp = double.parse(trcpController.text);
-      final percentageDehydration = double.parse(percentageDehydrationController.text);
+      final percentageDehydration =
+          double.parse(percentageDehydrationController.text);
       final mucous = values['mucous'];
       late ClinicalHistory clinicalHistory = ClinicalHistory(
           widget.idHistory,
@@ -824,7 +828,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
   void messageUpdate(ClinicalHistory clinicalHistory) async {
     respuesta = await histCont.updateClinicalHistory(clinicalHistory);
     if (respuesta) {
-      Navigator.pushNamed(context, '/clinicalHistories').then((_) => setState(() {}));
+      Navigator.pushNamed(context, '/clinicalHistories')
+          .then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Se actualizó la información"),
         backgroundColor: Colors.green,

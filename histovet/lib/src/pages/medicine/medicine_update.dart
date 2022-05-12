@@ -159,6 +159,7 @@ class _updatemedicationtate extends State<updateMedicine> {
                       prefixIcon: Icon(Icons.medication),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
+                          keyboardType: TextInputType.datetime,
                   maxLength: 20,
                   validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(context,

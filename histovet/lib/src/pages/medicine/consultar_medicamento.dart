@@ -131,7 +131,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                     ),
                                     Row(
                                       children: [
-                                        const Text("  Precio: ",
+                                        const Text("  Precio:",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                         Text(medicine.precio.toString()),
@@ -172,7 +172,6 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                         ],
                       );
                     } else {
-                      // Agregar un Widget
                       return const Text('Empty data');
                     }
                   }))

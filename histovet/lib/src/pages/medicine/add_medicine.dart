@@ -73,7 +73,7 @@ class _AddMedicine extends State<AddMedicine> {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
                     keyboardType: TextInputType.text,
-                    maxLength: 10,
+                    maxLength: 20,
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(context,
                           errorText: "Valor requerido")
@@ -152,7 +152,7 @@ class _AddMedicine extends State<AddMedicine> {
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.calendar_month),
                     labelText: 'Seleccione rango de fechas',
-                    helperText: 'Rango de fecha de la medicina',
+                    helperText: 'Rango de fecha en la que se puede usar la medicine',
                     border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))
                     

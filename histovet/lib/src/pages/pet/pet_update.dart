@@ -81,7 +81,7 @@ class _UpdatePet extends State<UpdatePet> {
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
+                  maxLength: 15,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
                 ),
@@ -97,7 +97,7 @@ class _UpdatePet extends State<UpdatePet> {
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
                 ),
@@ -182,7 +182,7 @@ class _UpdatePet extends State<UpdatePet> {
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
                 ),
@@ -230,7 +230,7 @@ class _UpdatePet extends State<UpdatePet> {
                       prefixIcon: Icon(Icons.pets),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
                 ),

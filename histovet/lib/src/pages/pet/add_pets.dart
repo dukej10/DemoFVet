@@ -87,7 +87,7 @@ class _AddPetState extends State<AddPet> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   keyboardType: TextInputType.text,
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
                         errorText: "Valor requerido")
@@ -174,7 +174,7 @@ class _AddPetState extends State<AddPet> {
                         prefixIcon: Icon(Icons.pets),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
-                    maxLength: 10,
+                    maxLength: 20,
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(context,
                           errorText: "Valor requerido")
@@ -232,7 +232,7 @@ class _AddPetState extends State<AddPet> {
                       prefixIcon: Icon(Icons.color_lens_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
                 ),

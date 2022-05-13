@@ -344,7 +344,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                   name: "weight",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: const InputDecoration(
-                      labelText: "Pesp(Kg)",
+                      labelText: "Peso(Kg)",
                       hintText: "Ingrese el peso de la mascota",
                       prefixIcon: Icon(Icons.monitor_weight_outlined),
                       border: OutlineInputBorder(

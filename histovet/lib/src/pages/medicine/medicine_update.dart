@@ -198,12 +198,12 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
     if (respuesta) {
       Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Se actualizó la información"),
+        content: Text("Se actualizó la información de la medicina"),
         backgroundColor: Colors.green,
       ));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("No se actualizó la información"),
+        content: Text("No se actualizó la información de la medicina"),
         backgroundColor: Colors.green,
       ));
     }

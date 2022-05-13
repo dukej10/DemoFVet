@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:histovet/src/controller/clinicalhistory_controller.dart';
-import 'package:histovet/src/pages/clinicalHistory/add_cinicalhistory.dart';
+import 'package:histovet/src/pages/clinicalHistory/add_clinicalhistory.dart';
 import 'package:histovet/src/pages/clinicalHistory/update_clinicalhistory.dart';
 
 import '../../models/clinicalhistory_model.dart';

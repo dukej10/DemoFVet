@@ -192,12 +192,12 @@ class _AddMedicine extends State<AddMedicine> {
     if (respuesta) {
       Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Se guardó la información"),
+        content: Text("Se guardó la información de la medicina"),
         backgroundColor: Colors.green,
       ));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("No se guardó la información"),
+        content: Text("No se guardó la información de la medicina"),
         backgroundColor: Colors.green,
       ));
     }

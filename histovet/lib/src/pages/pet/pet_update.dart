@@ -273,7 +273,7 @@ class _UpdatePet extends State<UpdatePet> {
     if (respuesta) {
       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Se actualizó la información"),
+        content: Text("Se actualizó la información de la mascota"),
         backgroundColor: Colors.green,
       ));
     } else {

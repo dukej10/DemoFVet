@@ -768,7 +768,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
       ));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("No se guardó la información"),
+        content: Text("No se guardó la información de la historia clínica"),
         backgroundColor: Colors.green,
       ));
     }

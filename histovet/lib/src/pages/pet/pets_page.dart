@@ -108,12 +108,12 @@ class _PetsPageState extends State<PetsPage> {
     if (answer) {
       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Se eliminó la mascota"),
+        content: Text("Se eliminó el registro de la mascota"),
         backgroundColor: Colors.green,
       ));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("No se pudo eliminar"),
+        content: Text("No se pudo eliminar el registro de la mascota"), 
         backgroundColor: Colors.green,
       ));
     }

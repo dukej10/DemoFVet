@@ -108,55 +108,77 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                       height: 5,
                                     ),
                                     Row(
-                                      children: [
-                                        const Text("  Code: ",
+                                      children: const [
+                                        Text("  Código: ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
-                                        Text(medicine.code),
+                                        
+                                      ],
+                                    ),
+                                     Row(
+                                      children: [
+                                        Text("  " + medicine.code),
                                       ],
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
-                                      children: [
-                                        const Text("  Nombre: ",
+                                      children: const [
+                                        Text("  Nombre: ",
                                             style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                        Text(medicine.name),
+                                                fontWeight: FontWeight.bold))
+                                      ],
+                                    ),
+                                     Row(
+                                      children: [
+                                        Text("  " + medicine.name),
                                       ],
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
-                                      children: [
-                                        const Text("  Precio:",
+                                      children: const [
+                                        Text("  Precio:",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
-                                        Text(medicine.precio.toString()),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text("  " + medicine.precio.toString()),
                                       ],
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
-                                      children: [
-                                        const Text("  Fecha de vencimiento: ",
+                                      children: const [
+                                        Text("  Fecha de vencimiento: ",
                                             style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                        Text(medicine.fechaVen),
+                                                fontWeight: FontWeight.bold))
+                                      ],
+                                    ),
+                                     Row(
+                                      children: [
+                                        Text("  " + medicine.fechaVen),
                                       ],
                                     ),
                                     const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
-                                      children: [
-                                        const Text("  Descripción: ",
+                                      children: const[
+                                        Text("  Descripción: ",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
-                                        Text(medicine.descripcion),
+                                        
+                                      ],
+                                    ),
+                                     Row(
+                                      children: [
+                                        Text("  " + medicine.descripcion),
                                       ],
                                     ),
                                      const SizedBox(

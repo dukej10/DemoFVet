@@ -301,7 +301,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                   name: "weight",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: const InputDecoration(
-                      labelText: "Pesp(Kg)",
+                      labelText: "Peso(Kg)",
                       hintText: "Ingrese el peso de la mascota",
                       prefixIcon: Icon(Icons.monitor_weight_outlined),
                       border: OutlineInputBorder(
@@ -753,11 +753,11 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
           percentageDehydration,
           mucous);
 
-      _messageAd(clinicalHistory);
+      messageAd(clinicalHistory);
     }
   }
 
-  void _messageAd(ClinicalHistory clinicalHistory) async {
+  void messageAd(ClinicalHistory clinicalHistory) async {
     respuesta = await clinicalHistorycont.addClinicalHistory(clinicalHistory);
     if (respuesta) {
       Navigator.pushNamed(context, '/clinicalHistories')

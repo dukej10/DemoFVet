@@ -80,7 +80,7 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
                       prefixIcon: Icon(Icons.medication),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(context,
                             errorText: "Valor requerido")
@@ -158,7 +158,7 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                           keyboardType: TextInputType.datetime,
-                  maxLength: 20,
+                  maxLength: 25,
                   validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(context,
                             errorText: "Valor requerido")

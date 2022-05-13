@@ -132,7 +132,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.teal))),
                       keyboardType: TextInputType.text,
-                      maxLength: 6,
+                      maxLength: 10,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(context,
                             errorText: "Valor requerido")
@@ -175,7 +175,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   keyboardType: TextInputType.text,
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
                         errorText: "Valor requerido")
@@ -298,7 +298,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                         prefixIcon: Icon(Icons.pets),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
-                    maxLength: 10,
+                    maxLength: 20,
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(context,
                           errorText: "Valor requerido")
@@ -332,7 +332,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                       prefixIcon: Icon(Icons.color_lens_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
                 ),
@@ -350,14 +350,14 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   keyboardType: TextInputType.number,
-                  maxLength: 3,
+                  maxLength: 5,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
                         errorText: "Valor requerido"),
                     FormBuilderValidators.min(context, 1,
                         errorText: "Debe ser un número mayor que 0"),
                     FormBuilderValidators.minLength(context, 3,
-                        errorText: "La longitud del número es de 3")
+                        errorText: "La longitud del número es de 5")
                   ]),
                 ),
               ),
@@ -373,7 +373,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                       prefixIcon: Icon(Icons.color_lens_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
                 ),

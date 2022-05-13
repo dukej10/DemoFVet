@@ -23,7 +23,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("Historial Clinico"),
+          title: const Text(" Agregar Historial Clinico"),
         ),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.save),
@@ -90,7 +90,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                           border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.teal))),
                       keyboardType: TextInputType.text,
-                      maxLength: 6,
+                      maxLength: 10,
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(context,
                             errorText: "Valor requerido")
@@ -131,7 +131,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   keyboardType: TextInputType.text,
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
                         errorText: "Valor requerido")
@@ -253,7 +253,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                         prefixIcon: Icon(Icons.pets),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
-                    maxLength: 10,
+                    maxLength: 20,
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(context,
                           errorText: "Valor requerido")
@@ -290,7 +290,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                       prefixIcon: Icon(Icons.color_lens_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
                 ),
@@ -307,14 +307,14 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
                   keyboardType: TextInputType.number,
-                  maxLength: 3,
+                  maxLength: 5,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
                         errorText: "Valor requerido"),
                     FormBuilderValidators.min(context, 1,
                         errorText: "Debe ser un número mayor que 0"),
                     FormBuilderValidators.minLength(context, 3,
-                        errorText: "La longitud del número es de 3")
+                        errorText: "La longitud del número es de 5")
                   ]),
                 ),
               ),
@@ -325,11 +325,11 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: const InputDecoration(
                       labelText: "Origen",
-                      hintText: "Origen mascota",
+                      hintText: "Ciudad de origen mascota",
                       prefixIcon: Icon(Icons.color_lens_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
+                  maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
                 ),
@@ -763,7 +763,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
       Navigator.pushNamed(context, '/clinicalHistories')
           .then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Se guardó la información de la historia clinica"),
+        content: Text("Se guardó la información de la historia clínica"),
         backgroundColor: Colors.green,
       ));
     } else {

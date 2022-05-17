@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:histovet/src/pages/medicine_page.dart';
+import 'package:histovet/src/pages/clinicalHistory/clinicalHistory_page.dart';
+import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
-import 'package:histovet/src/pages/consultar_medicamento.dart';
-import 'package:histovet/src/pages/add_medicine.dart';
+import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
+import 'package:histovet/src/pages/medicine/add_medicine.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 
 import '../Home/home_page.dart';
@@ -38,7 +39,7 @@ class MenuLateral extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.pets),
-              title: Text("Pet"),
+              title: Text("Mascotas"),
               onTap: () {
                 Navigator.pushNamed(context, PetsPage.id);
               },
@@ -51,12 +52,19 @@ class MenuLateral extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.pets),
+              leading: Icon(Icons.content_paste_search_rounded),
               title: Text("Consultar Medicamento"),
               onTap: () {
                 Navigator.pushNamed(context, ConsultarMedicamento.id);
               },
             ),
+            ListTile(
+              leading: Icon(Icons.article_sharp ),
+              title: Text("Historias Clínicas"),
+              onTap: () {
+                Navigator.pushNamed(context, clinicalHistory.id);
+              },
+            )
           ])
         ],
       ),

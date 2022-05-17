@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
-import 'package:histovet/src/services/pet_service.dart';
-
 import '../../controller/pet_controller.dart';
 import '../../models/pet_model.dart';
 
@@ -17,7 +14,7 @@ class AddPet extends StatefulWidget {
 
 class _AddPetState extends State<AddPet> {
   final _formState = GlobalKey<FormBuilderState>();
-  bool respuesta = false;
+  bool answer = false;
   PetController petCont = new PetController();
   @override
   Widget build(BuildContext context) {
@@ -149,20 +146,22 @@ class _AddPetState extends State<AddPet> {
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
-                  name: "age",
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
-                      labelText: "Edad",
-                      hintText: "Ingresa la edad de la mascotas",
-                      prefixIcon: Icon(Icons.numbers),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal))),
-                  keyboardType: TextInputType.number,
-                  maxLength: 2,
-                  validator: FormBuilderValidators.compose([FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
-                      FormBuilderValidators.min(context, 0, errorText: "La edad debe ser mayor o igual que 0")])
-                ),
+                    name: "age",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: InputDecoration(
+                        labelText: "Edad",
+                        hintText: "Ingresa la edad de la mascotas",
+                        prefixIcon: Icon(Icons.numbers),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    keyboardType: TextInputType.number,
+                    maxLength: 2,
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(context,
+                          errorText: "Valor requerido"),
+                      FormBuilderValidators.min(context, 0,
+                          errorText: "La edad debe ser mayor o igual que 0")
+                    ])),
               ),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
@@ -243,7 +242,7 @@ class _AddPetState extends State<AddPet> {
     );
   }
 
-  getInfoPet() async {
+  void getInfoPet() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
       final values = _formState.currentState!.value;
@@ -259,25 +258,23 @@ class _AddPetState extends State<AddPet> {
       final sex = values['sex'];
       late Pet pet = new Pet("", code, name, nameOwner, contactOwner, docOwner,
           age, breed, specie, color, sex);
-      AddPet(pet);
+      messageAdd(pet);
     }
   }
 
-
-  void AddPet(Pet pet) async {
-      respuesta = await petCont.addPet(pet);
-      if (respuesta) {
-        Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("Se guardó la información de la mascota"),
-          backgroundColor: Colors.green,
-        ));
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("No se guardó la información"),
-          backgroundColor: Colors.green,
-        ));
-      }
+  void messageAdd(Pet pet) async {
+    answer = await petCont.addPet(pet);
+    if (answer) {
+      Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Se guardó la información de la mascota"),
+        backgroundColor: Colors.green,
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("No se guardó la información"),
+        backgroundColor: Colors.green,
+      ));
     }
-
+  }
 }

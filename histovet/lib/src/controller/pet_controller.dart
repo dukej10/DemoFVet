@@ -1,13 +1,14 @@
 import '../models/pet_model.dart';
 import '../services/pet_service.dart';
 
-class PetController{
+class PetController {
   final PetService _service = PetService();
-  List<Pet> mascotas = [];
+  List<Pet> _pets = [];
+  
 
   Future<bool> addPet(Pet pet) async {
     bool respuesta;
-    respuesta = await _service.addPet(pet);
+    respuesta = await _service.addPetBD(pet);
     if (respuesta) {
       return true;
     } else {
@@ -17,7 +18,7 @@ class PetController{
 
   Future<bool> updatePet(Pet pet) async {
     bool respuesta;
-    respuesta = await _service.updatePet(pet);
+    respuesta = await _service.updatePetBD(pet);
     if (respuesta) {
       return true;
     } else {
@@ -27,7 +28,7 @@ class PetController{
 
   Future<bool> deletePet(String idPet) async {
     bool respuesta;
-    respuesta = await _service.deletePetFromFirebase(idPet);
+    respuesta = await _service.deletePetBD(idPet);
     if (respuesta) {
       return true;
     } else {
@@ -35,14 +36,13 @@ class PetController{
     }
   }
 
-  Future<List<Pet>> allPets() async{
-    mascotas = await _service.getPets();
-    return mascotas;
+  Future<List<Pet>> allPets() async {
+    _pets = await _service.getPetsBD();
+    return _pets;
   }
 
   Future<Pet> getPet(String id) async {
-     Pet pet = await _service.getPet(id);
-     return pet;
+    Pet pet = await _service.getPetBD(id);
+    return pet;
   }
-
 }

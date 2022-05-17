@@ -6,10 +6,8 @@ import 'package:firebase_database/firebase_database.dart';
 
 class PetService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final databaseRef = FirebaseDatabase.instance.ref();
-  Pet pet = new Pet("", "", "", "", "", "", 0, "", "", "", "");
 
-  Future<Pet> getPet(String id) async {
+  Future<Pet> getPetBD(String id) async {
     final snapshot =
         await FirebaseFirestore.instance.collection('pet').doc(id).get();
     Pet pet = new Pet(
@@ -24,13 +22,10 @@ class PetService {
         snapshot["specie"],
         snapshot["color"],
         snapshot["sex"]);
-    //print(pet.toString());
     return pet;
   }
 
-  CollectionReference petAll = FirebaseFirestore.instance.collection("pet");
-
-  Future<bool> addPet(Pet pet) async {
+  Future<bool> addPetBD(Pet pet) async {
     final DocumentReference petDoc = _firestore.collection("pet").doc();
 
     try {
@@ -53,21 +48,21 @@ class PetService {
     }
   }
 
-  Future<bool> updatePet(Pet specie) async {
+  Future<bool> updatePetBD(Pet pet) async {
     try {
-      final DocumentReference specieDoc = _firestore.collection("pet").doc();
-      await FirebaseFirestore.instance.collection("pet").doc(specie.id).set({
-        "id": specie.id,
-        "code": specie.code,
-        "name": specie.name,
-        "nameOwner": specie.nameOwner,
-        "contactOwner": specie.contactOwner,
-        "documentOwner": specie.documentOwner,
-        "age": specie.age,
-        "breed": specie.breed,
-        "specie": specie.specie,
-        "color": specie.color,
-        "sex": specie.sex
+      final DocumentReference petDoc = _firestore.collection("pet").doc();
+      await FirebaseFirestore.instance.collection("pet").doc(pet.id).set({
+        "id": pet.id,
+        "code": pet.code,
+        "name": pet.name,
+        "nameOwner": pet.nameOwner,
+        "contactOwner": pet.contactOwner,
+        "documentOwner": pet.documentOwner,
+        "age": pet.age,
+        "breed": pet.breed,
+        "specie": pet.specie,
+        "color": pet.color,
+        "sex": pet.sex
       }, SetOptions(merge: true));
       return true;
     } catch (e) {
@@ -75,7 +70,7 @@ class PetService {
     }
   }
 
-  Future<bool> deletePetFromFirebase(id) async {
+  Future<bool> deletePetBD(String id) async {
     try {
       await _firestore.collection("pet").doc(id).delete();
       return true;
@@ -84,7 +79,7 @@ class PetService {
     }
   }
 
-  Future<List<Pet>> getPets() async {
+  Future<List<Pet>> getPetsBD() async {
     List<Pet> mascotas = [];
     try {
       final collection = FirebaseFirestore.instance.collection('pet');

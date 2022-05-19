@@ -11,46 +11,12 @@ class ConsultarMedicamento extends StatefulWidget {
 }
 
 class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
-  String _code = "M001";
-  String _name = "acetamin";
-  int _cantidad = 2;
-  double _precio = 10.0;
-  String _fechaVen = "12/12/2020";
-  String _description = "para dolores leves";
-
-  List<Medicine> _medicines = [];
-  double _espacio = 12;
-
-  List datos = [];
-  int _counter = 0;
-  String buscarMedicine = "";
-
-  void getListMedicamentos() async {
-    CollectionReference collectionReference =
-        FirebaseFirestore.instance.collection("medicine");
-    QuerySnapshot listMedicam = await collectionReference.get();
-    if (listMedicam.docs.isNotEmpty) {
-      for (var doc in listMedicam.docs) {
-        //print(doc.data());
-        datos.add(doc.data());
-      }
-      //print(datos.toString());
-    }
-  }
-
-  /*void addListmedicine() {
-    for (var medic in datos) {
-      _medicines.add(Medicine(medic["id"], medic["code"], medic["name"],
-          medic["descripcion"], medic["grupo"]));
-    }
-    print(_medicines.toString());
-  }*/
+  TextEditingController searchController = TextEditingController();
+  MedicineController medCont = MedicineController();
 
   @override
   void initState() {
     super.initState();
-    getListMedicamentos();
-    //addListmedicine();
   }
 
   @override
@@ -67,6 +33,12 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
         ],
       ),
       body: ListView(
+        padding: const EdgeInsets.only(
+          left: 15,
+          top: 10,
+          right: 15,
+          bottom: 15,
+        ),
         children: <Widget>[
           const SizedBox(
             height: 5,
@@ -81,15 +53,6 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                 Icons.search,
               ),
             ),
-            onSaved: (value) {
-              buscarMedicine = value!;
-            },
-          ),
-          ElevatedButton(
-            onPressed: () {
-              print(buscarMedicine);
-            },
-            child: Text('Solicitar'),
           ),
           const SizedBox(
             height: 5,

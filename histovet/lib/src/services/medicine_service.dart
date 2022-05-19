@@ -67,7 +67,7 @@ class MedicineService {
         "code": medicine.code,
         "name": medicine.name,
         "description": medicine.descripcion,
-        "group": medicine.grupo,
+        "group": medicine.group,
         "precio": medicine.precio,
         "fechaVen": medicine.fechaVen
       });
@@ -88,7 +88,7 @@ class MedicineService {
         "code": medicine.code,
         "name": medicine.name,
         "description": medicine.descripcion,
-        "group": medicine.grupo,
+        "group": medicine.group,
         "precio": medicine.precio,
         "fechaVen": medicine.fechaVen
       }, SetOptions(merge: true));

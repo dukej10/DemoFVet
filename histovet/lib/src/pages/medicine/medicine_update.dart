@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-
 import '../../controller/medicine_controller.dart';
 import '../../models/medicine_model.dart';
 
@@ -45,7 +44,8 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
           child: ListView(
             children: [
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: codeController,
                   name: "code",
@@ -55,7 +55,7 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
                       prefixIcon: Icon(Icons.medication),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                          keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.number,
                   maxLength: 10,
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
@@ -70,7 +70,8 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: nameController,
                   name: "name",
@@ -82,13 +83,14 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
                           borderSide: BorderSide(color: Colors.teal))),
                   maxLength: 20,
                   validator: FormBuilderValidators.compose([
-                        FormBuilderValidators.required(context,
-                            errorText: "Valor requerido")
-                      ]),
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido")
+                  ]),
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: descriptionController,
                   name: "description",
@@ -100,13 +102,14 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
                           borderSide: BorderSide(color: Colors.teal))),
                   maxLength: 30,
                   validator: FormBuilderValidators.compose([
-                        FormBuilderValidators.required(context,
-                            errorText: "Valor requerido")
-                      ]),
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido")
+                  ]),
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: grupoController,
                   name: "group",
@@ -118,13 +121,14 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
                           borderSide: BorderSide(color: Colors.teal))),
                   maxLength: 30,
                   validator: FormBuilderValidators.compose([
-                        FormBuilderValidators.required(context,
-                            errorText: "Valor requerido")
-                      ]),
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido")
+                  ]),
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: precioController,
                   name: "precio",
@@ -147,7 +151,8 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: fechaVenController,
                   name: "fechaVen",
@@ -157,12 +162,12 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
                       prefixIcon: Icon(Icons.medication),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                          keyboardType: TextInputType.datetime,
+                  keyboardType: TextInputType.datetime,
                   maxLength: 25,
                   validator: FormBuilderValidators.compose([
-                        FormBuilderValidators.required(context,
-                            errorText: "Valor requerido")
-                      ]),
+                    FormBuilderValidators.required(context,
+                        errorText: "Valor requerido")
+                  ]),
                 ),
               )
             ],
@@ -209,8 +214,6 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
     }
   }
 
- 
-
   void getInfo() async {
     // await _service.getMedicine(widget.idMedicine);
     Medicine medicine = await medicineCont.getMedicine(widget.idMedicine);
@@ -218,7 +221,7 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
       codeController.text = medicine.code.toString();
       nameController.text = medicine.name;
       descriptionController.text = medicine.descripcion;
-      grupoController.text = medicine.grupo;
+      grupoController.text = medicine.group;
       precioController.text = medicine.precio.toString();
       fechaVenController.text = medicine.fechaVen;
     });

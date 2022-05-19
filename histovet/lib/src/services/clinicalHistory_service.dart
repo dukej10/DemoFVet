@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../models/clinicalHistory_model.dart';
+import '../models/clinicalhistory_model.dart';
 
 import 'package:firebase_database/firebase_database.dart';
 
@@ -106,8 +106,6 @@ class ClinicalHistoryService {
 
   Future<bool> updateClinicalHistory(ClinicalHistory ch) async {
     try {
-      final DocumentReference clinicalHistoryDoc =
-          _firestore.collection("clinicalHistory").doc();
       await FirebaseFirestore.instance
           .collection("clinicalHistory")
           .doc(ch.id)

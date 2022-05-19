@@ -1,10 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/cupertino.dart';
-// import 'package:intl/intl.dart';
-
-// DateTime now = DateTime.now();
-// String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
-
 class ClinicalHistory {
   final String? id;
   final int numberCH;

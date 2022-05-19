@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:histovet/src/pages/medicine/add_medicine.dart';
 
 import '../models/medicine_model.dart';
 import '../services/medicine_service.dart';
@@ -20,7 +19,7 @@ class MedicineController {
 
   Future<List<Medicine>> searchMedicine(String name) async {
     List<Medicine> medicines = [];
-    print("Llegó nombre " + name);
+    //print("Llegó nombre " + name);
     try {
       final collection = FirebaseFirestore.instance
           .collection('medicine')
@@ -28,8 +27,8 @@ class MedicineController {
       collection.snapshots().listen((querySnapshot) {
         for (var doc in querySnapshot.docs) {
           Map<String, dynamic> data = doc.data();
-          print("encontró");
-          print(doc.data());
+          // print("encontró");
+          // print(doc.data());
           Medicine newMedicine = Medicine(
               data["id"],
               data["code"],

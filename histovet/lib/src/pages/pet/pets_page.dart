@@ -3,13 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:histovet/src/controller/pet_controller.dart';
 import 'package:histovet/src/models/pet_model.dart';
 import 'package:histovet/src/pages/widgets/widget_drawer.dart';
-import 'package:histovet/src/services/pet_service.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 
 class PetsPage extends StatefulWidget {
   static String id = "pets_page";
-  PetsPage({Key? key}) : super(key: key);
+  const PetsPage({Key? key}) : super(key: key);
 
   @override
   State<PetsPage> createState() => _PetsPageState();
@@ -17,9 +16,9 @@ class PetsPage extends StatefulWidget {
 
 class _PetsPageState extends State<PetsPage> {
   TextStyle txtStyle =
-      TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
-  PetController petCont = new PetController();
-  bool respuesta = false;
+      const TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
+  PetController petCont = PetController();
+  bool answer = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class _PetsPageState extends State<PetsPage> {
       child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text("Mascotas"),
+            title: const Text("Mascotas"),
             actions: [
               IconButton(
                   onPressed: () {
@@ -38,7 +37,7 @@ class _PetsPageState extends State<PetsPage> {
           ),
           drawer: MenuLateral(),
           floatingActionButton: FloatingActionButton(
-              child: Icon(FontAwesomeIcons.plus),
+              child: const Icon(FontAwesomeIcons.plus),
               elevation: 15.0,
               backgroundColor: Colors.blue,
               onPressed: () {
@@ -55,10 +54,10 @@ class _PetsPageState extends State<PetsPage> {
                     children: [
                       for (Pet specie in species)
                         Card(
-                          margin: EdgeInsets.all(6),
+                          margin: const EdgeInsets.all(6),
                           elevation: 6,
                           child: Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage('assets/img/fondo.jpg'),
                                   fit: BoxFit.cover,
@@ -72,7 +71,7 @@ class _PetsPageState extends State<PetsPage> {
                                             builder: (context) => UpdatePet(
                                                 specie.id.toString())));
                                   },
-                                  leading: Icon(
+                                  leading: const Icon(
                                     FontAwesomeIcons.paw,
                                     color: Colors.black,
                                   ),
@@ -86,7 +85,7 @@ class _PetsPageState extends State<PetsPage> {
                                   ),
                                   trailing: IconButton(
                                     icon:
-                                        Icon(Icons.delete, color: Colors.black),
+                                        const Icon(Icons.delete, color: Colors.black),
                                     onPressed: () {
                                       messageDelete(specie.id.toString());
                                       Navigator.pushNamed(context, '/pets')
@@ -104,17 +103,17 @@ class _PetsPageState extends State<PetsPage> {
   }
 
   // Le indica al usuario si se pudo o no eliminar el registro
-  void messageDelete(String idPet) async {
-    respuesta = await petCont.deletePet(idPet);
-    if (respuesta) {
+   void messageDelete(String idPet) async {
+    answer = await petCont.deletePet(idPet);
+    if (answer) {
       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Se eliminó la mascota"),
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Se eliminó el registro de la mascota"),
         backgroundColor: Colors.green,
       ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("No se pudo eliminar"),
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("No se pudo eliminar el registro de la mascota"), 
         backgroundColor: Colors.green,
       ));
     }

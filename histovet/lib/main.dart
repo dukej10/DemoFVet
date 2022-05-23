@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/Home/home_page.dart';
+import 'package:histovet/src/pages/Login/reset_password.dart';
+import 'package:histovet/src/pages/Login/signin_screen.dart';
+import 'package:histovet/src/pages/Login/signup_screen.dart';
 import 'package:histovet/src/pages/clinicalHistory/add_clinicalhistory.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/medicine/add_medicine.dart';
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'HistoVet'),
-      initialRoute: Home.id,
+      initialRoute: SignIn.id,
       routes: {
         Home.id: (context) => const Home(),
         '/home': (context) => const Home(),
@@ -46,6 +49,12 @@ class MyApp extends StatelessWidget {
         '/clinicalHistories': (context) => const HistoryPage(),
         AddClinicalHistory.id: (context) => const AddClinicalHistory(),
         '/addHistory': (context) => const AddClinicalHistory(),
+        SignIn.id: (context) => const SignIn(),
+        '/signin': (context) => const SignIn(),
+        SignUp.id: (context) => const SignUp(),
+        '/signup': (context) => const SignUp(),
+        ResetPassword.id: (context) => const ResetPassword(),
+        '/reset-password': (context) => const ResetPassword()
       },
     );
   }
@@ -70,8 +79,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done

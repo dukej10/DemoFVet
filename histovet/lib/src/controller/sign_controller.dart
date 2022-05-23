@@ -20,4 +20,13 @@ class SignController {
       return false;
     }
   }
+
+  Future<bool> reset(String email) async {
+    bool answer = await sign.resetPassword(email);
+    if (answer) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

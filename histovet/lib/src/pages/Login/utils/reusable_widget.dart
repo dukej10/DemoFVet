@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 Image logoWidget(String imageName) {
   return Image.asset(
     imageName,
-    fit: BoxFit.fitWidth,
-    width: 240,
-    height: 240,
+    fit: BoxFit.cover,
+    width: 210,
+    height: 210,
   );
 }
 

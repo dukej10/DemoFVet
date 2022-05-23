@@ -4,8 +4,17 @@ class SignController {
   SignService sign = SignService();
 
   Future<bool> signIn(String correo, String password) async {
-    bool paso = await sign.signIn(correo, password);
-    if (paso) {
+    bool answer = await sign.signIn(correo, password);
+    if (answer) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> signUp(String correo, String password) async {
+    bool answer = await sign.crearCuenta(correo, password);
+    if (answer) {
       return true;
     } else {
       return false;

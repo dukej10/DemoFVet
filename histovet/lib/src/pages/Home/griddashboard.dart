@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
+import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 
 import '../pet/pets_page.dart';
@@ -96,7 +97,33 @@ class GridDashboard extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: const Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Image.asset(
+                    "assets/img/maps.png",
+                    height: 110,
+                    scale: 5,
+                  ),
+                  TextButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(33, 150, 255, 1)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.black),
+                    ),
+                    onPressed: () {Navigator.pushNamed(context, HomeScreen.id);},
+                    child: const Text("Mapas"),
+                  ),
+                ],
+              ),
+            ),
           ]
           ),
     );

@@ -1,19 +1,26 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/Home/home_page.dart';
+import 'package:histovet/src/pages/Login/reset_password.dart';
+import 'package:histovet/src/pages/Login/signin_screen.dart';
+import 'package:histovet/src/pages/Login/signup_screen.dart';
 import 'package:histovet/src/pages/clinicalHistory/add_clinicalhistory.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
+import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/add_medicine.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
+import 'package:provider/provider.dart';
+
+import 'src/blocs/application_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,14 +29,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+    return MultiProvider(
+      providers:[
+        ChangeNotifierProvider(create: (context) => ApplicationBloc())],
+    
+    child: MaterialApp(
       title: 'HistoVet',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'HistoVet'),
-      initialRoute: Home.id,
+      initialRoute: SignIn.id,
       routes: {
         Home.id: (context) => const Home(),
         '/home': (context) => const Home(),
@@ -46,10 +58,21 @@ class MyApp extends StatelessWidget {
         '/clinicalHistories': (context) => const HistoryPage(),
         AddClinicalHistory.id: (context) => const AddClinicalHistory(),
         '/addHistory': (context) => const AddClinicalHistory(),
+        SignIn.id: (context) => const SignIn(),
+        '/signin': (context) => const SignIn(),
+        SignUp.id: (context) => const SignUp(),
+        '/signup': (context) => const SignUp(),
+        ResetPassword.id: (context) => const ResetPassword(),
+        '/reset-password': (context) => const ResetPassword(),
+        HomeScreen.id: (context) => const HomeScreen(),
+        '/gps_page': (context) => const HomeScreen(),
       },
+    )
     );
   }
 }
+
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -70,8 +93,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done

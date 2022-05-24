@@ -5,12 +5,14 @@ import 'package:histovet/src/pages/Login/reset_password.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
 import 'package:histovet/src/pages/Login/signup_screen.dart';
 import 'package:histovet/src/pages/clinicalHistory/add_clinicalhistory.dart';
+import 'package:histovet/src/pages/clinicalHistory/add_historypet.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/add_medicine.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
+import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 import 'package:provider/provider.dart';
@@ -29,50 +31,49 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MultiProvider(
-      providers:[
-        ChangeNotifierProvider(create: (context) => ApplicationBloc())],
-    
-    child: MaterialApp(
-      title: 'HistoVet',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'HistoVet'),
-      initialRoute: SignIn.id,
-      routes: {
-        Home.id: (context) => const Home(),
-        '/home': (context) => const Home(),
-        PetsPage.id: (context) => const PetsPage(),
-        '/pets': (context) => const PetsPage(),
-        AddPet.id: (context) => const AddPet(),
-        UpdatePet.id: (context) => const UpdatePet(""),
-        ConsultarMedicamento.id: (context) => const ConsultarMedicamento(),
-        '/updatepet': (context) => const UpdatePet(""),
-        MedicinePage.id: (context) => const MedicinePage(),
-        '/medicine': (context) => const MedicinePage(),
-        AddMedicine.id: (context) => const AddMedicine(),
-        HistoryPage.id: (context) => const HistoryPage(),
-        '/clinicalHistories': (context) => const HistoryPage(),
-        AddClinicalHistory.id: (context) => const AddClinicalHistory(),
-        '/addHistory': (context) => const AddClinicalHistory(),
-        SignIn.id: (context) => const SignIn(),
-        '/signin': (context) => const SignIn(),
-        SignUp.id: (context) => const SignUp(),
-        '/signup': (context) => const SignUp(),
-        ResetPassword.id: (context) => const ResetPassword(),
-        '/reset-password': (context) => const ResetPassword(),
-        HomeScreen.id: (context) => const HomeScreen(),
-        '/gps_page': (context) => const HomeScreen(),
-      },
-    )
-    );
+        providers: [
+          ChangeNotifierProvider(create: (context) => ApplicationBloc())
+        ],
+        child: MaterialApp(
+          title: 'HistoVet',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const MyHomePage(title: 'HistoVet'),
+          initialRoute: SignIn.id,
+          routes: {
+            Home.id: (context) => const Home(),
+            '/home': (context) => const Home(),
+            PetsPage.id: (context) => const PetsPage(),
+            '/pets': (context) => const PetsPage(),
+            AddPet.id: (context) => const AddPet(),
+            UpdatePet.id: (context) => const UpdatePet(""),
+            ConsultarMedicamento.id: (context) => const ConsultarMedicamento(),
+            '/updatepet': (context) => const UpdatePet(""),
+            MedicinePage.id: (context) => const MedicinePage(),
+            '/medicine': (context) => const MedicinePage(),
+            AddMedicine.id: (context) => const AddMedicine(),
+            HistoryPage.id: (context) => const HistoryPage(),
+            '/clinicalHistories': (context) => const HistoryPage(),
+            AddClinicalHistory.id: (context) => const AddClinicalHistory(),
+            '/addHistory': (context) => const AddClinicalHistory(),
+            SignIn.id: (context) => const SignIn(),
+            '/signin': (context) => const SignIn(),
+            SignUp.id: (context) => const SignUp(),
+            '/signup': (context) => const SignUp(),
+            ResetPassword.id: (context) => const ResetPassword(),
+            '/reset-password': (context) => const ResetPassword(),
+            HomeScreen.id: (context) => const HomeScreen(),
+            '/gps_page': (context) => const HomeScreen(),
+            ConsultarMascota.id: (context) => const ConsultarMascota(),
+            '/buscarMascota': (context) => const ConsultarMascota(),
+            HistoryPetSelectPage.id: (context) => HistoryPetSelectPage(""),
+          },
+        ));
   }
 }
-
-
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);

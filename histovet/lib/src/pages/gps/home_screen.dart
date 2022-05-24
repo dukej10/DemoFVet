@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
   late StreamSubscription boundsSubscription;
   final _locationController = TextEditingController();
 
-
   @override
   void initState() {
     final applicationBloc =
@@ -51,9 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  
-
- /*
+  /*
   @override
   void dispose() {
     final applicationBloc =
@@ -64,12 +61,18 @@ class _HomeScreenState extends State<HomeScreen> {
     locationSubscription.cancel();
     boundsSubscription.cancel();
     super.dispose();
-  }*/
+  }
+  */
 
   @override
   Widget build(BuildContext context) {
     final applicationBloc = Provider.of<ApplicationBloc>(context);
     return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text("GPS"),
+          
+        ),
         body: (applicationBloc.currentLocation == null)
             ? Center(
                 child: CircularProgressIndicator(),
@@ -89,6 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () => applicationBloc.clearSelectedLocation(),
                     ),
                   ),*/
+
                   Stack(
                     children: [
                       Container(
@@ -143,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('La veterinaria más cercana',
+                    child: Text('Encuentra la veterinaria más cercana',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 25.0, fontWeight: FontWeight.bold)),

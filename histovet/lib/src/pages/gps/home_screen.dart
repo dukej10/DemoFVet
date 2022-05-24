@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Stack(
                     children: [
                       Container(
-                        height: 550.0,
+                        height: 500.0,
                         child: GoogleMap(
                           mapType: MapType.normal,
                           myLocationEnabled: true,
@@ -115,14 +115,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (applicationBloc.searchResults != null &&
                           applicationBloc.searchResults!.length != 0)
                         Container(
-                            height: 550.0,
+                            height: 500.0,
                             width: double.infinity,
                             decoration: BoxDecoration(
                                 color: Colors.black.withOpacity(.6),
                                 backgroundBlendMode: BlendMode.darken)),
                       if (applicationBloc.searchResults != null)
                         Container(
-                          height: 550.0,
+                          height: 500.0,
                           child: ListView.builder(
                               itemCount: applicationBloc.searchResults!.length,
                               itemBuilder: (context, index) {
@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text('Encuentra la veterinaria más cercana',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 25.0, fontWeight: FontWeight.bold)),
+                            fontSize: 20.0, fontWeight: FontWeight.bold)),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),

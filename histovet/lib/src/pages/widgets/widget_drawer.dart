@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
+import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
@@ -61,6 +62,13 @@ class MenuLateral extends StatelessWidget {
               title: const Text("Historias Clínicas"),
               onTap: () {
                 Navigator.pushNamed(context, HistoryPage.id);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.article_sharp ),
+              title: const Text("Mapas"),
+              onTap: () {
+                Navigator.pushNamed(context, HomeScreen.id);
               },
             )
           ])

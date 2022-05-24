@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
 
     return MultiProvider(
       providers:[
-        ChangeNotifierProvider(create: (context) => ApplicationBloc())],
+        ChangeNotifierProvider(create: (context) => ApplicationBloc())
+      ],
     
     child: MaterialApp(
       title: 'HistoVet',

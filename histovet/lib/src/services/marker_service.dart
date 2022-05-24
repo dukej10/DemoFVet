@@ -26,13 +26,13 @@ class MarkerService {
     if (center) markerId = 'center';
 
     return Marker(
-        markerId: MarkerId(markerId),
+        markerId: MarkerId(markerId!),
         draggable: false,
         visible: (center) ? false : true,
         infoWindow: InfoWindow(
             title: place.name, snippet: place.vicinity),
-        position: LatLng(place.geometry.location.lat,
-            place.geometry.location.lng)
+        position: LatLng(place.geometry!.location.lat,
+            place.geometry!.location.lng)
     );
   }
 

@@ -3,9 +3,9 @@
 import 'geometry.dart';
 
 class Place {
-  final Geometry geometry;
-  final String name;
-  final String vicinity;
+  final Geometry? geometry;
+  final String? name;
+  final String? vicinity;
 
   Place ({required this.geometry,required this.name,required this.vicinity});
 

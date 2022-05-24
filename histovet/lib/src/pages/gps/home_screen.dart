@@ -8,6 +8,9 @@ import 'package:provider/provider.dart';
 
 import '../../blocs/application_bloc.dart';
 import '../../models/place.dart';
+import 'package:flutter/scheduler.dart';
+
+import '../Home/home_page.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = "gps_page";
@@ -15,25 +18,27 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   Completer<GoogleMapController> _mapController = Completer();
+
   late StreamSubscription locationSubscription;
   late StreamSubscription boundsSubscription;
   final _locationController = TextEditingController();
+
 
   @override
   void initState() {
     final applicationBloc =
         Provider.of<ApplicationBloc>(context, listen: false);
 
-
     //Listen for selected Location
-    locationSubscription = applicationBloc.selectedLocation!.stream.listen((place) {
+    locationSubscription =
+        applicationBloc.selectedLocation!.stream.listen((place) {
       if (place != null) {
-        _locationController.text = place.name;
+        _locationController.text = place.name!;
         _goToPlace(place);
       } else
         _locationController.text = "";
@@ -46,24 +51,25 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  
 
-
+ /*
   @override
   void dispose() {
     final applicationBloc =
         Provider.of<ApplicationBloc>(context, listen: false);
+
     applicationBloc.dispose();
     _locationController.dispose();
     locationSubscription.cancel();
     boundsSubscription.cancel();
     super.dispose();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     final applicationBloc = Provider.of<ApplicationBloc>(context);
     return Scaffold(
-      
         body: (applicationBloc.currentLocation == null)
             ? Center(
                 child: CircularProgressIndicator(),
@@ -86,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Stack(
                     children: [
                       Container(
-                        height: 300.0,
+                        height: 550.0,
                         child: GoogleMap(
                           mapType: MapType.normal,
                           myLocationEnabled: true,
@@ -105,14 +111,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (applicationBloc.searchResults != null &&
                           applicationBloc.searchResults!.length != 0)
                         Container(
-                            height: 300.0,
+                            height: 550.0,
                             width: double.infinity,
                             decoration: BoxDecoration(
                                 color: Colors.black.withOpacity(.6),
                                 backgroundBlendMode: BlendMode.darken)),
                       if (applicationBloc.searchResults != null)
                         Container(
-                          height: 300.0,
+                          height: 550.0,
                           child: ListView.builder(
                               itemCount: applicationBloc.searchResults!.length,
                               itemBuilder: (context, index) {
@@ -137,20 +143,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Veterinarias más cercanas',
+                    child: Text('La veterinaria más cercana',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 25.0, fontWeight: FontWeight.bold)),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Wrap(
+                      alignment: WrapAlignment.center,
                       spacing: 8.0,
                       children: [
                         FilterChip(
                             label: Text('BUSCAR'),
                             onSelected: (val) => applicationBloc
-                                .togglePlaceType('veterinaria', val),
-                            selected: applicationBloc.placeType  =='veterinaria',
+                                .togglePlaceType('pet_store', val),
+                            selected: applicationBloc.placeType == 'pet_store',
                             selectedColor: Colors.blue),
                       ],
                     ),
@@ -165,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
       CameraUpdate.newCameraPosition(
         CameraPosition(
             target: LatLng(
-                place.geometry.location.lat, place.geometry.location.lng),
+                place.geometry!.location.lat, place.geometry!.location.lng),
             zoom: 14.0),
       ),
     );

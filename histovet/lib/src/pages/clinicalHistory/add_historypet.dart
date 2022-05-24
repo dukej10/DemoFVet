@@ -115,6 +115,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                   margin:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderTextField(
+                      enabled: false,
                       controller: dateController,
                       name: "date",
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -133,6 +134,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                   margin:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderTextField(
+                      enabled: false,
                       controller: timeCHController,
                       name: "time",
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -152,6 +154,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
+                    enabled: false,
                     controller: docOwnerCHController,
                     name: "docOwner",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -178,6 +181,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
+                  enabled: false,
                   controller: nameOwnerController,
                   name: "nameOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -203,6 +207,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                   name: "contactOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: const InputDecoration(
+                      enabled: false,
                       labelText: "contacto Dueño",
                       hintText: "Ingrese el contacto del dueño",
                       prefixIcon: Icon(Icons.contact_phone_outlined),
@@ -247,6 +252,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
+                  enabled: false,
                   controller: nameController,
                   name: "name",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -291,6 +297,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
+                  enabled: false,
                   controller: specieController,
                   name: "specie",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -308,6 +315,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
+                    enabled: false,
                     controller: breedController,
                     name: "breed",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -327,6 +335,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
+                  enabled: false,
                   controller: sexController,
                   name: "sex",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -344,6 +353,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
+                  enabled: false,
                   controller: colorController,
                   name: "color",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -888,6 +898,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
     Pet pet = await petIn.getPet(widget.idPet);
     setState(() {
       DateTime today = new DateTime.now();
+      timeCHController.text = "${today.hour - 7}:${today.minute}";
       dateController.text = today.toIso8601String().split('T').first;
       docOwnerCHController.text = pet.documentOwner;
       nameOwnerController.text = pet.nameOwner;

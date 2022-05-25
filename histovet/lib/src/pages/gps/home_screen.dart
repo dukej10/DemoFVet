@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Encuentra las veterinarias más cercanas',
+                    child: Text('Encuentra las veterinarias más cercanas en tu ubicación',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 20.0, fontWeight: FontWeight.bold)),

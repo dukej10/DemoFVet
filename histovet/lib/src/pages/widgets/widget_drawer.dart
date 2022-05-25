@@ -3,6 +3,7 @@ import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
+import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 
 import '../Home/home_page.dart';
@@ -44,6 +45,13 @@ class MenuLateral extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.content_paste_search_rounded),
+              title: const Text("Consultar Mascota"),
+              onTap: () {
+                Navigator.pushNamed(context, ConsultarMascota.id);
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.medication),
               title: const Text("Medicinas"),
               onTap: () {
@@ -58,15 +66,15 @@ class MenuLateral extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.article_sharp ),
+              leading: const Icon(Icons.article_sharp),
               title: const Text("Historias Clínicas"),
               onTap: () {
                 Navigator.pushNamed(context, HistoryPage.id);
               },
             ),
             ListTile(
-              leading: const Icon(Icons.article_sharp ),
-              title: const Text("Mapas"),
+              leading: const Icon(Icons.article_sharp),
+              title: const Text("Mapa"),
               onTap: () {
                 Navigator.pushNamed(context, HomeScreen.id);
               },

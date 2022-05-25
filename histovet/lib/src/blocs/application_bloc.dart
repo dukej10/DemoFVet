@@ -19,8 +19,8 @@ class ApplicationBloc with ChangeNotifier {
   //Variables
   Position? currentLocation;
   List<PlaceSearch>? searchResults;
-  StreamController<Place>? selectedLocation = StreamController<Place>();
-  StreamController<LatLngBounds>? bounds = StreamController<LatLngBounds>();
+  StreamController<Place> selectedLocation = StreamController<Place>.broadcast();
+  StreamController<LatLngBounds> bounds = StreamController<LatLngBounds>.broadcast();
   Place? selectedLocationStatic;
   String? placeType;
   List<Place>? placeResults;
@@ -58,15 +58,12 @@ class ApplicationBloc with ChangeNotifier {
     notifyListeners();
   }
 
-  clearSelectedLocation() {
+   clearSelectedLocation() {
     var event = null;
     selectedLocation!.add(event);
-    var _selectedLocationStatic = null;
-    selectedLocationStatic = _selectedLocationStatic;
-    var _searchResults = null;
-    searchResults = _searchResults;
-    var _placeType = null;
-    placeType = _placeType;
+    selectedLocationStatic = null;
+    searchResults = null;
+    placeType = null;
     notifyListeners();
   }
 
@@ -80,12 +77,20 @@ class ApplicationBloc with ChangeNotifier {
 
     if (placeType != null) {
       var places = await placesService.getPlaces(
-          selectedLocationStatic!.geometry.location.lat,
-          selectedLocationStatic!.geometry.location.lng,
+          selectedLocationStatic!.geometry!.location.lat,
+          selectedLocationStatic!.geometry!.location.lng,
           placeType!);
       markers = [];
       if (places.length > 0) {
         var newMarker = markerService.createMarkerFromPlace(places[0], false);
+        markers.add(newMarker);
+      }
+      if (places.length > 1) {
+        var newMarker = markerService.createMarkerFromPlace(places[1], false);
+        markers.add(newMarker);
+      }
+      if (places.length > 2) {
+        var newMarker = markerService.createMarkerFromPlace(places[2], false);
         markers.add(newMarker);
       }
 

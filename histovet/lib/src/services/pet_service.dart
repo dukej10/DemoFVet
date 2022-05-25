@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/pet_model.dart';
 
-
 class PetService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -44,6 +43,39 @@ class PetService {
       return true;
     } catch (e) {
       return false;
+    }
+  }
+
+  Future<List<Pet>> searchPet(String code) async {
+    List<Pet> mascotas = [];
+    print("Llegó code " + code);
+    try {
+      final collection = FirebaseFirestore.instance
+          .collection('pet')
+          .where("code", isEqualTo: code);
+      collection.snapshots().listen((querySnapshot) {
+        for (var doc in querySnapshot.docs) {
+          Map<String, dynamic> data = doc.data();
+          print("encontró");
+          print(doc.data());
+          Pet newMedicine = Pet(
+              data["id"],
+              data["code"],
+              data["name"],
+              data["nameOwner"],
+              data["contactOwner"],
+              data["documentOwner"],
+              data["age"],
+              data["breed"],
+              data["specie"],
+              data["color"],
+              data["sex"]);
+          mascotas.add(newMedicine);
+        }
+      });
+      return mascotas;
+    } catch (e) {
+      return mascotas;
     }
   }
 

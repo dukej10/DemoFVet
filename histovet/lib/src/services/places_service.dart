@@ -6,7 +6,7 @@ import '../models/place.dart';
 import '../models/place_search.dart';
 
 class PlacesService {
-  final key = 'AIzaSyCH3AbrojFrbdJdUlCoYOr0ylPispQOPnc';
+  final key = 'AIzaSyCQdaPd6EyJuLoDMLGHX2vNLL18a8kdRH8';
 
   Future<List<PlaceSearch>> getAutocomplete(String search) async {
     var url =

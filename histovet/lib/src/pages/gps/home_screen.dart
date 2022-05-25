@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("GPS"),
+          title: const Text("Mapa"),
           
         ),
         body: (applicationBloc.currentLocation == null)
@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Encuentra la veterinaria más cercana',
+                    child: Text('Encuentra las veterinarias más cercanas',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 20.0, fontWeight: FontWeight.bold)),
@@ -161,8 +161,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         FilterChip(
                             label: Text('BUSCAR'),
                             onSelected: (val) => applicationBloc
-                                .togglePlaceType('pet_store', val),
-                            selected: applicationBloc.placeType == 'pet_store',
+                                .togglePlaceType('veterinary_care', val),
+                            selected: applicationBloc.placeType == 'veterinary_care',
                             selectedColor: Colors.blue),
                       ],
                     ),

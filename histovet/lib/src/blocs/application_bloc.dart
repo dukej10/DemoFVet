@@ -85,6 +85,14 @@ class ApplicationBloc with ChangeNotifier {
         var newMarker = markerService.createMarkerFromPlace(places[0], false);
         markers.add(newMarker);
       }
+      if (places.length > 1) {
+        var newMarker = markerService.createMarkerFromPlace(places[1], false);
+        markers.add(newMarker);
+      }
+      if (places.length > 2) {
+        var newMarker = markerService.createMarkerFromPlace(places[2], false);
+        markers.add(newMarker);
+      }
 
       var locationMarker =
           markerService.createMarkerFromPlace(selectedLocationStatic!, true);

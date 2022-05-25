@@ -74,7 +74,7 @@ class MenuLateral extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.article_sharp),
-              title: const Text("Mapas"),
+              title: const Text("Mapa"),
               onTap: () {
                 Navigator.pushNamed(context, HomeScreen.id);
               },

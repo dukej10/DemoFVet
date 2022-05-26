@@ -7,7 +7,7 @@ class SaleService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final databaseRef = FirebaseDatabase.instance.ref();
 
-  Sale sale = Sale("", "", "", "", 0.0, 0.0);
+  Sale sale = Sale("", "", "", "", 0.0, 0.0, 0.0);
 
   CollectionReference medicineAll =
       FirebaseFirestore.instance.collection("medicine");
@@ -20,9 +20,10 @@ class SaleService {
         "id": saleDoc.id,
         "code": sale.code,
         "name": sale.name,
-        "lote": sale.lote,
+        "lote": sale.formaPago,
         "precio": sale.precio,
         "cantidad": sale.cantidad,
+        "total": sale.total
       });
       return true;
     } catch (e) {
@@ -38,7 +39,7 @@ class SaleService {
         for (var doc in querySnapshot.docs) {
           Map<String, dynamic> data = doc.data();
           Sale newSale = Sale(data["id"], data["code"], data["name"],
-              data["lote"], data["precio"], data["cantidad"]);
+              data["lote"], data["precio"], data["cantidad"], data["total"]);
           sales.add(newSale);
         }
       });

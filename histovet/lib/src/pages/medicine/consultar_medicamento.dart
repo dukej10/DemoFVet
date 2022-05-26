@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:histovet/src/controller/medicine_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
 
+import '../sale/add_sale.dart';
+
 class ConsultarMedicamento extends StatefulWidget {
   static String id = "consultar_medicamento";
   const ConsultarMedicamento({Key? key}) : super(key: key);
@@ -192,7 +194,9 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                               onPressed: () {
                                                 //TODO: widget comprar medicamento
                                                 print("comprar");
-                                                setState(() {});
+
+                                                Navigator.pushNamed(
+                                                    context, AddSale.id);
                                               },
                                             )),
                                       ],

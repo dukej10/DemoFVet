@@ -37,7 +37,7 @@ class _AddSaleState extends State<AddSale> {
         title: const Text("zona de pago"),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.save),
+        child: const Icon(Icons.shopping_cart),
         onPressed: () {
           getInfoSale();
         },
@@ -65,7 +65,10 @@ class _AddSaleState extends State<AddSale> {
                   ),
                   Row(
                     children: [
-                      Text(medicine?.name ?? ""),
+                      Text(medicine?.name ?? "",
+                          style: TextStyle(
+                            fontSize: 40,
+                          )),
                     ],
                   ),
                   const SizedBox(
@@ -198,7 +201,7 @@ class _AddSaleState extends State<AddSale> {
                   ),
                   Row(
                     children: [
-                      Text(total.toString()),
+                      Text(total.toString(), style: TextStyle(fontSize: 40)),
                     ],
                   )
                 ]),

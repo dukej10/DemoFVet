@@ -170,11 +170,20 @@ class _AddSaleState extends State<AddSale> {
                           child: ElevatedButton(
                             child: const Text('Comprobar'),
                             onPressed: () {
-                              total = double.parse(cantid.text);
-                              //print(total);
-                              setState(() {
-                                total = total * medicine!.precio;
-                              });
+                              if (cantid.text.isNotEmpty) {
+                                total = double.parse(cantid.text);
+                                //print(total);
+                                setState(() {
+                                  total = total * medicine!.precio;
+                                });
+                              } else {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text("Ingrese todos los campos"),
+                                  backgroundColor:
+                                      Color.fromARGB(255, 119, 4, 25),
+                                ));
+                              }
                             },
                           )),
                     ],
@@ -228,7 +237,7 @@ class _AddSaleState extends State<AddSale> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("error en la compra, Intente de nuevo..."),
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 119, 4, 25),
       ));
     }
   }

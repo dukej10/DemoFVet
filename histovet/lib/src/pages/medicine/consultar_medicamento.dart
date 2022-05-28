@@ -192,11 +192,9 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                             child: ElevatedButton(
                                               child: const Text('Comprar'),
                                               onPressed: () {
-                                                //TODO: widget comprar medicamento
-                                                print("comprar");
-
                                                 Navigator.pushNamed(
-                                                    context, AddSale.id);
+                                                    context, '/addsale',
+                                                    arguments: medicine);
                                               },
                                             )),
                                       ],

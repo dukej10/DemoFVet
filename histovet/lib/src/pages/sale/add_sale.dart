@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:histovet/src/controller/sale_controller.dart';
+import 'package:histovet/src/models/medicine_model.dart';
 
 import '../../models/sale_model.dart';
 
 class AddSale extends StatefulWidget {
   static String id = "form_sale";
+
   const AddSale({Key? key}) : super(key: key);
+  //const AddSale({Key? key}) : super(key: key);
 
   @override
   State<AddSale> createState() => _AddSaleState();
@@ -17,16 +20,24 @@ class _AddSaleState extends State<AddSale> {
   final _formState = GlobalKey<FormBuilderState>();
   final SaleController saleController = SaleController();
   bool respuesta = false;
+  double total = 0;
+  late Medicine tempMedi;
 
   @override
   Widget build(BuildContext context) {
+    Medicine? medicine =
+        ModalRoute.of(context)?.settings.arguments as Medicine?;
+    //print(medicine);
+    final cantid = TextEditingController();
+    tempMedi = medicine!;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("zona de compra"),
+        title: const Text("zona de pago"),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.save),
+        child: const Icon(Icons.shopping_cart),
         onPressed: () {
           getInfoSale();
         },
@@ -54,7 +65,10 @@ class _AddSaleState extends State<AddSale> {
                   ),
                   Row(
                     children: [
-                      Text("  nombre"),
+                      Text(medicine?.name ?? "",
+                          style: TextStyle(
+                            fontSize: 40,
+                          )),
                     ],
                   ),
                   const SizedBox(
@@ -68,7 +82,7 @@ class _AddSaleState extends State<AddSale> {
                   ),
                   Row(
                     children: [
-                      Text("  precio"),
+                      Text(medicine?.precio.toString() ?? ""),
                     ],
                   ),
                 ]),
@@ -124,6 +138,7 @@ class _AddSaleState extends State<AddSale> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
+                    controller: cantid,
                     name: "cantidad",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: const InputDecoration(
@@ -141,6 +156,56 @@ class _AddSaleState extends State<AddSale> {
                           errorText: "La cantidad debe ser mayor que 0")
                     ])),
               ),
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 5,
+                  top: 20,
+                  right: 40,
+                  bottom: 20,
+                ),
+                //height: 500,
+                child: Column(children: <Widget>[
+                  Row(
+                    children: [
+                      SizedBox(
+                          width: 110,
+                          height: 40,
+                          child: ElevatedButton(
+                            child: const Text('Comprobar'),
+                            onPressed: () {
+                              if (cantid.text.isNotEmpty) {
+                                total = double.parse(cantid.text);
+                                //print(total);
+                                setState(() {
+                                  total = total * medicine!.precio;
+                                });
+                              } else {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text("Ingrese todos los campos"),
+                                  backgroundColor:
+                                      Color.fromARGB(255, 119, 4, 25),
+                                ));
+                              }
+                            },
+                          )),
+                    ],
+                  ),
+                  Row(
+                    children: const [
+                      Text(
+                        "  Total: ",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(total.toString(), style: TextStyle(fontSize: 40)),
+                    ],
+                  )
+                ]),
+              ),
             ],
           )),
     );
@@ -153,12 +218,13 @@ class _AddSaleState extends State<AddSale> {
       final formaPago = values["formaPago"];
       final cantidad = double.parse(values["cantidad"]);
       final pago = values["pago"];
-      final precio = 1000.0; //TODO: obtener precio de la medicina
-      final name = "medicina"; //TODO: obtener nombre de la medicina
-      final total = precio * cantidad;
-      final code = "";
+      final precio = tempMedi.precio;
+      final name = tempMedi.name;
+      final total2 = total;
+      final code = tempMedi.code;
 
-      late Sale sale = Sale("", code, name, formaPago, precio, cantidad, total);
+      late Sale sale =
+          Sale("", code, name, formaPago, precio, cantidad, total2);
       addSaleMessage(sale);
     }
   }
@@ -174,7 +240,7 @@ class _AddSaleState extends State<AddSale> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("error en la compra, Intente de nuevo..."),
-        backgroundColor: Colors.green,
+        backgroundColor: Color.fromARGB(255, 119, 4, 25),
       ));
     }
   }

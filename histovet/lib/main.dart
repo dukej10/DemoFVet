@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:histovet/src/pages/Home/home_page.dart';
 import 'package:histovet/src/pages/Login/reset_password.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
             AddPet.id: (context) => const AddPet(),
             UpdatePet.id: (context) => const UpdatePet("",""),
             ConsultarMedicamento.id: (context) => const ConsultarMedicamento(),
+            '/addsale': (context) => const AddSale(),
             AddSale.id: (context) => const AddSale(),
             '/updatepet': (context) => const UpdatePet("",""),
             MedicinePage.id: (context) => const MedicinePage(),

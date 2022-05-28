@@ -15,8 +15,8 @@ class PetsPage extends StatefulWidget {
 }
 
 class _PetsPageState extends State<PetsPage> {
-  TextStyle txtStyle =
-      const TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
+  TextStyle txtStyle = const TextStyle(
+      fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
   PetController petCont = PetController();
   bool answer = false;
 
@@ -69,7 +69,8 @@ class _PetsPageState extends State<PetsPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => UpdatePet(
-                                                specie.id.toString(),specie.user_id.toString())));
+                                                specie.id.toString(),
+                                                specie.user_id.toString())));
                                   },
                                   leading: const Icon(
                                     FontAwesomeIcons.paw,
@@ -84,8 +85,8 @@ class _PetsPageState extends State<PetsPage> {
                                     style: txtStyle.copyWith(fontSize: 17),
                                   ),
                                   trailing: IconButton(
-                                    icon:
-                                        const Icon(Icons.delete, color: Colors.black),
+                                    icon: const Icon(Icons.delete,
+                                        color: Colors.black),
                                     onPressed: () {
                                       messageDelete(specie.id.toString());
                                       Navigator.pushNamed(context, '/pets')
@@ -103,7 +104,7 @@ class _PetsPageState extends State<PetsPage> {
   }
 
   // Le indica al usuario si se pudo o no eliminar el registro
-   void messageDelete(String idPet) async {
+  void messageDelete(String idPet) async {
     answer = await petCont.deletePet(idPet);
     if (answer) {
       Navigator.pushNamed(context, '/pets').then((_) => setState(() {}));
@@ -113,7 +114,7 @@ class _PetsPageState extends State<PetsPage> {
       ));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("No se pudo eliminar el registro de la mascota"), 
+        content: Text("No se pudo eliminar el registro de la mascota"),
         backgroundColor: Colors.green,
       ));
     }

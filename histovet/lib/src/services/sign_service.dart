@@ -42,4 +42,30 @@ class SignService {
       return false;
     }
   }
+
+  Future<String> username() async {
+    try {
+      final User? user = await _firestore.currentUser;
+      final name = user?.email;
+      return name.toString();
+    } catch (e) {
+      return "";
+    }
+  }
+
+  Future<bool> estado() async {
+    try {
+      final User? user = await _firestore.currentUser;
+      final uid = user?.uid;
+      if (uid == '5Q5W4CWh9KUSz0J6uSuCxuhxZAm2') {
+        //uid admin
+
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+  }
 }

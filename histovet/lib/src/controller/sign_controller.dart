@@ -38,4 +38,22 @@ class SignController {
       return false;
     }
   }
+
+  Future<String> username() async {
+    String username = await sign.username();
+    if (username != "") {
+      return username;
+    } else {
+      return "";
+    }
+  }
+
+  Future<bool> estado() async {
+    bool estado = await sign.estado();
+    if (estado) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

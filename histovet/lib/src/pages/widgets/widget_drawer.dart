@@ -19,7 +19,8 @@ class MenuLateral extends StatefulWidget {
 
 class _MenuLateralState extends State<MenuLateral> {
   SignController sign = SignController();
-
+  String username = "";
+  bool estado = false;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -42,7 +43,7 @@ class _MenuLateralState extends State<MenuLateral> {
           Column(children: [
             ListTile(
               leading: const Icon(Icons.photo_camera_front_outlined),
-              title: Text(user_name()),
+              title: Text(username.toString()),
             ),
             ListTile(
               leading: const Icon(Icons.photo_camera_front_outlined),
@@ -74,7 +75,7 @@ class _MenuLateralState extends State<MenuLateral> {
               },
             ),
             Visibility(
-              visible: estado(),
+              visible: estado,
               child: new ListTile(
                 leading: const Icon(Icons.medication),
                 title: const Text("Medicinas"),
@@ -127,28 +128,22 @@ class _MenuLateralState extends State<MenuLateral> {
       ));
     }
   }
-}
 
-bool estado() {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  final User? user = auth.currentUser;
-  final uid = user?.uid;
-
-  if (uid == '5Q5W4CWh9KUSz0J6uSuCxuhxZAm2') {
-    //uid admin
-
-    return true;
-  } else {
-    return false;
+  @override
+  void initState() {
+    getUsername();
+    getEstado();
+    super.initState();
   }
-}
 
-String user_name() {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  final User? user = auth.currentUser;
-  final name = user?.email;
+  void getUsername() async {
+    username = await sign.username();
+    print("tengo " + username);
+    setState(() {});
+  }
 
-  print(name);
-
-  return name.toString();
+  void getEstado() async {
+    estado = await sign.estado();
+    setState(() {});
+  }
 }

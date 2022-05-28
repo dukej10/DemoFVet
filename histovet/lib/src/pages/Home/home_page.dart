@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../Login/signin_screen.dart';
+import '../widgets/widget_drawer.dart';
 import 'griddashboard.dart';
 
 class Home extends StatefulWidget {
@@ -24,7 +25,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        title: Text("INICIO"),
+      
+        centerTitle: true,
+      ),
+      drawer: MenuLateral(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           signOut();
@@ -32,24 +38,17 @@ class _HomeState extends State<Home> {
         child: Icon(Icons.logout_rounded),
         backgroundColor: Colors.red,
       ),
-   
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       body: Column(
-        
         children: <Widget>[
           const SizedBox(
-            height: 60,
+            height: 40,
           ),
-          
-
           Padding(
-            
             padding: const EdgeInsets.only(left: 16, right: 16),
             child: Row(
-              
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const <Widget>[
@@ -59,7 +58,7 @@ class _HomeState extends State<Home> {
                             fontSize: 21,
                             fontWeight: FontWeight.bold)),
                     SizedBox(
-                      height: 4,
+                      height: 5,
                     ),
                     Text(
                       "La historia médica de tu mascota a la mano",
@@ -67,9 +66,11 @@ class _HomeState extends State<Home> {
                           color: Color(0xffa29aac),
                           fontSize: 12,
                           fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.center,
                     ),
+                    
                     SizedBox(
-                      height: 20,
+                      height: 25,
                     ),
                     Text(
                       "Home",
@@ -96,4 +97,14 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+}
+
+String user_name() {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final User? user = auth.currentUser;
+  final name = user?.email;
+
+  print(name);
+
+  return name.toString();
 }

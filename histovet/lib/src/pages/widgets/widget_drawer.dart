@@ -32,6 +32,11 @@ class MenuLateral extends StatelessWidget {
               )),
           Column(children: [
             ListTile(
+              leading: const Icon(Icons.photo_camera_front_outlined),
+              title: Text(user_name()),
+            ),
+             Container(height: 1, color: Colors.grey), 
+            ListTile(
               leading: const Icon(Icons.house),
               title: const Text("Inicio"),
               onTap: () {
@@ -88,26 +93,28 @@ class MenuLateral extends StatelessWidget {
       ),
     );
   }
-  
 }
 
-
-bool estado(){
-
+bool estado() {
   final FirebaseAuth auth = FirebaseAuth.instance;
-    final User? user = auth.currentUser;
-    final uid = user?.uid;
-
+  final User? user = auth.currentUser;
+  final uid = user?.uid;
 
   if (uid == '5Q5W4CWh9KUSz0J6uSuCxuhxZAm2') {
-      //uid admin
-      
-      return true;
-      
-    } else {
-     
-      return false;
-    }
+    //uid admin
 
+    return true;
+  } else {
+    return false;
+  }
 }
 
+String user_name() {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final User? user = auth.currentUser;
+  final name = user?.email;
+
+  print(name);
+
+  return name.toString();
+}

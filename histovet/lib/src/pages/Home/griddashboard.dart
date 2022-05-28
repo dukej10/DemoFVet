@@ -11,7 +11,7 @@ class GridDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+      
 
     return Flexible(
       child: GridView.count(
@@ -21,6 +21,7 @@ class GridDashboard extends StatelessWidget {
           crossAxisSpacing: 18,
           mainAxisSpacing: 18,
           children: [
+            
             Container(
               height: 100,
               decoration: BoxDecoration(
@@ -178,4 +179,6 @@ bool estado(){
     }
 
 }
+
+
 

@@ -718,6 +718,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
       final mucous = values['mucous'];
       late ClinicalHistory clinicalHistory = ClinicalHistory(
           "",
+          "",
           numberClinicalHistory,
           date,
           time,

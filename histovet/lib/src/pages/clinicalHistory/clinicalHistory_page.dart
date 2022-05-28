@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:histovet/src/controller/clinicalhistory_controller.dart';
+
 import 'package:histovet/src/pages/clinicalHistory/add_clinicalhistory.dart';
-import 'package:histovet/src/pages/clinicalHistory/update_clinicalhistory.dart';
+import 'package:histovet/src/pages/clinicalHistory/update_clinicalHistory.dart';
+
+
+import '../../controller/clinicalHistory_controller.dart';
 
 import '../../models/clinicalhistory_model.dart';
 import '../widgets/widget_drawer.dart';
@@ -70,7 +73,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => UpdateHistory(
-                                                history.id.toString())));
+                                                history.id.toString(), history.user_id.toString() )));
                                   },
                                   leading: const Icon(
                                     FontAwesomeIcons.paperclip,

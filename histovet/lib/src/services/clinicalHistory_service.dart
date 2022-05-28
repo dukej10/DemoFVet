@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../models/clinicalhistory_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase_database/firebase_database.dart';
+
+import '../models/clinicalhistory_model.dart';
 
 class ClinicalHistoryService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -14,6 +16,7 @@ class ClinicalHistoryService {
         .get();
     ClinicalHistory clinicalHistory = ClinicalHistory(
         snapshot["id"],
+        snapshot["user_id"],
         snapshot["numberCH"],
         snapshot["date"],
         snapshot["time"],
@@ -60,9 +63,13 @@ class ClinicalHistoryService {
     final DocumentReference clinicalHistoryDoc =
         _firestore.collection("clinicalHistory").doc();
 
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+
     try {
       await clinicalHistoryDoc.set({
         "id": clinicalHistoryDoc.id,
+        "user_id": user?.uid,
         "numberCH": clinicalHistory.numberCH,
         "date": clinicalHistory.date,
         "time": clinicalHistory.time,
@@ -111,6 +118,7 @@ class ClinicalHistoryService {
           .doc(ch.id)
           .set({
         "id": ch.id,
+        "user_id":ch.user_id,
         "numberCH": ch.numberCH,
         "date": ch.date,
         "time": ch.time,
@@ -162,16 +170,34 @@ class ClinicalHistoryService {
   }
 
   Future<List<ClinicalHistory>> getClinicalHistories() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    final uid = user?.uid;
+
     List<ClinicalHistory> clinicalHistories = [];
+
     try {
-      final collection =
-          FirebaseFirestore.instance.collection('clinicalHistory');
+       var collection;
+
+      if (uid == '5Q5W4CWh9KUSz0J6uSuCxuhxZAm2') {
+        //uid admin
+        collection = FirebaseFirestore.instance.collection('clinicalHistory');
+   
+      } else {
+        collection = FirebaseFirestore.instance
+            .collection("clinicalHistory")
+            .where('user_id', isEqualTo: uid);
+      }
+
+
+
       collection.snapshots().listen((querySnapshot) {
         for (var doc in querySnapshot.docs) {
           Map<String, dynamic> data = doc.data();
           //print(doc.data());
           ClinicalHistory newCinicalHistory = ClinicalHistory(
               data["id"],
+              data["user_id"],
               data["numberCH"],
               data["date"],
               data["time"],

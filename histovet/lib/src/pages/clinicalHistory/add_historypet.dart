@@ -838,6 +838,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
       final mucous = values['mucous'];
       late ClinicalHistory clinicalHistory = ClinicalHistory(
           "",
+          "",
           numberClinicalHistory,
           date,
           time,

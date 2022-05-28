@@ -1,5 +1,6 @@
 class ClinicalHistory {
   final String? id;
+  final String? user_id;
   final int numberCH;
   final String date;
   final String time;
@@ -33,10 +34,11 @@ class ClinicalHistory {
   final double pulse;
   final double trcp;
   final double percentageDehydration;
-  String mucous;
+  final String mucous;
 
   ClinicalHistory(
       this.id,
+      this.user_id,
       this.numberCH,
       this.date,
       this.time,

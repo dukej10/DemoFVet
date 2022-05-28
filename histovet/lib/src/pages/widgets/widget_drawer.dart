@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/gps/home_screen.dart';
@@ -51,12 +52,15 @@ class MenuLateral extends StatelessWidget {
                 Navigator.pushNamed(context, ConsultarMascota.id);
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.medication),
-              title: const Text("Medicinas"),
-              onTap: () {
-                Navigator.pushNamed(context, MedicinePage.id);
-              },
+            Visibility(
+              visible: estado(),
+              child: new ListTile(
+                leading: const Icon(Icons.medication),
+                title: const Text("Medicinas"),
+                onTap: () {
+                  Navigator.pushNamed(context, MedicinePage.id);
+                },
+              ),
             ),
             ListTile(
               leading: const Icon(Icons.content_paste_search_rounded),
@@ -73,7 +77,7 @@ class MenuLateral extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.article_sharp),
+              leading: const Icon(Icons.map),
               title: const Text("Mapa"),
               onTap: () {
                 Navigator.pushNamed(context, HomeScreen.id);
@@ -84,4 +88,26 @@ class MenuLateral extends StatelessWidget {
       ),
     );
   }
+  
 }
+
+
+bool estado(){
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    final uid = user?.uid;
+
+
+  if (uid == '5Q5W4CWh9KUSz0J6uSuCxuhxZAm2') {
+      //uid admin
+      
+      return true;
+      
+    } else {
+     
+      return false;
+    }
+
+}
+

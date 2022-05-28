@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/gps/home_screen.dart';
@@ -8,10 +9,10 @@ import '../pet/pets_page.dart';
 class GridDashboard extends StatelessWidget {
   const GridDashboard({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-    
+
+
     return Flexible(
       child: GridView.count(
           childAspectRatio: 1.0,
@@ -19,62 +20,41 @@ class GridDashboard extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 18,
           mainAxisSpacing: 18,
-          children: [Container(
-            height: 100,
+          children: [
+            Container(
+              height: 100,
               decoration: BoxDecoration(
-                  color:const Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
+                  color: const Color.fromRGBO(33, 211, 255, 1),
+                  borderRadius: BorderRadius.circular(10)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  
                   Image.asset(
                     "assets/img/pet.png",
                     height: 120,
-                    
                   ),
-                  
-                
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(33, 150, 255, 1)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromRGBO(33, 150, 255, 1)),
                       foregroundColor:
                           MaterialStateProperty.all<Color>(Colors.black),
                     ),
-                    onPressed: () {Navigator.pushNamed(context, PetsPage.id);},
+                    onPressed: () {
+                      Navigator.pushNamed(context, PetsPage.id);
+                    },
                     child: const Text("Mascotas"),
                   ),
                 ],
               ),
             ),
+            
+
+
             Container(
               decoration: BoxDecoration(
-                  color: const Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Image.asset(
-                    "assets/img/medicine.png",
-                    height: 110,
-                    scale: 5,
-                  ),
-                  TextButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(33, 150, 255, 1)),
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.black),
-                    ),
-                    onPressed: () {Navigator.pushNamed(context, MedicinePage.id);},
-                    child: const Text("Medicina"),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  color: const Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
+                  color: const Color.fromRGBO(33, 211, 255, 1),
+                  borderRadius: BorderRadius.circular(10)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -88,11 +68,14 @@ class GridDashboard extends StatelessWidget {
                   ),
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(33, 150, 255, 1)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromRGBO(33, 150, 255, 1)),
                       foregroundColor:
                           MaterialStateProperty.all<Color>(Colors.black),
                     ),
-                    onPressed: () {Navigator.pushNamed(context, HistoryPage.id);},
+                    onPressed: () {
+                      Navigator.pushNamed(context, HistoryPage.id);
+                    },
                     child: const Text("Historias Clínicas"),
                   ),
                 ],
@@ -100,7 +83,8 @@ class GridDashboard extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  color: const Color.fromRGBO(33, 211, 255, 1), borderRadius: BorderRadius.circular(10)),
+                  color: const Color.fromRGBO(33, 211, 255, 1),
+                  borderRadius: BorderRadius.circular(10)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -114,18 +98,54 @@ class GridDashboard extends StatelessWidget {
                   ),
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(const Color.fromRGBO(33, 150, 255, 1)),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromRGBO(33, 150, 255, 1)),
                       foregroundColor:
                           MaterialStateProperty.all<Color>(Colors.black),
                     ),
-                    onPressed: () {Navigator.pushNamed(context, HomeScreen.id);},
+                    onPressed: () {
+                      Navigator.pushNamed(context, HomeScreen.id);
+                    },
                     child: const Text("Mapas"),
                   ),
                 ],
               ),
             ),
-          ]
-          ),
+
+
+            Visibility(
+                visible: estado(),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: const Color.fromRGBO(33, 211, 255, 1),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Image.asset(
+                        "assets/img/medicine.png",
+                        height: 110,
+                        scale: 5,
+                      ),
+                      TextButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color.fromRGBO(33, 150, 255, 1)),
+                          foregroundColor:
+                              MaterialStateProperty.all<Color>(Colors.black),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, MedicinePage.id);
+                        },
+                        child: const Text("Medicina"),
+                      ),
+                    ],
+                  ),
+                )),
+          ]),
     );
   }
 }
@@ -137,3 +157,25 @@ class Items {
   String img;
   Items(this.title, this.subtitle, this.event, this.img);
 }
+
+
+
+bool estado(){
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    final uid = user?.uid;
+
+
+  if (uid == '5Q5W4CWh9KUSz0J6uSuCxuhxZAm2') {
+      //uid admin
+      
+      return true;
+      
+    } else {
+     
+      return false;
+    }
+
+}
+

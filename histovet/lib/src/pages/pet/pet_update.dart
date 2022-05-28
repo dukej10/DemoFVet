@@ -7,7 +7,9 @@ import '../../models/pet_model.dart';
 class UpdatePet extends StatefulWidget {
   static String id = "edit_pet";
   final String idPet;
-  const UpdatePet(this.idPet, {Key? key}) : super(key: key);
+  final String idUser;
+  
+  const UpdatePet(this.idPet, this.idUser,{Key? key}) : super(key: key);
 
   @override
   State<UpdatePet> createState() => _UpdatePet();
@@ -251,17 +253,17 @@ class _UpdatePet extends State<UpdatePet> {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
       final values = _formState.currentState!.value;
-      final code = values['code'];
-      final name = values['name'];
-      final docOwner = values['docOwner'];
-      final nameOwner = values['nameOwner'];
-      final contactOwner = values['contactOwner'];
-      final age = int.parse(values['age']);
-      final breed = values['breed'];
-      final subspecies = values['subspecies'];
-      final color = values['color'];
-      final sex = values['sex'];
-      late Pet pet = Pet(widget.idPet, code, name, nameOwner, contactOwner,
+      final code = codeController.text;
+      final name = nameController.text;
+      final docOwner = docController.text;
+      final nameOwner = nownerController.text;
+      final contactOwner = contactController.text;
+      final age = int.parse(ageController.text);
+      final breed = breedController.text;
+      final subspecies = subspeciesController.text;
+      final color =colorController.text;
+      final sex = sexController.text;
+      late Pet pet = Pet(widget.idPet, widget.idUser, code, name, nameOwner, contactOwner,
           docOwner, age, breed, subspecies, color, sex);
       messageUpdate(pet);
     }
@@ -290,7 +292,7 @@ class _UpdatePet extends State<UpdatePet> {
   void getInfoPet() async {
     Pet pet = await petCont.getPet(widget.idPet);
     setState(() {
-      codeController.text = pet.code.toString();
+      codeController.text = pet.code;
       nameController.text = pet.name;
       nownerController.text = pet.nameOwner;
       contactController.text = pet.contactOwner;

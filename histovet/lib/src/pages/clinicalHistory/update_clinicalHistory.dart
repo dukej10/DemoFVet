@@ -7,7 +7,10 @@ import '../../models/clinicalhistory_model.dart';
 class UpdateHistory extends StatefulWidget {
   static String id = "edit_history";
   final String idHistory;
-  const UpdateHistory(this.idHistory, {Key? key}) : super(key: key);
+  final String idUser;
+
+  const UpdateHistory(this.idHistory, this.idUser, {Key? key})
+      : super(key: key);
 
   @override
   State<UpdateHistory> createState() => _UpdateHistoryState();
@@ -77,7 +80,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
           child: ListView(
             children: [
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: numberCHController,
                   name: "numberCH",
@@ -103,7 +107,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderTextField(
                       controller: dateController,
                       name: "date",
@@ -120,7 +125,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                             errorText: "Valor requerido")
                       ]))),
               Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderTextField(
                       controller: timeCHController,
                       name: "time",
@@ -138,7 +144,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                             errorText: "Valor requerido")
                       ]))),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: docOwnerCHController,
                     name: "docOwner",
@@ -163,7 +170,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: nameOwnerController,
                   name: "nameOwner",
@@ -183,7 +191,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: contactOwnerController,
                   name: "contactOwner",
@@ -209,7 +218,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: addressOwnerController,
                   name: "addressOwner",
@@ -229,7 +239,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: nameController,
                   name: "name",
@@ -249,7 +260,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: emailAddressOwnerController,
                   name: "emailAddressOwner",
@@ -271,7 +283,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: specieController,
                   name: "specie",
@@ -287,7 +300,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: breedController,
                     name: "breed",
@@ -305,7 +319,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: sexController,
                   name: "sex",
@@ -321,7 +336,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: colorController,
                   name: "color",
@@ -338,7 +354,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: weightController,
                   name: "weight",
@@ -362,7 +379,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: originController,
                   name: "origin",
@@ -379,7 +397,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: dietCHController,
                   name: "diet",
@@ -396,7 +415,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: previousIllnessesController,
                   name: "previousIllnesses",
@@ -413,7 +433,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: previousSurgeriesController,
                   name: "previousSurgeries",
@@ -430,7 +451,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: sterilizedController,
                   name: "sterilized",
@@ -446,7 +468,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: nAnimalBirthsController,
                     name: "nAnimalBirths",
@@ -465,7 +488,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: vaccinationScheduleController,
                   name: "vaccinationSchedule",
@@ -482,7 +506,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: lastDewormingController,
                   name: "lastDeworming",
@@ -500,7 +525,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: recentTreatmentsController,
                   name: "recentTreatments",
@@ -517,7 +543,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: animalBehaviorController,
                   name: "animalBehavior",
@@ -534,7 +561,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: reasonForConsultationController,
                   name: "reasonForConsultation",
@@ -551,7 +579,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: physicalConditionController,
                   name: "physicalCondition",
@@ -568,7 +597,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: temperatureController,
                     name: "temperature",
@@ -589,7 +619,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: heartFrequencyController,
                     name: "heartFrequency",
@@ -608,7 +639,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: respiratoryFrequencyController,
                     name: "respiratoryFrequency",
@@ -628,7 +660,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: tllcController,
                     name: "tllc",
@@ -647,7 +680,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: pulseController,
                     name: "pulse",
@@ -666,7 +700,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: trcpController,
                     name: "trcp",
@@ -685,7 +720,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     controller: percentageDehydrationController,
                     name: "percentageDehydration",
@@ -704,7 +740,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: mucousController,
                   name: "mucous",
@@ -738,40 +775,40 @@ class _UpdateHistoryState extends State<UpdateHistory> {
 
       //Identificación historia clinica
       //print("act " + weightController.text);
-      final numberClinicalHistory = int.parse(values['numberCH']);
-      final date = values['date'];
-      final time = values['time'];
+      final numberClinicalHistory = int.parse(numberCHController.text);
+      final date = dateController.text;
+      final time = timeCHController.text;
 
       //Datos del propietario
-      final docOwner = values['docOwner'];
-      final nameOwner = values['nameOwner'];
-      final contactOwner = values['contactOwner'];
-      final addressOwner = values['addressOwner'];
-      final emailAddressOwner = values['emailAddressOwner'];
+      final docOwner = docOwnerCHController.text;
+      final nameOwner = nameOwnerController.text;
+      final contactOwner = contactOwnerController.text;
+      final addressOwner = addressOwnerController.text;
+      final emailAddressOwner = emailAddressOwnerController.text;
 
       //Reseña
-      final name = values['name'];
-      final specie = values['specie'];
-      final breed = values['breed'];
-      final sex = values['sex'];
-      final color = values['color'];
+      final name = nameController.text;
+      final specie = specieController.text;
+      final breed = breedController.text;
+      final sex = sexController.text;
+      final color = colorController.text;
       final weight = double.parse(weightController.text);
-      final origin = values['origin'];
+      final origin = originController.text;
 
       //Anamnesis
-      final diet = values['diet'];
-      final previousIllnesses = values['previousIllnesses'];
-      final previousSurgeries = values['previousSurgeries'];
-      final sterilized = values['sterilized'];
-      final nAnimalBirths = values['nAnimalBirths'];
-      final vaccinationSchedule = values['vaccinationSchedule'];
-      final lastDeworming = values['lastDeworming'];
-      final recentTreatments = values['recentTreatments'];
-      final animalBehavior = values['animalBehavior'];
-      final reasonForConsultation = values['reasonForConsultation'];
+      final diet = dietCHController.text;
+      final previousIllnesses = previousIllnessesController.text;
+      final previousSurgeries = previousSurgeriesController.text;
+      final sterilized = sterilizedController.text;
+      final nAnimalBirths = nAnimalBirthsController.text;
+      final vaccinationSchedule = vaccinationScheduleController.text;
+      final lastDeworming = lastDewormingController.text;
+      final recentTreatments = recentTreatmentsController.text;
+      final animalBehavior = animalBehaviorController.text;
+      final reasonForConsultation = reasonForConsultationController.text;
 
       //Examen fisico generaliz
-      final physicalCondition = values['physicalCondition'];
+      final physicalCondition = physicalConditionController.text;
       final temperature = double.parse(temperatureController.text);
       final heartFrequency = double.parse(heartFrequencyController.text);
       final respiratoryFrequency =
@@ -783,9 +820,10 @@ class _UpdateHistoryState extends State<UpdateHistory> {
       final trcp = double.parse(trcpController.text);
       final percentageDehydration =
           double.parse(percentageDehydrationController.text);
-      final mucous = values['mucous'];
+      final mucous = mucousController.text;
       late ClinicalHistory clinicalHistory = ClinicalHistory(
           widget.idHistory,
+          widget.idUser,
           numberClinicalHistory,
           date,
           time,

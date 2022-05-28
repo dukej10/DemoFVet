@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:histovet/src/pages/Login/signin_screen.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
@@ -7,10 +8,18 @@ import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
 import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 
+import '../../controller/sign_controller.dart';
 import '../Home/home_page.dart';
 
 // ignore: use_key_in_widget_constructors
-class MenuLateral extends StatelessWidget {
+class MenuLateral extends StatefulWidget {
+  @override
+  State<MenuLateral> createState() => _MenuLateralState();
+}
+
+class _MenuLateralState extends State<MenuLateral> {
+  SignController sign = SignController();
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -35,7 +44,14 @@ class MenuLateral extends StatelessWidget {
               leading: const Icon(Icons.photo_camera_front_outlined),
               title: Text(user_name()),
             ),
-             Container(height: 1, color: Colors.grey), 
+            ListTile(
+              leading: const Icon(Icons.photo_camera_front_outlined),
+              title: Text("Cerrar sesión"),
+              onTap: () {
+                messageOut();
+              },
+            ),
+            Container(height: 1, color: Colors.grey),
             ListTile(
               leading: const Icon(Icons.house),
               title: const Text("Inicio"),
@@ -92,6 +108,24 @@ class MenuLateral extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void messageOut() async {
+    bool answer = await sign.signOut();
+
+    if (answer) {
+      print("CERRAR");
+      Navigator.pushNamed(context, SignIn.id);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Se cerró sesión"),
+        backgroundColor: Colors.green,
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("No se pudo cerrar sesión"),
+        backgroundColor: Colors.green,
+      ));
+    }
   }
 }
 

@@ -29,4 +29,13 @@ class SignController {
       return false;
     }
   }
+
+  Future<bool> signOut() async {
+    bool answer = await sign.signOut();
+    if (answer) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

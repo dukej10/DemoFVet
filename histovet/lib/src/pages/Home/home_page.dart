@@ -16,28 +16,20 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   //signout function
-  signOut() async {
-    await auth.signOut();
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => SignIn()));
-  }
+  // signOut() async {
+  //   await auth.signOut();
+  //   Navigator.pushReplacement(
+  //       context, MaterialPageRoute(builder: (context) => SignIn()));
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("INICIO"),
-      
         centerTitle: true,
       ),
       drawer: MenuLateral(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          signOut();
-        },
-        child: Icon(Icons.logout_rounded),
-        backgroundColor: Colors.red,
-      ),
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       body: Column(
         children: <Widget>[
@@ -68,7 +60,6 @@ class _HomeState extends State<Home> {
                           fontWeight: FontWeight.w600),
                       textAlign: TextAlign.center,
                     ),
-                    
                     SizedBox(
                       height: 25,
                     ),

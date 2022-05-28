@@ -33,4 +33,13 @@ class SignService {
       return false;
     }
   }
+
+  Future<bool> signOut() async {
+    try {
+      await _firestore.signOut();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }

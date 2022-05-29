@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
+import 'package:histovet/src/pages/clinicalHistory/consultar_histories.dart';
 import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
@@ -99,6 +100,13 @@ class _MenuLateralState extends State<MenuLateral> {
               title: const Text("Historias Clínicas"),
               onTap: () {
                 Navigator.pushNamed(context, HistoryPage.id);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.article_sharp),
+              title: const Text("Buscar Historias Clínicas"),
+              onTap: () {
+                Navigator.pushNamed(context, ConsultarHistories.id);
               },
             ),
             ListTile(

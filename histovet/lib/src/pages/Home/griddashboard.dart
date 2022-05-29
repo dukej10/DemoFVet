@@ -4,15 +4,21 @@ import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 
+import '../../controller/sign_controller.dart';
 import '../pet/pets_page.dart';
 
-class GridDashboard extends StatelessWidget {
+class GridDashboard extends StatefulWidget {
   const GridDashboard({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-      
+  State<GridDashboard> createState() => _GridDashboardState();
+}
 
+class _GridDashboardState extends State<GridDashboard> {
+  SignController auth = SignController();
+  bool estado = false;
+  @override
+  Widget build(BuildContext context) {
     return Flexible(
       child: GridView.count(
           childAspectRatio: 1.0,
@@ -21,7 +27,6 @@ class GridDashboard extends StatelessWidget {
           crossAxisSpacing: 18,
           mainAxisSpacing: 18,
           children: [
-            
             Container(
               height: 100,
               decoration: BoxDecoration(
@@ -49,9 +54,6 @@ class GridDashboard extends StatelessWidget {
                 ],
               ),
             ),
-            
-
-
             Container(
               decoration: BoxDecoration(
                   color: const Color.fromRGBO(33, 211, 255, 1),
@@ -112,10 +114,8 @@ class GridDashboard extends StatelessWidget {
                 ],
               ),
             ),
-
-
             Visibility(
-                visible: estado(),
+                visible: estado,
                 child: Container(
                   decoration: BoxDecoration(
                       color: const Color.fromRGBO(33, 211, 255, 1),
@@ -149,6 +149,17 @@ class GridDashboard extends StatelessWidget {
           ]),
     );
   }
+
+  @override
+  void initState() {
+    getEstado();
+    super.initState();
+  }
+
+  void getEstado() async {
+    estado = await auth.estado();
+    setState(() {});
+  }
 }
 
 class Items {
@@ -158,27 +169,3 @@ class Items {
   String img;
   Items(this.title, this.subtitle, this.event, this.img);
 }
-
-
-
-bool estado(){
-
-  final FirebaseAuth auth = FirebaseAuth.instance;
-    final User? user = auth.currentUser;
-    final uid = user?.uid;
-
-
-  if (uid == '5Q5W4CWh9KUSz0J6uSuCxuhxZAm2') {
-      //uid admin
-      
-      return true;
-      
-    } else {
-     
-      return false;
-    }
-
-}
-
-
-

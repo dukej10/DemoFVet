@@ -50,51 +50,54 @@ class _PetsPageState extends State<PetsPage> {
                   return const Text('Error');
                 } else if (snapshot.hasData) {
                   List species = snapshot.data ?? [];
-                  return ListView(
-                    children: [
-                      for (Pet specie in species)
-                        Card(
-                          margin: const EdgeInsets.all(6),
-                          elevation: 6,
-                          child: Container(
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/img/fondo.jpg'),
-                                  fit: BoxFit.cover,
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView(
+                      children: [
+                        for (Pet specie in species)
+                          Card(
+                            margin: const EdgeInsets.all(6),
+                            elevation: 6,
+                            child: Container(
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage('assets/img/fondo.jpg'),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              child: ListTile(
-                                  onLongPress: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => UpdatePet(
-                                                specie.id.toString(),
-                                                specie.user_id.toString())));
-                                  },
-                                  leading: const Icon(
-                                    FontAwesomeIcons.paw,
-                                    color: Colors.black,
-                                  ),
-                                  title: Text(
-                                    specie.name,
-                                    style: txtStyle,
-                                  ),
-                                  subtitle: Text(
-                                    specie.code,
-                                    style: txtStyle.copyWith(fontSize: 17),
-                                  ),
-                                  trailing: IconButton(
-                                    icon: const Icon(Icons.delete,
-                                        color: Colors.black),
-                                    onPressed: () {
-                                      messageDelete(specie.id.toString());
-                                      Navigator.pushNamed(context, '/pets')
-                                          .then((_) => setState(() {}));
+                                child: ListTile(
+                                    onLongPress: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => UpdatePet(
+                                                  specie.id.toString(),
+                                                  specie.user_id.toString())));
                                     },
-                                  ))),
-                        )
-                    ],
+                                    leading: const Icon(
+                                      FontAwesomeIcons.paw,
+                                      color: Colors.black,
+                                    ),
+                                    title: Text(
+                                      specie.name,
+                                      style: txtStyle,
+                                    ),
+                                    subtitle: Text(
+                                      specie.code,
+                                      style: txtStyle.copyWith(fontSize: 17),
+                                    ),
+                                    trailing: IconButton(
+                                      icon: const Icon(Icons.delete,
+                                          color: Colors.black),
+                                      onPressed: () {
+                                        messageDelete(specie.id.toString());
+                                        Navigator.pushNamed(context, '/pets')
+                                            .then((_) => setState(() {}));
+                                      },
+                                    ))),
+                          )
+                      ],
+                    ),
                   );
                 } else {
                   return const Text('Empty data');

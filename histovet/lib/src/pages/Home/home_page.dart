@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("INICIO"),
+        title: const Text("Inicio"),
         centerTitle: true,
       ),
       drawer: MenuLateral(),
@@ -88,14 +88,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-}
-
-String user_name() {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  final User? user = auth.currentUser;
-  final name = user?.email;
-
-  print(name);
-
-  return name.toString();
 }

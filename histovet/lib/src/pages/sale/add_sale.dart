@@ -44,169 +44,173 @@ class _AddSaleState extends State<AddSale> {
       ),
       body: FormBuilder(
           key: _formState,
-          child: ListView(
-            children: [
-              Container(
-                padding: const EdgeInsets.only(
-                  left: 5,
-                  top: 20,
-                  right: 40,
-                  bottom: 20,
-                ),
-                //height: 500,
-                child: Column(children: <Widget>[
-                  Row(
-                    children: const [
-                      Text(
-                        "  Nombre: ",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      )
-                    ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView(
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(
+                    left: 5,
+                    top: 20,
+                    right: 40,
+                    bottom: 20,
                   ),
-                  Row(
-                    children: [
-                      Text(medicine?.name ?? "",
-                          style: TextStyle(
-                            fontSize: 40,
-                          )),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    children: const [
-                      Text("  Precio:",
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(medicine?.precio.toString() ?? ""),
-                    ],
-                  ),
-                ]),
-              ),
-              Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderDropdown(
-                      name: "formaPago",
-                      decoration: const InputDecoration(
-                          labelText: "Pago",
-                          prefixIcon: Icon(Icons.article_outlined),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.teal))),
-                      hint: const Text("Seleccionar forma de pago"),
-                      validator: FormBuilderValidators.required(context,
-                          errorText: "Seleccione una forma de pago"),
-                      items: [
-                        {'value': 'Tarjeta', 'key': 'Tarjeta'},
-                        {'value': 'Efectivo', 'key': 'Efectivo'}
-                      ]
-                          .map((formaPago) => DropdownMenuItem(
-                              value: formaPago["value"],
-                              child: Text("${formaPago["value"]}")))
-                          .toList())),
-              Container(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                  name: "tarjeta",
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: const InputDecoration(
-                      labelText: "numero",
-                      hintText: "Ingrese numero de tarjeta",
-                      prefixIcon: Icon(Icons.code),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal))),
-                  keyboardType: TextInputType.number,
-                  maxLength: 16,
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(context,
-                        errorText: "Valor requerido"),
-                    FormBuilderValidators.integer(context,
-                        errorText: "No puede tener decimales"),
-                    FormBuilderValidators.min(context, 1,
-                        errorText: "Debe ser un número mayor que 0"),
-                    FormBuilderValidators.minLength(context, 16,
-                        errorText: "La longitud del documento es de 16")
+                  //height: 500,
+                  child: Column(children: <Widget>[
+                    Row(
+                      children: const [
+                        Text(
+                          "Nombre: ",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(medicine?.name ?? "",
+                            style: TextStyle(
+                              fontSize: 40,
+                            )),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: const [
+                        Text("Precio:",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text("  \$" + medicine.precio.toString() ?? ""),
+                      ],
+                    ),
                   ]),
                 ),
-              ),
-              Container(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                    controller: cantid,
-                    name: "cantidad",
+                Container(
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 15),
+                    child: FormBuilderDropdown(
+                        name: "formaPago",
+                        decoration: const InputDecoration(
+                            labelText: "Pago",
+                            prefixIcon: Icon(Icons.article_outlined),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.teal))),
+                        hint: const Text("Seleccionar forma de pago"),
+                        validator: FormBuilderValidators.required(context,
+                            errorText: "Seleccione una forma de pago"),
+                        items: [
+                          {'value': 'Tarjeta', 'key': 'Tarjeta'},
+                          {'value': 'Efectivo', 'key': 'Efectivo'}
+                        ]
+                            .map((formaPago) => DropdownMenuItem(
+                                value: formaPago["value"],
+                                child: Text("${formaPago["value"]}")))
+                            .toList())),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                    name: "tarjeta",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: const InputDecoration(
-                        labelText: "Cantidad",
-                        hintText: "Ingresa la cantidad",
-                        prefixIcon: Icon(Icons.numbers),
+                        labelText: "numero",
+                        hintText: "Ingrese numero de tarjeta",
+                        prefixIcon: Icon(Icons.code),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
                     keyboardType: TextInputType.number,
-                    maxLength: 2,
+                    maxLength: 16,
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(context,
                           errorText: "Valor requerido"),
-                      FormBuilderValidators.min(context, 0,
-                          errorText: "La cantidad debe ser mayor que 0")
-                    ])),
-              ),
-              Container(
-                padding: const EdgeInsets.only(
-                  left: 5,
-                  top: 20,
-                  right: 40,
-                  bottom: 20,
+                      FormBuilderValidators.integer(context,
+                          errorText: "No puede tener decimales"),
+                      FormBuilderValidators.min(context, 1,
+                          errorText: "Debe ser un número mayor que 0"),
+                      FormBuilderValidators.minLength(context, 16,
+                          errorText: "La longitud del documento es de 16")
+                    ]),
+                  ),
                 ),
-                //height: 500,
-                child: Column(children: <Widget>[
-                  Row(
-                    children: [
-                      SizedBox(
-                          width: 110,
-                          height: 40,
-                          child: ElevatedButton(
-                            child: const Text('Comprobar'),
-                            onPressed: () {
-                              if (cantid.text.isNotEmpty) {
-                                total = double.parse(cantid.text);
-                                //print(total);
-                                setState(() {
-                                  total = total * medicine!.precio;
-                                });
-                              } else {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(const SnackBar(
-                                  content: Text("Ingrese todos los campos"),
-                                  backgroundColor:
-                                      Color.fromARGB(255, 119, 4, 25),
-                                ));
-                              }
-                            },
-                          )),
-                    ],
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                      controller: cantid,
+                      name: "cantidad",
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: const InputDecoration(
+                          labelText: "Cantidad",
+                          hintText: "Ingresa la cantidad",
+                          prefixIcon: Icon(Icons.numbers),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.teal))),
+                      keyboardType: TextInputType.number,
+                      maxLength: 2,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido"),
+                        FormBuilderValidators.min(context, 0,
+                            errorText: "La cantidad debe ser mayor que 0")
+                      ])),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(
+                    left: 5,
+                    top: 10,
+                    right: 40,
+                    bottom: 20,
                   ),
-                  Row(
-                    children: const [
-                      Text(
-                        "  Total: ",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(total.toString(), style: TextStyle(fontSize: 40)),
-                    ],
-                  )
-                ]),
-              ),
-            ],
+                  //height: 500,
+                  child: Column(children: <Widget>[
+                    Row(
+                      children: [
+                        SizedBox(
+                            width: 160,
+                            height: 40,
+                            child: ElevatedButton(
+                              child: const Text('Calcular costo'),
+                              onPressed: () {
+                                if (cantid.text.isNotEmpty) {
+                                  total = double.parse(cantid.text);
+                                  //print(total);
+                                  setState(() {
+                                    total = total * medicine!.precio;
+                                  });
+                                } else {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                    content: Text("Ingrese todos los campos"),
+                                    backgroundColor:
+                                        Color.fromARGB(255, 119, 4, 25),
+                                  ));
+                                }
+                              },
+                            )),
+                      ],
+                    ),
+                    Row(
+                      children: const [
+                        Text(
+                          "Total: ",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text("  \$" + total.toString(),
+                            style: TextStyle(fontSize: 40)),
+                      ],
+                    )
+                  ]),
+                ),
+              ],
+            ),
           )),
     );
   }
@@ -232,7 +236,7 @@ class _AddSaleState extends State<AddSale> {
   void addSaleMessage(Sale sale) async {
     respuesta = await saleController.addSale(sale);
     if (respuesta) {
-      Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));
+      Navigator.pushNamed(context, '/home').then((_) => setState(() {}));
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("compra exitosa..."),
         backgroundColor: Colors.green,

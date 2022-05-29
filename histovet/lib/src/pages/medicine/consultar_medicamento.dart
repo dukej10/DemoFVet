@@ -128,7 +128,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                                   context, '/addsale',
                                                   arguments: medicine);
                                             },
-                                            icon: Icon(Icons.article_outlined),
+                                            icon: Icon(Icons.shopping_cart),
                                             label: Text("Comprar")),
                                         const SizedBox(
                                           height: 5,

@@ -1,4 +1,3 @@
-
 import '../models/clinicalhistory_model.dart';
 import '../services/clinicalHistory_Service.dart';
 
@@ -44,5 +43,10 @@ class ClinicalHistoryController {
   Future<ClinicalHistory> getClinicalHistory(String id) async {
     ClinicalHistory clinicalHistory = await _service.getClinicalHistory(id);
     return clinicalHistory;
+  }
+
+  Future<List<ClinicalHistory>> searchHistories(String name) async {
+    List<ClinicalHistory> histories = await _service.searchHistories(name);
+    return histories;
   }
 }

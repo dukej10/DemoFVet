@@ -118,7 +118,7 @@ class ClinicalHistoryService {
           .doc(ch.id)
           .set({
         "id": ch.id,
-        "user_id":ch.user_id,
+        "user_id": ch.user_id,
         "numberCH": ch.numberCH,
         "date": ch.date,
         "time": ch.time,
@@ -177,19 +177,16 @@ class ClinicalHistoryService {
     List<ClinicalHistory> clinicalHistories = [];
 
     try {
-       var collection;
+      var collection;
 
       if (uid == '5Q5W4CWh9KUSz0J6uSuCxuhxZAm2') {
         //uid admin
         collection = FirebaseFirestore.instance.collection('clinicalHistory');
-   
       } else {
         collection = FirebaseFirestore.instance
             .collection("clinicalHistory")
             .where('user_id', isEqualTo: uid);
       }
-
-
 
       collection.snapshots().listen((querySnapshot) {
         for (var doc in querySnapshot.docs) {
@@ -238,6 +235,64 @@ class ClinicalHistoryService {
       return clinicalHistories;
     } catch (e) {
       return clinicalHistories;
+    }
+  }
+
+  Future<List<ClinicalHistory>> searchHistories(String name) async {
+    List<ClinicalHistory> histories = [];
+    print("Llegó name " + name);
+    try {
+      final collection = FirebaseFirestore.instance
+          .collection('clinicalHistory')
+          .where("name", isEqualTo: name);
+      collection.snapshots().listen((querySnapshot) {
+        for (var doc in querySnapshot.docs) {
+          Map<String, dynamic> data = doc.data();
+          print("encontró");
+          print(doc.data());
+          ClinicalHistory newMedicine = ClinicalHistory(
+              data["id"],
+              data["user_id"],
+              data["numberCH"],
+              data["date"],
+              data["time"],
+              data["docOwner"],
+              data["nameOwner"],
+              data["contactOwner"],
+              data["addressOwner"],
+              data["emailAddressOwner"],
+              data["name"],
+              data["specie"],
+              data["breed"],
+              data["sex"],
+              data["color"],
+              data["weight"],
+              data["origin"],
+              data["diet"],
+              data["previousIllnesses"],
+              data["previousSurgeries"],
+              data["sterilized"],
+              data["nAnimalBirths"],
+              data["vaccinationSchedule"],
+              data["lastDeworming"],
+              data["recentTreatments"],
+              data["animalBehavior"],
+              data["reasonForConsultation"],
+              data["physicalCondition"],
+              data["temperature"],
+              data["heartFrequency"],
+              data["respiratoryFrequency"],
+              data["tllc"],
+              data["pulse"],
+              data["trcp"],
+              data["percentageDehydration"],
+              data["mucous"]);
+          histories.add(newMedicine);
+        }
+      });
+      return histories;
+    } catch (e) {
+      return histories;
     }
   }
 }

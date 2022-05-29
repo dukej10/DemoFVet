@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:histovet/src/controller/sign_controller.dart';
 
 import 'package:histovet/src/pages/clinicalHistory/add_clinicalhistory.dart';
 import 'package:histovet/src/pages/clinicalHistory/update_clinicalHistory.dart';
-
 
 import '../../controller/clinicalHistory_controller.dart';
 
@@ -19,10 +19,17 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  TextStyle txtStyle =
-      const TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
+  TextStyle txtStyle = const TextStyle(
+      fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
   ClinicalHistoryController histCont = ClinicalHistoryController();
   bool respuesta = false;
+  bool estado = false;
+  SignController auth = SignController();
+  @override
+  void initState() {
+    getEstado();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +47,16 @@ class _HistoryPageState extends State<HistoryPage> {
             ],
           ),
           drawer: MenuLateral(),
-          floatingActionButton: FloatingActionButton(
-              child: const Icon(FontAwesomeIcons.plus),
-              elevation: 15.0,
-              backgroundColor: Colors.blue,
-              onPressed: () {
-                Navigator.pushNamed(context, AddClinicalHistory.id);
-              }),
+          floatingActionButton: Visibility(
+            visible: estado,
+            child: FloatingActionButton(
+                child: const Icon(FontAwesomeIcons.plus),
+                elevation: 15.0,
+                backgroundColor: Colors.blue,
+                onPressed: () {
+                  Navigator.pushNamed(context, AddClinicalHistory.id);
+                }),
+          ),
           body: FutureBuilder(
               future: histCont.allClinicalHistories(),
               builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
@@ -54,6 +64,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   return const Text('Error');
                 } else if (snapshot.hasData) {
                   List histories = snapshot.data ?? [];
+                  print("Tengo " + histories.length.toString());
                   return ListView(
                     children: [
                       for (ClinicalHistory history in histories)
@@ -73,7 +84,8 @@ class _HistoryPageState extends State<HistoryPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => UpdateHistory(
-                                                history.id.toString(), history.user_id.toString() )));
+                                                history.id.toString(),
+                                                history.user_id.toString())));
                                   },
                                   leading: const Icon(
                                     FontAwesomeIcons.paperclip,
@@ -88,8 +100,8 @@ class _HistoryPageState extends State<HistoryPage> {
                                     style: txtStyle.copyWith(fontSize: 17),
                                   ),
                                   trailing: IconButton(
-                                    icon:
-                                        const Icon(Icons.delete, color: Colors.black),
+                                    icon: const Icon(Icons.delete,
+                                        color: Colors.black),
                                     onPressed: () {
                                       messageDelete(history.id.toString());
                                       Navigator.pushNamed(
@@ -123,5 +135,10 @@ class _HistoryPageState extends State<HistoryPage> {
         backgroundColor: Colors.green,
       ));
     }
+  }
+
+  void getEstado() async {
+    estado = await auth.estado();
+    setState(() {});
   }
 }

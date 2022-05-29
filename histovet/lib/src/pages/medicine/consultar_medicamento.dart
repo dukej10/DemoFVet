@@ -34,185 +34,202 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
               icon: const Icon(Icons.refresh))
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.only(
-          left: 15,
-          top: 10,
-          right: 15,
-          bottom: 15,
+      body: Padding(
+        padding: const EdgeInsets.all(17.0),
+        child: ListView(
+          children: <Widget>[
+            const SizedBox(
+              height: 5,
+            ),
+            TextField(
+              controller: searchController,
+              decoration: const InputDecoration(
+                labelText: 'Ingrese el nombre del medicamento',
+                //errorText: 'Error message',
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(
+                  Icons.search,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            SizedBox(
+              width: 20,
+              height: 30,
+              child: ElevatedButton(
+                child: const Text('Buscar'),
+                onPressed: () {
+                  setState(() {});
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+                padding: const EdgeInsets.only(
+                  left: 40,
+                  top: 20,
+                  right: 40,
+                  bottom: 20,
+                ),
+                height: 500,
+                child: FutureBuilder(
+                    future: medCont.searchMedicine(searchController.text),
+                    builder:
+                        (BuildContext context, AsyncSnapshot<List> snapshot) {
+                      if (snapshot.hasError) {
+                        return const Text('Error');
+                      } else if (snapshot.hasData) {
+                        List medicines = snapshot.data ?? [];
+                        return Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: ListView(
+                            children: [
+                              if (medicines.isNotEmpty)
+                                for (Medicine medicine in medicines)
+                                  Container(
+                                    margin: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
+                                    decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: Colors.black)),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        Image.network(
+                                          "https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161200051/67085065-icono-de-vitaminas-o-medicamentos-para-animales-ilustraci%C3%B3n-de-dibujos-animados-de-vitaminas-o-medic.jpg?fj=1",
+                                          height: 100,
+                                        ),
+                                        ElevatedButton.icon(
+                                            onPressed: () {
+                                              Navigator.pushNamed(
+                                                  context, '/addsale',
+                                                  arguments: medicine);
+                                            },
+                                            icon: Icon(Icons.article_outlined),
+                                            label: Text("Comprar")),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text("  Código: ",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text("  " + medicine.code),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text("  Nombre: ",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold))
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text("  " + medicine.name),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text("  Precio:",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text("  " +
+                                                medicine.precio.toString()),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text("  Fecha de vencimiento: ",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold))
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text("  " + medicine.fechaVen),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text("  Descripción: ",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text("  " + medicine.descripcion),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        // Row(
+                                        //   children: [
+                                        //     SizedBox(
+                                        //         width: 100,
+                                        //         height: 40,
+                                        //         child: ElevatedButton(
+                                        //           child: const Text('Comprar'),
+                                        //           onPressed: () {
+                                        //             Navigator.pushNamed(
+                                        //                 context, '/addsale',
+                                        //                 arguments: medicine);
+                                        //           },
+                                        //         )),
+                                        //   ],
+                                        // ),
+                                      ],
+                                    ),
+                                  ),
+                              if (medicines.isEmpty)
+                                Column(
+                                  children: const [Text("No hay información")],
+                                )
+                            ],
+                          ),
+                        );
+                      } else {
+                        return const Text('Empty data');
+                      }
+                    }))
+          ],
         ),
-        children: <Widget>[
-          const SizedBox(
-            height: 5,
-          ),
-          TextField(
-            controller: searchController,
-            decoration: const InputDecoration(
-              labelText: 'Ingrese el nombre del medicamento',
-              //errorText: 'Error message',
-              border: OutlineInputBorder(),
-              suffixIcon: Icon(
-                Icons.search,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          SizedBox(
-            width: 20,
-            height: 30,
-            child: ElevatedButton(
-              child: const Text('Buscar'),
-              onPressed: () {
-                setState(() {});
-              },
-            ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-              padding: const EdgeInsets.only(
-                left: 40,
-                top: 20,
-                right: 40,
-                bottom: 20,
-              ),
-              height: 500,
-              child: FutureBuilder(
-                  future: medCont.searchMedicine(searchController.text),
-                  builder:
-                      (BuildContext context, AsyncSnapshot<List> snapshot) {
-                    if (snapshot.hasError) {
-                      return const Text('Error');
-                    } else if (snapshot.hasData) {
-                      List medicines = snapshot.data ?? [];
-                      return ListView(
-                        children: [
-                          if (medicines.isNotEmpty)
-                            for (Medicine medicine in medicines)
-                              Container(
-                                decoration: BoxDecoration(
-                                    border:
-                                        Border.all(color: Colors.blueAccent)),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Image.network(
-                                      "https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161200051/67085065-icono-de-vitaminas-o-medicamentos-para-animales-ilustraci%C3%B3n-de-dibujos-animados-de-vitaminas-o-medic.jpg?fj=1",
-                                      height: 100,
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text("  Código: ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("  " + medicine.code),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text("  Nombre: ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold))
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("  " + medicine.name),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text("  Precio:",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("  " + medicine.precio.toString()),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text("  Fecha de vencimiento: ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold))
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("  " + medicine.fechaVen),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text("  Descripción: ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("  " + medicine.descripcion),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 16,
-                                    ),
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                            width: 100,
-                                            height: 40,
-                                            child: ElevatedButton(
-                                              child: const Text('Comprar'),
-                                              onPressed: () {
-                                                Navigator.pushNamed(
-                                                    context, '/addsale',
-                                                    arguments: medicine);
-                                              },
-                                            )),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                          if (medicines.isEmpty)
-                            Column(
-                              children: const [Text("No hay información")],
-                            )
-                        ],
-                      );
-                    } else {
-                      return const Text('Empty data');
-                    }
-                  }))
-        ],
       ),
     );
   }

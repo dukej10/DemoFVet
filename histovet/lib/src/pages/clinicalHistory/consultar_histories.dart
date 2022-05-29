@@ -46,183 +46,185 @@ class _ConsultarHistoriesState extends State<ConsultarHistories> {
               icon: const Icon(Icons.refresh))
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.only(
-          left: 15,
-          top: 10,
-          right: 15,
-          bottom: 15,
+      body: Padding(
+        padding: const EdgeInsets.all(17.0),
+        child: ListView(
+          children: <Widget>[
+            const SizedBox(
+              height: 5,
+            ),
+            TextField(
+              controller: searchController,
+              maxLength: 10,
+              keyboardType: TextInputType.name,
+              decoration: const InputDecoration(
+                labelText: 'Ingrese el nombre de la mascota',
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(
+                  Icons.search,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            SizedBox(
+              width: 20,
+              height: 30,
+              child: ElevatedButton(
+                child: const Text('Buscar'),
+                onPressed: () {
+                  setState(() {});
+                },
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.black)),
+                height: 590,
+                child: FutureBuilder(
+                    future: history.searchHistories(searchController.text),
+                    builder:
+                        (BuildContext context, AsyncSnapshot<List> snapshot) {
+                      if (snapshot.hasError) {
+                        return const Text('Error');
+                      } else if (snapshot.hasData) {
+                        List pets = snapshot.data ?? [];
+                        return Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: ListView(
+                            children: [
+                              if (pets.isNotEmpty)
+                                for (ClinicalHistory pet in pets)
+                                  Container(
+                                    margin: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
+                                    decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: Colors.black)),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        ElevatedButton.icon(
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ViewHistory(
+                                                              pet.id.toString(),
+                                                              pet.user_id
+                                                                  .toString())));
+                                            },
+                                            icon: Icon(Icons.article_outlined),
+                                            label: Text("Ver información")),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text("  Código: ",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                                "  " + pet.numberCH.toString()),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text("  Nombre: ",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold))
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text("  " + pet.name),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text("  Nombre dueño:",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text("  " + pet.nameOwner),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text("  Fecha: ",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold))
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text("  " + pet.date),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Row(
+                                          children: const [
+                                            Text("  Sexo: ",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text("  " + pet.sex),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                              if (pets.isEmpty)
+                                Column(
+                                  children: const [Text("No hay información")],
+                                )
+                            ],
+                          ),
+                        );
+                      } else {
+                        return const Text('Empty data');
+                      }
+                    }))
+          ],
         ),
-        children: <Widget>[
-          const SizedBox(
-            height: 5,
-          ),
-          TextField(
-            controller: searchController,
-            maxLength: 10,
-            keyboardType: TextInputType.name,
-            decoration: const InputDecoration(
-              labelText: 'Ingrese el nombre de la mascota',
-              border: OutlineInputBorder(),
-              suffixIcon: Icon(
-                Icons.search,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          SizedBox(
-            width: 20,
-            height: 30,
-            child: ElevatedButton(
-              child: const Text('Buscar'),
-              onPressed: () {
-                setState(() {});
-              },
-            ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.black)),
-              padding: const EdgeInsets.only(
-                left: 40,
-                top: 20,
-                right: 40,
-                bottom: 20,
-              ),
-              height: 600,
-              child: FutureBuilder(
-                  future: history.searchHistories(searchController.text),
-                  builder:
-                      (BuildContext context, AsyncSnapshot<List> snapshot) {
-                    if (snapshot.hasError) {
-                      return const Text('Error');
-                    } else if (snapshot.hasData) {
-                      List pets = snapshot.data ?? [];
-                      return ListView(
-                        children: [
-                          if (pets.isNotEmpty)
-                            for (ClinicalHistory pet in pets)
-                              Container(
-                                margin:
-                                    const EdgeInsets.only(top: 10, bottom: 10),
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black)),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    ElevatedButton.icon(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ViewHistory(
-                                                          pet.id.toString(),
-                                                          pet.user_id
-                                                              .toString())));
-                                        },
-                                        icon: Icon(Icons.article_outlined),
-                                        label: Text("Ver información")),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text("  Código: ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("  " + pet.numberCH.toString()),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text("  Nombre: ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold))
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("  " + pet.name),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text("  Nombre dueño:",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("  " + pet.nameOwner),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text("  Fecha: ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold))
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("  " + pet.date),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Text("  Sexo: ",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text("  " + pet.sex),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 16,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                          if (pets.isEmpty)
-                            Column(
-                              children: const [Text("No hay información")],
-                            )
-                        ],
-                      );
-                    } else {
-                      return const Text('Empty data');
-                    }
-                  }))
-        ],
       ),
     );
   }

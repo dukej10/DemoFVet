@@ -71,607 +71,463 @@ class _ViewHistoryState extends State<ViewHistory> {
       body: FormBuilder(
           key: _formState,
           child: Padding(
-            padding: EdgeInsets.all(10),
-            child: ListView(
-              children: [
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: numberCHController,
-                    enabled: false,
-                    name: "numberCH",
-                    decoration: const InputDecoration(
-                        labelText: "Número de historia clinica",
-                        prefixIcon: Icon(Icons.numbers),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 15),
-                    child: FormBuilderTextField(
-                      controller: dateController,
-                      name: "date",
-                      enabled: false,
-                      decoration: const InputDecoration(
-                          labelText: "Fecha",
-                          prefixIcon: Icon(Icons.date_range),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.teal))),
-                    )),
-                Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 15),
-                    child: FormBuilderTextField(
-                      controller: timeCHController,
-                      enabled: false,
-                      name: "time",
-                      decoration: const InputDecoration(
-                          labelText: "Hora",
-                          prefixIcon: Icon(Icons.timer),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.teal))),
-                    )),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: docOwnerCHController,
-                    enabled: false,
-                    name: "docOwner",
-                    decoration: const InputDecoration(
-                        labelText: "Documento Dueño",
-                        prefixIcon: Icon(Icons.badge_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: nameOwnerController,
-                    enabled: false,
-                    name: "nameOwner",
-                    decoration: const InputDecoration(
-                        labelText: "Nombre Dueño",
-                        prefixIcon: Icon(Icons.person_outline_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: contactOwnerController,
-                    enabled: false,
-                    name: "contactOwner",
-                    decoration: const InputDecoration(
-                        labelText: "contacto Dueño",
-                        prefixIcon: Icon(Icons.contact_phone_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: addressOwnerController,
-                    enabled: false,
-                    name: "addressOwner",
-                    decoration: const InputDecoration(
-                        labelText: "Dirección",
-                        prefixIcon: Icon(Icons.person_outline_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: nameController,
-                    enabled: false,
-                    name: "name",
-                    decoration: const InputDecoration(
-                        labelText: "Nombre de la mascota",
-                        prefixIcon: Icon(Icons.person_outline_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: emailAddressOwnerController,
-                    enabled: false,
-                    name: "emailAddressOwner",
-                    decoration: const InputDecoration(
-                        labelText: "Correo electrónico",
-                        prefixIcon: Icon(Icons.person_outline_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: specieController,
-                    enabled: false,
-                    name: "specie",
-                    decoration: const InputDecoration(
-                        labelText: "Subespecie",
-                        prefixIcon: Icon(Icons.pets),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: breedController,
-                    enabled: false,
-                    name: "breed",
-                    decoration: const InputDecoration(
-                        labelText: "Raza",
-                        prefixIcon: Icon(Icons.pets),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: sexController,
-                    enabled: false,
-                    name: "sex",
-                    decoration: const InputDecoration(
-                        labelText: "Sexo",
-                        prefixIcon: Icon(Icons.pets),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: colorController,
-                    enabled: false,
-                    name: "color",
-                    decoration: const InputDecoration(
-                        labelText: "Color",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: weightController,
-                    name: "weight",
-                    enabled: false,
-                    decoration: const InputDecoration(
-                        labelText: "Peso(Kg)",
-                        prefixIcon: Icon(Icons.monitor_weight_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: originController,
-                    enabled: false,
-                    name: "origin",
-                    decoration: const InputDecoration(
-                        labelText: "Origen",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: dietCHController,
-                    enabled: false,
-                    name: "diet",
-                    decoration: const InputDecoration(
-                        labelText: "Dieta",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: previousIllnessesController,
-                    name: "previousIllnesses",
-                    enabled: false,
-                    decoration: const InputDecoration(
-                        labelText: "Enfermedades previas",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: previousSurgeriesController,
-                    enabled: false,
-                    name: "previousSurgeries",
-                    decoration: const InputDecoration(
-                        labelText: "cirugías previas",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: sterilizedController,
-                    enabled: false,
-                    name: "sterilized",
-                    decoration: const InputDecoration(
-                        labelText: "Esterilizado",
-                        prefixIcon: Icon(Icons.pets),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: nAnimalBirthsController,
-                    enabled: false,
-                    name: "nAnimalBirths",
-                    decoration: const InputDecoration(
-                        labelText: "Número de partos",
-                        prefixIcon: Icon(Icons.numbers),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: vaccinationScheduleController,
-                    enabled: false,
-                    name: "vaccinationSchedule",
-                    decoration: const InputDecoration(
-                        labelText: "Vacunas",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: lastDewormingController,
-                    enabled: false,
-                    name: "lastDeworming",
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: const InputDecoration(
-                        labelText: "Última desparasitación",
-                        hintText: "Fecha última desparasitación",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: recentTreatmentsController,
-                    enabled: false,
-                    name: "recentTreatments",
-                    decoration: const InputDecoration(
-                        labelText: "Tratamientos recientes",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: animalBehaviorController,
-                    enabled: false,
-                    name: "animalBehavior",
-                    decoration: const InputDecoration(
-                        labelText: "Comportamiento de la mascota",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: reasonForConsultationController,
-                    enabled: false,
-                    name: "reasonForConsultation",
-                    decoration: const InputDecoration(
-                        labelText: "Razón de la consulta",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: physicalConditionController,
-                    enabled: false,
-                    name: "physicalCondition",
-                    decoration: const InputDecoration(
-                        labelText: "Condición física",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: temperatureController,
-                    enabled: false,
-                    name: "temperature",
-                    decoration: const InputDecoration(
-                        labelText: "Temperatura",
-                        prefixIcon: Icon(Icons.numbers),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: heartFrequencyController,
-                    enabled: false,
-                    name: "heartFrequency",
-                    decoration: const InputDecoration(
-                        labelText: "Frecuencia cardíaca",
-                        prefixIcon: Icon(Icons.numbers),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: respiratoryFrequencyController,
-                    enabled: false,
-                    name: "respiratoryFrequency",
-                    decoration: const InputDecoration(
-                        labelText: "Frecuencia respiratoria",
-                        prefixIcon: Icon(Icons.numbers),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: tllcController,
-                    enabled: false,
-                    name: "tllc",
-                    decoration: const InputDecoration(
-                        labelText: "Tiempo de llenado capilar(Seg)",
-                        prefixIcon: Icon(Icons.numbers),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: pulseController,
-                    enabled: false,
-                    name: "pulse",
-                    decoration: const InputDecoration(
-                        labelText: "Pulso",
-                        prefixIcon: Icon(Icons.numbers),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: trcpController,
-                    enabled: false,
-                    name: "trcp",
-                    decoration: const InputDecoration(
-                        labelText: "Tiempo de recuperación del pliegue cutáneo",
-                        prefixIcon: Icon(Icons.numbers),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: percentageDehydrationController,
-                    enabled: false,
-                    name: "percentageDehydration",
-                    decoration: const InputDecoration(
-                        labelText: "Porcentaje deshidratación",
-                        prefixIcon: Icon(Icons.numbers),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                ),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    controller: mucousController,
-                    enabled: false,
-                    name: "mucous",
-                    decoration: const InputDecoration(
-                        labelText: "Estado de la mucosa",
-                        prefixIcon: Icon(Icons.color_lens_outlined),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                  ),
-                )
-              ],
-            ),
+            padding: const EdgeInsets.all(8),
+            child: ListView(children: _inputs()),
           )),
     );
+  }
+
+  List<Widget> _inputs() {
+    return [
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: numberCHController,
+          enabled: false,
+          name: "numberCH",
+          decoration: const InputDecoration(
+              labelText: "Número de historia clinica",
+              prefixIcon: Icon(Icons.numbers),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          child: FormBuilderTextField(
+            controller: dateController,
+            name: "date",
+            enabled: false,
+            decoration: const InputDecoration(
+                labelText: "Fecha",
+                prefixIcon: Icon(Icons.date_range),
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.teal))),
+          )),
+      Container(
+          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          child: FormBuilderTextField(
+            controller: timeCHController,
+            enabled: false,
+            name: "time",
+            decoration: const InputDecoration(
+                labelText: "Hora",
+                prefixIcon: Icon(Icons.timer),
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.teal))),
+          )),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: docOwnerCHController,
+          enabled: false,
+          name: "docOwner",
+          decoration: const InputDecoration(
+              labelText: "Documento Dueño",
+              prefixIcon: Icon(Icons.badge_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: nameOwnerController,
+          enabled: false,
+          name: "nameOwner",
+          decoration: const InputDecoration(
+              labelText: "Nombre Dueño",
+              prefixIcon: Icon(Icons.person_outline_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: contactOwnerController,
+          enabled: false,
+          name: "contactOwner",
+          decoration: const InputDecoration(
+              labelText: "contacto Dueño",
+              prefixIcon: Icon(Icons.contact_phone_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: addressOwnerController,
+          enabled: false,
+          name: "addressOwner",
+          decoration: const InputDecoration(
+              labelText: "Dirección",
+              prefixIcon: Icon(Icons.person_outline_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: nameController,
+          enabled: false,
+          name: "name",
+          decoration: const InputDecoration(
+              labelText: "Nombre de la mascota",
+              prefixIcon: Icon(Icons.person_outline_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: emailAddressOwnerController,
+          enabled: false,
+          name: "emailAddressOwner",
+          decoration: const InputDecoration(
+              labelText: "Correo electrónico",
+              prefixIcon: Icon(Icons.person_outline_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: specieController,
+          enabled: false,
+          name: "specie",
+          decoration: const InputDecoration(
+              labelText: "Subespecie",
+              prefixIcon: Icon(Icons.pets),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: breedController,
+          enabled: false,
+          name: "breed",
+          decoration: const InputDecoration(
+              labelText: "Raza",
+              prefixIcon: Icon(Icons.pets),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: sexController,
+          enabled: false,
+          name: "sex",
+          decoration: const InputDecoration(
+              labelText: "Sexo",
+              prefixIcon: Icon(Icons.pets),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: colorController,
+          enabled: false,
+          name: "color",
+          decoration: const InputDecoration(
+              labelText: "Color",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: weightController,
+          name: "weight",
+          enabled: false,
+          decoration: const InputDecoration(
+              labelText: "Peso(Kg)",
+              prefixIcon: Icon(Icons.monitor_weight_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: originController,
+          enabled: false,
+          name: "origin",
+          decoration: const InputDecoration(
+              labelText: "Origen",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: dietCHController,
+          enabled: false,
+          name: "diet",
+          decoration: const InputDecoration(
+              labelText: "Dieta",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: previousIllnessesController,
+          name: "previousIllnesses",
+          enabled: false,
+          decoration: const InputDecoration(
+              labelText: "Enfermedades previas",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: previousSurgeriesController,
+          enabled: false,
+          name: "previousSurgeries",
+          decoration: const InputDecoration(
+              labelText: "cirugías previas",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: sterilizedController,
+          enabled: false,
+          name: "sterilized",
+          decoration: const InputDecoration(
+              labelText: "Esterilizado",
+              prefixIcon: Icon(Icons.pets),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: nAnimalBirthsController,
+          enabled: false,
+          name: "nAnimalBirths",
+          decoration: const InputDecoration(
+              labelText: "Número de partos",
+              prefixIcon: Icon(Icons.numbers),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: vaccinationScheduleController,
+          enabled: false,
+          name: "vaccinationSchedule",
+          decoration: const InputDecoration(
+              labelText: "Vacunas",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: lastDewormingController,
+          enabled: false,
+          name: "lastDeworming",
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          decoration: const InputDecoration(
+              labelText: "Última desparasitación",
+              hintText: "Fecha última desparasitación",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: recentTreatmentsController,
+          enabled: false,
+          name: "recentTreatments",
+          decoration: const InputDecoration(
+              labelText: "Tratamientos recientes",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: animalBehaviorController,
+          enabled: false,
+          name: "animalBehavior",
+          decoration: const InputDecoration(
+              labelText: "Comportamiento de la mascota",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: reasonForConsultationController,
+          enabled: false,
+          name: "reasonForConsultation",
+          decoration: const InputDecoration(
+              labelText: "Razón de la consulta",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: physicalConditionController,
+          enabled: false,
+          name: "physicalCondition",
+          decoration: const InputDecoration(
+              labelText: "Condición física",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: temperatureController,
+          enabled: false,
+          name: "temperature",
+          decoration: const InputDecoration(
+              labelText: "Temperatura",
+              prefixIcon: Icon(Icons.numbers),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: heartFrequencyController,
+          enabled: false,
+          name: "heartFrequency",
+          decoration: const InputDecoration(
+              labelText: "Frecuencia cardíaca",
+              prefixIcon: Icon(Icons.numbers),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: respiratoryFrequencyController,
+          enabled: false,
+          name: "respiratoryFrequency",
+          decoration: const InputDecoration(
+              labelText: "Frecuencia respiratoria",
+              prefixIcon: Icon(Icons.numbers),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: tllcController,
+          enabled: false,
+          name: "tllc",
+          decoration: const InputDecoration(
+              labelText: "Tiempo de llenado capilar(Seg)",
+              prefixIcon: Icon(Icons.numbers),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: pulseController,
+          enabled: false,
+          name: "pulse",
+          decoration: const InputDecoration(
+              labelText: "Pulso",
+              prefixIcon: Icon(Icons.numbers),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: trcpController,
+          enabled: false,
+          name: "trcp",
+          decoration: const InputDecoration(
+              labelText: "Tiempo de recuperación del pliegue cutáneo",
+              prefixIcon: Icon(Icons.numbers),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: percentageDehydrationController,
+          enabled: false,
+          name: "percentageDehydration",
+          decoration: const InputDecoration(
+              labelText: "Porcentaje deshidratación",
+              prefixIcon: Icon(Icons.numbers),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      ),
+      Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: FormBuilderTextField(
+          controller: mucousController,
+          enabled: false,
+          name: "mucous",
+          decoration: const InputDecoration(
+              labelText: "Estado de la mucosa",
+              prefixIcon: Icon(Icons.color_lens_outlined),
+              border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal))),
+        ),
+      )
+    ];
   }
 
   @override
   void initState() {
     getInfoClinicalHistory();
     super.initState();
-  }
-
-  getInfoHistory() async {
-    bool validate = _formState.currentState!.saveAndValidate();
-    if (validate) {
-      final values = _formState.currentState!.value;
-
-      //Identificación historia clinica
-      //print("act " + weightController.text);
-      final numberClinicalHistory = int.parse(numberCHController.text);
-      final date = dateController.text;
-      final time = timeCHController.text;
-
-      //Datos del propietario
-      final docOwner = docOwnerCHController.text;
-      final nameOwner = nameOwnerController.text;
-      final contactOwner = contactOwnerController.text;
-      final addressOwner = addressOwnerController.text;
-      final emailAddressOwner = emailAddressOwnerController.text;
-
-      //Reseña
-      final name = nameController.text;
-      final specie = specieController.text;
-      final breed = breedController.text;
-      final sex = sexController.text;
-      final color = colorController.text;
-      final weight = double.parse(weightController.text);
-      final origin = originController.text;
-
-      //Anamnesis
-      final diet = dietCHController.text;
-      final previousIllnesses = previousIllnessesController.text;
-      final previousSurgeries = previousSurgeriesController.text;
-      final sterilized = sterilizedController.text;
-      final nAnimalBirths = nAnimalBirthsController.text;
-      final vaccinationSchedule = vaccinationScheduleController.text;
-      final lastDeworming = lastDewormingController.text;
-      final recentTreatments = recentTreatmentsController.text;
-      final animalBehavior = animalBehaviorController.text;
-      final reasonForConsultation = reasonForConsultationController.text;
-
-      //Examen fisico generaliz
-      final physicalCondition = physicalConditionController.text;
-      final temperature = double.parse(temperatureController.text);
-      final heartFrequency = double.parse(heartFrequencyController.text);
-      final respiratoryFrequency =
-          double.parse(respiratoryFrequencyController.text);
-      //tiempo de llena capilar: TLLC
-      final tllc = double.parse(tllcController.text);
-      final pulse = double.parse(pulseController.text);
-      //tiempo de recuperación del pliegue cutáneo TRPC
-      final trcp = double.parse(trcpController.text);
-      final percentageDehydration =
-          double.parse(percentageDehydrationController.text);
-      final mucous = mucousController.text;
-      late ClinicalHistory clinicalHistory = ClinicalHistory(
-          widget.idHistory,
-          widget.idUser,
-          numberClinicalHistory,
-          date,
-          time,
-          docOwner,
-          nameOwner,
-          contactOwner,
-          addressOwner,
-          emailAddressOwner,
-          name,
-          specie,
-          breed,
-          sex,
-          color,
-          weight,
-          origin,
-          diet,
-          previousIllnesses,
-          previousSurgeries,
-          sterilized,
-          nAnimalBirths,
-          vaccinationSchedule,
-          lastDeworming,
-          recentTreatments,
-          animalBehavior,
-          reasonForConsultation,
-          physicalCondition,
-          temperature,
-          heartFrequency,
-          respiratoryFrequency,
-          tllc,
-          pulse,
-          trcp,
-          percentageDehydration,
-          mucous);
-
-      messageUpdate(clinicalHistory);
-    }
-  }
-
-  void messageUpdate(ClinicalHistory clinicalHistory) async {
-    respuesta = await histCont.updateClinicalHistory(clinicalHistory);
-    if (respuesta) {
-      Navigator.pushNamed(context, '/clinicalHistories')
-          .then((_) => setState(() {}));
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Se actualizó la información"),
-        backgroundColor: Colors.green,
-      ));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("No se actualizó la información"),
-        backgroundColor: Colors.green,
-      ));
-    }
   }
 
   void getInfoClinicalHistory() async {

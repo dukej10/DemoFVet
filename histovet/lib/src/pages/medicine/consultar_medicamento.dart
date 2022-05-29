@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:histovet/src/controller/medicine_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
+import 'package:histovet/src/pages/medicine/medicine_update.dart';
+import 'package:histovet/src/pages/medicine/medicine_view.dart';
 
 import '../sale/add_sale.dart';
 
@@ -107,6 +109,19 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                           "https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161200051/67085065-icono-de-vitaminas-o-medicamentos-para-animales-ilustraci%C3%B3n-de-dibujos-animados-de-vitaminas-o-medic.jpg?fj=1",
                                           height: 100,
                                         ),
+                                        ElevatedButton.icon(
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ViewMedicine(medicine
+                                                              .id
+                                                              .toString())));
+                                            },
+                                            icon: Icon(Icons.article_outlined),
+                                            label: Text("Ver información")),
+
                                         ElevatedButton.icon(
                                             onPressed: () {
                                               Navigator.pushNamed(

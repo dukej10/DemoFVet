@@ -8,6 +8,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:histovet/src/controller/clinicalhistory_controller.dart';
 
 import '../../controller/pet_controller.dart';
+import '../../controller/sign_controller.dart';
 import '../../models/clinicalhistory_model.dart';
 import '../../models/pet_model.dart';
 
@@ -64,6 +65,8 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
   TextEditingController mucousController = TextEditingController();
 
   bool respuesta = false;
+  SignController auth = SignController();
+  String username = "";
 
   // Text Editing Controller
 
@@ -72,7 +75,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Editar Información Mascota"),
+        title: const Text("Agregar Historia Clínica"),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.save),
@@ -275,6 +278,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   controller: emailAddressOwnerController,
+                  enabled: false,
                   name: "emailAddressOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: const InputDecoration(
@@ -780,6 +784,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
   @override
   void initState() {
     getInfoPet();
+    getUsername();
     super.initState();
   }
 
@@ -900,6 +905,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
     setState(() {
       DateTime today = new DateTime.now();
       timeCHController.text = "${today.hour - 7}:${today.minute}";
+      emailAddressOwnerController.text = username;
       dateController.text = today.toIso8601String().split('T').first;
       docOwnerCHController.text = pet.documentOwner;
       nameOwnerController.text = pet.nameOwner;
@@ -910,5 +916,11 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
       sexController.text = pet.sex;
       colorController.text = pet.color;
     });
+  }
+
+  void getUsername() async {
+    username = await auth.username();
+    print("tengo " + username);
+    setState(() {});
   }
 }

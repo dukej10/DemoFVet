@@ -8,8 +8,8 @@ class UpdatePet extends StatefulWidget {
   static String id = "edit_pet";
   final String idPet;
   final String idUser;
-  
-  const UpdatePet(this.idPet, this.idUser,{Key? key}) : super(key: key);
+
+  const UpdatePet(this.idPet, this.idUser, {Key? key}) : super(key: key);
 
   @override
   State<UpdatePet> createState() => _UpdatePet();
@@ -46,97 +46,78 @@ class _UpdatePet extends State<UpdatePet> {
       ),
       body: FormBuilder(
           key: _formState,
-          child: ListView(
-            children: [
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                    controller: codeController,
-                    name: "code",
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView(
+              children: [
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                      controller: codeController,
+                      name: "code",
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: const InputDecoration(
+                          labelText: "Código",
+                          prefixIcon: Icon(Icons.pets),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.teal))),
+                      keyboardType: TextInputType.number,
+                      maxLength: 4,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido"),
+                        FormBuilderValidators.integer(context,
+                            errorText: "No puede tener decimales"),
+                        FormBuilderValidators.min(context, 1,
+                            errorText: "Debe ser un número mayor que 0"),
+                        FormBuilderValidators.minLength(context, 4,
+                            errorText: "La longitud del documento es de 4")
+                      ])),
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                    controller: nameController,
+                    name: "name",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: const InputDecoration(
-                        labelText: "Código",
+                        labelText: "Nombre",
                         prefixIcon: Icon(Icons.pets),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
-                    keyboardType: TextInputType.number,
-                    maxLength: 4,
-                    validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.required(context,
-                          errorText: "Valor requerido"),
-                      FormBuilderValidators.integer(context,
-                          errorText: "No puede tener decimales"),
-                      FormBuilderValidators.min(context, 1,
-                          errorText: "Debe ser un número mayor que 0"),
-                      FormBuilderValidators.minLength(context, 4,
-                          errorText: "La longitud del documento es de 4")
-                    ])),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                  controller: nameController,
-                  name: "name",
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: const InputDecoration(
-                      labelText: "Nombre",
-                      prefixIcon: Icon(Icons.pets),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 15,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                  controller: nownerController,
-                  name: "nameOwner",
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: const InputDecoration(
-                      labelText: "Nombre Dueño",
-                      prefixIcon: Icon(Icons.pets),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 20,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                  controller: contactController,
-                  name: "contactOwner",
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: const InputDecoration(
-                      labelText: "contacto Dueño",
-                      prefixIcon: Icon(Icons.pets),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal))),
-                  keyboardType: TextInputType.number,
-                  maxLength: 10,
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(context,
+                    maxLength: 15,
+                    validator: FormBuilderValidators.required(context,
                         errorText: "Valor requerido"),
-                    FormBuilderValidators.integer(context,
-                        errorText: "No puede tener decimales"),
-                    FormBuilderValidators.min(context, 1,
-                        errorText: "Debe ser un número mayor que 0"),
-                    FormBuilderValidators.minLength(context, 10,
-                        errorText: "La longitud del número es de 10")
-                  ]),
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                    controller: docController,
-                    name: "docOwner",
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                    controller: nownerController,
+                    name: "nameOwner",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: const InputDecoration(
-                        labelText: "Documento Dueño",
+                        labelText: "Nombre Dueño",
+                        prefixIcon: Icon(Icons.pets),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    maxLength: 20,
+                    validator: FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                  ),
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                    controller: contactController,
+                    name: "contactOwner",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: const InputDecoration(
+                        labelText: "contacto Dueño",
                         prefixIcon: Icon(Icons.pets),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
@@ -145,99 +126,131 @@ class _UpdatePet extends State<UpdatePet> {
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(context,
                           errorText: "Valor requerido"),
-                      FormBuilderValidators.minLength(context, 10,
-                          errorText: "La longitud del documento es de 10"),
                       FormBuilderValidators.integer(context,
                           errorText: "No puede tener decimales"),
                       FormBuilderValidators.min(context, 1,
                           errorText: "Debe ser un número mayor que 0"),
-                    ])),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                    controller: ageController,
-                    name: "age",
+                      FormBuilderValidators.minLength(context, 10,
+                          errorText: "La longitud del número es de 10")
+                    ]),
+                  ),
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                      controller: docController,
+                      name: "docOwner",
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: const InputDecoration(
+                          labelText: "Documento Dueño",
+                          prefixIcon: Icon(Icons.pets),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.teal))),
+                      keyboardType: TextInputType.number,
+                      maxLength: 10,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido"),
+                        FormBuilderValidators.minLength(context, 10,
+                            errorText: "La longitud del documento es de 10"),
+                        FormBuilderValidators.integer(context,
+                            errorText: "No puede tener decimales"),
+                        FormBuilderValidators.min(context, 1,
+                            errorText: "Debe ser un número mayor que 0"),
+                      ])),
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                      controller: ageController,
+                      name: "age",
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: const InputDecoration(
+                          labelText: "Edad",
+                          prefixIcon: Icon(Icons.pets),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.teal))),
+                      keyboardType: TextInputType.number,
+                      maxLength: 2,
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido"),
+                        FormBuilderValidators.min(context, 0,
+                            errorText: "La edad debe ser mayor o igual que 0")
+                      ])),
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                    controller: breedController,
+                    name: "breed",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: const InputDecoration(
-                        labelText: "Edad",
+                        labelText: "Raza",
                         prefixIcon: Icon(Icons.pets),
                         border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.teal))),
-                    keyboardType: TextInputType.number,
-                    maxLength: 2,
-                    validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.required(context,
-                          errorText: "Valor requerido"),
-                      FormBuilderValidators.min(context, 0,
-                          errorText: "La edad debe ser mayor o igual que 0")
-                    ])),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                  controller: breedController,
-                  name: "breed",
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: const InputDecoration(
-                      labelText: "Raza",
-                      prefixIcon: Icon(Icons.pets),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 20,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
+                    maxLength: 20,
+                    validator: FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                  controller: sexController,
-                  name: "sex",
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: const InputDecoration(
-                      labelText: "Sexo",
-                      prefixIcon: Icon(Icons.pets),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                    controller: sexController,
+                    name: "sex",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: const InputDecoration(
+                        labelText: "Sexo",
+                        prefixIcon: Icon(Icons.pets),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    maxLength: 10,
+                    validator: FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                  controller: subspeciesController,
-                  name: "subspecies",
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: const InputDecoration(
-                      labelText: "Subespecie",
-                      prefixIcon: Icon(Icons.pets),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 10,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                    controller: subspeciesController,
+                    name: "subspecies",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: const InputDecoration(
+                        labelText: "Subespecie",
+                        prefixIcon: Icon(Icons.pets),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    maxLength: 10,
+                    validator: FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                  ),
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: FormBuilderTextField(
-                  controller: colorController,
-                  name: "color",
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: const InputDecoration(
-                      labelText: "Color",
-                      prefixIcon: Icon(Icons.pets),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.teal))),
-                  maxLength: 20,
-                  validator: FormBuilderValidators.required(context,
-                      errorText: "Valor requerido"),
-                ),
-              )
-            ],
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  child: FormBuilderTextField(
+                    controller: colorController,
+                    name: "color",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: const InputDecoration(
+                        labelText: "Color",
+                        prefixIcon: Icon(Icons.pets),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.teal))),
+                    maxLength: 20,
+                    validator: FormBuilderValidators.required(context,
+                        errorText: "Valor requerido"),
+                  ),
+                )
+              ],
+            ),
           )),
     );
   }
@@ -261,10 +274,10 @@ class _UpdatePet extends State<UpdatePet> {
       final age = int.parse(ageController.text);
       final breed = breedController.text;
       final subspecies = subspeciesController.text;
-      final color =colorController.text;
+      final color = colorController.text;
       final sex = sexController.text;
-      late Pet pet = Pet(widget.idPet, widget.idUser, code, name, nameOwner, contactOwner,
-          docOwner, age, breed, subspecies, color, sex);
+      late Pet pet = Pet(widget.idPet, widget.idUser, code, name, nameOwner,
+          contactOwner, docOwner, age, breed, subspecies, color, sex);
       messageUpdate(pet);
     }
   }

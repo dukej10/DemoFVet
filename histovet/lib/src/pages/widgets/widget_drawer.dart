@@ -95,15 +95,18 @@ class _MenuLateralState extends State<MenuLateral> {
                 Navigator.pushNamed(context, ConsultarMedicamento.id);
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.article_sharp),
-              title: const Text("Historias Clínicas"),
-              onTap: () {
-                Navigator.pushNamed(context, HistoryPage.id);
-              },
+            Visibility(
+              visible: estado,
+              child: ListTile(
+                leading: const Icon(Icons.article_sharp),
+                title: const Text("Historias Clínicas"),
+                onTap: () {
+                  Navigator.pushNamed(context, HistoryPage.id);
+                },
+              ),
             ),
             ListTile(
-              leading: const Icon(Icons.article_sharp),
+              leading: const Icon(Icons.content_paste_search_rounded),
               title: const Text("Buscar Historias Clínicas"),
               onTap: () {
                 Navigator.pushNamed(context, ConsultarHistories.id);

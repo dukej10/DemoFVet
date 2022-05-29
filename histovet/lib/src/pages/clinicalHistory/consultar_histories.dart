@@ -4,6 +4,7 @@ import 'package:histovet/src/controller/pet_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
 import 'package:histovet/src/models/pet_model.dart';
 import 'package:histovet/src/pages/clinicalHistory/add_historypet.dart';
+import 'package:histovet/src/pages/clinicalHistory/clinical_view.dart';
 import 'package:histovet/src/pages/pet/pet_view.dart';
 import 'package:histovet/src/services/pet_service.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
@@ -119,14 +120,14 @@ class _ConsultarHistoriesState extends State<ConsultarHistories> {
                                     ),
                                     ElevatedButton.icon(
                                         onPressed: () {
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             ViewPet(
-                                          //                 pet.id.toString(),
-                                          //                 pet.user_id
-                                          //                     .toString())));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ViewHistory(
+                                                          pet.id.toString(),
+                                                          pet.user_id
+                                                              .toString())));
                                         },
                                         icon: Icon(Icons.article_outlined),
                                         label: Text("Ver información")),

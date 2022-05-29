@@ -121,7 +121,7 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
                                       height: 100,
                                     ),
                                     estado
-                                        ? TextButton(
+                                        ? ElevatedButton.icon(
                                             onPressed: () {
                                               Navigator.push(
                                                   context,
@@ -131,8 +131,9 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
                                                               pet.id
                                                                   .toString())));
                                             },
-                                            child: Text("Agregar historia"))
-                                        : TextButton(
+                                            icon: Icon(Icons.add_box_outlined),
+                                            label: Text("Agregar historia"))
+                                        : ElevatedButton.icon(
                                             onPressed: () {
                                               Navigator.push(
                                                   context,
@@ -143,9 +144,10 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
                                                               pet.user_id
                                                                   .toString())));
                                             },
-                                            child: Text("Ver información")),
+                                            icon: Icon(Icons.article_outlined),
+                                            label: Text("Ver información")),
                                     estado
-                                        ? TextButton(
+                                        ? ElevatedButton.icon(
                                             onPressed: () {
                                               Navigator.push(
                                                   context,
@@ -156,7 +158,8 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
                                                               pet.user_id
                                                                   .toString())));
                                             },
-                                            child: Text("Ver información"))
+                                            icon: Icon(Icons.article_outlined),
+                                            label: Text("Ver información"))
                                         : const SizedBox(
                                             height: 1,
                                           ),

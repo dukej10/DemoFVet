@@ -4,6 +4,7 @@ import 'package:histovet/src/controller/pet_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
 import 'package:histovet/src/models/pet_model.dart';
 import 'package:histovet/src/pages/clinicalHistory/add_historypet.dart';
+import 'package:histovet/src/pages/pet/pet_view.dart';
 import 'package:histovet/src/services/pet_service.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 
@@ -137,12 +138,28 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          UpdatePet(
+                                                          ViewPet(
                                                               pet.id.toString(),
                                                               pet.user_id
                                                                   .toString())));
                                             },
                                             child: Text("Ver información")),
+                                    estado
+                                        ? TextButton(
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ViewPet(
+                                                              pet.id.toString(),
+                                                              pet.user_id
+                                                                  .toString())));
+                                            },
+                                            child: Text("Ver información"))
+                                        : const SizedBox(
+                                            height: 1,
+                                          ),
                                     const SizedBox(
                                       height: 5,
                                     ),

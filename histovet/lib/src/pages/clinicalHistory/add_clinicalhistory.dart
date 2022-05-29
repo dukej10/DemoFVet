@@ -19,6 +19,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
   ClinicalHistoryController clinicalHistorycont = ClinicalHistoryController();
   TextEditingController emailController = TextEditingController();
   TextEditingController dateController = TextEditingController();
+  TextEditingController timeController = TextEditingController();
   SignController auth = SignController();
   String username = "";
 
@@ -89,6 +90,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                   margin:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderTextField(
+                      controller: timeController,
+                      enabled: false,
                       name: "time",
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: const InputDecoration(
@@ -711,6 +714,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
   @override
   void initState() {
     DateTime today = new DateTime.now();
+    timeController.text = "${today.hour}:${today.minute}";
     dateController.text = today.toIso8601String().split('T').first;
     getUsername();
     super.initState();

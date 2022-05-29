@@ -904,7 +904,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
     Pet pet = await petIn.getPet(widget.idPet);
     setState(() {
       DateTime today = new DateTime.now();
-      timeCHController.text = "${today.hour - 7}:${today.minute}";
+      timeCHController.text = "${today.hour}:${today.minute}";
       emailAddressOwnerController.text = username;
       dateController.text = today.toIso8601String().split('T').first;
       docOwnerCHController.text = pet.documentOwner;

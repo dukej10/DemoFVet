@@ -8,6 +8,7 @@ import 'package:histovet/src/pages/Login/signup_screen.dart';
 import 'package:histovet/src/pages/clinicalHistory/add_clinicalhistory.dart';
 import 'package:histovet/src/pages/clinicalHistory/add_historypet.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
+import 'package:histovet/src/pages/clinicalHistory/consultar_histories.dart';
 import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/add_medicine.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
@@ -51,11 +52,11 @@ class MyApp extends StatelessWidget {
             PetsPage.id: (context) => const PetsPage(),
             '/pets': (context) => const PetsPage(),
             AddPet.id: (context) => const AddPet(),
-            UpdatePet.id: (context) => const UpdatePet("",""),
+            UpdatePet.id: (context) => const UpdatePet("", ""),
             ConsultarMedicamento.id: (context) => const ConsultarMedicamento(),
             '/addsale': (context) => const AddSale(),
             AddSale.id: (context) => const AddSale(),
-            '/updatepet': (context) => const UpdatePet("",""),
+            '/updatepet': (context) => const UpdatePet("", ""),
             MedicinePage.id: (context) => const MedicinePage(),
             '/medicine': (context) => const MedicinePage(),
             AddMedicine.id: (context) => const AddMedicine(),
@@ -63,6 +64,8 @@ class MyApp extends StatelessWidget {
             '/clinicalHistories': (context) => const HistoryPage(),
             AddClinicalHistory.id: (context) => const AddClinicalHistory(),
             '/addHistory': (context) => const AddClinicalHistory(),
+            ConsultarHistories.id: (context) => const ConsultarHistories(),
+            '/searchistories': (context) => const ConsultarHistories(),
             SignIn.id: (context) => const SignIn(),
             '/signin': (context) => const SignIn(),
             SignUp.id: (context) => const SignUp(),

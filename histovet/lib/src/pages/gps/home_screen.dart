@@ -71,103 +71,108 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text("Mapa"),
-          
         ),
         body: (applicationBloc.currentLocation == null)
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : ListView(
-                children: [
-                  /*Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: _locationController,
-                      textCapitalization: TextCapitalization.words,
-                      decoration: InputDecoration(
-                        hintText: 'Search by City',
-                        suffixIcon: Icon(Icons.search),
-                      ),
-                      onChanged: (value) => applicationBloc.searchPlaces(value),
-                      onTap: () => applicationBloc.clearSelectedLocation(),
-                    ),
-                  ),*/
-
-                  Stack(
-                    children: [
-                      Container(
-                        height: 500.0,
-                        child: GoogleMap(
-                          mapType: MapType.normal,
-                          myLocationEnabled: true,
-                          initialCameraPosition: CameraPosition(
-                            target: LatLng(
-                                applicationBloc.currentLocation!.latitude,
-                                applicationBloc.currentLocation!.longitude),
-                            zoom: 14,
-                          ),
-                          onMapCreated: (GoogleMapController controller) {
-                            _mapController.complete(controller);
-                          },
-                          markers: Set<Marker>.of(applicationBloc.markers),
+            : Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: ListView(
+                  children: [
+                    /*Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        controller: _locationController,
+                        textCapitalization: TextCapitalization.words,
+                        decoration: InputDecoration(
+                          hintText: 'Search by City',
+                          suffixIcon: Icon(Icons.search),
                         ),
+                        onChanged: (value) => applicationBloc.searchPlaces(value),
+                        onTap: () => applicationBloc.clearSelectedLocation(),
                       ),
-                      if (applicationBloc.searchResults != null &&
-                          applicationBloc.searchResults!.length != 0)
-                        Container(
-                            height: 500.0,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(.6),
-                                backgroundBlendMode: BlendMode.darken)),
-                      if (applicationBloc.searchResults != null)
+                    ),*/
+
+                    Stack(
+                      children: [
                         Container(
                           height: 500.0,
-                          child: ListView.builder(
-                              itemCount: applicationBloc.searchResults!.length,
-                              itemBuilder: (context, index) {
-                                return ListTile(
-                                  title: Text(
-                                    applicationBloc
-                                        .searchResults![index].description,
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  onTap: () {
-                                    applicationBloc.setSelectedLocation(
-                                        applicationBloc
-                                            .searchResults![index].placeId);
-                                  },
-                                );
-                              }),
+                          child: GoogleMap(
+                            mapType: MapType.normal,
+                            myLocationEnabled: true,
+                            initialCameraPosition: CameraPosition(
+                              target: LatLng(
+                                  applicationBloc.currentLocation!.latitude,
+                                  applicationBloc.currentLocation!.longitude),
+                              zoom: 14,
+                            ),
+                            onMapCreated: (GoogleMapController controller) {
+                              _mapController.complete(controller);
+                            },
+                            markers: Set<Marker>.of(applicationBloc.markers),
+                          ),
                         ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Encuentra las veterinarias más cercanas en tu ubicación',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 20.0, fontWeight: FontWeight.bold)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Wrap(
-                      alignment: WrapAlignment.center,
-                      spacing: 8.0,
-                      children: [
-                        FilterChip(
-                            label: Text('BUSCAR'),
-                            onSelected: (val) => applicationBloc
-                                .togglePlaceType('veterinary_care', val),
-                            selected: applicationBloc.placeType == 'veterinary_care',
-                            selectedColor: Colors.blue),
+                        if (applicationBloc.searchResults != null &&
+                            applicationBloc.searchResults!.length != 0)
+                          Container(
+                              height: 500.0,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(.6),
+                                  backgroundBlendMode: BlendMode.darken)),
+                        if (applicationBloc.searchResults != null)
+                          Container(
+                            height: 500.0,
+                            child: ListView.builder(
+                                itemCount:
+                                    applicationBloc.searchResults!.length,
+                                itemBuilder: (context, index) {
+                                  return ListTile(
+                                    title: Text(
+                                      applicationBloc
+                                          .searchResults![index].description,
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    onTap: () {
+                                      applicationBloc.setSelectedLocation(
+                                          applicationBloc
+                                              .searchResults![index].placeId);
+                                    },
+                                  );
+                                }),
+                          ),
                       ],
                     ),
-                  )
-                ],
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                          'Encuentra las veterinarias más cercanas en tu ubicación',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 20.0, fontWeight: FontWeight.bold)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 8.0,
+                        children: [
+                          FilterChip(
+                              label: Text('BUSCAR'),
+                              onSelected: (val) => applicationBloc
+                                  .togglePlaceType('veterinary_care', val),
+                              selected: applicationBloc.placeType ==
+                                  'veterinary_care',
+                              selectedColor: Colors.blue),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ));
   }
 

@@ -16,8 +16,8 @@ class MedicinePage extends StatefulWidget {
 }
 
 class _MedicinePageState extends State<MedicinePage> {
-  TextStyle txtStyle =
-      const TextStyle(fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
+  TextStyle txtStyle = const TextStyle(
+      fontWeight: FontWeight.w900, fontSize: 30, color: Colors.black);
   MedicineController medicineCont = MedicineController();
   bool respuesta = false;
 
@@ -48,60 +48,74 @@ class _MedicinePageState extends State<MedicinePage> {
               future: medicineCont.allMedicines(),
               builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-      return const CircularProgressIndicator();
-    } else if (snapshot.connectionState == ConnectionState.done) {
-      if (snapshot.hasError) {
-        return const Text('Error');
-      } else if (snapshot.hasData) {
-        List medicines = snapshot.data ?? [];
-                return ListView(
-                  children: [
-                    for (Medicine medicine in medicines)
-                      Card(
-                        margin: const EdgeInsets.all(6),
-                        elevation: 6,
-                        child: Container(
-                            decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage('assets/img/fondo2.jpg'),
-                                    fit: BoxFit.cover,
-                                    ),),
-                            child: ListTile(
-                                onLongPress: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              UpdateMedicine(medicine.id.toString())));
-                                },
-                                leading: const Icon(FontAwesomeIcons.kitMedical, color: Colors.black,),
-                                title: Text(medicine.name, style: txtStyle,),
-                                subtitle: Text(
-                                  medicine.code,
-                                  style: txtStyle.copyWith(fontSize: 17),
-                                ),
-                                trailing: IconButton(
-                                  icon: const Icon(Icons.delete, color: Colors.black),
-                                  onPressed: () {
-                                    messageDelete(medicine.id.toString());
-                                    Navigator.pushNamed(context, '/medicine')
-                                        .then((_) => setState(() {}));
-                                  },
-                                ))),
-                      )
-                  ],
-                );
-      } else {
-        return const Text('Empty data');
-      }
-    } else {
-      return const Text('State');
-    }})),
+                  return const CircularProgressIndicator();
+                } else if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasError) {
+                    return const Text('Error');
+                  } else if (snapshot.hasData) {
+                    List medicines = snapshot.data ?? [];
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListView(
+                        children: [
+                          for (Medicine medicine in medicines)
+                            Card(
+                              margin: const EdgeInsets.all(6),
+                              elevation: 6,
+                              child: Container(
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image:
+                                          AssetImage('assets/img/fondo2.jpg'),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  child: ListTile(
+                                      onLongPress: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    UpdateMedicine(medicine.id
+                                                        .toString())));
+                                      },
+                                      leading: const Icon(
+                                        FontAwesomeIcons.kitMedical,
+                                        color: Colors.black,
+                                      ),
+                                      title: Text(
+                                        medicine.name,
+                                        style: txtStyle,
+                                      ),
+                                      subtitle: Text(
+                                        medicine.code,
+                                        style: txtStyle.copyWith(fontSize: 17),
+                                      ),
+                                      trailing: IconButton(
+                                        icon: const Icon(Icons.delete,
+                                            color: Colors.black),
+                                        onPressed: () {
+                                          messageDelete(medicine.id.toString());
+                                          Navigator.pushNamed(
+                                                  context, '/medicine')
+                                              .then((_) => setState(() {}));
+                                        },
+                                      ))),
+                            )
+                        ],
+                      ),
+                    );
+                  } else {
+                    return const Text('Empty data');
+                  }
+                } else {
+                  return const Text('State');
+                }
+              })),
     );
   }
 
   void messageDelete(String idMedicine) async {
-
     respuesta = await medicineCont.deleteMedicine(idMedicine);
     if (respuesta) {
       Navigator.pushNamed(context, '/medicine').then((_) => setState(() {}));
@@ -116,6 +130,4 @@ class _MedicinePageState extends State<MedicinePage> {
       ));
     }
   }
-
-  
 }

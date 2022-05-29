@@ -65,52 +65,57 @@ class _HistoryPageState extends State<HistoryPage> {
                 } else if (snapshot.hasData) {
                   List histories = snapshot.data ?? [];
                   print("Tengo " + histories.length.toString());
-                  return ListView(
-                    children: [
-                      for (ClinicalHistory history in histories)
-                        Card(
-                          margin: const EdgeInsets.all(6),
-                          elevation: 6,
-                          child: Container(
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/img/fondo3.jpg'),
-                                  fit: BoxFit.cover,
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView(
+                      children: [
+                        for (ClinicalHistory history in histories)
+                          Card(
+                            margin: const EdgeInsets.all(6),
+                            elevation: 6,
+                            child: Container(
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage('assets/img/fondo3.jpg'),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              child: ListTile(
-                                  onLongPress: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => UpdateHistory(
-                                                history.id.toString(),
-                                                history.user_id.toString())));
-                                  },
-                                  leading: const Icon(
-                                    FontAwesomeIcons.paperclip,
-                                    color: Colors.black,
-                                  ),
-                                  title: Text(
-                                    history.name,
-                                    style: txtStyle,
-                                  ),
-                                  subtitle: Text(
-                                    history.numberCH.toString(),
-                                    style: txtStyle.copyWith(fontSize: 17),
-                                  ),
-                                  trailing: IconButton(
-                                    icon: const Icon(Icons.delete,
-                                        color: Colors.black),
-                                    onPressed: () {
-                                      messageDelete(history.id.toString());
-                                      Navigator.pushNamed(
-                                              context, '/clinicalHistories')
-                                          .then((_) => setState(() {}));
+                                child: ListTile(
+                                    onLongPress: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  UpdateHistory(
+                                                      history.id.toString(),
+                                                      history.user_id
+                                                          .toString())));
                                     },
-                                  ))),
-                        )
-                    ],
+                                    leading: const Icon(
+                                      FontAwesomeIcons.paperclip,
+                                      color: Colors.black,
+                                    ),
+                                    title: Text(
+                                      history.name,
+                                      style: txtStyle,
+                                    ),
+                                    subtitle: Text(
+                                      history.numberCH.toString(),
+                                      style: txtStyle.copyWith(fontSize: 17),
+                                    ),
+                                    trailing: IconButton(
+                                      icon: const Icon(Icons.delete,
+                                          color: Colors.black),
+                                      onPressed: () {
+                                        messageDelete(history.id.toString());
+                                        Navigator.pushNamed(
+                                                context, '/clinicalHistories')
+                                            .then((_) => setState(() {}));
+                                      },
+                                    ))),
+                          )
+                      ],
+                    ),
                   );
                 } else {
                   return const Text('Empty data');

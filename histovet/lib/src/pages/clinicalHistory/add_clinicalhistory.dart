@@ -1,3 +1,4 @@
+import '../../controller/sign_controller.dart';
 import '../../models/clinicalhistory_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -15,8 +16,11 @@ class AddClinicalHistory extends StatefulWidget {
 class _AddClinicalHistoryState extends State<AddClinicalHistory> {
   final _formState = GlobalKey<FormBuilderState>();
   bool respuesta = false;
-  ClinicalHistoryController clinicalHistorycont =
-      ClinicalHistoryController();
+  ClinicalHistoryController clinicalHistorycont = ClinicalHistoryController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  SignController auth = SignController();
+  String username = "";
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
             key: _formState,
             child: ListView(children: [
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "numberCH",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -61,9 +66,12 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderTextField(
+                      controller: dateController,
                       name: "date",
+                      enabled: false,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: const InputDecoration(
                           labelText: "Fecha",
@@ -76,10 +84,10 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(context,
                             errorText: "Valor requerido"),
-                            
                       ]))),
               Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderTextField(
                       name: "time",
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -96,7 +104,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                             errorText: "Valor requerido")
                       ]))),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "docOwner",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -120,7 +129,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "nameOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -139,7 +149,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "contactOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -164,7 +175,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "addressOwner",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -183,7 +195,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "name",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -202,9 +215,12 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
+                  controller: emailController,
                   name: "emailAddressOwner",
+                  enabled: false,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: const InputDecoration(
                       labelText: "Correo electrónico",
@@ -217,12 +233,14 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context,
                         errorText: "Valor requerido"),
-                        FormBuilderValidators.email(context, errorText: "Debe tener formato de correo")
+                    FormBuilderValidators.email(context,
+                        errorText: "Debe tener formato de correo")
                   ]),
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderDropdown(
                     name: "subespecie",
                     decoration: const InputDecoration(
@@ -243,7 +261,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                         .toList()),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "breed",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -260,7 +279,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     ])),
               ),
               Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderDropdown(
                       name: "sex",
                       decoration: const InputDecoration(
@@ -280,7 +300,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                               child: Text("${sex["value"]}")))
                           .toList())),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "color",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -296,7 +317,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "weight",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -319,7 +341,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "origin",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -335,7 +358,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "diet",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -351,7 +375,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "previousIllnesses",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -367,7 +392,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "previousSurgeries",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -383,7 +409,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                   child: FormBuilderDropdown(
                       name: "sterilized",
                       decoration: const InputDecoration(
@@ -404,7 +431,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                               child: Text("${sterilized["value"]}")))
                           .toList())),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "nAnimalBirths",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -422,7 +450,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "vaccinationSchedule",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -438,7 +467,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "lastDeworming",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -448,14 +478,15 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                       prefixIcon: Icon(Icons.color_lens_outlined),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.teal))),
-                          keyboardType: TextInputType.datetime,
+                  keyboardType: TextInputType.datetime,
                   maxLength: 20,
                   validator: FormBuilderValidators.required(context,
                       errorText: "Valor requerido"),
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "recentTreatments",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -471,7 +502,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "animalBehavior",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -487,7 +519,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "reasonForConsultation",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -503,7 +536,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "physicalCondition",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -519,7 +553,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "temperature",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -539,7 +574,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "heartFrequency",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -557,7 +593,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "respiratoryFrequency",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -576,7 +613,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "tllc",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -594,7 +632,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "pulse",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -612,7 +651,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "trcp",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -630,7 +670,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                     name: "percentageDehydration",
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -648,7 +689,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                     ])),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 child: FormBuilderTextField(
                   name: "mucous",
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -664,6 +706,14 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
                 ),
               )
             ])));
+  }
+
+  @override
+  void initState() {
+    DateTime today = new DateTime.now();
+    dateController.text = today.toIso8601String().split('T').first;
+    getUsername();
+    super.initState();
   }
 
   getInfoHV() async {
@@ -714,7 +764,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
       final pulse = double.parse(values['pulse']);
       //tiempo de recuperación del pliegue cutáneo TRPC
       final trcp = double.parse(values['trcp']);
-      final percentageDehydration = double.parse(values['percentageDehydration']);
+      final percentageDehydration =
+          double.parse(values['percentageDehydration']);
       final mucous = values['mucous'];
       late ClinicalHistory clinicalHistory = ClinicalHistory(
           "",
@@ -773,5 +824,11 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
         backgroundColor: Colors.green,
       ));
     }
+  }
+
+  void getUsername() async {
+    username = await auth.username();
+    emailController.text = username;
+    setState(() {});
   }
 }

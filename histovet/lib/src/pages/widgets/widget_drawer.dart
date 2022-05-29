@@ -60,12 +60,15 @@ class _MenuLateralState extends State<MenuLateral> {
                 Navigator.pushNamed(context, Home.id);
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.pets),
-              title: const Text("Mascotas"),
-              onTap: () {
-                Navigator.pushNamed(context, PetsPage.id);
-              },
+            Visibility(
+              visible: estado,
+              child: ListTile(
+                leading: const Icon(Icons.pets),
+                title: const Text("Mascotas"),
+                onTap: () {
+                  Navigator.pushNamed(context, PetsPage.id);
+                },
+              ),
             ),
             ListTile(
               leading: const Icon(Icons.content_paste_search_rounded),
@@ -76,7 +79,7 @@ class _MenuLateralState extends State<MenuLateral> {
             ),
             Visibility(
               visible: estado,
-              child: new ListTile(
+              child: ListTile(
                 leading: const Icon(Icons.medication),
                 title: const Text("Medicinas"),
                 onTap: () {

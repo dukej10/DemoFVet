@@ -56,7 +56,7 @@ class _GridDashboardState extends State<GridDashboard> {
                         Navigator.pushNamed(context, ConsultarMascota.id);
                       }
                     },
-                    child: const Text("Mascotas"),
+                    child: Text(estado ? "Mascotas" : "Buscar mascota"),
                   ),
                 ],
               ),
@@ -90,7 +90,9 @@ class _GridDashboardState extends State<GridDashboard> {
                         Navigator.pushNamed(context, ConsultarHistories.id);
                       }
                     },
-                    child: const Text("Historias Clínicas"),
+                    child: Text(estado
+                        ? "Historias Clínicas"
+                        : "Buscar Historia Clínica"),
                   ),
                 ],
               ),
@@ -154,7 +156,7 @@ class _GridDashboardState extends State<GridDashboard> {
                         Navigator.pushNamed(context, ConsultarMedicamento.id);
                       }
                     },
-                    child: const Text("Medicina"),
+                    child: Text(estado ? "Medicina" : "Buscar medicamento"),
                   ),
                 ],
               ),

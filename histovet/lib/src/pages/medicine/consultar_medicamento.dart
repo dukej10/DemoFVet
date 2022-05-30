@@ -105,8 +105,8 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                         const SizedBox(
                                           height: 10,
                                         ),
-                                        Image.network(
-                                          "https://previews.123rf.com/images/ylivdesign/ylivdesign1612/ylivdesign161200051/67085065-icono-de-vitaminas-o-medicamentos-para-animales-ilustraci%C3%B3n-de-dibujos-animados-de-vitaminas-o-medic.jpg?fj=1",
+                                        Image.asset(
+                                          "assets/img/medicine.png",
                                           height: 100,
                                         ),
                                         ElevatedButton.icon(
@@ -128,8 +128,9 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                                   context, '/addsale',
                                                   arguments: medicine);
                                             },
-                                            icon: Icon(Icons.shopping_cart),
-                                            label: Text("Comprar")),
+                                            icon:
+                                                const Icon(Icons.shopping_cart),
+                                            label: const Text("Comprar")),
                                         const SizedBox(
                                           height: 5,
                                         ),

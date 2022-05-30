@@ -67,7 +67,7 @@ class _AddSaleState extends State<AddSale> {
                     ),
                     Row(
                       children: [
-                        Text(medicine?.name ?? "",
+                        Text(medicine.name,
                             style: TextStyle(
                               fontSize: 40,
                             )),
@@ -84,7 +84,7 @@ class _AddSaleState extends State<AddSale> {
                     ),
                     Row(
                       children: [
-                        Text("  \$" + medicine.precio.toString() ?? ""),
+                        Text("  \$" + medicine.precio.toString()),
                       ],
                     ),
                   ]),
@@ -179,7 +179,7 @@ class _AddSaleState extends State<AddSale> {
                                   total = double.parse(cantid.text);
                                   //print(total);
                                   setState(() {
-                                    total = total * medicine!.precio;
+                                    total = total * medicine.precio;
                                   });
                                 } else {
                                   ScaffoldMessenger.of(context)

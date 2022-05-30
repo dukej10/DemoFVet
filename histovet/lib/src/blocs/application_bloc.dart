@@ -19,8 +19,10 @@ class ApplicationBloc with ChangeNotifier {
   //Variables
   Position? currentLocation;
   List<PlaceSearch>? searchResults;
-  StreamController<Place> selectedLocation = StreamController<Place>.broadcast();
-  StreamController<LatLngBounds> bounds = StreamController<LatLngBounds>.broadcast();
+  StreamController<Place> selectedLocation =
+      StreamController<Place>.broadcast();
+  StreamController<LatLngBounds> bounds =
+      StreamController<LatLngBounds>.broadcast();
   Place? selectedLocationStatic;
   String? placeType;
   List<Place>? placeResults;
@@ -51,16 +53,16 @@ class ApplicationBloc with ChangeNotifier {
 
   setSelectedLocation(String placeId) async {
     var sLocation = await placesService.getPlace(placeId);
-    selectedLocation!.add(sLocation);
+    selectedLocation.add(sLocation);
     selectedLocationStatic = sLocation;
     var _searchResults = null;
     searchResults = _searchResults;
     notifyListeners();
   }
 
-   clearSelectedLocation() {
+  clearSelectedLocation() {
     var event = null;
-    selectedLocation!.add(event);
+    selectedLocation.add(event);
     selectedLocationStatic = null;
     searchResults = null;
     placeType = null;
@@ -99,7 +101,7 @@ class ApplicationBloc with ChangeNotifier {
       markers.add(locationMarker);
 
       var _bounds = markerService.bounds(Set<Marker>.of(markers));
-      bounds!.add(_bounds!);
+      bounds.add(_bounds!);
 
       notifyListeners();
     }
@@ -107,8 +109,8 @@ class ApplicationBloc with ChangeNotifier {
 
   @override
   void dispose() {
-    selectedLocation!.close();
-    bounds!.close();
+    selectedLocation.close();
+    bounds.close();
     super.dispose();
   }
 }

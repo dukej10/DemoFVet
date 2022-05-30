@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     //Listen for selected Location
     locationSubscription =
-        applicationBloc.selectedLocation!.stream.listen((place) {
+        applicationBloc.selectedLocation.stream.listen((place) {
       if (place != null) {
         _locationController.text = place.name!;
         _goToPlace(place);
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         _locationController.text = "";
     });
 
-    applicationBloc.bounds!.stream.listen((bounds) async {
+    applicationBloc.bounds.stream.listen((bounds) async {
       final GoogleMapController controller = await _mapController.future;
       controller.animateCamera(CameraUpdate.newLatLngBounds(bounds, 50));
     });

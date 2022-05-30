@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/controller/sign_controller.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
-import 'package:histovet/src//pages/Login/utils/reusable_widget.dart';
 
 class ResetPassword extends StatefulWidget {
   static String id = "reset";
@@ -43,17 +42,65 @@ class _ResetPasswordState extends State<ResetPassword> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Ingrese contraseña", Icons.person_outline,
-                    false, _emailTextController),
+                TextField(
+                  controller: _emailTextController,
+                  enableSuggestions: true,
+                  autocorrect: false,
+                  cursorColor: Colors.white,
+                  style: TextStyle(color: Colors.white.withOpacity(0.9)),
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(
+                      Icons.person_outline,
+                      color: Colors.white70,
+                    ),
+                    labelText: "Ingrese correo",
+                    labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
+                    filled: true,
+                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                    fillColor: Colors.white.withOpacity(0.3),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                        borderSide: const BorderSide(
+                            width: 0, style: BorderStyle.none)),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                ),
                 const SizedBox(
                   height: 20,
                 ),
-                firebaseUIButton(context, "Recuperar contraseña", () {
-                  messageReset(_emailTextController.text);
-                })
+                _button()
               ],
             ),
           ))),
+    );
+  }
+
+  Widget _button() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 50,
+      margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+      child: ElevatedButton(
+        onPressed: () {
+          messageReset(_emailTextController.text);
+        },
+        child: const Text(
+          "Recuperar contraseña",
+          style: TextStyle(
+              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return Colors.black26;
+              }
+              return Colors.white;
+            }),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)))),
+      ),
     );
   }
 
@@ -69,7 +116,7 @@ class _ResetPasswordState extends State<ResetPassword> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Revise sus datos"),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.red,
       ));
     }
   }

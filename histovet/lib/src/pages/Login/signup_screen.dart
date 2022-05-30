@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/controller/sign_controller.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
-import 'package:histovet/src/pages/Login/utils/reusable_widget.dart';
 import 'package:histovet/src/pages/Home/home_page.dart';
 
 class SignUp extends StatefulWidget {
@@ -46,28 +45,95 @@ class _SignUpState extends State<SignUp> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Ingrese usuario", Icons.person_outline,
-                    false, _userNameTextController),
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Ingrese correo", Icons.person_outline, false,
-                    _emailTextController),
+                TextField(
+                  controller: _emailTextController,
+                  enableSuggestions: true,
+                  autocorrect: false,
+                  cursorColor: Colors.white,
+                  style: TextStyle(color: Colors.white.withOpacity(0.9)),
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(
+                      Icons.person_outline,
+                      color: Colors.white70,
+                    ),
+                    labelText: "Ingrese correo",
+                    labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
+                    filled: true,
+                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                    fillColor: Colors.white.withOpacity(0.3),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                        borderSide: const BorderSide(
+                            width: 0, style: BorderStyle.none)),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                ),
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Ingrese contraseña", Icons.lock_outlined,
-                    true, _passwordTextController),
+                TextField(
+                  controller: _passwordTextController,
+                  obscureText: true,
+                  enableSuggestions: true,
+                  cursorColor: Colors.white,
+                  style: TextStyle(color: Colors.white.withOpacity(0.9)),
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(
+                      Icons.lock_outline,
+                      color: Colors.white70,
+                    ),
+                    labelText: "Ingrese contraseña",
+                    labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
+                    filled: true,
+                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                    fillColor: Colors.white.withOpacity(0.3),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                        borderSide: const BorderSide(
+                            width: 0, style: BorderStyle.none)),
+                  ),
+                  keyboardType: TextInputType.visiblePassword,
+                ),
                 const SizedBox(
                   height: 20,
                 ),
-                firebaseUIButton(context, "Registrarse", () {
-                  messageSignUP(
-                      _emailTextController.text, _passwordTextController.text);
-                })
+                _button()
               ],
             ),
           ))),
+    );
+  }
+
+  Widget _button() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 50,
+      margin: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
+      child: ElevatedButton(
+        onPressed: () {
+          messageSignUP(
+              _emailTextController.text, _passwordTextController.text);
+        },
+        child: const Text(
+          "Iniciar sesión",
+          style: TextStyle(
+              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return Colors.black26;
+              }
+              return Colors.white;
+            }),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)))),
+      ),
     );
   }
 
@@ -83,7 +149,7 @@ class _SignUpState extends State<SignUp> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Revise sus datos"),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.red,
       ));
     }
   }

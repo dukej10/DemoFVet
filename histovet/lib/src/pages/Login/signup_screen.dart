@@ -17,6 +17,8 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _userNameTextController = TextEditingController();
+  bool _showPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,14 +34,14 @@ class _SignUpState extends State<SignUp> {
       body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [Colors.blueAccent, Colors.lightBlueAccent],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter)),
           child: SingleChildScrollView(
               child: Padding(
-            padding: EdgeInsets.fromLTRB(20, 120, 20, 0),
+            padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
             child: Column(
               children: <Widget>[
                 const SizedBox(
@@ -56,7 +58,7 @@ class _SignUpState extends State<SignUp> {
                   style: TextStyle(color: Colors.white.withOpacity(0.9)),
                   decoration: InputDecoration(
                     prefixIcon: const Icon(
-                      Icons.person_outline,
+                      Icons.person,
                       color: Colors.white70,
                     ),
                     labelText: "Ingrese correo",
@@ -76,15 +78,20 @@ class _SignUpState extends State<SignUp> {
                 ),
                 TextField(
                   controller: _passwordTextController,
-                  obscureText: true,
+                  obscureText: _showPassword,
                   enableSuggestions: true,
                   cursorColor: Colors.white,
                   style: TextStyle(color: Colors.white.withOpacity(0.9)),
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: Colors.white70,
-                    ),
+                    prefixIcon: IconButton(
+                        onPressed: () {
+                          _showPassword = !_showPassword;
+                          setState(() {});
+                        },
+                        icon: Icon(
+                          _showPassword ? Icons.lock : Icons.lock_open,
+                          color: Colors.white70,
+                        )),
                     labelText: "Ingrese contraseña",
                     labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
                     filled: true,
@@ -141,7 +148,7 @@ class _SignUpState extends State<SignUp> {
     bool answer = await sign.signUp(correo, password);
     if (answer) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => SignIn()));
+          context, MaterialPageRoute(builder: (context) => const SignIn()));
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Se creo la cuenta con éxito"),
         backgroundColor: Colors.green,

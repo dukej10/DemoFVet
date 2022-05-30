@@ -15,6 +15,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  bool _showPassword = true;
   SignController sign = SignController();
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
@@ -35,15 +36,9 @@ class _SignInState extends State<SignIn> {
                 20, MediaQuery.of(context).size.height * 0.2, 20, 0),
             child: Column(
               children: <Widget>[
-                Text(
+                const Text(
                   "HistoVet",
-                  style: TextStyle(
-                    fontSize: 40,
-                    foreground: Paint()
-                      ..style = PaintingStyle.stroke
-                      ..strokeWidth = 4
-                      ..color = Colors.black,
-                  ),
+                  style: TextStyle(fontSize: 50, color: Colors.white),
                 ),
                 logoWidget(),
                 const SizedBox(
@@ -57,7 +52,7 @@ class _SignInState extends State<SignIn> {
                   style: TextStyle(color: Colors.white.withOpacity(0.9)),
                   decoration: InputDecoration(
                     prefixIcon: const Icon(
-                      Icons.person_outline,
+                      Icons.person,
                       color: Colors.white70,
                     ),
                     labelText: "Ingrese correo",
@@ -77,15 +72,20 @@ class _SignInState extends State<SignIn> {
                 ),
                 TextField(
                   controller: _passwordTextController,
-                  obscureText: true,
-                  enableSuggestions: true,
+                  obscureText: _showPassword,
+                  enableSuggestions: false,
                   cursorColor: Colors.white,
                   style: TextStyle(color: Colors.white.withOpacity(0.9)),
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: Colors.white70,
-                    ),
+                    prefixIcon: IconButton(
+                        onPressed: () {
+                          _showPassword = !_showPassword;
+                          setState(() {});
+                        },
+                        icon: Icon(
+                          _showPassword ? Icons.lock : Icons.lock_open,
+                          color: Colors.white70,
+                        )),
                     labelText: "Ingrese contraseña",
                     labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
                     filled: true,
@@ -128,8 +128,8 @@ class _SignInState extends State<SignIn> {
         const Text("No tiene cuenta?", style: TextStyle(color: Colors.white70)),
         GestureDetector(
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => SignUp()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const SignUp()));
           },
           child: const Text(
             " Registrarse",
@@ -180,8 +180,8 @@ class _SignInState extends State<SignIn> {
           style: TextStyle(color: Colors.white70),
           textAlign: TextAlign.right,
         ),
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ResetPassword())),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ResetPassword())),
       ),
     );
   }
@@ -189,7 +189,8 @@ class _SignInState extends State<SignIn> {
   void messageSign(String correo, String password) async {
     bool answer = await sign.signIn(correo, password);
     if (answer) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const Home()));
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Se inicio sesión"),
         backgroundColor: Colors.green,

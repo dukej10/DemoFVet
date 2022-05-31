@@ -126,7 +126,7 @@ class _SignUpState extends State<SignUp> {
               _emailTextController.text, _passwordTextController.text);
         },
         child: const Text(
-          "Iniciar sesión",
+          "Crear cuenta",
           style: TextStyle(
               color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 16),
         ),

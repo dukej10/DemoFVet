@@ -2,12 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/clinicalHistory/consultar_histories.dart';
-import 'package:histovet/src/pages/consultar_medicamento.dart';
 import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
 
 import '../../controller/sign_controller.dart';
+import '../medicine/consultar_medicamento.dart';
 import '../pet/pets_page.dart';
 
 class GridDashboard extends StatefulWidget {

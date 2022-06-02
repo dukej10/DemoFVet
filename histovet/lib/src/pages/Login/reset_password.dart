@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:histovet/src/controller/sign_controller.dart';
+import 'package:histovet/src/controller/auth_controller.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
 
 class ResetPassword extends StatefulWidget {
@@ -12,7 +12,7 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
-  SignController sign = SignController();
+  AuthController sign = AuthController();
   TextEditingController _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {

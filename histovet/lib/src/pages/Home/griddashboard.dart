@@ -6,7 +6,7 @@ import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
 
-import '../../controller/sign_controller.dart';
+import '../../controller/auth_controller.dart';
 import '../medicine/consultar_medicamento.dart';
 import '../pet/pets_page.dart';
 
@@ -18,7 +18,7 @@ class GridDashboard extends StatefulWidget {
 }
 
 class _GridDashboardState extends State<GridDashboard> {
-  SignController auth = SignController();
+  AuthController auth = AuthController();
   bool estado = false;
   @override
   Widget build(BuildContext context) {

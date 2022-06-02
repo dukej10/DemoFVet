@@ -9,7 +9,7 @@ import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
 import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 
-import '../../controller/sign_controller.dart';
+import '../../controller/auth_controller.dart';
 import '../Home/home_page.dart';
 
 // ignore: use_key_in_widget_constructors
@@ -19,7 +19,7 @@ class MenuLateral extends StatefulWidget {
 }
 
 class _MenuLateralState extends State<MenuLateral> {
-  SignController sign = SignController();
+  AuthController sign = AuthController();
   String username = "";
   bool estado = false;
   @override

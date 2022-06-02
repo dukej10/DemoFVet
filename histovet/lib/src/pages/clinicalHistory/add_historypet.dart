@@ -8,7 +8,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:histovet/src/controller/clinicalhistory_controller.dart';
 
 import '../../controller/pet_controller.dart';
-import '../../controller/sign_controller.dart';
+import '../../controller/auth_controller.dart';
 import '../../models/clinicalhistory_model.dart';
 import '../../models/pet_model.dart';
 
@@ -65,7 +65,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
   TextEditingController mucousController = TextEditingController();
 
   bool respuesta = false;
-  SignController auth = SignController();
+  AuthController auth = AuthController();
   String username = "";
 
   // Text Editing Controller

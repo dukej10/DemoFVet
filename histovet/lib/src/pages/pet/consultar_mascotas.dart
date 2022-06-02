@@ -8,7 +8,7 @@ import 'package:histovet/src/pages/pet/pet_view.dart';
 import 'package:histovet/src/services/pet_service.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 
-import '../../controller/sign_controller.dart';
+import '../../controller/auth_controller.dart';
 
 class ConsultarMascota extends StatefulWidget {
   static String id = "consultar_mascota";
@@ -23,7 +23,7 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
   MedicineController medCont = MedicineController();
   PetController petse = PetController();
   bool estado = false;
-  SignController auth = SignController();
+  AuthController auth = AuthController();
 
   @override
   void initState() {

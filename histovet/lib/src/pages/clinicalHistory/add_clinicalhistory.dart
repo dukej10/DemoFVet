@@ -1,4 +1,4 @@
-import '../../controller/sign_controller.dart';
+import '../../controller/auth_controller.dart';
 import '../../models/clinicalhistory_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -20,7 +20,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
   TextEditingController emailController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   TextEditingController timeController = TextEditingController();
-  SignController auth = SignController();
+  AuthController auth = AuthController();
   String username = "";
 
   @override

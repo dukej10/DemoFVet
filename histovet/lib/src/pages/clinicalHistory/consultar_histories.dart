@@ -11,7 +11,7 @@ import 'package:histovet/src/pages/pet/pet_update.dart';
 import '../../models/clinicalhistory_model.dart';
 
 import '../../controller/clinicalHistory_controller.dart';
-import '../../controller/sign_controller.dart';
+import '../../controller/auth_controller.dart';
 
 class ConsultarHistories extends StatefulWidget {
   static String id = "consultar_historias";
@@ -25,7 +25,7 @@ class _ConsultarHistoriesState extends State<ConsultarHistories> {
   TextEditingController searchController = TextEditingController();
   ClinicalHistoryController history = ClinicalHistoryController();
   bool estado = false;
-  SignController auth = SignController();
+  AuthController auth = AuthController();
 
   @override
   void initState() {

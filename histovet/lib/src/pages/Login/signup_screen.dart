@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:histovet/src/controller/sign_controller.dart';
+import 'package:histovet/src/controller/auth_controller.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
 import 'package:histovet/src/pages/Home/home_page.dart';
 
@@ -13,7 +13,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  SignController sign = SignController();
+  AuthController sign = AuthController();
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _userNameTextController = TextEditingController();

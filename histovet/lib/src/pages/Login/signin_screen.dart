@@ -4,7 +4,7 @@ import 'package:histovet/src/pages/Login/reset_password.dart';
 import 'package:histovet/src/pages/Login/signup_screen.dart';
 import 'package:histovet/src/pages/Home/home_page.dart';
 
-import '../../controller/sign_controller.dart';
+import '../../controller/auth_controller.dart';
 
 class SignIn extends StatefulWidget {
   static String id = "signin";
@@ -16,7 +16,7 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   bool _showPassword = true;
-  SignController sign = SignController();
+  AuthController sign = AuthController();
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
   @override

@@ -10,7 +10,7 @@ import 'package:histovet/src/services/pet_service.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 import '../../models/clinicalhistory_model.dart';
 
-import '../../controller/clinicalHistory_controller.dart';
+import '../../controller/clinicalhistory_controller.dart';
 import '../../controller/auth_controller.dart';
 
 class ConsultarHistories extends StatefulWidget {
@@ -118,10 +118,8 @@ class _ConsultarHistoriesState extends State<ConsultarHistories> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          ViewHistory(
-                                                              pet.id.toString(),
-                                                              pet.user_id
-                                                                  .toString())));
+                                                          ViewHistory(pet.id
+                                                              .toString())));
                                             },
                                             icon: Icon(Icons.article_outlined),
                                             label: Text("Ver información")),

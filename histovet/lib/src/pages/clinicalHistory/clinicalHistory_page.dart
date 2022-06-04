@@ -3,9 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:histovet/src/controller/auth_controller.dart';
 
 import 'package:histovet/src/pages/clinicalHistory/add_clinicalhistory.dart';
-import 'package:histovet/src/pages/clinicalHistory/update_clinicalHistory.dart';
+import 'package:histovet/src/pages/clinicalHistory/update_clinicalhistory.dart';
 
-import '../../controller/clinicalHistory_controller.dart';
+import '../../controller/clinicalhistory_controller.dart';
 
 import '../../models/clinicalhistory_model.dart';
 import '../widgets/widget_drawer.dart';
@@ -64,7 +64,6 @@ class _HistoryPageState extends State<HistoryPage> {
                   return const Text('Error');
                 } else if (snapshot.hasData) {
                   List histories = snapshot.data ?? [];
-                  print("Tengo " + histories.length.toString());
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListView(

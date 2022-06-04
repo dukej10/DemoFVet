@@ -83,7 +83,7 @@ class ApplicationBloc with ChangeNotifier {
           selectedLocationStatic!.geometry!.location.lng,
           placeType!);
       markers = [];
-      if (places.length > 0) {
+      if (places.isNotEmpty) {
         var newMarker = markerService.createMarkerFromPlace(places[0], false);
         markers.add(newMarker);
       }

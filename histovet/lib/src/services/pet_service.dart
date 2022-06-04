@@ -7,11 +7,9 @@ class PetService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<Pet> getPetBD(String id) async {
-    final snapshot =
-        await FirebaseFirestore.instance.collection('pet').doc(id).get();
+    final snapshot = await _firestore.collection('pet').doc(id).get();
     Pet pet = Pet(
         snapshot["id"],
-        snapshot["user_id"],
         snapshot["code"],
         snapshot["name"],
         snapshot["nameOwner"],
@@ -28,13 +26,9 @@ class PetService {
   Future<bool> addPetBD(Pet pet) async {
     final DocumentReference petDoc = _firestore.collection("pet").doc();
 
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    final User? user = auth.currentUser;
-
     try {
       await petDoc.set({
         "id": petDoc.id,
-        "user_id": user?.uid,
         "code": pet.code,
         "name": pet.name,
         "nameOwner": pet.nameOwner,
@@ -56,9 +50,8 @@ class PetService {
     List<Pet> mascotas = [];
     print("Llegó code " + code);
     try {
-      final collection = FirebaseFirestore.instance
-          .collection('pet')
-          .where("code", isEqualTo: code);
+      final collection =
+          _firestore.collection('pet').where("code", isEqualTo: code);
       collection.snapshots().listen((querySnapshot) {
         for (var doc in querySnapshot.docs) {
           Map<String, dynamic> data = doc.data();
@@ -66,7 +59,6 @@ class PetService {
           print(doc.data());
           Pet newMedicine = Pet(
               data["id"],
-              data["user_id"],
               data["code"],
               data["name"],
               data["nameOwner"],
@@ -88,9 +80,8 @@ class PetService {
 
   Future<bool> updatePetBD(Pet pet) async {
     try {
-      await FirebaseFirestore.instance.collection("pet").doc(pet.id).set({
+      await _firestore.collection("pet").doc(pet.id).set({
         "id": pet.id,
-        "user_id": pet.user_id,
         "code": pet.code,
         "name": pet.name,
         "nameOwner": pet.nameOwner,
@@ -118,26 +109,9 @@ class PetService {
   }
 
   Future<List<Pet>> getPetsBD() async {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    final User? user = auth.currentUser;
-    final uid = user?.uid;
-
     List<Pet> mascotas = [];
-
-    print(uid);
-
     try {
-      var collection;
-
-      if (uid == '5Q5W4CWh9KUSz0J6uSuCxuhxZAm2') {
-        //uid admin
-        collection = FirebaseFirestore.instance.collection('pet');
-   
-      } else {
-        collection = FirebaseFirestore.instance
-            .collection('pet')
-            .where('user_id', isEqualTo: uid);
-      }
+      final collection = _firestore.collection('pet');
 
       collection.snapshots().listen((querySnapshot) {
         for (var doc in querySnapshot.docs) {
@@ -145,7 +119,6 @@ class PetService {
           //print(doc.data());
           Pet newPet = Pet(
               data["id"],
-              data["user_id"],
               data["code"],
               data["name"],
               data["nameOwner"],

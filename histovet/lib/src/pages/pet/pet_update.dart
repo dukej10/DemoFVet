@@ -7,9 +7,8 @@ import '../../models/pet_model.dart';
 class UpdatePet extends StatefulWidget {
   static String id = "edit_pet";
   final String idPet;
-  final String idUser;
 
-  const UpdatePet(this.idPet, this.idUser, {Key? key}) : super(key: key);
+  const UpdatePet(this.idPet, {Key? key}) : super(key: key);
 
   @override
   State<UpdatePet> createState() => _UpdatePet();
@@ -276,8 +275,8 @@ class _UpdatePet extends State<UpdatePet> {
       final subspecies = subspeciesController.text;
       final color = colorController.text;
       final sex = sexController.text;
-      late Pet pet = Pet(widget.idPet, widget.idUser, code, name, nameOwner,
-          contactOwner, docOwner, age, breed, subspecies, color, sex);
+      late Pet pet = Pet(widget.idPet, code, name, nameOwner, contactOwner,
+          docOwner, age, breed, subspecies, color, sex);
       messageUpdate(pet);
     }
   }

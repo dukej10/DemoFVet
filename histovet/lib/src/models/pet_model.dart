@@ -1,7 +1,5 @@
-
 class Pet {
   final String? id;
-  final String? user_id;
   final String code;
   final String name;
   final String nameOwner;
@@ -13,6 +11,16 @@ class Pet {
   final String color;
   final String sex;
 
-  Pet(this.id, this.user_id,this.code, this.name, this.nameOwner, this.contactOwner, this.documentOwner,
-      this.age, this.breed, this.specie, this.color, this.sex);
+  Pet(
+      this.id,
+      this.code,
+      this.name,
+      this.nameOwner,
+      this.contactOwner,
+      this.documentOwner,
+      this.age,
+      this.breed,
+      this.specie,
+      this.color,
+      this.sex);
 }

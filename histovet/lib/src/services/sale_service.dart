@@ -20,7 +20,7 @@ class SaleService {
         "id": saleDoc.id,
         "code": sale.code,
         "name": sale.name,
-        "lote": sale.formaPago,
+        "formaPago": sale.formaPago,
         "precio": sale.precio,
         "cantidad": sale.cantidad,
         "total": sale.total
@@ -51,8 +51,14 @@ class SaleService {
       collection.snapshots().listen((querySnapshot) {
         for (var doc in querySnapshot.docs) {
           Map<String, dynamic> data = doc.data();
-          Sale newSale = Sale(data["id"], data["code"], data["name"],
-              data["lote"], data["precio"], data["cantidad"], data["total"]);
+          Sale newSale = Sale(
+              data["id"],
+              data["code"],
+              data["name"],
+              data["formaPago"],
+              data["precio"],
+              data["cantidad"],
+              data["total"]);
           sales.add(newSale);
         }
       });

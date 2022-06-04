@@ -16,9 +16,9 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   bool _showPassword = true;
-  AuthController sign = AuthController();
-  TextEditingController _passwordTextController = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
+  AuthController auth = AuthController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +40,7 @@ class _SignInState extends State<SignIn> {
                   "HistoVet",
                   style: TextStyle(fontSize: 50, color: Colors.white),
                 ),
-                logoWidget(),
+                _logoWidget(),
                 const SizedBox(
                   height: 30,
                 ),
@@ -101,9 +101,9 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(
                   height: 5,
                 ),
-                forgetPassword(context),
+                _forgetPassword(context),
                 _button(),
-                signUpOption()
+                _signUpOption()
               ],
             ),
           ),
@@ -112,7 +112,7 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  Widget logoWidget() {
+  Widget _logoWidget() {
     return Image.asset(
       "assets/img/vet.png",
       fit: BoxFit.cover,
@@ -121,7 +121,7 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  Widget signUpOption() {
+  Widget _signUpOption() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -148,7 +148,7 @@ class _SignInState extends State<SignIn> {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
       child: ElevatedButton(
         onPressed: () {
-          messageSign(_emailTextController.text, _passwordTextController.text);
+          _messageSign(_emailTextController.text, _passwordTextController.text);
         },
         child: const Text(
           "Iniciar sesión",
@@ -169,7 +169,7 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  Widget forgetPassword(BuildContext context) {
+  Widget _forgetPassword(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 35,
@@ -186,8 +186,8 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  void messageSign(String correo, String password) async {
-    bool answer = await sign.signIn(correo, password);
+  void _messageSign(String correo, String password) async {
+    bool answer = await auth.signIn(correo, password);
     if (answer) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const Home()));

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/controller/auth_controller.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
@@ -12,8 +11,8 @@ class ResetPassword extends StatefulWidget {
 }
 
 class _ResetPasswordState extends State<ResetPassword> {
-  AuthController sign = AuthController();
-  TextEditingController _emailTextController = TextEditingController();
+  final AuthController _auth = AuthController();
+  final TextEditingController _emailTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +28,14 @@ class _ResetPasswordState extends State<ResetPassword> {
       body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [Colors.blueAccent, Colors.lightBlueAccent],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter)),
           child: SingleChildScrollView(
               child: Padding(
-            padding: EdgeInsets.fromLTRB(20, 120, 20, 0),
+            padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
             child: Column(
               children: <Widget>[
                 const SizedBox(
@@ -83,7 +82,7 @@ class _ResetPasswordState extends State<ResetPassword> {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
       child: ElevatedButton(
         onPressed: () {
-          messageReset(_emailTextController.text);
+          _messageReset(_emailTextController.text);
         },
         child: const Text(
           "Recuperar contraseña",
@@ -104,11 +103,11 @@ class _ResetPasswordState extends State<ResetPassword> {
     );
   }
 
-  void messageReset(String correo) async {
-    bool answer = await sign.reset(correo);
+  void _messageReset(String email) async {
+    bool answer = await _auth.resetPassword(email);
     if (answer) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => SignIn()));
+          context, MaterialPageRoute(builder: (context) => const SignIn()));
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Revise su correo"),
         backgroundColor: Colors.green,

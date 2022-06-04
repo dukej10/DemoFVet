@@ -19,4 +19,9 @@ class SaleController {
     sales = await _service.getSales();
     return sales;
   }
+
+  Future<Sale> getSale(String id) async {
+    Sale sale = await _service.getSaleBD(id);
+    return sale;
+  }
 }

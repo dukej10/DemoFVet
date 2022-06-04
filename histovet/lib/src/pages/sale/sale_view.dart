@@ -124,4 +124,24 @@ class _ViewSale extends State<ViewSale> {
       )
     ];
   }
+
+  @override
+  void initState() {
+    getInfoSale();
+    super.initState();
+  }
+
+  /// Obtiene la información de la mascota
+
+  void getInfoSale() async {
+    Sale sale = await saleContr.getSale(widget.idSale);
+    setState(() {
+      codeController.text = sale.code;
+      nameController.text = sale.name;
+      formaPagoController.text = sale.formaPago;
+      precioController.text = sale.precio.toString();
+      cantidadController.text = sale.cantidad.toString();
+      totalController.text = sale.total.toString();
+    });
+  }
 }

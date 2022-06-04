@@ -16,7 +16,6 @@ class ClinicalHistoryService {
         .get();
     ClinicalHistory clinicalHistory = ClinicalHistory(
         snapshot["id"],
-        snapshot["user_id"],
         snapshot["numberCH"],
         snapshot["date"],
         snapshot["time"],
@@ -69,7 +68,6 @@ class ClinicalHistoryService {
     try {
       await clinicalHistoryDoc.set({
         "id": clinicalHistoryDoc.id,
-        "user_id": user?.uid,
         "numberCH": clinicalHistory.numberCH,
         "date": clinicalHistory.date,
         "time": clinicalHistory.time,
@@ -118,7 +116,6 @@ class ClinicalHistoryService {
           .doc(ch.id)
           .set({
         "id": ch.id,
-        "user_id": ch.user_id,
         "numberCH": ch.numberCH,
         "date": ch.date,
         "time": ch.time,
@@ -170,23 +167,11 @@ class ClinicalHistoryService {
   }
 
   Future<List<ClinicalHistory>> getClinicalHistories() async {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    final User? user = auth.currentUser;
-    final uid = user?.uid;
-
     List<ClinicalHistory> clinicalHistories = [];
 
     try {
-      var collection;
-
-      if (uid == '5Q5W4CWh9KUSz0J6uSuCxuhxZAm2') {
-        //uid admin
-        collection = FirebaseFirestore.instance.collection('clinicalHistory');
-      } else {
-        collection = FirebaseFirestore.instance
-            .collection("clinicalHistory")
-            .where('user_id', isEqualTo: uid);
-      }
+      final collection =
+          FirebaseFirestore.instance.collection('clinicalHistory');
 
       collection.snapshots().listen((querySnapshot) {
         for (var doc in querySnapshot.docs) {
@@ -194,7 +179,6 @@ class ClinicalHistoryService {
           //print(doc.data());
           ClinicalHistory newCinicalHistory = ClinicalHistory(
               data["id"],
-              data["user_id"],
               data["numberCH"],
               data["date"],
               data["time"],
@@ -252,7 +236,6 @@ class ClinicalHistoryService {
           print(doc.data());
           ClinicalHistory newMedicine = ClinicalHistory(
               data["id"],
-              data["user_id"],
               data["numberCH"],
               data["date"],
               data["time"],

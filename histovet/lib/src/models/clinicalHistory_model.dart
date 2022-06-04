@@ -1,6 +1,5 @@
 class ClinicalHistory {
   final String? id;
-  final String? user_id;
   final int numberCH;
   final String date;
   final String time;
@@ -38,7 +37,6 @@ class ClinicalHistory {
 
   ClinicalHistory(
       this.id,
-      this.user_id,
       this.numberCH,
       this.date,
       this.time,

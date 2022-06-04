@@ -87,9 +87,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   UpdateHistory(
-                                                      history.id.toString(),
-                                                      history.user_id
-                                                          .toString())));
+                                                      history.id.toString())));
                                     },
                                     leading: const Icon(
                                       FontAwesomeIcons.paperclip,

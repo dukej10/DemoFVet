@@ -713,7 +713,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
 
   @override
   void initState() {
-    DateTime today = new DateTime.now();
+    DateTime today = DateTime.now();
     timeController.text = "${today.hour}:${today.minute}";
     dateController.text = today.toIso8601String().split('T').first;
     getUsername();
@@ -772,7 +772,6 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
           double.parse(values['percentageDehydration']);
       final mucous = values['mucous'];
       late ClinicalHistory clinicalHistory = ClinicalHistory(
-          "",
           "",
           numberClinicalHistory,
           date,

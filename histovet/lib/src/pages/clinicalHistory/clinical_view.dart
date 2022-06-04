@@ -7,9 +7,8 @@ import '../../models/clinicalhistory_model.dart';
 class ViewHistory extends StatefulWidget {
   static String id = "view_history";
   final String idHistory;
-  final String idUser;
 
-  const ViewHistory(this.idHistory, this.idUser, {Key? key}) : super(key: key);
+  const ViewHistory(this.idHistory, {Key? key}) : super(key: key);
 
   @override
   State<ViewHistory> createState() => _ViewHistoryState();

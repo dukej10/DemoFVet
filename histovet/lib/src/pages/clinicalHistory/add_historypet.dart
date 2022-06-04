@@ -843,7 +843,6 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
       final mucous = values['mucous'];
       late ClinicalHistory clinicalHistory = ClinicalHistory(
           "",
-          "",
           numberClinicalHistory,
           date,
           time,
@@ -903,7 +902,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
   void getInfoPet() async {
     Pet pet = await petIn.getPet(widget.idPet);
     setState(() {
-      DateTime today = new DateTime.now();
+      DateTime today = DateTime.now();
       timeCHController.text = "${today.hour}:${today.minute}";
       emailAddressOwnerController.text = username;
       dateController.text = today.toIso8601String().split('T').first;

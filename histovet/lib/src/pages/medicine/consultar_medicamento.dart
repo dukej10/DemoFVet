@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:histovet/src/controller/medicine_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
-import 'package:histovet/src/pages/medicine/medicine_update.dart';
 import 'package:histovet/src/pages/medicine/medicine_view.dart';
-
-import '../sale/add_sale.dart';
 
 class ConsultarMedicamento extends StatefulWidget {
   static String id = "consultar_medicamento";
@@ -119,8 +116,10 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                                               .id
                                                               .toString())));
                                             },
-                                            icon: Icon(Icons.article_outlined),
-                                            label: Text("Ver información")),
+                                            icon: const Icon(
+                                                Icons.article_outlined),
+                                            label:
+                                                const Text("Ver información")),
 
                                         ElevatedButton.icon(
                                             onPressed: () {

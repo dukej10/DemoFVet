@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
@@ -48,7 +47,7 @@ class _MenuLateralState extends State<MenuLateral> {
             ),
             ListTile(
               leading: const Icon(Icons.photo_camera_front_outlined),
-              title: Text("Cerrar sesión"),
+              title: const Text("Cerrar sesión"),
               onTap: () {
                 messageOut();
               },
@@ -129,7 +128,6 @@ class _MenuLateralState extends State<MenuLateral> {
     bool answer = await sign.signOut();
 
     if (answer) {
-      print("CERRAR");
       Navigator.pushNamed(context, SignIn.id);
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Se cerró sesión"),
@@ -152,7 +150,6 @@ class _MenuLateralState extends State<MenuLateral> {
 
   void getUsername() async {
     username = await sign.username();
-    print("tengo " + username);
     setState(() {});
   }
 

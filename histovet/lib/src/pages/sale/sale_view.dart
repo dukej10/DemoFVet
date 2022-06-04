@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../controller/sale_controller.dart';
-import '../../controller/auth_controller.dart';
 import '../../models/sale_model.dart';
 
 class ViewSale extends StatefulWidget {

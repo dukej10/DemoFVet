@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/Login/reset_password.dart';
 import 'package:histovet/src/pages/Login/signup_screen.dart';

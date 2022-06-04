@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/pet_model.dart';
 
@@ -48,15 +47,12 @@ class PetService {
 
   Future<List<Pet>> searchPet(String code) async {
     List<Pet> mascotas = [];
-    print("Llegó code " + code);
     try {
       final collection =
           _firestore.collection('pet').where("code", isEqualTo: code);
       collection.snapshots().listen((querySnapshot) {
         for (var doc in querySnapshot.docs) {
           Map<String, dynamic> data = doc.data();
-          print("encontró");
-          print(doc.data());
           Pet newMedicine = Pet(
               data["id"],
               data["code"],

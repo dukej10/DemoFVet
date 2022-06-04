@@ -7,10 +7,8 @@ import '../../models/clinicalhistory_model.dart';
 class UpdateHistory extends StatefulWidget {
   static String id = "edit_history";
   final String idHistory;
-  final String idUser;
 
-  const UpdateHistory(this.idHistory, this.idUser, {Key? key})
-      : super(key: key);
+  const UpdateHistory(this.idHistory, {Key? key}) : super(key: key);
 
   @override
   State<UpdateHistory> createState() => _UpdateHistoryState();
@@ -771,8 +769,6 @@ class _UpdateHistoryState extends State<UpdateHistory> {
   getInfoHistory() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
-      final values = _formState.currentState!.value;
-
       //Identificación historia clinica
       //print("act " + weightController.text);
       final numberClinicalHistory = int.parse(numberCHController.text);
@@ -823,7 +819,6 @@ class _UpdateHistoryState extends State<UpdateHistory> {
       final mucous = mucousController.text;
       late ClinicalHistory clinicalHistory = ClinicalHistory(
           widget.idHistory,
-          widget.idUser,
           numberClinicalHistory,
           date,
           time,

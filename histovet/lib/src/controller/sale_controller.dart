@@ -2,7 +2,7 @@ import 'package:histovet/src/models/sale_model.dart';
 import 'package:histovet/src/services/sale_service.dart';
 
 class SaleController {
-  SaleService _service = SaleService();
+  final SaleService _service = SaleService();
   List<Sale> sales = [];
 
   Future<bool> addSale(Sale sale) async {

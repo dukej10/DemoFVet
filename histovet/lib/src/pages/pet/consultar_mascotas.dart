@@ -125,8 +125,10 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
                                                               pet.id
                                                                   .toString())));
                                             },
-                                            icon: Icon(Icons.add_box_outlined),
-                                            label: Text("Agregar historia"))
+                                            icon: const Icon(
+                                                Icons.add_box_outlined),
+                                            label:
+                                                const Text("Agregar historia"))
                                         : ElevatedButton.icon(
                                             onPressed: () {
                                               Navigator.push(
@@ -136,8 +138,10 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
                                                           ViewPet(pet.id
                                                               .toString())));
                                             },
-                                            icon: Icon(Icons.article_outlined),
-                                            label: Text("Ver información")),
+                                            icon: const Icon(
+                                                Icons.article_outlined),
+                                            label:
+                                                const Text("Ver información")),
                                     estado
                                         ? ElevatedButton.icon(
                                             onPressed: () {
@@ -148,8 +152,10 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
                                                           ViewPet(pet.id
                                                               .toString())));
                                             },
-                                            icon: Icon(Icons.article_outlined),
-                                            label: Text("Ver información"))
+                                            icon: const Icon(
+                                                Icons.article_outlined),
+                                            label:
+                                                const Text("Ver información"))
                                         : const SizedBox(
                                             height: 1,
                                           ),

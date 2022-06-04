@@ -68,7 +68,7 @@ class _AddSaleState extends State<AddSale> {
                     Row(
                       children: [
                         Text(medicine.name,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 40,
                             )),
                       ],
@@ -204,7 +204,7 @@ class _AddSaleState extends State<AddSale> {
                     Row(
                       children: [
                         Text("  \$" + total.toString(),
-                            style: TextStyle(fontSize: 40)),
+                            style: const TextStyle(fontSize: 40)),
                       ],
                     )
                   ]),
@@ -221,7 +221,6 @@ class _AddSaleState extends State<AddSale> {
       final values = _formState.currentState!.value;
       final formaPago = values["formaPago"];
       final cantidad = double.parse(values["cantidad"]);
-      final pago = values["pago"];
       final precio = tempMedi.precio;
       final name = tempMedi.name;
       final total2 = total;

@@ -4,7 +4,6 @@ import 'package:histovet/src/controller/sale_controller.dart';
 import 'package:histovet/src/models/sale_model.dart';
 import 'package:histovet/src/pages/sale/sale_view.dart';
 import 'package:histovet/src/pages/widgets/widget_drawer.dart';
-import 'package:histovet/src/pages/sale/add_sale.dart';
 // import 'package:histovet/src/pages/pet/pet_update.dart';
 
 class SalesPage extends StatefulWidget {

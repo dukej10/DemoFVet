@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -8,9 +7,6 @@ import 'package:provider/provider.dart';
 
 import '../../blocs/application_bloc.dart';
 import '../../models/place.dart';
-import 'package:flutter/scheduler.dart';
-
-import '../Home/home_page.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = "gps_page";
@@ -22,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Completer<GoogleMapController> _mapController = Completer();
+  final Completer<GoogleMapController> _mapController = Completer();
 
   late StreamSubscription locationSubscription;
   late StreamSubscription boundsSubscription;
@@ -73,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text("Mapa"),
         ),
         body: (applicationBloc.currentLocation == null)
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : Padding(
@@ -114,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         if (applicationBloc.searchResults != null &&
-                            applicationBloc.searchResults!.length != 0)
+                            applicationBloc.searchResults!.isNotEmpty)
                           Container(
                               height: 500.0,
                               width: double.infinity,
@@ -132,7 +128,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     title: Text(
                                       applicationBloc
                                           .searchResults![index].description,
-                                      style: TextStyle(color: Colors.white),
+                                      style:
+                                          const TextStyle(color: Colors.white),
                                     ),
                                     onTap: () {
                                       applicationBloc.setSelectedLocation(
@@ -144,11 +141,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20.0,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text(
                           'Encuentra las veterinarias más cercanas en tu ubicación',
                           textAlign: TextAlign.center,
@@ -162,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         spacing: 8.0,
                         children: [
                           FilterChip(
-                              label: Text('BUSCAR'),
+                              label: const Text('BUSCAR'),
                               onSelected: (val) => applicationBloc
                                   .togglePlaceType('veterinary_care', val),
                               selected: applicationBloc.placeType ==

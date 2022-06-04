@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:histovet/src/controller/medicine_controller.dart';
-import 'package:histovet/src/controller/pet_controller.dart';
-import 'package:histovet/src/models/medicine_model.dart';
-import 'package:histovet/src/models/pet_model.dart';
-import 'package:histovet/src/pages/clinicalHistory/add_historypet.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinical_view.dart';
-import 'package:histovet/src/pages/pet/pet_view.dart';
-import 'package:histovet/src/services/pet_service.dart';
-import 'package:histovet/src/pages/pet/pet_update.dart';
 import '../../models/clinicalhistory_model.dart';
 
 import '../../controller/clinicalhistory_controller.dart';
@@ -121,8 +113,10 @@ class _ConsultarHistoriesState extends State<ConsultarHistories> {
                                                           ViewHistory(pet.id
                                                               .toString())));
                                             },
-                                            icon: Icon(Icons.article_outlined),
-                                            label: Text("Ver información")),
+                                            icon: const Icon(
+                                                Icons.article_outlined),
+                                            label:
+                                                const Text("Ver información")),
                                         const SizedBox(
                                           height: 5,
                                         ),

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../controller/pet_controller.dart';
-import '../../controller/auth_controller.dart';
 import '../../models/pet_model.dart';
 
 class ViewPet extends StatefulWidget {

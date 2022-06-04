@@ -15,7 +15,7 @@ import '../../models/pet_model.dart';
 class HistoryPetSelectPage extends StatefulWidget {
   static String id = "add_historypet";
   final String idPet;
-  HistoryPetSelectPage(this.idPet, {Key? key}) : super(key: key);
+  const HistoryPetSelectPage(this.idPet, {Key? key}) : super(key: key);
 
   @override
   State<HistoryPetSelectPage> createState() => _HistoryPetSelectPageState();
@@ -919,7 +919,6 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
 
   void getUsername() async {
     username = await auth.username();
-    print("tengo " + username);
     setState(() {});
   }
 }

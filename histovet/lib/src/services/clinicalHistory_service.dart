@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase_database/firebase_database.dart';
 
@@ -61,10 +60,6 @@ class ClinicalHistoryService {
   Future<bool> addClinicalHistory(ClinicalHistory clinicalHistory) async {
     final DocumentReference clinicalHistoryDoc =
         _firestore.collection("clinicalHistory").doc();
-
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    final User? user = auth.currentUser;
-
     try {
       await clinicalHistoryDoc.set({
         "id": clinicalHistoryDoc.id,
@@ -224,7 +219,6 @@ class ClinicalHistoryService {
 
   Future<List<ClinicalHistory>> searchHistories(String name) async {
     List<ClinicalHistory> histories = [];
-    print("Llegó name " + name);
     try {
       final collection = FirebaseFirestore.instance
           .collection('clinicalHistory')
@@ -232,8 +226,6 @@ class ClinicalHistoryService {
       collection.snapshots().listen((querySnapshot) {
         for (var doc in querySnapshot.docs) {
           Map<String, dynamic> data = doc.data();
-          print("encontró");
-          print(doc.data());
           ClinicalHistory newMedicine = ClinicalHistory(
               data["id"],
               data["numberCH"],

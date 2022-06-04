@@ -264,7 +264,6 @@ class _UpdatePet extends State<UpdatePet> {
   getInfoPetPet() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
-      final values = _formState.currentState!.value;
       final code = codeController.text;
       final name = nameController.text;
       final docOwner = docController.text;

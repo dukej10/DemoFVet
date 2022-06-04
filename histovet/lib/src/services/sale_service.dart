@@ -31,6 +31,19 @@ class SaleService {
     }
   }
 
+  Future<Sale> getSaleBD(String id) async {
+    final snapshot = await _firestore.collection('sale').doc(id).get();
+    Sale sale = Sale(
+        snapshot["id"],
+        snapshot["code"],
+        snapshot["name"],
+        snapshot["formaPago"],
+        snapshot["precio"],
+        snapshot["cantidad"],
+        snapshot["total"]);
+    return sale;
+  }
+
   Future<List<Sale>> getSales() async {
     List<Sale> sales = [];
     try {

@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
             SalesPage.id: (context) => const SalesPage(),
             '/sales': (context) => const SalesPage(),
             AddSale.id: (context) => const AddSale(),
+            '/addsale': (context) => const AddSale(),
             '/updatepet': (context) => const UpdatePet(""),
             MedicinePage.id: (context) => const MedicinePage(),
             '/medicine': (context) => const MedicinePage(),

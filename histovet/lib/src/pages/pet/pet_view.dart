@@ -8,9 +8,8 @@ import '../../models/pet_model.dart';
 class ViewPet extends StatefulWidget {
   static String id = "view_pet";
   final String idPet;
-  final String idUser;
 
-  const ViewPet(this.idPet, this.idUser, {Key? key}) : super(key: key);
+  const ViewPet(this.idPet, {Key? key}) : super(key: key);
 
   @override
   State<ViewPet> createState() => _ViewPet();

@@ -21,7 +21,7 @@ class AuthController {
     }
   }
 
-  Future<bool> reset(String email) async {
+  Future<bool> resetPassword(String email) async {
     bool answer = await _auth.resetPassword(email);
     if (answer) {
       return true;

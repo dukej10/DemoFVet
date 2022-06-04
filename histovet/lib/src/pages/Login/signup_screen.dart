@@ -13,10 +13,9 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  AuthController sign = AuthController();
-  TextEditingController _passwordTextController = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _userNameTextController = TextEditingController();
+  AuthController auth = AuthController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
   bool _showPassword = true;
 
   @override
@@ -43,7 +42,7 @@ class _SignUpState extends State<SignUp> {
               child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
             child: Column(
-              children: <Widget>[
+              children: [
                 const SizedBox(
                   height: 20,
                 ),
@@ -122,7 +121,7 @@ class _SignUpState extends State<SignUp> {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
       child: ElevatedButton(
         onPressed: () {
-          messageSignUP(
+          _messageSignUP(
               _emailTextController.text, _passwordTextController.text);
         },
         child: const Text(
@@ -144,8 +143,8 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  void messageSignUP(String correo, String password) async {
-    bool answer = await sign.signUp(correo, password);
+  void _messageSignUP(String correo, String password) async {
+    bool answer = await auth.signUp(correo, password);
     if (answer) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const SignIn()));

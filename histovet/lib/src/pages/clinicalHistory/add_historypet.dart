@@ -1,7 +1,6 @@
-/**
- * Este se usará para cuando se busque una mascota y 
- * se desee agregar una historia clínica
- */
+// Este se usará para cuando se busque una mascota y
+// se desee agregar una historia clínica
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';

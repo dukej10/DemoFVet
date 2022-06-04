@@ -18,6 +18,7 @@ import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
 import 'package:histovet/src/pages/sale/add_sale.dart';
+import 'package:histovet/src/pages/sale/sale_page.dart';
 import 'package:provider/provider.dart';
 
 import 'src/blocs/application_bloc.dart';
@@ -53,7 +54,8 @@ class MyApp extends StatelessWidget {
             AddPet.id: (context) => const AddPet(),
             UpdatePet.id: (context) => const UpdatePet("", ""),
             ConsultarMedicamento.id: (context) => const ConsultarMedicamento(),
-            '/addsale': (context) => const AddSale(),
+            SalesPage.id: (context) => const SalesPage(),
+            '/sales': (context) => const SalesPage(),
             AddSale.id: (context) => const AddSale(),
             '/updatepet': (context) => const UpdatePet("", ""),
             MedicinePage.id: (context) => const MedicinePage(),

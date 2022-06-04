@@ -5,6 +5,7 @@ import 'package:histovet/src/pages/clinicalHistory/consultar_histories.dart';
 import 'package:histovet/src/pages/gps/home_screen.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
+import 'package:histovet/src/pages/sale/sale_page.dart';
 
 import '../../controller/auth_controller.dart';
 import '../medicine/consultar_medicamento.dart';
@@ -161,6 +162,40 @@ class _GridDashboardState extends State<GridDashboard> {
                 ],
               ),
             ),
+            Container(
+              decoration: BoxDecoration(
+                  color: const Color.fromRGBO(33, 211, 255, 1),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Image.asset(
+                    "assets/img/venta.png",
+                    height: 110,
+                    scale: 5,
+                  ),
+                  TextButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color.fromRGBO(33, 150, 255, 1)),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.black),
+                    ),
+                    onPressed: () {
+                      if (estado) {
+                        Navigator.pushNamed(context, SalesPage.id);
+                      } else {
+                        Navigator.pushNamed(context, ConsultarHistories.id);
+                      }
+                    },
+                    child: Text(estado ? "Ventas" : "Listar ventas"),
+                  ),
+                ],
+              ),
+            )
           ]),
     );
   }

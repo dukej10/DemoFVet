@@ -54,7 +54,8 @@ class _SalesPAgeState extends State<SalesPage> {
                             child: Container(
                                 decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage('assets/img/fondo.jpg'),
+                                    image:
+                                        AssetImage('assets/img/medicament.jpg'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -67,7 +68,7 @@ class _SalesPAgeState extends State<SalesPage> {
                                                 ViewSale(sale.id.toString())));
                                   },
                                   leading: const Icon(
-                                    FontAwesomeIcons.paw,
+                                    FontAwesomeIcons.circleDollarToSlot,
                                     color: Colors.black,
                                   ),
                                   title: Text(

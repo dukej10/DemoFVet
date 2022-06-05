@@ -17,6 +17,7 @@ class AddSale extends StatefulWidget {
 }
 
 class _AddSaleState extends State<AddSale> {
+  bool calculate = false;
   final _formState = GlobalKey<FormBuilderState>();
   final SaleController saleController = SaleController();
   bool respuesta = false;
@@ -36,11 +37,14 @@ class _AddSaleState extends State<AddSale> {
         centerTitle: true,
         title: const Text("zona de pago"),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.shopping_cart),
-        onPressed: () {
-          getInfoSale();
-        },
+      floatingActionButton: Visibility(
+        visible: calculate,
+        child: FloatingActionButton(
+          child: const Icon(Icons.shopping_cart),
+          onPressed: () {
+            getInfoSale();
+          },
+        ),
       ),
       body: FormBuilder(
           key: _formState,
@@ -177,7 +181,7 @@ class _AddSaleState extends State<AddSale> {
                               onPressed: () {
                                 if (cantid.text.isNotEmpty) {
                                   total = double.parse(cantid.text);
-                                  //print(total);
+                                  calculate = true;
                                   setState(() {
                                     total = total * medicine.precio;
                                   });

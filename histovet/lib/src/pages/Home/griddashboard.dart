@@ -161,38 +161,37 @@ class _GridDashboardState extends State<GridDashboard> {
                 ],
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                  color: const Color.fromRGBO(33, 211, 255, 1),
-                  borderRadius: BorderRadius.circular(10)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Image.asset(
-                    "assets/img/venta.png",
-                    height: 110,
-                    scale: 5,
-                  ),
-                  TextButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromRGBO(33, 150, 255, 1)),
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.black),
+            Visibility(
+              visible: estado,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: const Color.fromRGBO(33, 211, 255, 1),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const SizedBox(
+                      height: 10,
                     ),
-                    onPressed: () {
-                      if (estado) {
+                    Image.asset(
+                      "assets/img/venta.png",
+                      height: 110,
+                      scale: 5,
+                    ),
+                    TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            const Color.fromRGBO(33, 150, 255, 1)),
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.black),
+                      ),
+                      onPressed: () {
                         Navigator.pushNamed(context, SalesPage.id);
-                      } else {
-                        Navigator.pushNamed(context, ConsultarHistories.id);
-                      }
-                    },
-                    child: Text(estado ? "Ventas" : "Listar ventas"),
-                  ),
-                ],
+                      },
+                      child: const Text("Ventas"),
+                    ),
+                  ],
+                ),
               ),
             )
           ]),

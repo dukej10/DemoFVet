@@ -7,6 +7,7 @@ import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
 import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
 import 'package:histovet/src/pages/pet/pets_page.dart';
+import 'package:histovet/src/pages/sale/sale_page.dart';
 
 import '../../controller/auth_controller.dart';
 import '../Home/home_page.dart';
@@ -117,7 +118,17 @@ class _MenuLateralState extends State<MenuLateral> {
               onTap: () {
                 Navigator.pushNamed(context, HomeScreen.id);
               },
-            )
+            ),
+            Visibility(
+              visible: estado,
+              child: ListTile(
+                leading: const Icon(Icons.point_of_sale_outlined),
+                title: const Text("Ventas"),
+                onTap: () {
+                  Navigator.pushNamed(context, SalesPage.id);
+                },
+              ),
+            ),
           ])
         ],
       ),

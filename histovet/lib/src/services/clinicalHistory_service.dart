@@ -8,6 +8,8 @@ class ClinicalHistoryService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final databaseRef = FirebaseDatabase.instance.ref();
 
+  // Permite obtener una historia clinica de la base de datos de Firebase
+  // Retorna la historia clinica que se la haya especificado
   Future<ClinicalHistory> getClinicalHistory(String id) async {
     final snapshot = await FirebaseFirestore.instance
         .collection('clinicalHistory')
@@ -49,14 +51,14 @@ class ClinicalHistoryService {
         snapshot["trcp"],
         snapshot["percentageDehydration"],
         snapshot["mucous"]);
-
-    //print(clinicalHistory.toString());
     return clinicalHistory;
   }
 
   CollectionReference clinicalHistoryAll =
       FirebaseFirestore.instance.collection("clinicalHistory");
 
+  // Permite agregar una historia clinicas a la base de datos de Firebase
+  // Retorna true, si se pudo agregar la historia clinica a la base de datos
   Future<bool> addClinicalHistory(ClinicalHistory clinicalHistory) async {
     final DocumentReference clinicalHistoryDoc =
         _firestore.collection("clinicalHistory").doc();
@@ -104,6 +106,8 @@ class ClinicalHistoryService {
     }
   }
 
+  // Permite actualizar una historia clinica en la base de datos de Firebase
+  // Retorna true, si se pudo actualizar la historia clinica en la base de datos
   Future<bool> updateClinicalHistory(ClinicalHistory ch) async {
     try {
       await FirebaseFirestore.instance
@@ -152,6 +156,8 @@ class ClinicalHistoryService {
     }
   }
 
+  // Permite eliminar una historia clinica indicada de la base de datos de Firebase
+  // Retorna true, si se pudo eliminar la historia clinica de la base de datos
   Future<bool> deleteHistoryBD(id) async {
     try {
       await _firestore.collection("clinicalHistory").doc(id).delete();
@@ -161,6 +167,8 @@ class ClinicalHistoryService {
     }
   }
 
+  // Permite obtener todas las historias clinicas de la base de datos de Firebase
+  // Retorna una lista con las historias clinicas que haya encontrado
   Future<List<ClinicalHistory>> getClinicalHistories() async {
     List<ClinicalHistory> clinicalHistories = [];
 
@@ -217,6 +225,8 @@ class ClinicalHistoryService {
     }
   }
 
+  // Permite obtener todas las historias clinicas que coincidan con el nombre recibido en Firebase
+  // Retorna una lista con las historias clinicas que haya encontrado
   Future<List<ClinicalHistory>> searchHistories(String name) async {
     List<ClinicalHistory> histories = [];
     try {

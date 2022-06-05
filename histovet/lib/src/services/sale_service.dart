@@ -12,6 +12,8 @@ class SaleService {
   CollectionReference medicineAll =
       FirebaseFirestore.instance.collection("medicine");
 
+  // Permite agregar una venta a la base de datos de Firebase
+  // Retorna true, si se pudo agregar la venta a la base de datos
   Future<bool> addSale(Sale sale) async {
     final DocumentReference saleDoc = _firestore.collection("sale").doc();
 
@@ -31,6 +33,8 @@ class SaleService {
     }
   }
 
+  // Permite obtener la venta que tenga el id recibido de la base de datos de Firebase
+  // Retorna la venta que se la haya especificado
   Future<Sale> getSaleBD(String id) async {
     final snapshot = await _firestore.collection('sale').doc(id).get();
     Sale sale = Sale(
@@ -44,6 +48,8 @@ class SaleService {
     return sale;
   }
 
+  // Permite obtener todas las ventas de la base de datos de de Firebase
+  // Retorna una lista con las ventas que haya encontrado
   Future<List<Sale>> getSales() async {
     List<Sale> sales = [];
     try {

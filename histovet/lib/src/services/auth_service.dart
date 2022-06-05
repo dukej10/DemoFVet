@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  //Permite inciar sesión utilizando el servicio de autenticación de Firebase
   Future<bool> signIn(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
@@ -12,6 +13,8 @@ class AuthService {
     }
   }
 
+  // Crea una cuenta con email y password utilizando el servicio de autenticación de Firebase
+  // Retorna true si la cuenta fue creada con exito, false para error
   Future<bool> createAccount(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(
@@ -22,6 +25,8 @@ class AuthService {
     }
   }
 
+  // Recupera la contraseña del correo que se recibe utilizando el servicio de autenticación de Firebase
+  // Retorna true si los datos pertenecen a una cuenta existente y se pudo recuperar
   Future<bool> resetPassword(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
@@ -31,6 +36,7 @@ class AuthService {
     }
   }
 
+  //Cierra la sesión actual utilizando el servicio de Firebase
   Future<bool> signOut() async {
     try {
       await _auth.signOut();
@@ -40,6 +46,7 @@ class AuthService {
     }
   }
 
+  // Retorna el correo del usuario que inició sesión
   Future<String> username() async {
     try {
       final User? user = _auth.currentUser;
@@ -50,6 +57,8 @@ class AuthService {
     }
   }
 
+  // Permite identificar si un usuario es administrador o no
+  // Retorna true si el usuario es administrador
   Future<bool> estado() async {
     try {
       final administradores = [

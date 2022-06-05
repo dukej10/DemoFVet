@@ -10,6 +10,8 @@ class MedicineService {
 
   Medicine medicine = Medicine("", "", "", "", "", 0.0, "");
 
+  // Permite obtener una medicina de la base de datos de Firebase
+  // Retorna la medicina que se la haya especificado
   Future<Medicine> getMedicine(String id) async {
     final snapshot =
         await FirebaseFirestore.instance.collection('medicine').doc(id).get();
@@ -25,9 +27,10 @@ class MedicineService {
     return medicine;
   }
 
+  // Permite obtener todas las medicinas que coincidan con el nombre recibido en Firebase
+  // Retorna una lista con las medicinas que haya encontrado
   Future<List<Medicine>> searchMedicine(String name) async {
     List<Medicine> medicines = [];
-    //print("Llegó nombre " + name);
     try {
       final collection = FirebaseFirestore.instance
           .collection('medicine')
@@ -57,6 +60,8 @@ class MedicineService {
   CollectionReference medicineAll =
       FirebaseFirestore.instance.collection("medicine");
 
+  // Permite agregar una medicina a la base de datos de Firebase
+  // Retorna true, si se pudo agregar la medicina a la base de datos
   Future<bool> addMedicine(Medicine medicine) async {
     final DocumentReference medicineDoc =
         _firestore.collection("medicine").doc();
@@ -77,9 +82,10 @@ class MedicineService {
     }
   }
 
+  // Permite actualizar una medicina en la base de datos de Firebase
+  // Retorna true, si se pudo actualizar la medicina en la base de datos
   Future<bool> updateMedicine(Medicine medicine) async {
     try {
-      //final DocumentReference medicineDoc = _firestore.collection("medicine").doc();
       await FirebaseFirestore.instance
           .collection("medicine")
           .doc(medicine.id)
@@ -98,6 +104,8 @@ class MedicineService {
     }
   }
 
+  // Permite eliminar una medicina indicada de la base de datos de Firebase
+  // Retorna true, si se pudo eliminar la medicina que se especifico de la base de datos
   Future<bool> deleteMedicineFromFirebase(id) async {
     try {
       await _firestore.collection("medicine").doc(id).delete();
@@ -107,6 +115,8 @@ class MedicineService {
     }
   }
 
+  // Permite obtener todas las medicinas de la base de datos de Firebase
+  // Retorna una lista con las medicinas que haya encontrado
   Future<List<Medicine>> getMedicines() async {
     List<Medicine> medicines = [];
     try {

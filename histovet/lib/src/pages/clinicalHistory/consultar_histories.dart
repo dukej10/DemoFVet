@@ -30,13 +30,6 @@ class _ConsultarHistoriesState extends State<ConsultarHistories> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Consultar historias clínicas"),
-        actions: [
-          IconButton(
-              onPressed: () {
-                setState(() {});
-              },
-              icon: const Icon(Icons.refresh))
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(17.0),

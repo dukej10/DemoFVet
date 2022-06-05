@@ -25,13 +25,6 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Consultar medicamento"),
-        actions: [
-          IconButton(
-              onPressed: () {
-                setState(() {});
-              },
-              icon: const Icon(Icons.refresh))
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(17.0),

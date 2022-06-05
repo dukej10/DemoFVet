@@ -30,13 +30,6 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Consultar mascota"),
-        actions: [
-          IconButton(
-              onPressed: () {
-                setState(() {});
-              },
-              icon: const Icon(Icons.refresh))
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(17),

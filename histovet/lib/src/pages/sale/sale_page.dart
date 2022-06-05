@@ -54,10 +54,10 @@ class _SalesPAgeState extends State<SalesPage> {
                             child: Container(
                                 decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/img/medicament.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
+                                      image: AssetImage(
+                                          'assets/img/medicament.jpg'),
+                                      fit: BoxFit.cover,
+                                      opacity: 0.4),
                                 ),
                                 child: ListTile(
                                   onLongPress: () {

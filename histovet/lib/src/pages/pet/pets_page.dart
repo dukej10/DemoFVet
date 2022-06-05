@@ -61,9 +61,9 @@ class _PetsPageState extends State<PetsPage> {
                             child: Container(
                                 decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage('assets/img/fondo.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
+                                      image: AssetImage('assets/img/fondo.jpg'),
+                                      fit: BoxFit.cover,
+                                      opacity: 0.3),
                                 ),
                                 child: ListTile(
                                     onLongPress: () {

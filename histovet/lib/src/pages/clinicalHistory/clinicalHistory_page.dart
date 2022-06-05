@@ -75,8 +75,9 @@ class _HistoryPageState extends State<HistoryPage> {
                             child: Container(
                                 decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage('assets/img/fondo3.jpg'),
+                                    image: AssetImage('assets/img/fondo3.png'),
                                     fit: BoxFit.cover,
+                                    opacity: 0.4,
                                   ),
                                 ),
                                 child: ListTile(

@@ -104,19 +104,26 @@ class _ResetPasswordState extends State<ResetPassword> {
   }
 
   void _messageReset(String email) async {
-    bool answer = await _auth.resetPassword(email);
-    if (answer) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const SignIn()));
+    if (email.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Revise su correo"),
-        backgroundColor: Colors.green,
-      ));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Revise sus datos"),
+        content: Text("Ingrese correo"),
         backgroundColor: Colors.red,
       ));
+    } else {
+      bool answer = await _auth.resetPassword(email);
+      if (answer) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const SignIn()));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Revise su correo"),
+          backgroundColor: Colors.green,
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Revise sus datos"),
+          backgroundColor: Colors.red,
+        ));
+      }
     }
   }
 }

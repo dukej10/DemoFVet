@@ -142,19 +142,55 @@ class _SignUpState extends State<SignUp> {
   }
 
   void _messageSignUP(String correo, String password) async {
-    bool answer = await auth.signUp(correo, password);
-    if (answer) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const SignIn()));
+    if (correo.isEmpty && password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Se creo la cuenta con éxito"),
-        backgroundColor: Colors.green,
-      ));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Revise sus datos"),
+        content: Text("Ingrese correo y contraseña"),
         backgroundColor: Colors.red,
       ));
+    } else if (correo.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Ingrese correo"),
+        backgroundColor: Colors.red,
+      ));
+    } else if (password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Ingrese contraseña"),
+        backgroundColor: Colors.red,
+      ));
+    } else {
+      bool answer = await auth.signUp(correo, password);
+      if (answer) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const SignIn()));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Se creo la cuenta con éxito"),
+          backgroundColor: Colors.green,
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Revise sus datos"),
+          backgroundColor: Colors.red,
+        ));
+      }
     }
+  }
+
+  _showDialog(BuildContext context, String title, String message) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Text(message),
+            actions: [
+              TextButton(
+                child: const Text("Aceptar"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
   }
 }

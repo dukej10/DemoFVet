@@ -34,7 +34,7 @@ class _SignInState extends State<SignIn> {
             padding: EdgeInsets.fromLTRB(
                 20, MediaQuery.of(context).size.height * 0.2, 20, 0),
             child: Column(
-              children: <Widget>[
+              children: [
                 const Text(
                   "HistoVet",
                   style: TextStyle(fontSize: 50, color: Colors.white),
@@ -186,19 +186,36 @@ class _SignInState extends State<SignIn> {
   }
 
   void _messageSign(String correo, String password) async {
-    bool answer = await auth.signIn(correo, password);
-    if (answer) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const Home()));
+    if (correo.isEmpty && password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Se inicio sesión"),
-        backgroundColor: Colors.green,
-      ));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Revise sus datos"),
+        content: Text("Ingrese correo y contraseña"),
         backgroundColor: Colors.red,
       ));
+    } else if (correo.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Ingrese correo"),
+        backgroundColor: Colors.red,
+      ));
+    } else if (password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Ingrese contraseña"),
+        backgroundColor: Colors.red,
+      ));
+    } else {
+      bool answer = await auth.signIn(correo, password);
+      if (answer) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const Home()));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Se inició sesión"),
+          backgroundColor: Colors.green,
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Revise sus datos"),
+          backgroundColor: Colors.red,
+        ));
+      }
     }
   }
 }

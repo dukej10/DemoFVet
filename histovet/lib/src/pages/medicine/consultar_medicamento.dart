@@ -44,7 +44,6 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
               controller: searchController,
               decoration: const InputDecoration(
                 labelText: 'Ingrese el nombre del medicamento',
-                //errorText: 'Error message',
                 border: OutlineInputBorder(),
                 suffixIcon: Icon(
                   Icons.search,
@@ -52,7 +51,7 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 25,
             ),
             SizedBox(
               width: 20,
@@ -68,13 +67,15 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
               height: 5,
             ),
             Container(
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.black)),
                 padding: const EdgeInsets.only(
                   left: 40,
                   top: 20,
                   right: 40,
                   bottom: 20,
                 ),
-                height: 500,
+                height: 590,
                 child: FutureBuilder(
                     future: medCont.searchMedicine(searchController.text),
                     builder:

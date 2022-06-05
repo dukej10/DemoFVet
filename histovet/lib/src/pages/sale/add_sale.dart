@@ -3,7 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:histovet/src/controller/sale_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
-
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../models/sale_model.dart';
 
 class AddSale extends StatefulWidget {
@@ -18,6 +18,9 @@ class AddSale extends StatefulWidget {
 
 class _AddSaleState extends State<AddSale> {
   bool calculate = false;
+  bool card = false;
+  var cardFormatter = MaskTextInputFormatter(
+      mask: '####-####-####-####', filter: {"#": RegExp(r'[0-9]')});
   final _formState = GlobalKey<FormBuilderState>();
   final SaleController saleController = SaleController();
   bool respuesta = false;
@@ -35,7 +38,7 @@ class _AddSaleState extends State<AddSale> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("zona de pago"),
+        title: const Text("Zona de pago"),
       ),
       floatingActionButton: Visibility(
         visible: calculate,
@@ -97,47 +100,56 @@ class _AddSaleState extends State<AddSale> {
                     margin: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 15),
                     child: FormBuilderDropdown(
-                        name: "formaPago",
-                        decoration: const InputDecoration(
-                            labelText: "Pago",
-                            prefixIcon: Icon(Icons.article_outlined),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.teal))),
-                        hint: const Text("Seleccionar forma de pago"),
-                        validator: FormBuilderValidators.required(context,
-                            errorText: "Seleccione una forma de pago"),
-                        items: [
-                          {'value': 'Tarjeta', 'key': 'Tarjeta'},
-                          {'value': 'Efectivo', 'key': 'Efectivo'}
-                        ]
-                            .map((formaPago) => DropdownMenuItem(
-                                value: formaPago["value"],
-                                child: Text("${formaPago["value"]}")))
-                            .toList())),
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                  child: FormBuilderTextField(
-                    name: "tarjeta",
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: const InputDecoration(
-                        labelText: "numero",
-                        hintText: "Ingrese numero de tarjeta",
-                        prefixIcon: Icon(Icons.code),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.teal))),
-                    keyboardType: TextInputType.number,
-                    maxLength: 16,
-                    validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.required(context,
-                          errorText: "Valor requerido"),
-                      FormBuilderValidators.integer(context,
-                          errorText: "No puede tener decimales"),
-                      FormBuilderValidators.min(context, 1,
-                          errorText: "Debe ser un número mayor que 0"),
-                      FormBuilderValidators.minLength(context, 16,
-                          errorText: "La longitud del documento es de 16")
-                    ]),
+                      name: "formaPago",
+                      decoration: const InputDecoration(
+                          labelText: "Pago",
+                          prefixIcon: Icon(Icons.article_outlined),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.teal))),
+                      hint: const Text("Seleccionar forma de pago"),
+                      validator: FormBuilderValidators.required(context,
+                          errorText: "Seleccione una forma de pago"),
+                      items: [
+                        {'value': 'Tarjeta', 'key': 'Tarjeta'},
+                        {'value': 'Efectivo', 'key': 'Efectivo'}
+                      ]
+                          .map((formaPago) => DropdownMenuItem(
+                              value: formaPago["value"],
+                              child: Text("${formaPago["value"]}")))
+                          .toList(),
+                      onChanged: (value) {
+                        if (value == "Tarjeta") {
+                          setState(() {
+                            card = true;
+                          });
+                        } else {
+                          setState(() {
+                            card = false;
+                          });
+                        }
+                      },
+                    )),
+                Visibility(
+                  visible: card,
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 15),
+                    child: FormBuilderTextField(
+                      name: "tarjeta",
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: const InputDecoration(
+                          labelText: "Número de tarjeta",
+                          hintText: "0000-0000-0000-0000",
+                          prefixIcon: Icon(Icons.code),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.teal))),
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [cardFormatter],
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(context,
+                            errorText: "Valor requerido"),
+                      ]),
+                    ),
                   ),
                 ),
                 Container(

@@ -916,6 +916,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
     });
   }
 
+  // obtiene el correo dek usuario que se encuentra en sesión
   void getUsername() async {
     username = await auth.username();
     setState(() {});

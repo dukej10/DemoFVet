@@ -3,6 +3,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../../controller/pet_controller.dart';
 import '../../models/pet_model.dart';
 
+// Clases encargadas de la vista donde se muestra la información de la mascota
+
 class ViewPet extends StatefulWidget {
   static String id = "view_pet";
   final String idPet;
@@ -187,7 +189,6 @@ class _ViewPet extends State<ViewPet> {
   }
 
   /// Obtiene la información de la mascota
-
   void getInfoPet() async {
     Pet pet = await petCont.getPet(widget.idPet);
     setState(() {

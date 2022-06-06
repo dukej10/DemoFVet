@@ -4,6 +4,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../controller/clinicalhistory_controller.dart';
 import '../../models/clinicalhistory_model.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// actualizar los datos de la historia clínica
 class UpdateHistory extends StatefulWidget {
   static String id = "edit_history";
   final String idHistory;
@@ -57,8 +59,6 @@ class _UpdateHistoryState extends State<UpdateHistory> {
   TextEditingController mucousController = TextEditingController();
 
   bool respuesta = false;
-
-  // Text Editing Controller
 
   @override
   Widget build(BuildContext context) {
@@ -766,6 +766,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
     super.initState();
   }
 
+  //valida que la información que entró el usuario cumpla los formatos que se le definió
+  // a cada campo de texto y obtiene está información
   getInfoHistory() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
@@ -858,6 +860,7 @@ class _UpdateHistoryState extends State<UpdateHistory> {
     }
   }
 
+  // Le indica al usuario si se pudo o no actualizar la información de la historia clínica
   void messageUpdate(ClinicalHistory clinicalHistory) async {
     respuesta = await histCont.updateClinicalHistory(clinicalHistory);
     if (respuesta) {
@@ -875,6 +878,8 @@ class _UpdateHistoryState extends State<UpdateHistory> {
     }
   }
 
+  /// Obtiene la información de la historia clínica a la cual se quiere
+  /// cambiar su información
   void getInfoClinicalHistory() async {
     ClinicalHistory clinicalHistory =
         await histCont.getClinicalHistory(widget.idHistory);

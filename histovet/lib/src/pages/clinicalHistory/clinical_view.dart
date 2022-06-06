@@ -3,6 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../../controller/clinicalhistory_controller.dart';
 import '../../models/clinicalhistory_model.dart';
 
+// Clases encargadas de la vista donde se muestra la información de la historia clínica
 class ViewHistory extends StatefulWidget {
   static String id = "view_history";
   final String idHistory;

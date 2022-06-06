@@ -5,6 +5,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../controller/clinicalhistory_controller.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// ingresar datos para agregar una historia clínica
 class AddClinicalHistory extends StatefulWidget {
   static String id = "form_clinicalHistory";
   const AddClinicalHistory({Key? key}) : super(key: key);
@@ -720,6 +722,8 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
     super.initState();
   }
 
+  // Valida que todos los campos cumplan los formatos y obtiene la
+  //información que ingresó el usuario
   getInfoHV() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
@@ -812,6 +816,7 @@ class _AddClinicalHistoryState extends State<AddClinicalHistory> {
     }
   }
 
+  //Muestra un mensaje que le indica al usuario si se pudo crear la historia clinica
   void messageAd(ClinicalHistory clinicalHistory) async {
     respuesta = await clinicalHistorycont.addClinicalHistory(clinicalHistory);
     if (respuesta) {

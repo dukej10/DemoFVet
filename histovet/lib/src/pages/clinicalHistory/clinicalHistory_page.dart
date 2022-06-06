@@ -10,6 +10,8 @@ import '../../controller/clinicalhistory_controller.dart';
 import '../../models/clinicalhistory_model.dart';
 import '../widgets/widget_drawer.dart';
 
+// Clases encargadas de la vista donde se enlistan todas las historias clinicas
+// que existan en la base de datos
 class HistoryPage extends StatefulWidget {
   static String id = "clinicalHistory";
   const HistoryPage({Key? key}) : super(key: key);
@@ -140,6 +142,7 @@ class _HistoryPageState extends State<HistoryPage> {
     }
   }
 
+  //Permite saber que tipo de usuario es el que está en sesión
   void getEstado() async {
     estado = await auth.estado();
     setState(() {});

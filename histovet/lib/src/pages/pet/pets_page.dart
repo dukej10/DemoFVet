@@ -6,6 +6,8 @@ import 'package:histovet/src/pages/widgets/widget_drawer.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 
+// Clases encargadas de la vista donde se enlistan todas las ventas que existan en la
+// base de datos
 class PetsPage extends StatefulWidget {
   static String id = "pets_page";
   const PetsPage({Key? key}) : super(key: key);

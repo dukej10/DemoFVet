@@ -5,6 +5,8 @@ import '../../models/clinicalhistory_model.dart';
 import '../../controller/clinicalhistory_controller.dart';
 import '../../controller/auth_controller.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// buscar historias clínicas de una mascota
 class ConsultarHistories extends StatefulWidget {
   static String id = "consultar_historias";
   const ConsultarHistories({Key? key}) : super(key: key);
@@ -214,6 +216,7 @@ class _ConsultarHistoriesState extends State<ConsultarHistories> {
     );
   }
 
+  //Permite saber que tipo de usuario es el que está en sesión
   void getEstado() async {
     estado = await auth.estado();
     setState(() {});

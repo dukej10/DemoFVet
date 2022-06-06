@@ -174,23 +174,4 @@ class _SignUpState extends State<SignUp> {
       }
     }
   }
-
-  _showDialog(BuildContext context, String title, String message) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text(title),
-            content: Text(message),
-            actions: [
-              TextButton(
-                child: const Text("Aceptar"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          );
-        });
-  }
 }

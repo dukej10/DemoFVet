@@ -4,6 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../../controller/medicine_controller.dart';
 import '../../models/medicine_model.dart';
 
+// Clases encargadas de la vista donde se muestra la información de la medicina
 class ViewMedicine extends StatefulWidget {
   static String id = "edit_medicine";
   final String idMedicine;
@@ -41,6 +42,7 @@ class _Updatemedicationtate extends State<ViewMedicine> {
     );
   }
 
+  // Campos de textos donde se muestra la información de la medicina
   List<Widget> _inputs() {
     return [
       Container(
@@ -130,8 +132,8 @@ class _Updatemedicationtate extends State<ViewMedicine> {
     super.initState();
   }
 
+  // Obtiene la información de la medicina y la asigna a los campos de textos
   void getInfo() async {
-    // await _service.getMedicine(widget.idMedicine);
     Medicine medicine = await medicineCont.getMedicine(widget.idMedicine);
     setState(() {
       codeController.text = medicine.code.toString();

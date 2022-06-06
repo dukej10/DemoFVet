@@ -3,6 +3,8 @@ import 'package:histovet/src/controller/medicine_controller.dart';
 import 'package:histovet/src/models/medicine_model.dart';
 import 'package:histovet/src/pages/medicine/medicine_view.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// buscar medicamentos
 class ConsultarMedicamento extends StatefulWidget {
   static String id = "consultar_medicamento";
   const ConsultarMedicamento({Key? key}) : super(key: key);

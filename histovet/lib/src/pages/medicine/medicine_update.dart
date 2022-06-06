@@ -5,6 +5,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../controller/medicine_controller.dart';
 import '../../models/medicine_model.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// actualizar los datos de la medicina
 class UpdateMedicine extends StatefulWidget {
   static String id = "edit_medicine";
   final String idMedicine;
@@ -181,6 +183,8 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
     super.initState();
   }
 
+  //valida que la información que entró el usuario cumpla los formatos que se le definió
+  // a cada campo de texto y obtiene está información
   getInfoMedicine() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
@@ -198,6 +202,7 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
     }
   }
 
+  // Le indica al usuario si se pudo o no actualizar la información de la medicina
   void _messageUpdate(Medicine medicine) async {
     respuesta = await medicineCont.updateMedicine(medicine);
     if (respuesta) {
@@ -214,6 +219,8 @@ class _Updatemedicationtate extends State<UpdateMedicine> {
     }
   }
 
+  /// Obtiene la información de la medicina a la cual se quiere
+  /// cambiar su información
   void getInfo() async {
     // await _service.getMedicine(widget.idMedicine);
     Medicine medicine = await medicineCont.getMedicine(widget.idMedicine);

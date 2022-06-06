@@ -529,6 +529,7 @@ class _ViewHistoryState extends State<ViewHistory> {
     super.initState();
   }
 
+  // Obtiene la información de la historia clínica y la asigna a los campos de textos
   void getInfoClinicalHistory() async {
     ClinicalHistory clinicalHistory =
         await histCont.getClinicalHistory(widget.idHistory);

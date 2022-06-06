@@ -6,6 +6,8 @@ import '../../models/medicine_model.dart';
 import '../../services/medicine_service.dart';
 import 'package:intl/intl.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// ingresar datos para agregar una medicina
 class AddMedicine extends StatefulWidget {
   static String id = "form_medicine";
   const AddMedicine({Key? key}) : super(key: key);
@@ -170,6 +172,8 @@ class _AddMedicine extends State<AddMedicine> {
     );
   }
 
+  // Valida que todos los campos cumplan los formatos y obtiene la
+  //información que ingresó el usuario
   getInfoMedicine() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
@@ -189,6 +193,7 @@ class _AddMedicine extends State<AddMedicine> {
     }
   }
 
+  //Muestra un mensaje que le indica al usuario si se pudo crear la medicina
   void addMedicine(Medicine medicine) async {
     respuesta = await _service.addMedicine(medicine);
     if (respuesta) {

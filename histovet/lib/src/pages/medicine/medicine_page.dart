@@ -7,6 +7,8 @@ import 'package:histovet/src/pages/widgets/widget_drawer.dart';
 import '../../controller/medicine_controller.dart';
 import 'medicine_update.dart';
 
+// Clases encargadas de la vista donde se enlistan todas las medicinas
+// que existan en la base de datos
 class MedicinePage extends StatefulWidget {
   static String id = "medicine_page";
   const MedicinePage({Key? key}) : super(key: key);
@@ -115,6 +117,7 @@ class _MedicinePageState extends State<MedicinePage> {
     );
   }
 
+  // Le indica al usuario si se pudo o no eliminar el registro
   void messageDelete(String idMedicine) async {
     respuesta = await medicineCont.deleteMedicine(idMedicine);
     if (respuesta) {

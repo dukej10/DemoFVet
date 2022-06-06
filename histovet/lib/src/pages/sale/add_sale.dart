@@ -6,6 +6,7 @@ import 'package:histovet/src/models/medicine_model.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../models/sale_model.dart';
 
+// Clases encargadas de la vista que permite comprar un medicamento
 class AddSale extends StatefulWidget {
   static String id = "form_sale";
 
@@ -231,6 +232,7 @@ class _AddSaleState extends State<AddSale> {
     );
   }
 
+  // Obtiene la información de la medicina que el usuario desea comprar
   void getInfoSale() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
@@ -248,6 +250,8 @@ class _AddSaleState extends State<AddSale> {
     }
   }
 
+  // Muestra un mensaje que le indica al usuario que está pansando con la compra que acabó
+  // de realizar
   void addSaleMessage(Sale sale) async {
     respuesta = await saleController.addSale(sale);
     if (respuesta) {

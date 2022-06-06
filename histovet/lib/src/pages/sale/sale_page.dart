@@ -4,8 +4,9 @@ import 'package:histovet/src/controller/sale_controller.dart';
 import 'package:histovet/src/models/sale_model.dart';
 import 'package:histovet/src/pages/sale/sale_view.dart';
 import 'package:histovet/src/pages/widgets/widget_drawer.dart';
-// import 'package:histovet/src/pages/pet/pet_update.dart';
 
+// Clases encargadas de la vista donde se enlistan todas las ventas que existan en la
+// base de datos
 class SalesPage extends StatefulWidget {
   static String id = "sales_page";
   const SalesPage({Key? key}) : super(key: key);
@@ -90,7 +91,4 @@ class _SalesPAgeState extends State<SalesPage> {
               })),
     );
   }
-
-  // Le indica al usuario si se pudo o no eliminar el registro
-
 }

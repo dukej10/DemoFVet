@@ -3,6 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import '../../controller/sale_controller.dart';
 import '../../models/sale_model.dart';
 
+// Clases encargadas de la vista donde se muestra la información de la venta
 class ViewSale extends StatefulWidget {
   static String id = "view_sale";
   final String idSale;
@@ -40,6 +41,7 @@ class _ViewSale extends State<ViewSale> {
     );
   }
 
+  //Cuadros de texto donde se muestra la información de la venta
   List<Widget> _inputs() {
     return [
       Container(
@@ -123,14 +125,14 @@ class _ViewSale extends State<ViewSale> {
     ];
   }
 
+  // Se ejecuta apenas se carga la vista
   @override
   void initState() {
     getInfoSale();
     super.initState();
   }
 
-  /// Obtiene la información de la mascota
-
+  /// Obtiene la información de la venta
   void getInfoSale() async {
     Sale sale = await saleContr.getSale(widget.idSale);
     setState(() {

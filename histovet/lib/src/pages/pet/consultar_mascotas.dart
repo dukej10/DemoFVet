@@ -5,6 +5,8 @@ import 'package:histovet/src/pages/clinicalHistory/add_historypet.dart';
 import 'package:histovet/src/pages/pet/pet_view.dart';
 import '../../controller/auth_controller.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// buscar una mascota
 class ConsultarMascota extends StatefulWidget {
   static String id = "consultar_mascota";
   const ConsultarMascota({Key? key}) : super(key: key);
@@ -245,6 +247,7 @@ class _ConsultarMascotaState extends State<ConsultarMascota> {
     );
   }
 
+  //Permite saber que tipo de usuario es el que está en sesión
   void getEstado() async {
     estado = await auth.estado();
     setState(() {});

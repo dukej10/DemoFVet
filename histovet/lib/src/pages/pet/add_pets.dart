@@ -4,6 +4,9 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../controller/pet_controller.dart';
 import '../../models/pet_model.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// ingresar datos para agregar una mascota
+
 class AddPet extends StatefulWidget {
   static String id = "form_pet";
   const AddPet({Key? key}) : super(key: key);
@@ -256,6 +259,8 @@ class _AddPetState extends State<AddPet> {
     );
   }
 
+  // Valida que todos los campos cumplan los formatos y obtiene la
+  //información que ingresó el usuario
   void getInfoPet() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
@@ -276,6 +281,7 @@ class _AddPetState extends State<AddPet> {
     }
   }
 
+  //Muestra un mensaje que le indica al usuario si se pudo crear la mascota
   void messageAdd(Pet pet) async {
     answer = await petCont.addPet(pet);
     if (answer) {

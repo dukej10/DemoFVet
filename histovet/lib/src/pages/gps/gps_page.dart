@@ -8,16 +8,16 @@ import 'package:provider/provider.dart';
 import '../../blocs/application_bloc.dart';
 import '../../models/place.dart';
 
-class HomeScreen extends StatefulWidget {
+class GpsPage extends StatefulWidget {
   static String id = "gps_page";
 
-  const HomeScreen({Key? key}) : super(key: key);
+  const GpsPage({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<GpsPage> createState() => _GpsPageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _GpsPageState extends State<GpsPage> {
   final Completer<GoogleMapController> _mapController = Completer();
 
   late StreamSubscription locationSubscription;
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Stack(
                       children: [
-                        Container(
+                        SizedBox(
                           height: 500.0,
                           child: GoogleMap(
                             mapType: MapType.normal,
@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: Colors.black.withOpacity(.6),
                                   backgroundBlendMode: BlendMode.darken)),
                         if (applicationBloc.searchResults != null)
-                          Container(
+                          SizedBox(
                             height: 500.0,
                             child: ListView.builder(
                                 itemCount:

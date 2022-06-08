@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/clinicalHistory/consultar_histories.dart';
-import 'package:histovet/src/pages/gps/home_screen.dart';
+import 'package:histovet/src/pages/gps/gps_page.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
 import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
@@ -119,7 +119,7 @@ class _MenuLateralState extends State<MenuLateral> {
               leading: const Icon(Icons.map),
               title: const Text("Mapa"),
               onTap: () {
-                Navigator.pushNamed(context, HomeScreen.id);
+                Navigator.pushNamed(context, GpsPage.id);
               },
             ),
             Visibility(

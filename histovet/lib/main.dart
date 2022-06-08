@@ -8,7 +8,7 @@ import 'package:histovet/src/pages/clinicalHistory/add_clinicalhistory.dart';
 import 'package:histovet/src/pages/clinicalHistory/add_historypet.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/clinicalHistory/consultar_histories.dart';
-import 'package:histovet/src/pages/gps/home_screen.dart';
+import 'package:histovet/src/pages/gps/gps_page.dart';
 import 'package:histovet/src/pages/medicine/add_medicine.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
@@ -73,8 +73,8 @@ class MyApp extends StatelessWidget {
             '/signup': (context) => const SignUp(),
             ResetPassword.id: (context) => const ResetPassword(),
             '/reset-password': (context) => const ResetPassword(),
-            HomeScreen.id: (context) => const HomeScreen(),
-            '/gps_page': (context) => const HomeScreen(),
+            GpsPage.id: (context) => const GpsPage(),
+            '/gps_page': (context) => const GpsPage(),
             ConsultarMascota.id: (context) => const ConsultarMascota(),
             '/buscarMascota': (context) => const ConsultarMascota(),
             HistoryPetSelectPage.id: (context) =>

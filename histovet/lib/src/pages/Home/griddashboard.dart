@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/clinicalHistory/consultar_histories.dart';
-import 'package:histovet/src/pages/gps/home_screen.dart';
+import 'package:histovet/src/pages/gps/gps_page.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
 import 'package:histovet/src/pages/sale/sale_page.dart';
@@ -122,7 +122,7 @@ class _GridDashboardState extends State<GridDashboard> {
                           MaterialStateProperty.all<Color>(Colors.black),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, HomeScreen.id);
+                      Navigator.pushNamed(context, GpsPage.id);
                     },
                     child: const Text("Mapas"),
                   ),

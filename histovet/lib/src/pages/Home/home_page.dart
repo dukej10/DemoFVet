@@ -12,15 +12,9 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
+// Clases encargadas de la vista del inicio de
+// la aplicación
 class _HomeState extends State<Home> {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  //signout function
-  // signOut() async {
-  //   await auth.signOut();
-  //   Navigator.pushReplacement(
-  //       context, MaterialPageRoute(builder: (context) => SignIn()));
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

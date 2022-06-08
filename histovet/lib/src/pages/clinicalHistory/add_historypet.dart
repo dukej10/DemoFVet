@@ -1,6 +1,3 @@
-// Este se usará para cuando se busque una mascota y
-// se desee agregar una historia clínica
-
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -11,6 +8,8 @@ import '../../controller/auth_controller.dart';
 import '../../models/clinicalhistory_model.dart';
 import '../../models/pet_model.dart';
 
+// Clases encargadas de la vista que le permite al usuario agregar información
+// a la historia clínica de la mascota que se seleccionó
 class HistoryPetSelectPage extends StatefulWidget {
   static String id = "add_historypet";
   final String idPet;
@@ -66,8 +65,6 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
   bool respuesta = false;
   AuthController auth = AuthController();
   String username = "";
-
-  // Text Editing Controller
 
   @override
   Widget build(BuildContext context) {
@@ -787,6 +784,7 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
     super.initState();
   }
 
+  // Permite obtener la información que el usuario ingresó en el formulario
   getInfoHistory() async {
     bool validate = _formState.currentState!.saveAndValidate();
     if (validate) {
@@ -881,6 +879,8 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
     }
   }
 
+  // Permite agregar una historia clínica e indicar al usuario
+  // si fue satisfactorio el proceso
   void messageAdd(ClinicalHistory clinicalHistory) async {
     respuesta = await histCont.addClinicalHistory(clinicalHistory);
     if (respuesta) {
@@ -898,6 +898,8 @@ class _HistoryPetSelectPageState extends State<HistoryPetSelectPage> {
     }
   }
 
+  // Permite la información de la mascota a la cuál se le
+  // desea agregar una historia clínica
   void getInfoPet() async {
     Pet pet = await petIn.getPet(widget.idPet);
     setState(() {

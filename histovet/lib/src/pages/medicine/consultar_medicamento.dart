@@ -116,7 +116,6 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                                 Icons.article_outlined),
                                             label:
                                                 const Text("Ver información")),
-
                                         ElevatedButton.icon(
                                             onPressed: () {
                                               Navigator.pushNamed(
@@ -210,21 +209,6 @@ class _ConsultarMedicamentoState extends State<ConsultarMedicamento> {
                                         const SizedBox(
                                           height: 16,
                                         ),
-                                        // Row(
-                                        //   children: [
-                                        //     SizedBox(
-                                        //         width: 100,
-                                        //         height: 40,
-                                        //         child: ElevatedButton(
-                                        //           child: const Text('Comprar'),
-                                        //           onPressed: () {
-                                        //             Navigator.pushNamed(
-                                        //                 context, '/addsale',
-                                        //                 arguments: medicine);
-                                        //           },
-                                        //         )),
-                                        //   ],
-                                        // ),
                                       ],
                                     ),
                                   ),

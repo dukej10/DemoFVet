@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:histovet/src/controller/auth_controller.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// recuperar la contraseña de su cuenta
 class ResetPassword extends StatefulWidget {
   static String id = "reset";
   const ResetPassword({Key? key}) : super(key: key);
@@ -74,6 +76,7 @@ class _ResetPasswordState extends State<ResetPassword> {
     );
   }
 
+  // botón que le permite al usurio recuperar la contraseña de la cuenta
   Widget _button() {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -103,6 +106,8 @@ class _ResetPasswordState extends State<ResetPassword> {
     );
   }
 
+  // Muestra un mensaje indicandole al usuario si debe revisar su correo o
+  // revisar los datos que ingresó
   void _messageReset(String email) async {
     if (email.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

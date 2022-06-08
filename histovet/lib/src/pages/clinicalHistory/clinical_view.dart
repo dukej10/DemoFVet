@@ -58,8 +58,6 @@ class _ViewHistoryState extends State<ViewHistory> {
 
   bool respuesta = false;
 
-  // Text Editing Controller
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,6 +74,8 @@ class _ViewHistoryState extends State<ViewHistory> {
     );
   }
 
+  //Encargada de mostrar los cuadros de texto donde se mostrará a información
+  // de la historia clínica
   List<Widget> _inputs() {
     return [
       Container(

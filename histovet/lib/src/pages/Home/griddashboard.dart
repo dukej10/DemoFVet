@@ -10,6 +10,8 @@ import '../../controller/auth_controller.dart';
 import '../medicine/consultar_medicamento.dart';
 import '../pet/pets_page.dart';
 
+// Clases encargadas de mostrar las opciones del menú
+// de inicio al usuario de acuerdo al tipo de usuario que sea
 class GridDashboard extends StatefulWidget {
   const GridDashboard({Key? key}) : super(key: key);
 
@@ -204,6 +206,7 @@ class _GridDashboardState extends State<GridDashboard> {
     super.initState();
   }
 
+  // Permite identificar que tipo de usuario es el que se encuentra en sesión
   void getEstado() async {
     estado = await auth.estado();
     setState(() {});

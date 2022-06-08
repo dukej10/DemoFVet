@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/pet_model.dart';
 
+// Clase encargada de realizar las operaciones con mascotas en la base de datos de Firebase
 class PetService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
+// Clase encargada de realizar las operaciones con la autenticación de Firebase
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 

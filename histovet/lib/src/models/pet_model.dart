@@ -1,3 +1,5 @@
+// Clase encargada del modelo de mascota
+
 class Pet {
   final String? id;
   final String code;

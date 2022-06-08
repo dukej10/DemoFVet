@@ -8,7 +8,7 @@ import 'package:histovet/src/pages/clinicalHistory/update_clinicalhistory.dart';
 import '../../controller/clinicalhistory_controller.dart';
 
 import '../../models/clinicalhistory_model.dart';
-import '../widgets/widget_drawer.dart';
+import '../widgets/menu_lateral.dart';
 
 // Clases encargadas de la vista donde se enlistan todas las historias clinicas
 // que existan en la base de datos
@@ -48,7 +48,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   icon: const Icon(Icons.refresh))
             ],
           ),
-          drawer: MenuLateral(),
+          drawer: const MenuLateral(),
           floatingActionButton: Visibility(
             visible: estado,
             child: FloatingActionButton(

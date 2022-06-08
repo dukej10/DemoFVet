@@ -46,20 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  /*
-  @override
-  void dispose() {
-    final applicationBloc =
-        Provider.of<ApplicationBloc>(context, listen: false);
-
-    applicationBloc.dispose();
-    _locationController.dispose();
-    locationSubscription.cancel();
-    boundsSubscription.cancel();
-    super.dispose();
-  }
-  */
-
   @override
   Widget build(BuildContext context) {
     final applicationBloc = Provider.of<ApplicationBloc>(context);
@@ -76,20 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(12.0),
                 child: ListView(
                   children: [
-                    /*Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        controller: _locationController,
-                        textCapitalization: TextCapitalization.words,
-                        decoration: InputDecoration(
-                          hintText: 'Search by City',
-                          suffixIcon: Icon(Icons.search),
-                        ),
-                        onChanged: (value) => applicationBloc.searchPlaces(value),
-                        onTap: () => applicationBloc.clearSelectedLocation(),
-                      ),
-                    ),*/
-
                     Stack(
                       children: [
                         Container(

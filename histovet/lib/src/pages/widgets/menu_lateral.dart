@@ -12,8 +12,11 @@ import 'package:histovet/src/pages/sale/sale_page.dart';
 import '../../controller/auth_controller.dart';
 import '../Home/home_page.dart';
 
-// ignore: use_key_in_widget_constructors
+// Clases encargadas de mostrar el menú lateral con las secciones que puede visitar
+// el usuario de acuerdo al tipo de usuario que sea
 class MenuLateral extends StatefulWidget {
+  const MenuLateral({Key? key}) : super(key: key);
+
   @override
   State<MenuLateral> createState() => _MenuLateralState();
 }

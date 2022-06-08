@@ -1,3 +1,5 @@
+// Clase encargada del modelo de historia clínica
+
 class ClinicalHistory {
   final String? id;
   final int numberCH;

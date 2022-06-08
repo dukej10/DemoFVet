@@ -8,6 +8,9 @@ import 'package:provider/provider.dart';
 import '../../blocs/application_bloc.dart';
 import '../../models/place.dart';
 
+
+// Clases encargadas de la vista donde se muestra el mapa través de Google Maps
+
 class GpsPage extends StatefulWidget {
   static String id = "gps_page";
 
@@ -145,6 +148,8 @@ class _GpsPageState extends State<GpsPage> {
                 ),
               ));
   }
+
+  //Le permite al usuario interactuar con el mapa
 
   Future<void> _goToPlace(Place place) async {
     final GoogleMapController controller = await _mapController.future;

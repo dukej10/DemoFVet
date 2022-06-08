@@ -1,7 +1,4 @@
 
-
-
-
 import 'package:histovet/src/models/location.dart';
 
 class Geometry {

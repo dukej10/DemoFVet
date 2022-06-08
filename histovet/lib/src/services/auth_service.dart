@@ -59,7 +59,7 @@ class AuthService {
   }
 
   // Permite identificar si un usuario es administrador o no
-  // Retorna true si el usuario es administrador
+  // Retorna true si el usuario es administrador o false si no es administrador
   Future<bool> estado() async {
     try {
       final administradores = [

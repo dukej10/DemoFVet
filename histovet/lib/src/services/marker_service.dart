@@ -3,6 +3,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../models/place.dart';
 
 class MarkerService {
+
+  //Servicio encargado de los marcadores que se muestran en el mapa
   LatLngBounds? bounds(Set<Marker> markers) {
     if (markers.isEmpty) return null;
     return createBounds(markers.map((m) => m.position).toList());

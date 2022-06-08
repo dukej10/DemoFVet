@@ -38,7 +38,7 @@ class _MedicinePageState extends State<MedicinePage> {
                   icon: const Icon(Icons.refresh))
             ],
           ),
-          drawer: MenuLateral(),
+          drawer: const MenuLateral(),
           floatingActionButton: FloatingActionButton(
               child: const Icon(FontAwesomeIcons.plus),
               elevation: 15.0,

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/menu_lateral.dart';
@@ -22,7 +21,7 @@ class _HomeState extends State<Home> {
         title: const Text("Inicio"),
         centerTitle: true,
       ),
-      drawer: MenuLateral(),
+      drawer: const MenuLateral(),
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       body: Column(
         children: <Widget>[

@@ -35,8 +35,9 @@ class _GpsPageState extends State<GpsPage> {
       if (place != null) {
         _locationController.text = place.name!;
         _goToPlace(place);
-      } else
+      } else {
         _locationController.text = "";
+      }
     });
 
     applicationBloc.bounds.stream.listen((bounds) async {

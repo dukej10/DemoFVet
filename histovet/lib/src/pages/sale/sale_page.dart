@@ -36,7 +36,7 @@ class _SalesPAgeState extends State<SalesPage> {
                   icon: const Icon(Icons.refresh))
             ],
           ),
-          drawer: MenuLateral(),
+          drawer: const MenuLateral(),
           body: FutureBuilder(
               future: saleController.allSales(),
               builder: (BuildContext context, AsyncSnapshot<List> snapshot) {

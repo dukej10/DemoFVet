@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 
 import '../models/clinicalhistory_model.dart';
 
+// Clase encargada de realizar las operaciones con historias clínicas en la base de datos de Firebase
 class ClinicalHistoryService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final databaseRef = FirebaseDatabase.instance.ref();

@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/widget_drawer.dart';
+import '../widgets/menu_lateral.dart';
 import 'griddashboard.dart';
 
 class Home extends StatefulWidget {
@@ -12,15 +11,9 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
+// Clases encargadas de la vista del inicio de
+// la aplicación
 class _HomeState extends State<Home> {
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  //signout function
-  // signOut() async {
-  //   await auth.signOut();
-  //   Navigator.pushReplacement(
-  //       context, MaterialPageRoute(builder: (context) => SignIn()));
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +21,7 @@ class _HomeState extends State<Home> {
         title: const Text("Inicio"),
         centerTitle: true,
       ),
-      drawer: MenuLateral(),
+      drawer: const MenuLateral(),
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       body: Column(
         children: <Widget>[

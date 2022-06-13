@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/clinicalHistory/consultar_histories.dart';
-import 'package:histovet/src/pages/gps/home_screen.dart';
+import 'package:histovet/src/pages/gps/gps_page.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/medicine/consultar_medicamento.dart';
 import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
@@ -12,8 +12,11 @@ import 'package:histovet/src/pages/sale/sale_page.dart';
 import '../../controller/auth_controller.dart';
 import '../Home/home_page.dart';
 
-// ignore: use_key_in_widget_constructors
+// Clases encargadas de mostrar el menú lateral con las secciones que puede visitar
+// el usuario de acuerdo al tipo de usuario que sea
 class MenuLateral extends StatefulWidget {
+  const MenuLateral({Key? key}) : super(key: key);
+
   @override
   State<MenuLateral> createState() => _MenuLateralState();
 }
@@ -116,7 +119,7 @@ class _MenuLateralState extends State<MenuLateral> {
               leading: const Icon(Icons.map),
               title: const Text("Mapa"),
               onTap: () {
-                Navigator.pushNamed(context, HomeScreen.id);
+                Navigator.pushNamed(context, GpsPage.id);
               },
             ),
             Visibility(

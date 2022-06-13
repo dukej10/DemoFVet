@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:histovet/src/controller/auth_controller.dart';
 import 'package:histovet/src/pages/Login/signin_screen.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// registrarse en la aplicación
 class SignUp extends StatefulWidget {
   static String id = "signup";
   const SignUp({Key? key}) : super(key: key);
@@ -111,6 +113,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
+  // Botón que permite al usuario registrarse en la aplicación
   Widget _button() {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -141,6 +144,8 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
+  // Muestra un mensaje indicandole al usuario que pudo iniciar sesión o
+  // revisar los datos que ingresó, y si todo sale bien lo dirigirá al login de la aplicación
   void _messageSignUP(String correo, String password) async {
     if (correo.isEmpty && password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

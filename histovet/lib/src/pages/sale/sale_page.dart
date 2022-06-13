@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:histovet/src/controller/sale_controller.dart';
 import 'package:histovet/src/models/sale_model.dart';
 import 'package:histovet/src/pages/sale/sale_view.dart';
-import 'package:histovet/src/pages/widgets/widget_drawer.dart';
+import 'package:histovet/src/pages/widgets/menu_lateral.dart';
 
 // Clases encargadas de la vista donde se enlistan todas las ventas que existan en la
 // base de datos
@@ -36,7 +36,7 @@ class _SalesPAgeState extends State<SalesPage> {
                   icon: const Icon(Icons.refresh))
             ],
           ),
-          drawer: MenuLateral(),
+          drawer: const MenuLateral(),
           body: FutureBuilder(
               future: saleController.allSales(),
               builder: (BuildContext context, AsyncSnapshot<List> snapshot) {

@@ -1,3 +1,5 @@
+// Clase encargada del modelo de ventas
+
 class Sale {
   final String? id;
   final String code;

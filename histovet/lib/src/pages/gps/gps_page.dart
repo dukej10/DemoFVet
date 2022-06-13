@@ -8,16 +8,19 @@ import 'package:provider/provider.dart';
 import '../../blocs/application_bloc.dart';
 import '../../models/place.dart';
 
-class HomeScreen extends StatefulWidget {
+
+// Clases encargadas de la vista donde se muestra el mapa través de Google Maps
+
+class GpsPage extends StatefulWidget {
   static String id = "gps_page";
 
-  const HomeScreen({Key? key}) : super(key: key);
+  const GpsPage({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<GpsPage> createState() => _GpsPageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _GpsPageState extends State<GpsPage> {
   final Completer<GoogleMapController> _mapController = Completer();
 
   late StreamSubscription locationSubscription;
@@ -35,8 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
       if (place != null) {
         _locationController.text = place.name!;
         _goToPlace(place);
-      } else
+      } else {
         _locationController.text = "";
+      }
     });
 
     applicationBloc.bounds.stream.listen((bounds) async {
@@ -45,20 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     super.initState();
   }
-
-  /*
-  @override
-  void dispose() {
-    final applicationBloc =
-        Provider.of<ApplicationBloc>(context, listen: false);
-
-    applicationBloc.dispose();
-    _locationController.dispose();
-    locationSubscription.cancel();
-    boundsSubscription.cancel();
-    super.dispose();
-  }
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -76,23 +66,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(12.0),
                 child: ListView(
                   children: [
-                    /*Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        controller: _locationController,
-                        textCapitalization: TextCapitalization.words,
-                        decoration: InputDecoration(
-                          hintText: 'Search by City',
-                          suffixIcon: Icon(Icons.search),
-                        ),
-                        onChanged: (value) => applicationBloc.searchPlaces(value),
-                        onTap: () => applicationBloc.clearSelectedLocation(),
-                      ),
-                    ),*/
-
                     Stack(
                       children: [
-                        Container(
+                        SizedBox(
                           height: 500.0,
                           child: GoogleMap(
                             mapType: MapType.normal,
@@ -118,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: Colors.black.withOpacity(.6),
                                   backgroundBlendMode: BlendMode.darken)),
                         if (applicationBloc.searchResults != null)
-                          Container(
+                          SizedBox(
                             height: 500.0,
                             child: ListView.builder(
                                 itemCount:
@@ -172,6 +148,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ));
   }
+
+  //Le permite al usuario interactuar con el mapa
 
   Future<void> _goToPlace(Place place) async {
     final GoogleMapController controller = await _mapController.future;

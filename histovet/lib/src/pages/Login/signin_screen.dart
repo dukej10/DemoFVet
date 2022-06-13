@@ -5,6 +5,9 @@ import 'package:histovet/src/pages/Home/home_page.dart';
 
 import '../../controller/auth_controller.dart';
 
+// Clases encargadas de la vista que le permite al usuario
+// iniciar sesión en la aplicación
+
 class SignIn extends StatefulWidget {
   static String id = "signin";
   const SignIn({Key? key}) : super(key: key);
@@ -111,6 +114,7 @@ class _SignInState extends State<SignIn> {
     );
   }
 
+  // Muestra el logo de la aplicación
   Widget _logoWidget() {
     return Image.asset(
       "assets/img/vet.png",
@@ -120,6 +124,7 @@ class _SignInState extends State<SignIn> {
     );
   }
 
+  // Permite al usuario dirigirse a la sección para registrarse
   Widget _signUpOption() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -139,6 +144,8 @@ class _SignInState extends State<SignIn> {
     );
   }
 
+  // botón que permite al usuario iniciar sesión en la aplicación y
+  // dirigirse a la sección de inicio si todo sale bien
   Widget _button() {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -168,6 +175,8 @@ class _SignInState extends State<SignIn> {
     );
   }
 
+  // Permite dirigirse a la sección para recuperar la contraseña
+  // de la cuenta
   Widget _forgetPassword(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -185,6 +194,8 @@ class _SignInState extends State<SignIn> {
     );
   }
 
+  // Muestra un mensaje indicandole al usuario que pudo iniciar sesión o
+  // revisar los datos que ingresó, y si todo sale bien lo dirigirá al inicio de la aplicación
   void _messageSign(String correo, String password) async {
     if (correo.isEmpty && password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

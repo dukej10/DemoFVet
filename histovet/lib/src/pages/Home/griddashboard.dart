@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:histovet/src/pages/clinicalHistory/clinicalhistory_page.dart';
 import 'package:histovet/src/pages/clinicalHistory/consultar_histories.dart';
-import 'package:histovet/src/pages/gps/home_screen.dart';
+import 'package:histovet/src/pages/gps/gps_page.dart';
 import 'package:histovet/src/pages/medicine/medicine_page.dart';
 import 'package:histovet/src/pages/pet/consultar_mascotas.dart';
 import 'package:histovet/src/pages/sale/sale_page.dart';
@@ -10,6 +10,8 @@ import '../../controller/auth_controller.dart';
 import '../medicine/consultar_medicamento.dart';
 import '../pet/pets_page.dart';
 
+// Clases encargadas de mostrar las opciones del menú
+// de inicio al usuario de acuerdo al tipo de usuario que sea
 class GridDashboard extends StatefulWidget {
   const GridDashboard({Key? key}) : super(key: key);
 
@@ -120,7 +122,7 @@ class _GridDashboardState extends State<GridDashboard> {
                           MaterialStateProperty.all<Color>(Colors.black),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, HomeScreen.id);
+                      Navigator.pushNamed(context, GpsPage.id);
                     },
                     child: const Text("Mapas"),
                   ),
@@ -204,6 +206,7 @@ class _GridDashboardState extends State<GridDashboard> {
     super.initState();
   }
 
+  // Permite identificar que tipo de usuario es el que se encuentra en sesión
   void getEstado() async {
     estado = await auth.estado();
     setState(() {});

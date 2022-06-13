@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:histovet/src/models/medicine_model.dart';
 import 'package:histovet/src/pages/medicine/add_medicine.dart';
-import 'package:histovet/src/pages/widgets/widget_drawer.dart';
+import 'package:histovet/src/pages/widgets/menu_lateral.dart';
 
 import '../../controller/medicine_controller.dart';
 import 'medicine_update.dart';
@@ -38,7 +38,7 @@ class _MedicinePageState extends State<MedicinePage> {
                   icon: const Icon(Icons.refresh))
             ],
           ),
-          drawer: MenuLateral(),
+          drawer: const MenuLateral(),
           floatingActionButton: FloatingActionButton(
               child: const Icon(FontAwesomeIcons.plus),
               elevation: 15.0,

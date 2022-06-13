@@ -32,7 +32,7 @@ class ApplicationBloc with ChangeNotifier {
   ApplicationBloc() {
     setCurrentLocation();
   }
-
+  //Localiza en el mapa la ubicación actual del usuario
   setCurrentLocation() async {
     currentLocation = await geoLocatorService.getCurrentLocation();
     selectedLocationStatic = Place(
@@ -45,12 +45,12 @@ class ApplicationBloc with ChangeNotifier {
     );
     notifyListeners();
   }
-
+  //Busca en el mapa los lugares deseados según los parametros asignados
   searchPlaces(String searchTerm) async {
     searchResults = await placesService.getAutocomplete(searchTerm);
     notifyListeners();
   }
-
+  //Asigna un lugar
   setSelectedLocation(String placeId) async {
     var sLocation = await placesService.getPlace(placeId);
     selectedLocation.add(sLocation);
@@ -59,7 +59,7 @@ class ApplicationBloc with ChangeNotifier {
     searchResults = _searchResults;
     notifyListeners();
   }
-
+  //Borra la asignación del lugar
   clearSelectedLocation() {
     var event = null;
     selectedLocation.add(event);
@@ -68,7 +68,7 @@ class ApplicationBloc with ChangeNotifier {
     placeType = null;
     notifyListeners();
   }
-
+//Permite desplegar los marcadores de las veterinarias más cercanas
   togglePlaceType(String value, bool selected) async {
     if (selected) {
       placeType = value;

@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 
 import '../models/sale_model.dart';
 
+// Clase encargada de realizar las operaciones con ventas en la base de datos de Firebase
 class SaleService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final databaseRef = FirebaseDatabase.instance.ref();

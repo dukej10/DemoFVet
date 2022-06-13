@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:histovet/src/controller/pet_controller.dart';
 import 'package:histovet/src/models/pet_model.dart';
-import 'package:histovet/src/pages/widgets/widget_drawer.dart';
+import 'package:histovet/src/pages/widgets/menu_lateral.dart';
 import 'package:histovet/src/pages/pet/add_pets.dart';
 import 'package:histovet/src/pages/pet/pet_update.dart';
 
@@ -37,7 +37,7 @@ class _PetsPageState extends State<PetsPage> {
                   icon: const Icon(Icons.refresh))
             ],
           ),
-          drawer: MenuLateral(),
+          drawer: const MenuLateral(),
           floatingActionButton: FloatingActionButton(
               child: const Icon(FontAwesomeIcons.plus),
               elevation: 15.0,

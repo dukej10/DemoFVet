@@ -27,13 +27,13 @@ class _AddSaleState extends State<AddSale> {
   bool respuesta = false;
   double total = 0;
   late Medicine tempMedi;
+  TextEditingController cantid = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     Medicine? medicine =
         ModalRoute.of(context)?.settings.arguments as Medicine?;
     //print(medicine);
-    final cantid = TextEditingController();
     tempMedi = medicine!;
 
     return Scaffold(

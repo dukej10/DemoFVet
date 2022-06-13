@@ -1,4 +1,4 @@
-
+// Clase encargada del modelo de medicina
 class Medicine {
   final String? id;
   final String code;
